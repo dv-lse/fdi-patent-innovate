@@ -1,0 +1,8 @@
+# incidental files, never required for check-in
+.DS_Store
+# packaging / dev artifacts
+node_modules
+jspm_packages/*/**
+jspm
+# build products reqd for staging (gh-pages branch)
+build.js*
