@@ -10,7 +10,42 @@ let md = markdown({
   typographer: true
 })
 
+md.core.ruler.push('section', (state) => {
+  let tokens = []
+  let level = 0
 
+  openSection()
+
+  for(let i=0; i<state.tokens.length; i++) {
+    let token = state.tokens[i]
+    if(token.markup === '---') {
+      closeSection()
+      openSection()
+    } else {
+      tokens.push(token)
+    }
+  }
+  closeSection()
+
+  state.tokens = tokens
+
+  function openSection() {
+    let token = new state.Token('section_open', 'section', level)
+    token.block = true
+    tokens.push(token)
+    level++
+  }
+
+  function closeSection() {
+    if(level > 0) {
+      var t = new state.Token('section_close', 'section', level)
+      t.block = true
+      t.tag = '/section'
+      tokens.push(t)
+      level--
+    }
+  }
+})
 
 
 //
@@ -20,7 +55,6 @@ let md = markdown({
 md.renderer.rules.visualisation = (tokens, idx, options, env) => {
   let payload = tokens[idx].content
   return '<div class="visualisation">' +
-         (payload.label ? '<span class="label">' + payload.label + '</span>' : '') +
          '<script type="application/json">' +
          JSON.stringify(payload) +
          '</script></div>'
@@ -97,6 +131,14 @@ queue()
   .await( (err, narrative) => {
     d3.select('#narrative')
       .html(md.render(narrative))
+
+    let sectionPositions = []
+    d3.selectAll('section')
+      .each(function() {
+        var top = this.getBoundingClientRect().top
+        sectionPositions.push(top)
+      })
+
     let svg = d3.select('#viz')
       .append('svg')
         .attr('width', width + margin.left + margin.right)
@@ -122,28 +164,24 @@ queue()
         .attr('fill', state.color)
     }
 
-    function makeactive(active) {
-      d3.select('.visualisation')
-        .classed('active', false)
+    function makeactive(sectionIndex) {
+      let sections = d3.selectAll('section')
+        .classed('active', (d,i) => i === sectionIndex)
+        .transition()
+        .duration(500)
+          .style('opacity', (d,i) => i === sectionIndex ? 1 : 0.1)
 
-      let elem = d3.select(active)
-        .classed('active', true)
-
-      let raw = elem.select('script').node().text
-      let payload = JSON.parse(raw)
-
-      visualise(payload)
+      d3.selectAll('section.active script')
+        .each(function() {
+          let payload = JSON.parse(this.text)
+          visualise(payload)
+        })
     }
 
     function scrolled(ev) {
-      let active = null
+      var pos = window.pageYOffset - 10
+      var sectionIndex = d3.bisect(sectionPositions, pos)
 
-      d3.selectAll('.visualisation')
-        .each( function() {
-          if(!active || offset(this) < offset(active)) { active = this }
-        })
-
-      makeactive(active)
+      makeactive(sectionIndex)
     }
-
   })

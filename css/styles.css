@@ -38,16 +38,10 @@ body {
   margin: 0;
 }
 
+#narrative section.active h1 {
+  opacity: 1;
+}
+
 #narrative h1 + * {
   margin-top: 100px;
-}
-
-.visualisation::before {
-  content: '\25B6';
-  font-size: 18pt;
-  margin-right: 5px;
-}
-
-.visualisation.active {
-  color: red;
 }
