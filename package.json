@@ -1,7 +1,10 @@
 {
   "jspm": {
     "dependencies": {
-      "d3": "npm:d3@^4.3.0"
+      "d3": "npm:d3@^4.3.0",
+      "d3-queue": "npm:d3-queue@^3.0.3",
+      "js-yaml": "npm:js-yaml@^3.6.1",
+      "markdown-it": "npm:markdown-it@^8.0.1"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

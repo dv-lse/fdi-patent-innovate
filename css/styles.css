@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#wrapper {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#viz {
+  left: 350px;
+  top: 50px;
+  position: fixed;
+}
+
+#narrative {
+  width: 330px;
+}
+
+#narrative > * {
+  padding-left: 20px;
+}
+
+#narrative h1 {
+  position: fixed;
+  width: 100%;
+  padding: 20px;
+  top: 0;
+  background: black;
+  color: white;
+  margin: 0;
+}
+
+#narrative h1 + * {
+  margin-top: 100px;
+}
+
+.visualisation::before {
+  content: '\25B6';
+  font-size: 18pt;
+  margin-right: 5px;
+}
+
+.visualisation.active {
+  color: red;
+}
