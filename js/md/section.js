@@ -3,10 +3,17 @@ function section(md) {
   md.core.ruler.push('section', (state) => {
     let tokens = []
     let headings = 0
+    let i = 0
+
+    while(state.tokens[i].type === 'front_matter') {
+      tokens.push(state.tokens[i])
+      i++
+    }
     openSection()
 
-    for(let i=0; i<state.tokens.length; i++) {
+    while(i<state.tokens.length) {
       let token = state.tokens[i]
+
       if(token.type === 'heading_open' && token.tag <= 'h3') {
         if(headings > 0) {
           closeSection()
@@ -20,6 +27,7 @@ function section(md) {
       } else {
         tokens.push(token)
       }
+      i++
     }
     closeSection()
 

@@ -19,6 +19,7 @@ System.config({
     "core-js": "npm:core-js@1.2.7",
     "d3": "npm:d3@4.3.0",
     "d3-queue": "npm:d3-queue@3.0.3",
+    "debounce": "npm:debounce@1.0.0",
     "js-yaml": "npm:js-yaml@3.6.1",
     "markdown-it": "npm:markdown-it@8.0.1",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -211,6 +212,9 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:debounce@1.0.0": {
+      "date-now": "npm:date-now@1.0.1"
     },
     "npm:entities@1.1.1": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"

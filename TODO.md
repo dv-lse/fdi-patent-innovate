@@ -23,12 +23,4 @@ format?*
 
 [And this](http://rstudio.github.io/tufte/) for good formatting (no slides).
 
-
-
-
-
----
-title: "Foreign Direct Investments... <your title here>"
-author: Arnaud Dyevre
-date: October 17, 2016
----
+[this](http://blog.webkid.io/responsive-chart-usability-d3/) for mobile.

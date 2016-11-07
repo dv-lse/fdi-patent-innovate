@@ -1,3 +1,9 @@
+---
+title: Does Foreign Direct Investment Help Cities Innovate?
+author: Arnaud Dyevre
+date: October 17, 2016
+---
+
 # Where do multinational firms invest?  
 
 How do they make these investment decisions? 

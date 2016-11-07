@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 import {queue} from 'd3-queue'
-
+import debounce from 'debounce'
 import markdown from 'markdown-it'
 
 import front_matter from './js/md/front_matter'
@@ -11,7 +11,7 @@ let md = markdown({
     html: false,
     linkify: true,
     typographer: true })
-//  .use(front_matter)
+  .use(front_matter)
   .use(section)
   .use(visualisation)
 
@@ -56,7 +56,7 @@ queue()
           d3.transition()
             .duration(750)
             .tween("scroll", () => {
-              let int = d3.interpolateNumber(window.pageYOffset || 0, sectionPositions[i] - 25)
+              let int = d3.interpolateNumber(window.pageYOffset || 0, sectionPositions[i] - 100)
               return (t) => window.scroll(0, int(t))
             })
           })
@@ -65,7 +65,7 @@ queue()
 
     makeactive(0)
 
-    window.onscroll = scrolled
+    window.onscroll = debounce(scrolled, 100)
 
     function offset(elem) {
       return Math.abs(elem.getBoundingClientRect().top)

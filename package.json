@@ -3,6 +3,7 @@
     "dependencies": {
       "d3": "npm:d3@^4.3.0",
       "d3-queue": "npm:d3-queue@^3.0.3",
+      "debounce": "npm:debounce@^1.0.0",
       "js-yaml": "npm:js-yaml@^3.6.1",
       "markdown-it": "npm:markdown-it@^8.0.1"
     },

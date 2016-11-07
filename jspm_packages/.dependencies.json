@@ -320,5 +320,9 @@
     "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
     "process": "github:jspm/nodelibs-process@^0.1.0"
-  }
+  },
+  "npm:debounce@1.0.0": {
+    "date-now": "npm:date-now@1.0.1"
+  },
+  "npm:date-now@1.0.1": {}
 }
