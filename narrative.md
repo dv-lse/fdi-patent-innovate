@@ -1,10 +1,8 @@
-# Do Foreign Direct Investments help cities innovate?
+# Where do multinational firms invest?  
 
-*Arnaud Dyevre – 17/10/2016*
+How do they make these investment decisions? 
 
-## I. Where do multinational firms invest?   How do they make these investment decisions? 
-
-### 1. How big? The importance of Foreign Direct Investments
+# **How big?** The importance of Foreign Direct Investments
 
 ::: visualisation circle
   radius: 24
@@ -22,8 +20,7 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
 2. GDP estimates in 2016: IMF, World Economic Outlook Database
 3. FDIs: FDI Markets
 
----
-### 2. Why? MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
+# **Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
 
 ::: visualisation circle
   radius: 62
@@ -41,8 +38,7 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 5. Crescenzi and Rodrigues-Pose (2011)
 6. Amin and Cohendet (2004)
 
----
-### 3. How? Firms from developed and emerging economies invest differently
+# **How?** Firms from developed and emerging economies invest differently
 
 ::: visualisation circle
   radius: 80
@@ -62,39 +58,35 @@ Lastly, they  are making investment decisions based on national and regional fac
 
 6. Cohen and Levinthal (1990)
 
----
-## Transition
+# Transition
 
 In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
 
 Economists have long seen technological change as one of the most powerful driver of economic development and welfare improvement. It is then crucial to know if developing regions gain from the interventions of technologically advanced firms. How does the evidence stack up?
 
----
-## II. What is the impact of investments on the ability to innovate of the host region? 
+# What is the impact of investments on the ability to innovate of the host region? 
 
-### 1. How unequal? Innovation capacity is very unequal and stable over time
+# **How unequal?** Innovation capacity is very unequal and stable over time
 
 One common way to measure the innovative capacity of a city is to count the number of inventors who are granted patents in this city.
 
 Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year [7].  
 
 ---
-### 1. How unequal? Innovation capacity is very unequal and stable over time
 
-*Quiz*
+*Quiz.*
+
 Let’s compare inequality in patent count to wealth inequality. In the UK, it is estimated that the 10% richest individuals in Britain own 47% of the country’s wealth [7]. This is a quite unequal distribution of wealth. But how unequal is the distribution of patents in the world according to you? In 2005, what share of patents did the top 10% of the regions own?
 
 7. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)
 
 ---
-### 1. How unequal? Innovation capacity is very unequal and stable over time
 
 The distribution of patents is not only concentrated in few cities, it is also very stable over time: out of the regions that were in the bottom quintile of patent count between 1975 and 1990, only 0.21% reached the top quintile between 1991 and 2010. Conversely, only 0.11% went from the top to the bottom quintile [8]. You can use the year cursor to see how patenting evolves from 1975 to 2005.
 
 8. Authors’ calculations, based on US Trademark and Patent Office data
 
----
-## 2. Method: Matching regions
+# **Method:** Matching regions
 
 To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the statistical twin of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except  the fact that they have been visited by a foreign firm.
 
@@ -102,8 +94,7 @@ Imagine for instance that the CEO of an American tech firm decides to build a la
 
 You can click on a region and see to which other it is matched [the visualisation highlights the regions that receive the treatment and when the user mouse over one, it highlights this particular region and the others (2?) to which it is matched]
 
----
-### 3. Results: The causal impact of foreign intervention on city-level innovation
+# **Results:** The causal impact of foreign intervention on city-level innovation
 
 ::: visualisation circle
   radius: 25
@@ -115,8 +106,7 @@ Patent counts in the regions that receive an intervention does indeed grow more 
 
 Some factors make regions more receptive to foreign firms’ interventions. **More on this when we have results on heterogeneous effects**
 
----
-**References cited**
+# References cited
 
 Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.
 
