@@ -6,4 +6,4 @@ node_modules
 jspm_packages/*/**
 jspm
 # build products reqd for staging (gh-pages branch)
-build.js*
+#build.js*
