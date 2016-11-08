@@ -1,11 +1,14 @@
 import * as d3 from 'd3'
-import {queue} from 'd3-queue'
+import { queue } from 'd3-queue'
+import { feature} from 'topojson-client'
 import debounce from 'debounce'
 import markdown from 'markdown-it'
 
 import front_matter from './js/md/front_matter'
 import section from './js/md/section'
 import visualisation from './js/md/visualisation'
+
+import * as globe from './js/globe'
 
 let md = markdown({
     html: false,
@@ -19,13 +22,14 @@ let md = markdown({
 // load data & render
 //
 
-const width = 550
-const height = 450
-const margin = { left: 10, top: 10, right: 10, bottom: 10 }
-
 queue()
   .defer(d3.text, 'data/narrative.md')
-  .await( (err, narrative) => {
+  .defer(d3.json, 'data/world-110m.json')
+  .await( (err, narrative, world) => {
+    if (err) return console.error(err)
+
+    let countries = feature(world, world.objects.countries)
+
     d3.select('#narrative')
       .html(md.render(narrative))
 
@@ -36,31 +40,26 @@ queue()
         sectionPositions.push(triggerPos)
       })
 
-    let svg = d3.select('#viz')
+    let nav = d3.select('#nav')
       .append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-        .attr('transform', 'translate(' + [margin.left, margin.top] + ')')
-
-    let nav = svg.append('g')
-      .attr('id', 'nav')
-      .attr('transform', 'translate(0,150)')
-      .selectAll('circle')
-    .data(sectionPositions)
+        .attr('width', 20)
+        .attr('height', sectionPositions.length * 20)
+      .selectAll('.dot')
+      .data(sectionPositions)
       .enter().append('circle')
+        .attr('class', 'dot')
         .attr('r', 5)
-        .attr('cy', (d,i) => i * 20)
+        .attr('cx', 10)
+        .attr('cy', (d,i) => 10 + i * 20)
         .on('click', (d,i) => {
           d3.transition()
             .duration(750)
-            .tween("scroll", () => {
-              let int = d3.interpolateNumber(window.pageYOffset || 0, sectionPositions[i] - 100)
-              return (t) => window.scroll(0, int(t))
+            .tween('scroll', () => {
+              let target = sectionPositions[i-1] || 0
+              let interp = d3.interpolateNumber(window.pageYOffset || 0, target)
+              return (t) => window.scroll(0, interp(t))
             })
           })
-
-    let circle = svg.append('circle')
 
     makeactive(0)
 
@@ -71,17 +70,17 @@ queue()
     }
 
     function visualise(state) {
+      console.log("Visualising: " + JSON.stringify(state))
+      let viz = d3.select('#viz')
       if(state) {
-        circle.transition()
+        viz.transition()
           .duration(500)
-          .attr('opacity', 1)
-          .attr('transform', 'translate(' + [state.amount * width, state.amount * height] + ')')
-          .attr('r', state.radius)
-          .attr('fill', state.color)
+          .style('opacity', 1)
+          .call(globe.update, countries, state)
       } else {
-        circle.transition()
-        .duration(500)
-        .attr('opacity', 0.05)
+        viz.transition()
+          .duration(500)
+          .style('opacity', 0.4)
       }
     }
 
@@ -106,9 +105,9 @@ queue()
     }
 
     function scrolled(ev) {
-      var pos = window.pageYOffset + window.innerHeight / 4
+      var pos = window.pageYOffset + 150
       var sectionIndex = d3.bisect(sectionPositions, pos)
-      sectionIndex = Math.min(sectionIndex, sectionPositions.length-1)
+      sectionIndex = Math.max(0, Math.min(sectionIndex, sectionPositions.length-1))
       makeactive(sectionIndex)
     }
   })

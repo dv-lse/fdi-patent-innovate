@@ -18,10 +18,13 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
     "d3": "npm:d3@4.3.0",
+    "d3-geo": "npm:d3-geo@1.3.1",
+    "d3-geo-projection": "npm:d3-geo-projection@1.1.1",
     "d3-queue": "npm:d3-queue@3.0.3",
     "debounce": "npm:debounce@1.0.0",
     "js-yaml": "npm:js-yaml@3.6.1",
     "markdown-it": "npm:markdown-it@8.0.1",
+    "topojson-client": "npm:topojson-client@2.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -133,6 +136,15 @@ System.config({
       "d3-quadtree": "npm:d3-quadtree@1.0.1",
       "d3-timer": "npm:d3-timer@1.0.3",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:d3-geo-projection@1.1.1": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "commander": "npm:commander@2.9.0",
+      "d3-array": "npm:d3-array@1.0.1",
+      "d3-geo": "npm:d3-geo@1.3.1",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "readline": "github:jspm/nodelibs-readline@0.1.0"
     },
     "npm:d3-geo@1.3.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -291,6 +303,9 @@ System.config({
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:topojson-client@2.1.0": {
+      "commander": "npm:commander@2.9.0"
     },
     "npm:url@0.10.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",

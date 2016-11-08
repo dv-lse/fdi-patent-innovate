@@ -324,5 +324,18 @@
   "npm:debounce@1.0.0": {
     "date-now": "npm:date-now@1.0.1"
   },
-  "npm:date-now@1.0.1": {}
+  "npm:date-now@1.0.1": {},
+  "npm:d3-geo-projection@1.1.1": {
+    "commander": "npm:commander@^2.0.0",
+    "d3-array": "npm:d3-array@^1.0.0",
+    "d3-geo": "npm:d3-geo@^1.1.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "readline": "github:jspm/nodelibs-readline@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "github:jspm/nodelibs-readline@0.1.0": {},
+  "npm:topojson-client@2.1.0": {
+    "commander": "npm:commander@^2.0.0"
+  }
 }

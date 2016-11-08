@@ -11,9 +11,8 @@ How do they make these investment decisions? 
 # **How big?** The importance of Foreign Direct Investments
 
 ::: visualisation circle
-  radius: 24
-  color: pink
-  amount: 0.7
+  scale: 1
+  label: London 1
 :::
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
@@ -29,9 +28,8 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
 # **Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
 
 ::: visualisation circle
-  radius: 62
-  color: orange
-  amount: 0.3
+  scale: 7
+  label: London 2
 :::
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
@@ -47,9 +45,9 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 # **How?** Firms from developed and emerging economies invest differently
 
 ::: visualisation circle
-  radius: 80
-  color: red
-  amount: 0.8
+  rotate: [2.3522, -48.8566]
+  scale: 7
+  label: Paris
 :::
 
 *I am not convinced that this is a very useful aspect of the narrative. At least for the main point that we are trying to get across. I suggest we work on the other aspects first and come back to this slide later.*
@@ -65,6 +63,12 @@ Lastly, they  are making investment decisions based on national and regional fac
 6. Cohen and Levinthal (1990)
 
 # Transition
+
+::: visualisation circle
+  rotate: [-37.6173, -55.7558]
+  scale: 5
+  label: Moscow
+:::
 
 In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
 
@@ -88,11 +92,21 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
 
 ---
 
+::: visualisation circle
+  rotate: [0, 0]
+  scale: 2.3
+:::
+
 The distribution of patents is not only concentrated in few cities, it is also very stable over time: out of the regions that were in the bottom quintile of patent count between 1975 and 1990, only 0.21% reached the top quintile between 1991 and 2010. Conversely, only 0.11% went from the top to the bottom quintile [8]. You can use the year cursor to see how patenting evolves from 1975 to 2005.
 
 8. Authors’ calculations, based on US Trademark and Patent Office data
 
 # **Method:** Matching regions
+
+::: visualisation circle
+  rotate: [-46.625290, -23.533773]
+  scale: 1
+:::
 
 To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the statistical twin of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except  the fact that they have been visited by a foreign firm.
 
@@ -103,9 +117,8 @@ You can click on a region and see to which other it is matched [the visualisatio
 # **Results:** The causal impact of foreign intervention on city-level innovation
 
 ::: visualisation circle
-  radius: 25
-  color: lightgrey
-  amount: 0.5
+  rotate: [84, 72.0]
+  scale: 0.7
 :::
 
 Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not.

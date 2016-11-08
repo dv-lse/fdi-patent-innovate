@@ -34,17 +34,23 @@ body {
   margin: 200px 0 200px 15px;
 }
 
-#nav circle {
+#nav {
+  position: fixed;
+  left: 360px;
+  top: 200px;
+}
+
+#nav .dot {
   fill: white;
   stroke: gray;
   cursor: pointer;
 }
-#nav circle.active {
+#nav .dot.active {
   fill: gray;
 }
 
 #viz {
   position: fixed;
-  left: 360px;
-  top: 50px;
+  left: 380px;
+  top: 80px;
 }
