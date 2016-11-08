@@ -24,7 +24,7 @@ const height = 450
 const margin = { left: 10, top: 10, right: 10, bottom: 10 }
 
 queue()
-  .defer(d3.text, 'narrative.md')
+  .defer(d3.text, 'data/narrative.md')
   .await( (err, narrative) => {
     d3.select('#narrative')
       .html(md.render(narrative))
