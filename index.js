@@ -32,9 +32,8 @@ queue()
     let sectionPositions = []
     d3.selectAll('section')
       .each(function(d,i) {
-        var startPos = this.getBoundingClientRect().top
-        if(i === 0) { startPos = 0 }
-        sectionPositions.push(startPos)
+        var triggerPos = this.getBoundingClientRect().bottom
+        sectionPositions.push(triggerPos)
       })
 
     let svg = d3.select('#viz')
@@ -107,7 +106,7 @@ queue()
     }
 
     function scrolled(ev) {
-      var pos = window.pageYOffset - 10
+      var pos = window.pageYOffset + window.innerHeight / 4
       var sectionIndex = d3.bisect(sectionPositions, pos)
       sectionIndex = Math.min(sectionIndex, sectionPositions.length-1)
       makeactive(sectionIndex)
