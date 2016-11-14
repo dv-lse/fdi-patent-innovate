@@ -8,11 +8,17 @@ date: October 17, 2016
 
 How do they make these investment decisions? 
 
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 0.5
+:::
+
 # **How big?** The importance of Foreign Direct Investments
 
-::: visualisation circle
+::: visualisation globe
+  rotate: [2.3522, -48.8566]
   scale: 1
-  label: London 1
+  choropleth: gdp
 :::
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
@@ -21,15 +27,24 @@ Almost two thirds of these investments (63%) came from developed economies [the 
 
 On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis [3]. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
 
+**CY: Move the interactive portion of the DV to the end, allowing user to play with heterogeneous results?**
+
+*Aggregate the FDI dataset aggregated by gvc stage and industry sector will appear here.  Globe to show only the top 50 flows: size of arrow is flow in millions of USD.*
+
 1. World FDIs: UNCTAD, 2016
 2. GDP estimates in 2016: IMF, World Economic Outlook Database
 3. FDIs: FDI Markets
 
 # **Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
 
-::: visualisation circle
+::: visualisation globe
+  rotate: [2.3522, -57.8566]
   scale: 7
-  label: London 2
+  choropleth: education
+  flow:
+    source: United States
+    stage: Headquarters
+    industry: Software & IT services
 :::
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
@@ -44,10 +59,10 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 
 # **How?** Firms from developed and emerging economies invest differently
 
-::: visualisation circle
+::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 7
-  label: Paris
+  choropleth: population
 :::
 
 *I am not convinced that this is a very useful aspect of the narrative. At least for the main point that we are trying to get across. I suggest we work on the other aspects first and come back to this slide later.*
@@ -64,10 +79,10 @@ Lastly, they  are making investment decisions based on national and regional fac
 
 # Transition
 
-::: visualisation circle
+::: visualisation globe
   rotate: [-37.6173, -55.7558]
   scale: 5
-  label: Moscow
+  color: lightcoral
 :::
 
 In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
@@ -92,7 +107,7 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
 
 ---
 
-::: visualisation circle
+::: visualisation globe
   rotate: [0, 0]
   scale: 2.3
 :::
@@ -103,7 +118,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
 
 # **Method:** Matching regions
 
-::: visualisation circle
+::: visualisation globe
   rotate: [-46.625290, -23.533773]
   scale: 1
 :::
@@ -116,9 +131,11 @@ You can click on a region and see to which other it is matched [the visualisatio
 
 # **Results:** The causal impact of foreign intervention on city-level innovation
 
-::: visualisation circle
-  rotate: [84, 72.0]
-  scale: 0.7
+::: visualisation globe
+  rotate: [2.3522, -48.8566]
+  scale: 7
+  region: all
+  technology: all
 :::
 
 Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not.

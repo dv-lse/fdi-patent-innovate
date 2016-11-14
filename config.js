@@ -21,10 +21,13 @@ System.config({
     "d3-geo": "npm:d3-geo@1.3.1",
     "d3-geo-projection": "npm:d3-geo-projection@1.1.1",
     "d3-queue": "npm:d3-queue@3.0.3",
+    "d3-scale-chromatic": "npm:d3-scale-chromatic@1.1.0",
     "debounce": "npm:debounce@1.0.0",
     "js-yaml": "npm:js-yaml@3.6.1",
+    "json": "github:systemjs/plugin-json@0.2.2",
     "markdown-it": "npm:markdown-it@8.0.1",
     "topojson-client": "npm:topojson-client@2.1.0",
+    "world-atlas": "npm:world-atlas@1.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -158,6 +161,9 @@ System.config({
       "d3-dispatch": "npm:d3-dispatch@1.0.1",
       "d3-dsv": "npm:d3-dsv@1.0.3",
       "xmlhttprequest": "npm:xmlhttprequest@1.8.0"
+    },
+    "npm:d3-scale-chromatic@1.1.0": {
+      "d3-interpolate": "npm:d3-interpolate@1.1.1"
     },
     "npm:d3-scale@1.0.3": {
       "d3-array": "npm:d3-array@1.0.1",

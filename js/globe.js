@@ -11,10 +11,11 @@ let path = geoPath()
 
 let graticule = geoGraticule()
 
-function validate(val) {
+function validate(val, colors) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
-    scale: 50
+    scale: 50,
+    color: 'lightgray'
   }
 
   let state = Object.assign({}, default_state, val)
@@ -27,7 +28,7 @@ function validate(val) {
     throw "Globe state: cannot read rotate from " + JSON.stringify(state)
   }
 
-  if(state.rotate.length <= 2) {
+  if(state.rotate.length < 3) {
     state.rotate[2] = 11.5 // default tilt
   }
 
@@ -35,17 +36,22 @@ function validate(val) {
        typeof state.scale === 'number'))
     throw "Globe state: cannot read scale from " + JSON.stringify(state)
 
+  if(!(state.choropleth in colors || d3.color(state.color)))
+    throw "Globe state: cannot read color id " + (state.choropleth || state.color)
+
   return state
 }
 
-function update(canvas, countries, state) {
+function update(canvas, countries, colors, state) {
   let elem = canvas.node()
   let bounds = elem.getBoundingClientRect()
 
   let width = bounds.right - bounds.left
   let height = bounds.bottom - bounds.top
 
-  state = validate(state)
+  state = validate(state, colors)
+
+  let color = colors[state.choropleth] || () => d3.color(state.color)
 
   d3.transition()
     .duration(1500)
@@ -77,12 +83,14 @@ function update(canvas, countries, state) {
 
         context.save()
         context.lineWidth = 1
-        context.strokeStyle = 'gray'
-        context.fillStyle = 'lightgray'
-        context.beginPath()
-        path(countries)
-        context.fill()
-        context.stroke()
+        context.strokeStyle = 'white'
+        countries.forEach( (d) => {
+          context.fillStyle = color(d.id)
+          context.beginPath()
+          path(d)
+          context.fill()
+          context.stroke()
+        })
         context.restore()
       }
     })

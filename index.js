@@ -1,4 +1,5 @@
 import * as d3 from 'd3'
+import * as schemes from 'd3-scale-chromatic'
 import { queue } from 'd3-queue'
 import { feature} from 'topojson-client'
 import debounce from 'debounce'
@@ -9,6 +10,7 @@ import section from './js/md/section'
 import visualisation from './js/md/visualisation'
 
 import * as globe from './js/globe'
+
 
 let md = markdown({
     html: false,
@@ -24,11 +26,40 @@ let md = markdown({
 
 queue()
   .defer(d3.text, 'data/narrative.md')
-  .defer(d3.json, 'data/world-110m.json')
-  .await( (err, narrative, world) => {
+  .defer(d3.json, 'data/110m.json')
+  .defer(d3.tsv, 'data/110m.tsv')
+  .await( (err, narrative, world, stats) => {
     if (err) return console.error(err)
 
-    let countries = feature(world, world.objects.countries)
+    let gdp_md_est = {}
+    let pop_est = {}
+
+    stats.forEach( (d,i) => {
+      gdp_md_est[d.iso_n3] = +d.gdp_md_est
+      pop_est[d.iso_n3] = +d.pop_est
+    })
+
+    let gdp_scale = d3.scaleQuantile()
+      .domain(d3.values(gdp_md_est))
+      .range(schemes.schemeBlues[9])
+
+    let population_scale = d3.scaleQuantile()
+      .domain(d3.values(pop_est))
+      .range(schemes.schemeReds[9])
+
+    // TBD
+    let education_scale = d3.scaleQuantile()
+      .domain(d3.values(pop_est))
+      .range(schemes.schemePiYG[9])
+
+    let colors = {
+      gdp: (id) => gdp_scale(gdp_md_est[id]),
+      population: (id) => population_scale(pop_est[id]),
+      education: (id) => education_scale(pop_est[id]),
+      default: () => () => 'lightcoral'
+    }
+
+    let countries = feature(world, world.objects.countries).features
 
     d3.select('#narrative')
       .html(md.render(narrative))
@@ -76,7 +107,7 @@ queue()
         viz.transition()
           .duration(500)
           .style('opacity', 1)
-          .call(globe.update, countries, state)
+          .call(globe.update, countries, colors, state)
       } else {
         viz.transition()
           .duration(500)
@@ -84,7 +115,10 @@ queue()
       }
     }
 
+    let cur_index = null
     function makeactive(sectionIndex) {
+      if(sectionIndex === cur_index) return
+
       let sections = d3.selectAll('section')
         .classed('active', (d,i) => i === sectionIndex)
         .transition()
@@ -102,6 +136,8 @@ queue()
       if(viz.size() === 0) {
         visualise(null)
       }
+
+      cur_index = sectionIndex
     }
 
     function scrolled(ev) {
