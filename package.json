@@ -9,8 +9,7 @@
       "js-yaml": "npm:js-yaml@^3.6.1",
       "json": "github:systemjs/plugin-json@^0.2.2",
       "markdown-it": "npm:markdown-it@^8.0.1",
-      "topojson-client": "npm:topojson-client@^2.1.0",
-      "world-atlas": "npm:world-atlas@^1.1.0"
+      "topojson-client": "npm:topojson-client@^2.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
@@ -19,6 +18,11 @@
     }
   },
   "devDependencies": {
-    "jspm": "^0.16.47"
+    "jspm": "^0.16.47",
+    "ndjson-cli": "^0.2.0",
+    "shapefile": "^0.5.8",
+    "topojson": "^2.0.0",
+    "topojson-client": "^2.1.0",
+    "topojson-simplify": "^2.0.0"
   }
 }

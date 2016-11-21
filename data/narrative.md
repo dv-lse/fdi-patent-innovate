@@ -18,7 +18,7 @@ How do they make these investment decisions? 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
-  choropleth: gdp
+  choropleth: GDPpc_rIp
 :::
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
@@ -40,7 +40,7 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
 ::: visualisation globe
   rotate: [2.3522, -57.8566]
   scale: 7
-  choropleth: education
+  choropleth: educ_rIp
   flow:
     source: United States
     stage: Headquarters
@@ -62,7 +62,7 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 7
-  choropleth: population
+  choropleth: pop_rIp
 :::
 
 *I am not convinced that this is a very useful aspect of the narrative. At least for the main point that we are trying to get across. I suggest we work on the other aspects first and come back to this slide later.*
@@ -71,9 +71,9 @@ While multinational firms from both rich and emerging countries invest abroad to
 
 First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully make sense of a region-specific scientific knowledge [6].
 
-Second, multinational firms from developing countries  tend to invest  in cities where a lot of companies are doing the same activity (R&D or Design and Testing  for instance), but not necessarily in the same  industry (automobiles or computers for instance).
+Second, multinational firms from developing countries tend to invest in cities where a lot of companies are doing the same activity (R&D or Design and Testing for instance), but not necessarily in the same industry (automobiles or computers for instance).
 
-Lastly, they  are making investment decisions based on national and regional factors.
+Lastly, they are making investment decisions based on national and regional factors.
 
 6. Cohen and Levinthal (1990)
 
@@ -95,7 +95,7 @@ Economists have long seen technological change as one of the most powerful drive
 
 One common way to measure the innovative capacity of a city is to count the number of inventors who are granted patents in this city.
 
-Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year [7].  
+Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year [7].
 
 ---
 
@@ -123,7 +123,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
   scale: 1
 :::
 
-To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the statistical twin of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except  the fact that they have been visited by a foreign firm.
+To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the statistical twin of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except the fact that they have been visited by a foreign firm.
 
 Imagine for instance that the CEO of an American tech firm decides to build a lab in a developing country. He hesitates between Mexico and Costa Rica because these two countries have the same level of education, same GDP per capita and the same population. They would both be great locations for the new lab. In the end, the CEO just decides to flip a coin to decide where to go: Mexico is the lucky winner and he starts the lab that he built starts to boost innovative activity in the region. By comparing the patent counts in Mexico and Costa Rica, we can then estimate how valuable a foreign direct investment is to Mexico’s innovative capacity.
 

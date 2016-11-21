@@ -1,6 +1,7 @@
 # TODO
 
 - [ ] Firefox misdetecting section boundaries
+- [ ] Markdown links open in new tab
 
 
 # Requirements

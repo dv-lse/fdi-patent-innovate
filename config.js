@@ -27,7 +27,6 @@ System.config({
     "json": "github:systemjs/plugin-json@0.2.2",
     "markdown-it": "npm:markdown-it@8.0.1",
     "topojson-client": "npm:topojson-client@2.1.0",
-    "world-atlas": "npm:world-atlas@1.1.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },

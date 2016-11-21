@@ -1,5 +1,4 @@
 import * as d3 from 'd3'
-import * as schemes from 'd3-scale-chromatic'
 import { queue } from 'd3-queue'
 import { feature} from 'topojson-client'
 import debounce from 'debounce'
@@ -26,40 +25,21 @@ let md = markdown({
 
 queue()
   .defer(d3.text, 'data/narrative.md')
-  .defer(d3.json, 'data/110m.json')
-  .defer(d3.tsv, 'data/110m.tsv')
-  .await( (err, narrative, world, stats) => {
+  .defer(d3.json, 'data/regions_topo.json')
+  .defer(d3.tsv, 'data/regions.tsv')
+  .await( (err, narrative, world, rawstats) => {
     if (err) return console.error(err)
 
-    let gdp_md_est = {}
-    let pop_est = {}
-
-    stats.forEach( (d,i) => {
-      gdp_md_est[d.iso_n3] = +d.gdp_md_est
-      pop_est[d.iso_n3] = +d.pop_est
+    let stats = Array()
+    rawstats.forEach( (d) => {
+      // entire file is real-valued
+      d3.keys(d).forEach( (k) => d[k] = +d[k])
+      stats[d.geoid_r] = d
     })
 
-    let gdp_scale = d3.scaleQuantile()
-      .domain(d3.values(gdp_md_est))
-      .range(schemes.schemeBlues[9])
+    let countries = feature(world, world.objects.regions).features
 
-    let population_scale = d3.scaleQuantile()
-      .domain(d3.values(pop_est))
-      .range(schemes.schemeReds[9])
-
-    // TBD
-    let education_scale = d3.scaleQuantile()
-      .domain(d3.values(pop_est))
-      .range(schemes.schemePiYG[9])
-
-    let colors = {
-      gdp: (id) => gdp_scale(gdp_md_est[id]),
-      population: (id) => population_scale(pop_est[id]),
-      education: (id) => education_scale(pop_est[id]),
-      default: () => () => 'lightcoral'
-    }
-
-    let countries = feature(world, world.objects.countries).features
+    console.log(countries)
 
     d3.select('#narrative')
       .html(md.render(narrative))
@@ -107,7 +87,7 @@ queue()
         viz.transition()
           .duration(500)
           .style('opacity', 1)
-          .call(globe.update, countries, colors, state)
+          .call(globe.update, countries, stats, state)
       } else {
         viz.transition()
           .duration(500)

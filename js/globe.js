@@ -1,4 +1,5 @@
 import * as d3 from 'd3'
+import * as schemes from 'd3-scale-chromatic'
 import { geoPath, geoGraticule, geoOrthographic } from 'd3-geo'
 
 let projection = geoOrthographic()
@@ -11,11 +12,24 @@ let path = geoPath()
 
 let graticule = geoGraticule()
 
-function validate(val, colors) {
+function parseColors(s) {
+  let m
+  // TODO.  improve this function
+  if(typeof s !== 'string') { return s }
+  else if(m = /^(\w+)-(\d+)$/.exec(s)) {
+    return schemes[ m[1] ][ +m[2] ] || s
+  } else if(m = /^(\w+)$/.exec(s)) {
+    return schemes[ m[1] ] || s
+  } else {
+    return s
+  }
+}
+
+function validate(val, stats) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
-    color: 'lightgray'
+    colors: schemes.schemeBlues[9]
   }
 
   let state = Object.assign({}, default_state, val)
@@ -36,22 +50,40 @@ function validate(val, colors) {
        typeof state.scale === 'number'))
     throw "Globe state: cannot read scale from " + JSON.stringify(state)
 
-  if(!(state.choropleth in colors || d3.color(state.color)))
-    throw "Globe state: cannot read color id " + (state.choropleth || state.color)
+/*
+  if(state.choropleth && stats.indexOf(state.choropleth) === -1)
+    throw "Globe state: cannot read choropleth column " + state.choropleth + " " + JSON.stringify(stats.columns)
+*/
+
+  if(state.colors && !(parseColors(state.colors)))
+    throw "Globe state: cannot parse color descriptor " + state.colors
 
   return state
 }
 
-function update(canvas, countries, colors, state) {
+function update(canvas, countries, stats, state) {
   let elem = canvas.node()
   let bounds = elem.getBoundingClientRect()
 
   let width = bounds.right - bounds.left
   let height = bounds.bottom - bounds.top
 
-  state = validate(state, colors)
+  state = validate(state, stats)
 
-  let color = colors[state.choropleth] || () => d3.color(state.color)
+  let color = d3.scaleLinear()
+
+  if(state.choropleth) {
+    let values = stats.map( (d) => project(d, state.choropleth))
+    values.filter( (d) => d !== null )
+
+    color = d3.scaleQuantile()
+      .domain(values)
+  }
+
+  if(state.colors) {
+    let vals = parseColors(state.colors)
+    color.range(vals)
+  }
 
   d3.transition()
     .duration(1500)
@@ -84,8 +116,14 @@ function update(canvas, countries, colors, state) {
         context.save()
         context.lineWidth = 1
         context.strokeStyle = 'white'
-        countries.forEach( (d) => {
-          context.fillStyle = color(d.id)
+        countries.forEach( (d,i) => {
+          let c = 'lightgray'
+          if(state.choropleth) {
+            let data = stats[i]
+            c = project(data, state.choropleth) || c
+//            console.log([c, color(c)])
+          }
+          context.fillStyle = color(c)
           context.beginPath()
           path(d)
           context.fill()
@@ -94,6 +132,10 @@ function update(canvas, countries, colors, state) {
         context.restore()
       }
     })
+}
+
+function project(d, col) {
+  return (d && col in d) ? d[col] : null
 }
 
 export { validate, update }
