@@ -1,5 +1,6 @@
 # incidental files, never required for check-in
 .DS_Store
+.ipynb_checkpoints
 # packaging / dev artifacts
 node_modules
 jspm_packages/*/**

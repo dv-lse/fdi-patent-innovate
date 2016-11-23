@@ -19,7 +19,7 @@ System.config({
     "core-js": "npm:core-js@1.2.7",
     "d3": "npm:d3@4.3.0",
     "d3-geo": "npm:d3-geo@1.3.1",
-    "d3-geo-projection": "npm:d3-geo-projection@1.1.1",
+    "d3-geo-projection": "npm:d3-geo-projection@1.2.1",
     "d3-queue": "npm:d3-queue@3.0.3",
     "d3-scale-chromatic": "npm:d3-scale-chromatic@1.1.0",
     "debounce": "npm:debounce@1.0.0",
@@ -139,7 +139,7 @@ System.config({
       "d3-timer": "npm:d3-timer@1.0.3",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:d3-geo-projection@1.1.1": {
+    "npm:d3-geo-projection@1.2.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.9.0",
       "d3-array": "npm:d3-array@1.0.1",

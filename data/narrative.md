@@ -11,6 +11,7 @@ How do they make these investment decisions? 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 0.5
+  layer: countries
 :::
 
 # **How big?** The importance of Foreign Direct Investments
@@ -18,6 +19,7 @@ How do they make these investment decisions? 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
+  layer: countries
   choropleth: GDPpc_rIp
 :::
 
@@ -41,6 +43,7 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
   rotate: [2.3522, -57.8566]
   scale: 7
   choropleth: educ_rIp
+  layer: regions
   flow:
     source: United States
     stage: Headquarters
@@ -62,6 +65,7 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 7
+  layer: countries|regions
   choropleth: pop_rIp
 :::
 

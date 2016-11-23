@@ -1,5 +1,6 @@
 import * as d3 from 'd3'
 import * as schemes from 'd3-scale-chromatic'
+import { feature } from 'topojson-client'
 import { geoPath, geoGraticule, geoOrthographic } from 'd3-geo'
 
 let projection = geoOrthographic()
@@ -29,7 +30,8 @@ function validate(val, stats) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
-    colors: schemes.schemeBlues[9]
+    colors: schemes.schemeBlues[9],
+    layer: '.*'
   }
 
   let state = Object.assign({}, default_state, val)
@@ -50,6 +52,12 @@ function validate(val, stats) {
        typeof state.scale === 'number'))
     throw "Globe state: cannot read scale from " + JSON.stringify(state)
 
+  try {
+    RegExp(state.layer)
+  } catch(e) {
+    throw "Globe state: cannot parse layer regexp from " + state.layer
+  }
+
 /*
   if(state.choropleth && stats.indexOf(state.choropleth) === -1)
     throw "Globe state: cannot read choropleth column " + state.choropleth + " " + JSON.stringify(stats.columns)
@@ -61,7 +69,7 @@ function validate(val, stats) {
   return state
 }
 
-function update(canvas, countries, stats, state) {
+function update(canvas, topography, stats, state) {
   let elem = canvas.node()
   let bounds = elem.getBoundingClientRect()
 
@@ -71,6 +79,15 @@ function update(canvas, countries, stats, state) {
   state = validate(state, stats)
 
   let color = d3.scaleLinear()
+
+  let layer_re = RegExp(state.layer)
+  let layers = {}
+
+  d3.keys(topography.objects).forEach( (key) => {
+    if(layer_re.test(key)) {
+      layers[key] = feature(topography, topography.objects[key]).features
+    }
+  })
 
   if(state.choropleth) {
     let values = stats.map( (d) => project(d, state.choropleth))
@@ -113,21 +130,24 @@ function update(canvas, countries, stats, state) {
         context.stroke()
         context.restore()
 
-        context.save()
-        context.lineWidth = 1
-        context.strokeStyle = 'white'
-        countries.forEach( (d,i) => {
-          let c = 'lightgray'
-          if(state.choropleth) {
-            let data = stats[i]
-            c = project(data, state.choropleth) || c
-//            console.log([c, color(c)])
-          }
-          context.fillStyle = color(c)
-          context.beginPath()
-          path(d)
-          context.fill()
-          context.stroke()
+        // each layer
+        d3.keys(layers).forEach( (key) => {
+          layers[key].forEach( (d,i) => {
+            if(state.region_id && i !== state.region_id) return
+            if(state.region_id) console.log([state.region_id, d])
+
+            context.save()
+//            context.lineWidth = 0.5
+            context.strokeStyle = 'black'
+//            context.fillStyle = d3.color(c).toString()
+
+            context.fillStyle = 'lightcoral' //gradation(d.id)
+            context.beginPath()
+            path(d)
+//            context.fill()
+            context.stroke()
+            context.restore()
+          })
         })
         context.restore()
       }

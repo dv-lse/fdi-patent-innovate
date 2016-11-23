@@ -25,8 +25,8 @@ let md = markdown({
 
 queue()
   .defer(d3.text, 'data/narrative.md')
-  .defer(d3.json, 'data/regions_topo.json')
-  .defer(d3.tsv, 'data/regions.tsv')
+  .defer(d3.json, 'data/topography.json')
+  .defer(d3.tsv, 'data/regions_countries.tsv')
   .await( (err, narrative, world, rawstats) => {
     if (err) return console.error(err)
 
@@ -36,10 +36,6 @@ queue()
       d3.keys(d).forEach( (k) => d[k] = +d[k])
       stats[d.geoid_r] = d
     })
-
-    let countries = feature(world, world.objects.regions).features
-
-    console.log(countries)
 
     d3.select('#narrative')
       .html(md.render(narrative))
@@ -87,7 +83,7 @@ queue()
         viz.transition()
           .duration(500)
           .style('opacity', 1)
-          .call(globe.update, countries, stats, state)
+          .call(globe.update, world, stats, state)
       } else {
         viz.transition()
           .duration(500)
@@ -107,17 +103,19 @@ queue()
 
       nav.classed('active', (d,i) => i === sectionIndex)
 
-      let viz = d3.selectAll('section.active script')
-        .each(function() {
-          let payload = JSON.parse(this.text)
-          visualise(payload)
-        })
-
-      if(viz.size() === 0) {
-        visualise(null)
-      }
+      let state = payload()
+      visualise(state)
 
       cur_index = sectionIndex
+    }
+
+    function payload() {
+      let payload = null
+      let viz = d3.selectAll('section.active script')
+        .each(function() {
+          payload = payload || JSON.parse(this.text)
+        })
+      return payload
     }
 
     function scrolled(ev) {
