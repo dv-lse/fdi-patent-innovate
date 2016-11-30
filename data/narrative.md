@@ -150,20 +150,15 @@ You can click on a region and see to which other it is matched [the visualisatio
   technology: all
 :::
 
-Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not.
+Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not. [DV shows the overal difference-indifferences graph, for all regions and technologies]
 
-Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation. Furthermore, you can notice that two continents stand out: Asia and Europe. These continents are those that benefit the most from foreign interventions.
+Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
 
 On the globe, you can explore the impacts of FDIs by technology and continent. 
 
-# References cited
-
-Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.
-
-Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553
-
-Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.
-
-United Nations Conference on Trade and Development (UNCTAD), 2016
-
-World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)
+*# References cited
+*Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.
+*Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553
+*Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.
+*United Nations Conference on Trade and Development (UNCTAD), 2016
+*World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)
