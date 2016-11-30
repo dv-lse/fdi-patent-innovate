@@ -4,7 +4,6 @@ author: Arnaud Dyevre
 date: November 30, 2016
 ---
 
-*AD 25/11/2016: General comment, I have modified the referencing of sources. The number are now in superscripts rather than being simply put between brackets. Would it be possible to make the actual references appear like a footnote in the user's web browser? Or even better, as a small pop-up bubble when the user mouses over the number?
 
 # Where do multinational firms invest?  
 
@@ -25,9 +24,9 @@ How do they make these investment decisions? 
   choropleth: GDPpc_rIp
 :::
 
-Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars <sup>1</sup>, or the equivalent of Italy’s Gross Domestic Product <sup>2<\sup>.
+Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
-Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] <\sup>1<\sup>.
+Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 
 On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis <sup>3<\sup>. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
 
