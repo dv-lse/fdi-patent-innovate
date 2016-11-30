@@ -37,8 +37,8 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
 *Aggregate the FDI dataset aggregated by gvc stage and industry sector will appear here.  Globe to show only the top 50 flows: size of arrow is flow in millions of USD.*
 
 *refs: 1. World FDIs figures: UNCTAD, 2016
-* 2. GDP estimates in 2016: IMF, World Economic Outlook Database
-* 3. FDIs data: FDI Markets
+*2. GDP estimates in 2016: IMF, World Economic Outlook Database
+*3. FDIs data: FDI Markets
 
 # **Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
 
@@ -59,9 +59,9 @@ They want to tap into the specific qualities of a region: they are seeking regio
 
 For innovative activities, firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions <sup>5<\sup> and favourable local institutional arrangements and norms <sup>6<\sup> like a strong enforcement of intellectual property rights and patent law for instance.
 
-* refs: 4. Crescenzi, Pietrobelli & Rabelloti (2015)
-* 5. Crescenzi and Rodrigues-Pose (2011)
-* 6. Amin and Cohendet (2004)
+*refs: 4. Crescenzi, Pietrobelli & Rabelloti (2015)
+*5. Crescenzi and Rodrigues-Pose (2011)
+*6. Amin and Cohendet (2004)
 
 # **How?** Firms from developed and emerging economies invest differently
 
@@ -80,7 +80,7 @@ While multinational firms from both rich and emerging countries invest abroad to
 First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts <sup>6</sup>. 
 Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). The specialisation of a region in a particular stage of the value chain represents a clear and easily detectable indication of the availability of specialized externalities. 
 
-* 6. Cohen and Levinthal (1990)
+*6. Cohen and Levinthal (1990)
 
 # Transition
 
@@ -110,12 +110,12 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
 
 50% 60% 70% 80% 90% ?
 
-* correct answer 90%
+*correct answer 90%
 
 ---
 
-* refs: 7. Data from the US Patents and Trademark Office 
-* 8. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)
+*refs: 7. Data from the US Patents and Trademark Office 
+*8. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)
 
 ::: visualisation globe
   rotate: [0, 0]
