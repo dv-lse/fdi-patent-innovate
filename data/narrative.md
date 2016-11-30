@@ -28,7 +28,7 @@ Large, internationalised firms are investing massive amounts of money abroad: a 
 
 Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 
-*AD: As the FDI data is not interactive anymore, this part needs to be writtent again. 
+*AD: As the FDI data is not interactive anymore, this part needs to be written again. 
 On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis [3]. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
 
 **CY: Move the interactive portion of the DV to the end, allowing user to play with heterogeneous results?**
