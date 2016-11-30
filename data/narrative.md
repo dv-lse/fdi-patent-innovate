@@ -28,7 +28,7 @@ Large, internationalised firms are investing massive amounts of money abroad: a 
 
 Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 
-On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis <sup>3<\sup>. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
+On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis [3]. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
 
 **CY: Move the interactive portion of the DV to the end, allowing user to play with heterogeneous results?**
 **AD: I think we should just remove the interactive part of the FDI data from the DV. We will simply show selected examples**
@@ -54,9 +54,9 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
-They want to tap into the specific qualities of a region: they are seeking regional strategic assets <sup>4<\sup>. For example, firms who want to conquer new markets are interested in regions with a lot of consumers with substantial purchasing powers. Have a look at the locations where multinational firms are creating new sales subsidiaries [DV automatically selects “Sales” as Global Value Chain stage] + [display the GDP of the regions as different colours on a heatmap]: they are opening them in the richest regions. By contrast, look at where IT companies are concentrating R&D labs and management activities [DV automatically selects “Headquarters” as a GVC stage and it selects the industry “IT and Software”] + [display the average level of education in the regions, as different colours on a heatmap]: these are mostly regions with the most educated population (and workforce).
+They want to tap into the specific qualities of a region: they are seeking regional strategic assets [4]. For example, firms who want to conquer new markets are interested in regions with a lot of consumers with substantial purchasing powers. Have a look at the locations where multinational firms are creating new sales subsidiaries [DV automatically selects “Sales” as Global Value Chain stage] + [display the GDP of the regions as different colours on a heatmap]: they are opening them in the richest regions. By contrast, look at where IT companies are concentrating R&D labs and management activities [DV automatically selects “Headquarters” as a GVC stage and it selects the industry “IT and Software”] + [display the average level of education in the regions, as different colours on a heatmap]: these are mostly regions with the most educated population (and workforce).
 
-For innovative activities, firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions <sup>5<\sup> and favourable local institutional arrangements and norms <sup>6<\sup> like a strong enforcement of intellectual property rights and patent law for instance.
+For innovative activities, firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
 
 *refs: 4. Crescenzi, Pietrobelli & Rabelloti (2015)
 *5. Crescenzi and Rodrigues-Pose (2011)
@@ -76,7 +76,7 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 
 While multinational firms from both rich and emerging countries invest abroad to capitalise on regional assets, they do so in different ways.
 
-First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts <sup>6</sup>. 
+First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6]. 
 Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). The specialisation of a region in a particular stage of the value chain represents a clear and easily detectable indication of the availability of specialized externalities. 
 
 *6. Cohen and Levinthal (1990)
@@ -99,13 +99,13 @@ Economists have long seen technological change as one of the most powerful drive
 
 One common way to measure the innovative capacity of a city is to count the number of inventors who are granted patents in this city.
 
-Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year <sup>7</sup>.
+Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year [7].
 
 ---
 
 *Quiz.*
 
-Let’s compare inequality in patent count to wealth inequality. In the UK, it is estimated that the 10% richest individuals in Britain own 47% of the country’s wealth <sup>8</sup>. This is a quite unequal distribution of wealth. But how unequal is the distribution of patents in the world according to you? In 2005, what share of patents did the top 10% of the regions own?
+Let’s compare inequality in patent count to wealth inequality. In the UK, it is estimated that the 10% richest individuals in Britain own 47% of the country’s wealth [8]. This is a quite unequal distribution of wealth. But how unequal is the distribution of patents in the world according to you? In 2005, what share of patents did the top 10% of the regions own?
 
 50% 60% 70% 80% 90% ?
 
@@ -121,7 +121,7 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
   scale: 2.3
 :::
 
-The distribution of patents is not only concentrated in few cities, it is also very stable over time: out of the regions that were in the bottom quintile of patent count between 1975 and 1990, only 0.21% reached the top quintile between 1991 and 2010. Conversely, only 0.11% went from the top to the bottom quintile <sup>9<\sup>. You can use the year cursor to see how patenting evolves from 1975 to 2005.
+The distribution of patents is not only concentrated in few cities, it is also very stable over time: out of the regions that were in the bottom quintile of patent count between 1975 and 1990, only 0.21% reached the top quintile between 1991 and 2010. Conversely, only 0.11% went from the top to the bottom quintile [9]. You can use the year cursor to see how patenting evolves from 1975 to 2005.
 
 **AD: so I think we will not use the cursor by year? We are using patent count in 2005 only if I remember correctly? If that's the case, we will not write the last sentence. 
 
