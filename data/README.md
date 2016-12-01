@@ -11,6 +11,7 @@ date: November 15, 2016
 
 - **narrative.md**.  Slides to display (Markdown)
 - **results.csv**.  Project results (CSV).
+- **flows.csv**.  Flow maps derived from FDI data (CSV).
 
 *Automatically generated*
 
@@ -50,3 +51,15 @@ date: November 15, 2016
 - **t-9_err**. ... error at T-9 years
 - **etc, etc**
 - **t+10+err**
+
+# Format: **flows.csv**
+
+*One line per arc.  All arcs in the same diagram share a "group" value.*
+
+[ Arcs go from centroid of source to centroid of destination.  All arcs with the same group value belong in the same diagram.  Weight can be any real value ]
+
+- **group**.  Name of diagram this arc occurs in (e.g. "Flows from emerging economies"; "Slide 1"; or any other shared text value)
+- **source**.  Region id or continent name of source.
+- **dest**. Region id or continent name of destination.
+- **weight**.  Magnitude of the flow from source to destination.
+- **weight_units**.  [ Optional ]  To indicate units for the weight value (e.g. "US Dollars").
