@@ -9,6 +9,9 @@
 #   brew install gdrive gdal
 #   npm install topojson topojson-simplify
 
+# options are 110m, 50m, 10m
+NE_RES=110m
+NE=ne_$(NE_RES)_admin_0_countries
 
 TMP=/tmp
 
@@ -17,7 +20,11 @@ BIN=node_modules/.bin
 default: data/topography.json data/regions_countries.csv
 
 clean:
-	rm $(TMP)/*.json $(TMP)/*.csv data/*.json data/*.csv
+	rm $(TMP)/*.json \
+	   $(TMP)/*.csv \
+		 $(TMP)/*.csv \
+		 data/topography.json \
+		 data/regions_countries.csv
 
 data/%: $(TMP)/%
 	cp $< $@
@@ -44,32 +51,47 @@ $(TMP)/fdimkts_allyears.csv:
 $(TMP)/file1.csv:
 	gdrive download 0B8f3Y37IxbgfV0JHT3dUVUhuZkk --stdout > $@
 
+# Natural Earth download
+
+$(TMP)/$(NE).zip:
+	curl -z $@ -o $@ http://naciscdn.org/naturalearth/$(NE_RES)/cultural/$(NE).zip
+
+$(TMP)/$(NE)/%: $(TMP)/$(NE).zip
+	unzip -u -d $(TMP)/$(NE) $<
+
 
 # Extract columns from patenting data
 
 $(TMP)/regions_countries.csv: $(TMP)/file1.csv
 	python3 scripts/regions_countries.py
 
-# Extract layers from ESRI shapefile
+# Extract layers from ESRI shapefiles
 
-# NB simplify using ogr2ogr rather than toposimplify
-#    because v8 buffers cannot handle files this size
+$(TMP)/Shapefile2_geo.json: $(TMP)/Shapefile2.shp $(TMP)/Shapefile2.shx $(TMP)/Shapefile2.dbf $(TMP)/Shapefile2.prj
+	$(BIN)/shp2json -n $(TMP)/Shapefile2.shp \
+	   | $(BIN)/ndjson-map '(d.id = d.properties.OBJECTID, d.properties = { Region: d.properties.Region, Country: d.properties.Country }, d)' \
+		 | geostitch -n > $@
 
-$(TMP)/countries_geo.json: $(TMP)/Shapefile2.shp $(TMP)/Shapefile2.shx $(TMP)/Shapefile2.dbf $(TMP)/Shapefile2.prj
-	ogr2ogr -f GeoJSON -preserve_fid \
-	        -sql 'select Country from Shapefile2 where Region is null order by OBJECTID' \
-	        -lco COORDINATE_PRECISION=5 $@ $(TMP)/Shapefile2.shp
-
-$(TMP)/regions_geo.json: $(TMP)/Shapefile2.shp $(TMP)/Shapefile2.shx $(TMP)/Shapefile2.dbf
-	ogr2ogr -f GeoJSON -preserve_fid \
-					-sql 'select Region, Country from Shapefile2 where Region is not null order by OBJECTID' \
-					-simplify 0.0001 -lco COORDINATE_PRECISION=8 $@ $(TMP)/Shapefile2.shp
+$(TMP)/$(NE)_geo.json: $(TMP)/$(NE)/$(NE).shp
+	$(BIN)/shp2json -n $< \
+	   | $(BIN)/ndjson-map '(d.id = d.properties.iso_n3, delete d.properties, d)' \
+		 | geostitch -n > $@
 
 
-# Topojson
+# Topojson, with three layers:  regions (from Shapefile2), countries (from Natural Earth), and land (Natural Earth)
 
-$(TMP)/topography_full.json: $(TMP)/regions_geo.json $(TMP)/countries_geo.json
-	$(BIN)/geo2topo regions=$(TMP)/regions_geo.json countries=$(TMP)/countries_geo.json > $@
+$(TMP)/regions_geo.json: $(TMP)/Shapefile2_geo.json $(TMP)/$(NE)_geo.json
+	$(BIN)/ndjson-filter "(d.id < 1550)" < $< > $@
+
+$(TMP)/topography_full.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
+	$(BIN)/geo2topo -q 1e4 -n \
+	     regions=$(TMP)/regions_geo.json \
+			 countries=$(TMP)/$(NE)_geo.json \
+		 | $(BIN)/topomerge land=countries \
+		 > $@
+
+
+# Simplification
 
 $(TMP)/topography.json: $(TMP)/topography_full.json
-	$(BIN)/toposimplify -p 1 -f $< | $(BIN)/topoquantize 1e5 > $@
+	$(BIN)/toposimplify -f -p 1 $< > $@

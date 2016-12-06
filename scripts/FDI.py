@@ -30,4 +30,3 @@ dest = df[ ['cont_dest', 'destination_region_id_g'] ].dropna()
 dest.columns = ['cont', 'region_id' ]
 pairs = pd.concat([orig, dest]).drop_duplicates().sort_values('region_id')
 pairs
-

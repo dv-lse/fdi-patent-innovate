@@ -26,7 +26,7 @@ function parseColors(s) {
   }
 }
 
-function validate(val, stats) {
+function validate(val, flows, stats) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
@@ -58,6 +58,9 @@ function validate(val, stats) {
     throw "Globe state: cannot parse layer regexp from " + state.layer
   }
 
+  if(state.flows && !(flows[state.flows]))
+    throw "Globe state: cannot identify flow diagram " + state.flows
+
 /*
   if(state.choropleth && stats.indexOf(state.choropleth) === -1)
     throw "Globe state: cannot read choropleth column " + state.choropleth + " " + JSON.stringify(stats.columns)
@@ -69,25 +72,21 @@ function validate(val, stats) {
   return state
 }
 
-function update(canvas, topography, stats, state) {
+function update(canvas, layers, stats, flows, state) {
   let elem = canvas.node()
   let bounds = elem.getBoundingClientRect()
 
   let width = bounds.right - bounds.left
   let height = bounds.bottom - bounds.top
 
-  state = validate(state, stats)
+  state = validate(state, flows, stats)
 
   let color = d3.scaleLinear()
 
-  let layer_re = RegExp(state.layer)
-  let layers = {}
+  let active_layers = state.layer ? state.layer.split('|') : d3.keys(layers)
+  let active_features = {}
 
-  d3.keys(topography.objects).forEach( (key) => {
-    if(layer_re.test(key)) {
-      layers[key] = feature(topography, topography.objects[key]).features
-    }
-  })
+  let arcs = []
 
   if(state.choropleth) {
     let values = stats.map( (d) => project(d, state.choropleth))
@@ -100,6 +99,10 @@ function update(canvas, topography, stats, state) {
   if(state.colors) {
     let vals = parseColors(state.colors)
     color.range(vals)
+  }
+
+  if(state.flows) {
+    arcs = flows[state.flows]
   }
 
   d3.transition()
@@ -131,10 +134,12 @@ function update(canvas, topography, stats, state) {
         context.restore()
 
         // each layer
-        d3.keys(layers).forEach( (key) => {
+        active_layers.forEach( (key) => {
           layers[key].forEach( (d,i) => {
-            if(state.region_id && i !== state.region_id) return
-            if(state.region_id) console.log([state.region_id, d])
+
+            // save the feature (region) geojson for later
+            //    (consider moving this to a static step in makefile)
+            active_features[d.id] = d
 
             context.save()
 //            context.lineWidth = 0.5
@@ -149,9 +154,43 @@ function update(canvas, topography, stats, state) {
             context.restore()
           })
         })
-        context.restore()
+
+        // each arc in flow
+        if(arcs) {
+          context.save()
+          context.lineWidth = 5
+          context.lineCap = 'round'
+          context.strokeStyle = 'lightblue'
+          context.fillStyle = 'none'
+          arcs.forEach( (d) => {
+            return
+            let a = stats[d.source], ac = [a.lon, a.lat]
+            let b = stats[d.dest], bc = [b.lon, b.lat]
+
+            // must use GeoJSON so that great arcs are curved according to projection
+            context.beginPath()
+            path({type: "LineString", coordinates: [ ac, bc ]})
+            context.stroke()
+
+            // no support for line endings in GeoJSON so do this in Canvas
+            circle(context, path(ac), 10, 'white', 'lightblue')
+            circle(context, path(bc), 10, 'lightblue', 'lightblue')
+          })
+          context.restore()
+        }
       }
     })
+}
+
+function circle(context, coords, radius, fill, stroke) {
+  context.save()
+  context.strokeStyle = stroke
+  context.fillStyle = fill
+  context.beginPath()
+  context.arc(coords[0], coords[1], radius, 0, 2 * Math.PI, true)
+  context.fill()
+  context.stroke()
+  context.restore()
 }
 
 function project(d, col) {

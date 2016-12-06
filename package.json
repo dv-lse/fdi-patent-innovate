@@ -10,7 +10,8 @@
       "js-yaml": "npm:js-yaml@^3.6.1",
       "json": "github:systemjs/plugin-json@^0.2.2",
       "markdown-it": "npm:markdown-it@^8.0.1",
-      "topojson-client": "npm:topojson-client@^2.1.0"
+      "topojson-client": "npm:topojson-client@^2.1.0",
+      "world-atlas": "npm:world-atlas@^1.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

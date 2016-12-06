@@ -341,5 +341,6 @@
     "readline": "github:jspm/nodelibs-readline@^0.1.0",
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
     "process": "github:jspm/nodelibs-process@^0.1.0"
-  }
+  },
+  "npm:world-atlas@1.1.0": {}
 }

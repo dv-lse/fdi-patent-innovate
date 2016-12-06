@@ -13,6 +13,7 @@ How do they make these investment decisions? 
   rotate: [78.3522, -48.8566]
   scale: 0.5
   layer: countries
+  flows: Dia1
 :::
 
 # **How big?** The importance of Foreign Direct Investments
@@ -28,7 +29,7 @@ Large, internationalised firms are investing massive amounts of money abroad: a 
 
 Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 
-*AD: As the FDI data is not interactive anymore, this part needs to be written again. 
+*AD: As the FDI data is not interactive anymore, this part needs to be written again.
 On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis [3]. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
 
 **CY: Move the interactive portion of the DV to the end, allowing user to play with heterogeneous results?**
@@ -77,10 +78,10 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 
 While multinational firms from both rich and emerging countries invest abroad to capitalise on regional assets, they do so in different ways.
 
-First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6]. 
-Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). The specialisation of a region in a particular stage of the value chain represents a clear and easily detectable indication of the availability of specialized externalities. 
+First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
+Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). The specialisation of a region in a particular stage of the value chain represents a clear and easily detectable indication of the availability of specialized externalities.
 
-*6. Cohen and Levinthal (1990)
+*6. Cohen and Levinthal (1990)*
 
 # Transition
 
@@ -114,7 +115,7 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
 
 ---
 
-*refs: 7. Data from the US Patents and Trademark Office 
+*refs: 7. Data from the US Patents and Trademark Office
 *8. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)
 
 ::: visualisation globe
@@ -124,7 +125,7 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
 
 The distribution of patents is not only concentrated in few cities, it is also very stable over time: out of the regions that were in the bottom quintile of patent count between 1975 and 1990, only 0.21% reached the top quintile between 1991 and 2010. Conversely, only 0.11% went from the top to the bottom quintile [9]. You can use the year cursor to see how patenting evolves from 1975 to 2005.
 
-**AD: so I think we will not use the cursor by year? We are using patent count in 2005 only if I remember correctly? If that's the case, we will not write the last sentence. 
+**AD: so I think we will not use the cursor by year? We are using patent count in 2005 only if I remember correctly? If that's the case, we will not write the last sentence.
 
 *refs: 9. Authors’ calculations, based on US Trademark and Patent Office data
 
@@ -150,11 +151,11 @@ You can click on a region and see to which other it is matched [the visualisatio
   technology: all
 :::
 
-Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not. [DV shows the overal difference-indifferences graph, for all regions and technologies]
+Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not. [DV shows the overall difference-indifferences graph, for all regions and technologies]
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
 
-On the globe, you can explore the impacts of FDIs by technology and continent. 
+On the globe, you can explore the impacts of FDIs by technology and continent.
 
 *# References cited
 *Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.
