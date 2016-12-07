@@ -1,10 +1,8 @@
 import * as d3 from 'd3'
 import { queue } from 'd3-queue'
-import { feature} from 'topojson-client'
+import { feature, mesh } from 'topojson-client'
 import debounce from 'debounce'
 import markdown from 'markdown-it'
-
-import { geoCentroid } from 'd3-geo'
 
 import front_matter from './js/md/front_matter'
 import section from './js/md/section'
@@ -31,39 +29,19 @@ queue()
   .defer(d3.json, 'data/topography.json')
   .defer(d3.csv, 'data/regions_countries.csv', lift(Number))
   .defer(d3.csv, 'data/flows.csv', lift(Number, ['source', 'dest', 'weight']))
-//  .defer(d3.csv, 'data/centroids.csv', lift(Number))
   .await( (err, narrative, world, rawstats, rawflows) => {
     if (err) return console.error(err)
 
-    // data post-processing: note centroids are computed and injected into stats
+    // data post-processing
+
+    let layers = {
+      land: feature(world, world.objects.land),
+      countries: mesh(world, world.objects.countries, (a,b) => a !== b),
+      regions: feature(world, world.objects.regions)
+    }
+
     let stats = Array()
     rawstats.forEach( (d) => stats[d.geoid_r] = d)
-
-    let centroids = Array()
-    let geo = feature(world, world.objects)
-    console.log(geo)
-
-    d3.values(world.objects).forEach( (d) => {
-      let geo = feature(world, d)
-      centroids[d.id] = center(d)
-
-      console.log(geo)
-    })
-
-
-
-    d3.keys(world.objects).forEach( (key) => {
-      console.log(key)
-      let geojson = feature(world, world.objects[key]).features
-
-      console.log(geojson)
-
-
-      layers[key].forEach( (d) => {
-      })
-    })
-
-    console.log(JSON.stringify(centroids))
 
     let flows = d3.nest()
       .key( (d) => d.group )
@@ -168,17 +146,4 @@ function lift(fn, keys) {
     (keys || d3.keys(o)).forEach( (key) => o[key] = fn(o[key]))
     return o
   }
-}
-
-function center(feature) {
-  let match = feature
-  let area = -1
-  if(feature.geometry.type === 'MultiPolygon') {
-    feature.geometry.coordinates.forEach( (coords) => {
-      let t = { type: 'Polygon', coordinates: coords }
-      let a = d3.geoArea(t)
-      if (a > area) { area = a; match = t }
-    })
-  }
-  return d3.geoCentroid(match)
 }

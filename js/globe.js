@@ -30,8 +30,7 @@ function validate(val, flows, stats) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
-    colors: schemes.schemeBlues[9],
-    layer: '.*'
+    colors: schemes.schemeBlues[9]
   }
 
   let state = Object.assign({}, default_state, val)
@@ -51,12 +50,6 @@ function validate(val, flows, stats) {
   if(!(state.scale &&
        typeof state.scale === 'number'))
     throw "Globe state: cannot read scale from " + JSON.stringify(state)
-
-  try {
-    RegExp(state.layer)
-  } catch(e) {
-    throw "Globe state: cannot parse layer regexp from " + state.layer
-  }
 
   if(state.flows && !(flows[state.flows]))
     throw "Globe state: cannot identify flow diagram " + state.flows
@@ -82,9 +75,6 @@ function update(canvas, layers, stats, flows, state) {
   state = validate(state, flows, stats)
 
   let color = d3.scaleLinear()
-
-  let active_layers = state.layer ? state.layer.split('|') : d3.keys(layers)
-  let active_features = {}
 
   let arcs = []
 
@@ -124,6 +114,8 @@ function update(canvas, layers, stats, flows, state) {
 
         context.clearRect(0, 0, width, height)
 
+        // graticule
+
         context.save()
         context.lineWidth = 1
         context.setLineDash([1, 3])
@@ -133,51 +125,87 @@ function update(canvas, layers, stats, flows, state) {
         context.stroke()
         context.restore()
 
-        // each layer
-        active_layers.forEach( (key) => {
-          layers[key].forEach( (d,i) => {
+        // land
 
-            // save the feature (region) geojson for later
-            //    (consider moving this to a static step in makefile)
-            active_features[d.id] = d
+        context.save()
+        context.fillStyle = 'lightgrey'
+        context.beginPath()
+        path( layers.land )
+        context.fill()
+        context.restore()
 
+        // country borders
+
+        context.save()
+        context.strokeStyle = 'white'
+        context.lineWidth = 1
+        context.beginPath()
+        path( layers.countries )
+        context.stroke()
+        context.restore()
+
+      }
+    }).transition()
+      .duration(2000)
+      .tween('thematic', () => {
+        // TODO.  thematic elements fade in afterward to globe animation fast
+        //        is there another approach (dynamic simplification?)
+
+        let context = elem.getContext('2d')
+
+        return (t) => {
+          // region choropleth
+          if(state.choropleth) {
             context.save()
-//            context.lineWidth = 0.5
-            context.strokeStyle = 'black'
-//            context.fillStyle = d3.color(c).toString()
-
-            context.fillStyle = 'lightcoral' //gradation(d.id)
-            context.beginPath()
-            path(d)
-//            context.fill()
-            context.stroke()
+            layers.regions.features.forEach( (d) => {
+              let value = project(stats[d.id], state.choropleth)
+              // TODO.  fix GIS set to elide self-intersecting polygons
+              if(!value || d.id > 1440) return
+              let faded = d3.color( color(value) )
+              faded.opacity = t
+              context.fillStyle = faded + ""
+              context.beginPath()
+              path(d)
+              context.fill()
+            })
             context.restore()
-          })
-        })
+          }
 
-        // each arc in flow
-        if(arcs) {
+          // country borders (again)
+
           context.save()
-          context.lineWidth = 5
-          context.lineCap = 'round'
-          context.strokeStyle = 'lightblue'
-          context.fillStyle = 'none'
-          arcs.forEach( (d) => {
-            return
-            let a = stats[d.source], ac = [a.lon, a.lat]
-            let b = stats[d.dest], bc = [b.lon, b.lat]
-
-            // must use GeoJSON so that great arcs are curved according to projection
-            context.beginPath()
-            path({type: "LineString", coordinates: [ ac, bc ]})
-            context.stroke()
-
-            // no support for line endings in GeoJSON so do this in Canvas
-            circle(context, path(ac), 10, 'white', 'lightblue')
-            circle(context, path(bc), 10, 'lightblue', 'lightblue')
-          })
+          context.strokeStyle = 'white'
+          context.lineWidth = 1
+          context.beginPath()
+          path( layers.countries )
+          context.stroke()
           context.restore()
-        }
+
+  /*
+          // each arc in flow
+          if(arcs) {
+            context.save()
+            context.lineWidth = 5
+            context.lineCap = 'round'
+            context.strokeStyle = 'lightblue'
+            context.fillStyle = 'none'
+            arcs.forEach( (d) => {
+              return
+              let a = stats[d.source], ac = [a.lon, a.lat]
+              let b = stats[d.dest], bc = [b.lon, b.lat]
+
+              // must use GeoJSON so that great arcs are curved according to projection
+              context.beginPath()
+              path({type: "LineString", coordinates: [ ac, bc ]})
+              context.stroke()
+
+              // no support for line endings in GeoJSON so do this in Canvas
+              circle(context, path(ac), 10, 'white', 'lightblue')
+              circle(context, path(bc), 10, 'lightblue', 'lightblue')
+            })
+            context.restore()
+          }
+      */
       }
     })
 }

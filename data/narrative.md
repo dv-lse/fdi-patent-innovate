@@ -5,15 +5,14 @@ date: November 30, 2016
 ---
 
 
-# Where do multinational firms invest?  
+# Where do multinational firms invest?
 
-How do they make these investment decisions? 
+How do they make these investment decisions?
 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 0.5
-  layer: countries
-  flows: Dia1
+  flows: Retail, in textiles
 :::
 
 # **How big?** The importance of Foreign Direct Investments
@@ -21,9 +20,11 @@ How do they make these investment decisions? 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
-  layer: countries
   choropleth: GDPpc_rIp
+  colors: schemeBlues-7
 :::
+
+**NB. Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.**
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
@@ -47,11 +48,7 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
   rotate: [2.3522, -57.8566]
   scale: 7
   choropleth: educ_rIp
-  layer: regions
-  flow:
-    source: United States
-    stage: Headquarters
-    industry: Software & IT services
+  colors: schemeReds-7
 :::
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
@@ -69,8 +66,8 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 7
-  layer: countries|regions
   choropleth: pop_rIp
+  colors: schemePiYG-7
 :::
 
 *I am not convinced that this is a very useful aspect of the narrative. At least for the main point that we are trying to get across. I suggest we work on the other aspects first and come back to this slide later.*
@@ -88,7 +85,6 @@ Second, multinational firms from developing countries tend to invest in cities w
 ::: visualisation globe
   rotate: [-37.6173, -55.7558]
   scale: 5
-  color: lightcoral
 :::
 
 In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
@@ -115,8 +111,8 @@ Let’s compare inequality in patent count to wealth inequality. In the UK, it i
 
 ---
 
-*refs: 7. Data from the US Patents and Trademark Office
-*8. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)
+*refs: 7. Data from the US Patents and Trademark Office*
+*8. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)*
 
 ::: visualisation globe
   rotate: [0, 0]
@@ -157,9 +153,9 @@ Some factors make regions more receptive to foreign firms’ interventions. Fore
 
 On the globe, you can explore the impacts of FDIs by technology and continent.
 
-*# References cited
-*Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.
-*Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553
-*Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.
-*United Nations Conference on Trade and Development (UNCTAD), 2016
-*World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)
+# References cited
+*Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.*
+*Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553*
+*Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.*
+*United Nations Conference on Trade and Development (UNCTAD), 2016*
+*World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)*
