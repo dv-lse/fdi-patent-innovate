@@ -1,7 +1,9 @@
 import * as d3 from 'd3'
 import * as schemes from 'd3-scale-chromatic'
 import { feature } from 'topojson-client'
-import { geoPath, geoGraticule, geoOrthographic } from 'd3-geo'
+import { geoPath, geoGraticule, geoOrthographic, geoArea } from 'd3-geo'
+
+const GLOBE_AREA = geoArea({type: 'Sphere'})
 
 let projection = geoOrthographic()
   .clipAngle(90)
@@ -78,6 +80,8 @@ function update(canvas, layers, stats, flows, state) {
 
   let arcs = []
 
+  let omitted = {}
+
   if(state.choropleth) {
     let values = stats.map( (d) => project(d, state.choropleth))
     values.filter( (d) => d !== null )
@@ -147,6 +151,7 @@ function update(canvas, layers, stats, flows, state) {
       }
     }).transition()
       .duration(2000)
+      .on('end', () => console.log('Omitted regions due to winding errors: ' + JSON.stringify(d3.keys(omitted))))
       .tween('thematic', () => {
         // TODO.  thematic elements fade in afterward to globe animation fast
         //        is there another approach (dynamic simplification?)
@@ -159,14 +164,17 @@ function update(canvas, layers, stats, flows, state) {
             context.save()
             layers.regions.features.forEach( (d) => {
               let value = project(stats[d.id], state.choropleth)
-              // TODO.  fix GIS set to elide self-intersecting polygons
-              if(!value || d.id > 1440) return
+              if(!value) return
               let faded = d3.color( color(value) )
               faded.opacity = t
               context.fillStyle = faded + ""
               context.beginPath()
-              path(d)
-              context.fill()
+              if(geoArea(d) < GLOBE_AREA * .9)  {
+                path(d)
+                context.fill()
+              } else {
+                omitted[d.id] = d
+              }
             })
             context.restore()
           }
@@ -208,6 +216,8 @@ function update(canvas, layers, stats, flows, state) {
       */
       }
     })
+
+
 }
 
 function circle(context, coords, radius, fill, stroke) {

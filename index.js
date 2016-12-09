@@ -9,6 +9,7 @@ import section from './js/md/section'
 import visualisation from './js/md/visualisation'
 
 import * as globe from './js/globe'
+import { enforce_rhr } from './js/winding'
 
 
 let md = markdown({
@@ -39,6 +40,10 @@ queue()
       countries: mesh(world, world.objects.countries, (a,b) => a !== b),
       regions: feature(world, world.objects.regions)
     }
+
+    // workaround: topojson-simplify 2.0.0 occasionally inverts winding order,
+    //   which means features cannot be filled on Canvas
+    layers.regions.features.forEach(enforce_rhr)
 
     let stats = Array()
     rawstats.forEach( (d) => stats[d.geoid_r] = d)

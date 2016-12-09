@@ -19,7 +19,7 @@ let regions,
     countries,
     land
 
-let idx = 1
+let idx = 260
 
 let minZ = 1, // minimum area threshold for simplification
     transform = d3.geoIdentity().clipExtent([[0, 0], [width, height]]),
@@ -40,6 +40,39 @@ let projection = d3.geoMercator()
 let path = d3.geoPath()
     .projection({stream: (s) => projection.stream(s)}) // simplify.stream(transform.stream(s)) })
     .context(context)
+
+let path2 = d3.geoPath()
+    .projection({stream: (s) => projection.stream(s)}) // simplify.stream(transform.stream(s)) })
+
+    function clockwise(coords) {
+      let xs = coords.map( (d) => d[0] )
+      let ys = coords.map( (d) => d[1] )
+      let edges = []
+      let sum = 0
+      for(let i=0; i<coords.length-1; i++) {
+        edges[i] = (xs[i+1] - xs[i]) * (ys[i+1] + ys[i])
+        sum += edges[i]
+      }
+
+      // NB zero sum results exist:  these rings have ambiguous winding
+      return sum > 0
+    }
+
+    function ring_enforce_rhr(linear_ring) {
+      return linear_ring.map( (coords, i) => {
+        let cw = clockwise(coords)
+        if(i === 0 ? !cw : cw)
+          coords.reverse()
+      })
+    }
+
+    function enforce_rhr(feature) {
+      switch(feature.geometry.type) {
+        case 'Polygon': ring_enforce_rhr(feature.geometry.coordinates); break;
+        case 'MultiPolygon': feature.geometry.coordinates.forEach(ring_enforce_rhr); break;
+      }
+      return feature
+    }
 
 d3.queue()
   .defer(d3.json, 'data/topography.json')
@@ -101,19 +134,30 @@ d3.queue()
 
     regions.features.filter( (d) => d.id === idx )
       .forEach( (d) => {
+
+//        if (idx === 261) { d.geometry.coordinates = [[[0,0],[10,10],[0,10],[0,0]]]}  // ANTI-CLOCKWISE WINDING
+//        if (idx === 262) { d.geometry.coordinates = [[[0,0],[0,10],[10,10],[0,0]]]}  // CLOCKWISE WINDING
+
         let c = d3.geoCentroid(d)
         let p = path.centroid({ type: 'Point', coordinates: c })
         console.log(idx + ' plot ' + JSON.stringify(d.properties) + ' ' + c)
-        console.log(d)
+
+        let s = path2(d)
+        console.log('AREA: ' +d.geometry.type + ' '+ d3.geoArea(d))
+//        enforce_rhr(d)
+
         context.strokeStyle = 'blue'
         context.lineWidth = 5
         context.beginPath()
         context.fillStyle = 'red'
         context.arc(p[0], p[1], 15, 0, 2 * Math.PI)
         context.fill()
+        context.fillStyle = 'yellow'
         context.beginPath()
-        path(d)
+        if(d3.geoArea(d) < 12)
+          path(d)
         context.stroke()
+        context.fill()
       })
     context.restore()
     console.timeEnd('render')

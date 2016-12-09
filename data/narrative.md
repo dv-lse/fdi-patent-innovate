@@ -13,6 +13,7 @@ How do they make these investment decisions?
   rotate: [78.3522, -48.8566]
   scale: 0.5
   flows: Retail, in textiles
+  flow-weight: investment_mm
 :::
 
 # **How big?** The importance of Foreign Direct Investments

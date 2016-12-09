@@ -80,8 +80,13 @@ $(TMP)/$(NE)_geo.json: $(TMP)/$(NE)/$(NE).shp
 
 # Topojson, with three layers:  regions (from Shapefile2), countries (from Natural Earth), and land (Natural Earth)
 
-$(TMP)/regions_geo.json: $(TMP)/Shapefile2_geo.json $(TMP)/$(NE)_geo.json
-	$(BIN)/ndjson-filter "(d.id < 1550)" < $< > $@
+# can be exapanded to enforce the right hand rule for winding... however it appears later simplification produces
+# winding artefacts anyway
+
+#   ndjson-filter -r w=./scripts/winding '(w.enforce_rhr(d), d.id === 261)' < $< > $@
+
+$(TMP)/regions_geo.json: $(TMP)/Shapefile2_geo.json
+	$(BIN)/ndjson-filter '(d.id < 1550)' < $< > $@
 
 $(TMP)/topography_full.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
 	$(BIN)/geo2topo -q 1e4 -n \
