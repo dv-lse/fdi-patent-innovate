@@ -22,10 +22,14 @@ How do they make these investment decisions?
   rotate: [2.3522, -48.8566]
   scale: 1
   choropleth: GDPpc_rIp
+  label: Regional Gross Domestic Product Per Capita, in USD
+  format: '.2s'
   colors: schemeBlues-7
 :::
 
 **NB. Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.**
+
+**NB. formats: use a format specifier described [here](https://github.com/d3/d3-format/blob/master/README.md)**
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
@@ -49,7 +53,9 @@ On the globe, you can visualise the largest FDIs carried out by multinational fi
   rotate: [2.3522, -57.8566]
   scale: 7
   choropleth: educ_rIp
-  colors: schemeReds-7
+  label: Mean years of education
+  format: '.1f'
+  colors: schemeReds-5
 :::
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
@@ -67,7 +73,9 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 7
-  choropleth: pop_rIp
+  choropleth: popd_rIp
+  label: Population density (per ...)
+  format: '.1f'
   colors: schemePiYG-7
 :::
 

@@ -23,8 +23,9 @@ aggdfmean = df.groupby(df['geoid_r']).agg({ 'GDPpc_rIp' : np.mean,
 
 # In[14]:
 
-aggdf2005 = df[ df['appyear'] == 2005].set_index('geoid_r')[['GDPpc_rIp','educ_rIp','pop_rIp','popd_rIp','allpat']]
-
+aggdf2005 = df[ df['appyear'] == 2005]
+aggdf2005 = aggdf2005.groupby(df['geoid_r']).first()
+aggdf2005 = aggdf2005[['GDPpc_rIp','educ_rIp','pop_rIp','popd_rIp','allpat']]
 
 # In[40]:
 

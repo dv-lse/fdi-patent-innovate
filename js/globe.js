@@ -5,6 +5,10 @@ import { geoPath, geoGraticule, geoOrthographic, geoArea } from 'd3-geo'
 
 const GLOBE_AREA = geoArea({type: 'Sphere'})
 
+const LEGEND_MARGIN = 20
+const LEGEND_HEIGHT = 15
+const LEGEND_PADDING = [15, 5, 15, 5]
+
 let projection = geoOrthographic()
   .clipAngle(90)
   .precision(0.6)
@@ -32,7 +36,8 @@ function validate(val, flows, stats) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
-    colors: schemes.schemeBlues[9]
+    colors: schemes.schemeBlues[9],
+    format: '.1s'                  // One digit precision, with abbreviation
   }
 
   let state = Object.assign({}, default_state, val)
@@ -56,13 +61,18 @@ function validate(val, flows, stats) {
   if(state.flows && !(flows[state.flows]))
     throw "Globe state: cannot identify flow diagram " + state.flows
 
-/*
-  if(state.choropleth && stats.indexOf(state.choropleth) === -1)
+  if(state.choropleth && (! state.choropleth in stats[1])) {
     throw "Globe state: cannot read choropleth column " + state.choropleth + " " + JSON.stringify(stats.columns)
-*/
+  }
 
   if(state.colors && !(parseColors(state.colors)))
     throw "Globe state: cannot parse color descriptor " + state.colors
+
+  try {
+    d3.format(state.format)
+  } catch(e) {
+    throw "Globe state: cannot parse format descriptor " + state.format
+  }
 
   return state
 }
@@ -80,7 +90,7 @@ function update(canvas, layers, stats, flows, state) {
 
   let arcs = []
 
-  let omitted = {}
+  let omitted = d3.set()
 
   if(state.choropleth) {
     let values = stats.map( (d) => project(d, state.choropleth))
@@ -151,7 +161,11 @@ function update(canvas, layers, stats, flows, state) {
       }
     }).transition()
       .duration(2000)
-      .on('end', () => console.log('Omitted regions due to winding errors: ' + JSON.stringify(d3.keys(omitted))))
+      .on('end', () => {
+        if(!omitted.empty()) {
+          console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
+        }
+      })
       .tween('thematic', () => {
         // TODO.  thematic elements fade in afterward to globe animation fast
         //        is there another approach (dynamic simplification?)
@@ -162,32 +176,82 @@ function update(canvas, layers, stats, flows, state) {
           // region choropleth
           if(state.choropleth) {
             context.save()
+
+            // regions
+
             layers.regions.features.forEach( (d) => {
               let value = project(stats[d.id], state.choropleth)
               if(!value) return
+
               let faded = d3.color( color(value) )
               faded.opacity = t
               context.fillStyle = faded + ""
               context.beginPath()
-              if(geoArea(d) < GLOBE_AREA * .9)  {
+              if(geoArea(d) < GLOBE_AREA * .6)  {
                 path(d)
                 context.fill()
               } else {
-                omitted[d.id] = d
+                // Paths with large area generally have winding artefacts,
+                // and cannot be filled in Canvas.  Record for an error.
+                omitted.add(d.id)
               }
             })
+
+            // country borders (again)
+
+            context.save()
+            context.strokeStyle = 'white'
+            context.lineWidth = 1
+            context.beginPath()
+            path( layers.countries )
+            context.stroke()
+            context.restore()
+
+            // legend
+
+            let faded_black = d3.color('black')
+            faded_black.opacity = t
+            faded_black = faded_black + ''
+
+            var fmt = state.format ? d3.format(state.format) : d3.format('2s')
+
+            var x = d3.scaleBand()
+              .rangeRound([width * .5, width - LEGEND_MARGIN])
+              .domain(color.range())
+
+            context.fillStyle = 'rgba(255,255,255,.85)'
+            context.fillRect(x.range()[0] - LEGEND_PADDING[3],
+                             LEGEND_MARGIN - LEGEND_PADDING[0],
+                             x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3],
+                             LEGEND_PADDING[0] + LEGEND_HEIGHT + LEGEND_PADDING[2])
+
+            if(state.label) {
+              context.fillStyle = faded_black
+              context.textBaseline = 'alphabetic'
+              context.textAlign = 'left'
+              context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
+            }
+
+            color.range().map( (c,i) => {
+              let q = color.invertExtent(c)
+              let low = q[0] || color.domain()[0]
+              let high = q[1] || color.domain()[1]
+
+              let faded_color = d3.color(c)
+              faded_color.opacity = t
+              context.fillStyle = faded_color + ""
+
+              context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
+              context.fillStyle = faded_black
+              context.textBaseline = 'hanging'
+              context.textAlign = 'right'
+
+              let label = (i === 0) ? '≤ ' + fmt(high) : fmt(high)
+              context.fillText(label, x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
+            })
+
             context.restore()
           }
-
-          // country borders (again)
-
-          context.save()
-          context.strokeStyle = 'white'
-          context.lineWidth = 1
-          context.beginPath()
-          path( layers.countries )
-          context.stroke()
-          context.restore()
 
   /*
           // each arc in flow
@@ -216,8 +280,6 @@ function update(canvas, layers, stats, flows, state) {
       */
       }
     })
-
-
 }
 
 function circle(context, coords, radius, fill, stroke) {
