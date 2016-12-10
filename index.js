@@ -43,7 +43,10 @@ queue()
 
     // workaround: topojson-simplify 2.0.0 occasionally inverts winding order,
     //   which means features cannot be filled on Canvas
-    layers.regions.features.forEach(enforce_rhr)
+
+    //      topojson-simplify -F eliminates most of these artefacts
+
+    // layers.regions.features.forEach(enforce_rhr)
 
     let stats = Array()
     rawstats.forEach( (d) => stats[d.geoid_r] = d)

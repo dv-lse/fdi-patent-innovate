@@ -10,7 +10,7 @@
 #   npm install topojson topojson-simplify
 
 # options are 110m, 50m, 10m
-NE_RES=110m
+NE_RES=50m
 NE=ne_$(NE_RES)_admin_0_countries
 
 TMP=/tmp
@@ -83,7 +83,7 @@ $(TMP)/$(NE)_geo.json: $(TMP)/$(NE)/$(NE).shp
 # can be exapanded to enforce the right hand rule for winding... however it appears later simplification produces
 # winding artefacts anyway
 
-#   ndjson-filter -r w=./scripts/winding '(w.enforce_rhr(d), d.id === 261)' < $< > $@
+#   ndjson-filter -r w=./scripts/winding '(w.enforce_rhr(d), d.id < 1550)' < $< > $@
 
 $(TMP)/regions_geo.json: $(TMP)/Shapefile2_geo.json
 	$(BIN)/ndjson-filter '(d.id < 1550)' < $< > $@
@@ -99,4 +99,4 @@ $(TMP)/topography_full.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
 # Simplification
 
 $(TMP)/topography.json: $(TMP)/topography_full.json
-	$(BIN)/toposimplify -f -p 1 $< > $@
+	$(BIN)/toposimplify -F -p 1 $< > $@
