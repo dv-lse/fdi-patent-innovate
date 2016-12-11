@@ -84,7 +84,19 @@ function update(canvas, layers, stats, flows, state) {
   let width = bounds.right - bounds.left
   let height = bounds.bottom - bounds.top
 
+  // validate application state / narrative
+
   state = validate(state, flows, stats)
+
+  // install event handlers
+
+  d3.select(elem).on('click.globe', function() {
+    let pos = projection.invert(d3.mouse(this))
+    console.log(pos)
+    // TODO.  determine which region contains the point and show stats
+  })
+
+  // render the globe in new state
 
   let color = d3.scaleLinear()
 
@@ -253,7 +265,6 @@ function update(canvas, layers, stats, flows, state) {
             context.restore()
           }
 
-  /*
           // each arc in flow
           if(arcs) {
             context.save()
@@ -262,9 +273,8 @@ function update(canvas, layers, stats, flows, state) {
             context.strokeStyle = 'lightblue'
             context.fillStyle = 'none'
             arcs.forEach( (d) => {
-              return
-              let a = stats[d.source], ac = [a.lon, a.lat]
-              let b = stats[d.dest], bc = [b.lon, b.lat]
+              let a = stats[d.source], ac = [d.source_long_def, d.source_lat_def]
+              let b = stats[d.dest], bc = [d.destination_long_def, d.destination_lat_def]
 
               // must use GeoJSON so that great arcs are curved according to projection
               context.beginPath()
@@ -272,12 +282,11 @@ function update(canvas, layers, stats, flows, state) {
               context.stroke()
 
               // no support for line endings in GeoJSON so do this in Canvas
-              circle(context, path(ac), 10, 'white', 'lightblue')
-              circle(context, path(bc), 10, 'lightblue', 'lightblue')
+              circle(context, projection(ac), 10, 'white', 'lightblue')
+              circle(context, projection(bc), 10, 'lightblue', 'lightblue')
             })
             context.restore()
           }
-      */
       }
     })
 }

@@ -29,7 +29,10 @@ queue()
   .defer(d3.text, 'data/narrative.md')
   .defer(d3.json, 'data/topography.json')
   .defer(d3.csv, 'data/regions_countries.csv', lift(Number))
-  .defer(d3.csv, 'data/flows.csv', lift(Number, ['source', 'dest', 'weight']))
+  .defer(d3.csv, 'data/flows.csv', lift(Number,
+    ['source_region_id_g', 'source_country_id_g', 'source_lat_def', 'source_long_def',
+     /*'destination_region_id_g', */'destination_country_id_g', 'destination_lat_def', 'destination_long_def',
+     'investment_mm', 'jobs', 'rank']))
   .await( (err, narrative, world, rawstats, rawflows) => {
     if (err) return console.error(err)
 
@@ -90,6 +93,7 @@ queue()
 
     makeactive(0)
 
+    // install event handlers
     window.onscroll = debounce(scrolled, 100)
 
     function offset(elem) {
