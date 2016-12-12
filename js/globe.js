@@ -267,25 +267,37 @@ function update(canvas, layers, stats, flows, state) {
 
           // each arc in flow
           if(arcs) {
+            let ranked = d3.range(0,arcs.length)
+              .sort( (a,b) => d3.descending( arcs[a].rank, arcs[b].rank ))
+
+            arcs = ranked.map( (i) => {
+              let d = arcs[i]
+              return { from: [d.source_long_def, d.source_lat_def],
+                         to: [d.destination_long_def, d.destination_lat_def] }
+            })
+
+            let weight = state.scale * 1.5  /* alter line width here if necessary */
+            console.log('arc weight: ' + weight + ' ; end radius: ' + weight * 10)
+
+            // arcs
+
             context.save()
-            context.lineWidth = 5
             context.lineCap = 'round'
             context.strokeStyle = 'lightblue'
-            context.fillStyle = 'none'
+            context.fillStyle = 'lightblue'
             arcs.forEach( (d) => {
-              let a = stats[d.source], ac = [d.source_long_def, d.source_lat_def]
-              let b = stats[d.dest], bc = [d.destination_long_def, d.destination_lat_def]
-
               // must use GeoJSON so that great arcs are curved according to projection
+              context.lineWidth = weight
               context.beginPath()
-              path({type: "LineString", coordinates: [ ac, bc ]})
+              path({type: "LineString", coordinates: [ d.from, d.to ]})
               context.stroke()
-
-              // no support for line endings in GeoJSON so do this in Canvas
-              circle(context, projection(ac), 10, 'white', 'lightblue')
-              circle(context, projection(bc), 10, 'lightblue', 'lightblue')
             })
             context.restore()
+            // no support for line endings in GeoJSON so do this in Canvas
+            arcs.forEach( (d) => {
+              circle(context, projection(d.from), weight * 5, 'white', 'lightblue')
+              circle(context, projection(d.to), weight * 5, 'lightblue', 'lightblue')
+            })
           }
       }
     })

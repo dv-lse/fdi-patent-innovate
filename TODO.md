@@ -11,3 +11,9 @@
 
 - [ ] Move globe with gestures
 - [ ] Globe rotates?
+
+
+MONDAY:
+- [ ] Fix flow map
+- [ ] Interaction with globe
+- [ ] Refactor for clarity (one transition?)

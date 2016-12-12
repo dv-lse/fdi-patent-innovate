@@ -11,7 +11,7 @@ How do they make these investment decisions?
 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
-  scale: 0.5
+  scale: 2
   flows: Retail, in textiles
   flow-weight: investment_mm
 :::
