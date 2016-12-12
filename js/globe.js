@@ -61,8 +61,12 @@ function validate(val, flows, stats) {
   if(state.flows && !(flows[state.flows]))
     throw "Globe state: cannot identify flow diagram " + state.flows
 
-  if(state.choropleth && (! state.choropleth in stats[1])) {
-    throw "Globe state: cannot read choropleth column " + state.choropleth + " " + JSON.stringify(stats.columns)
+  if(state['flow-weight'] && !(state['flow-weight'] in flows[state.flows][0]))
+    throw "Globe state: cannot read flow column " + state['flow-weight']
+
+  // TODO.  better way to check available stat columns
+  if(state.choropleth && !(state.choropleth in stats[1])) {
+    throw "Globe state: cannot read choropleth column " + state.choropleth
   }
 
   if(state.colors && !(parseColors(state.colors)))
@@ -99,6 +103,8 @@ function update(canvas, layers, stats, flows, state) {
   // render the globe in new state
 
   let color = d3.scaleLinear()
+  let opacity = d3.scaleLinear()
+    .range([.1,1])
 
   let arcs = []
 
@@ -110,6 +116,13 @@ function update(canvas, layers, stats, flows, state) {
 
     color = d3.scaleQuantile()
       .domain(values)
+  }
+
+  if(state['flow-weight']) {
+    let values = flows[state.flows].map( (d) => project(d, state['flow-weight']))
+    values.filter( (d) => d !== null )
+    opacity.domain(d3.extent(values))
+    console.log('opacity domain is ' + opacity.domain())
   }
 
   if(state.colors) {
@@ -270,34 +283,48 @@ function update(canvas, layers, stats, flows, state) {
             let ranked = d3.range(0,arcs.length)
               .sort( (a,b) => d3.descending( arcs[a].rank, arcs[b].rank ))
 
-            arcs = ranked.map( (i) => {
+            let ranked_arcs = ranked.map( (i,k) => {
               let d = arcs[i]
               return { from: [d.source_long_def, d.source_lat_def],
-                         to: [d.destination_long_def, d.destination_lat_def] }
+                         to: [d.destination_long_def, d.destination_lat_def],
+                      value: project(d, state['flow-weight']) }
             })
 
-            let weight = state.scale * 1.5  /* alter line width here if necessary */
-            console.log('arc weight: ' + weight + ' ; end radius: ' + weight * 10)
+            let weight = state.scale * 2.5  /* alter line width here if necessary */
 
             // arcs
 
             context.save()
             context.lineCap = 'round'
-            context.strokeStyle = 'lightblue'
-            context.fillStyle = 'lightblue'
-            arcs.forEach( (d) => {
+            context.lineWidth = weight
+            ranked_arcs.forEach( (d) => {
+              let line = {type: 'LineString', coordinates: [ d.from, d.to ]}
+              let faded_color = d3.color('coral')
+              faded_color.opacity = opacity(d.value)
+
               // must use GeoJSON so that great arcs are curved according to projection
-              context.lineWidth = weight
               context.beginPath()
-              path({type: "LineString", coordinates: [ d.from, d.to ]})
+              context.strokeStyle = faded_color + ''
+              path(line)
               context.stroke()
             })
             context.restore()
             // no support for line endings in GeoJSON so do this in Canvas
-            arcs.forEach( (d) => {
-              circle(context, projection(d.from), weight * 5, 'white', 'lightblue')
-              circle(context, projection(d.to), weight * 5, 'lightblue', 'lightblue')
+            ranked_arcs.forEach( (d) => {
+              // NB alternative is to use geoPath.circle()...
+              circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
+              circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
             })
+
+            // clip any projecting circles to the globe's edge
+/*
+            context.save()
+            context.globalCompositeOperation = 'destination-in'
+            path({type: 'Sphere'})
+            context.fill()
+            context.globalCompositeOperation = 'source-over'  // TODO.  not clear why save/restore doesn't affect this
+            context.restore()
+*/
           }
       }
     })
@@ -305,8 +332,8 @@ function update(canvas, layers, stats, flows, state) {
 
 function circle(context, coords, radius, fill, stroke) {
   context.save()
-  context.strokeStyle = stroke
   context.fillStyle = fill
+  context.strokeStyle = stroke
   context.beginPath()
   context.arc(coords[0], coords[1], radius, 0, 2 * Math.PI, true)
   context.fill()

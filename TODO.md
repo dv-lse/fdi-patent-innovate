@@ -17,3 +17,6 @@ MONDAY:
 - [ ] Fix flow map
 - [ ] Interaction with globe
 - [ ] Refactor for clarity (one transition?)
+
+- [ ] Flow map legend
+- [ ] Choropleth & flow map labeling/units
