@@ -349,7 +349,7 @@ function update(canvas, layers, stats, flows, state) {
       .on('drag.interaction', () => {
         if (m0) {
           m1 = [d3.event.sourceEvent.pageX, d3.event.sourceEvent.pageY]
-          o1 = [o0[0] + (m0[0] - m1[0]) / 4, o0[1] + (m1[1] - m0[1]) / 4]
+          o1 = [o0[0] + (m0[0] - m1[0]) / 4 / state.scale, o0[1] + (m1[1] - m0[1]) / 4 / state.scale]
           state.rotate = [-o1[0], -o1[1]]
           projection.rotate(state.rotate)
           elapsed = d3.now()
