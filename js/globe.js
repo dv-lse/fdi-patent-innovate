@@ -122,7 +122,6 @@ function update(canvas, layers, stats, flows, state) {
     let values = flows[state.flows].map( (d) => project(d, state['flow-weight']))
     values.filter( (d) => d !== null )
     opacity.domain(d3.extent(values))
-    console.log('opacity domain is ' + opacity.domain())
   }
 
   if(state.colors) {
@@ -134,55 +133,203 @@ function update(canvas, layers, stats, flows, state) {
     arcs = flows[state.flows]
   }
 
+  let context = elem.getContext('2d')
+  projection.translate([width / 2, height / 2])
+
+  path.context(context)
+
+  // TODO.  move partials somewhere more logical...
+  function drawCore() {
+    context.clearRect(0, 0, width, height)
+
+    /*
+
+    // space
+    context.save()
+    context.fillStyle = 'white'
+    context.fillRect(0, 0, width, height)
+    context.restore()
+
+    // globe
+    context.save()
+    context.fillStyle = 'white'
+    context.beginPath()
+    path({ type:'Sphere' })
+    context.fill()
+    context.restore()
+
+    */
+
+    // graticule
+
+    context.save()
+    context.lineWidth = 1
+    context.setLineDash([1, 3])
+    context.strokeStyle = '#c9c4bc'
+    context.beginPath()
+    path( graticule() )
+    context.stroke()
+    context.restore()
+
+    // land
+
+    context.save()
+    context.fillStyle = 'lightgrey'
+    context.beginPath()
+    path( layers.land )
+    context.fill()
+    context.restore()
+
+    // country borders
+
+    context.save()
+    context.strokeStyle = 'white'
+    context.lineWidth = 1
+    context.beginPath()
+    path( layers.countries )
+    context.stroke()
+    context.restore()
+  }
+
+  function drawChoropleth(t) {
+    // region choropleth
+    context.save()
+    context.globalAlpha = t
+
+    // regions
+
+    layers.regions.features.forEach( (d) => {
+      let value = project(stats[d.id], state.choropleth)
+      if(!value) return
+
+      context.fillStyle = color(value)
+      context.beginPath()
+      if(geoArea(d) < GLOBE_AREA * .6)  {
+        path(d)
+        context.fill()
+      } else {
+        // Paths with large area generally have winding artefacts,
+        // and cannot be filled in Canvas.  Record for an error.
+        omitted.add(d.id)
+      }
+    })
+
+    // country borders (again)
+
+    context.save()
+    context.strokeStyle = 'white'
+    context.lineWidth = 1
+    context.beginPath()
+    path( layers.countries )
+    context.stroke()
+    context.restore()
+
+    // legend
+
+    var fmt = state.format ? d3.format(state.format) : d3.format('2s')
+
+    var x = d3.scaleBand()
+      .rangeRound([width * .5, width - LEGEND_MARGIN])
+      .domain(color.range())
+
+    context.fillStyle = 'rgba(255,255,255,.85)'
+    context.fillRect(x.range()[0] - LEGEND_PADDING[3],
+                     LEGEND_MARGIN - LEGEND_PADDING[0],
+                     x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3],
+                     LEGEND_PADDING[0] + LEGEND_HEIGHT + LEGEND_PADDING[2])
+
+    if(state.label) {
+      context.fillStyle = 'black'
+      context.textBaseline = 'alphabetic'
+      context.textAlign = 'left'
+      context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
+    }
+
+    color.range().map( (c,i) => {
+      let q = color.invertExtent(c)
+      let low = q[0] || color.domain()[0]
+      let high = q[1] || color.domain()[1]
+
+      context.fillStyle = c
+
+      context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
+      context.fillStyle = 'black'
+      context.textBaseline = 'hanging'
+      context.textAlign = 'right'
+
+      let label = (i === 0) ? '≤ ' + fmt(high) : fmt(high)
+      context.fillText(label, x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
+    })
+
+    context.globalAlpha = 1
+    context.restore()
+  }
+
+  function drawFlows(t) {
+    // each arc in flow
+      let ranked = d3.range(0,arcs.length)
+        .sort( (a,b) => d3.descending( arcs[a].rank, arcs[b].rank ))
+
+      let ranked_arcs = ranked.map( (i,k) => {
+        let d = arcs[i]
+        return { from: [d.source_long_def, d.source_lat_def],
+                   to: [d.destination_long_def, d.destination_lat_def],
+                value: project(d, state['flow-weight']) }
+      })
+
+      let weight = state.scale * 2.5  /* alter line width here if necessary */
+
+      // arcs
+
+      context.save()
+      context.lineCap = 'round'
+      context.lineWidth = weight
+      ranked_arcs.forEach( (d) => {
+        let interp = d3.geoInterpolate(d.from, d.to)
+        let line = {type: 'LineString', coordinates: [ d.from, interp(t) ]}
+        let faded_color = d3.color('coral')
+        faded_color.opacity = opacity(d.value)
+
+        // must use GeoJSON so that great arcs are curved according to projection
+        context.beginPath()
+        context.strokeStyle = faded_color + ''
+        path(line)
+        context.stroke()
+      })
+      context.restore()
+      // no support for line endings in GeoJSON so do this in Canvas
+      ranked_arcs.forEach( (d) => {
+        // NB alternative is to use geoPath.circle()...
+        circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
+        if(t > .95) {
+          circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
+        }
+      })
+
+      // clip any projecting circles to the globe's edge
+      /*
+      context.save()
+      context.globalCompositeOperation = 'destination-in'
+      path({type: 'Sphere'})
+      context.fill()
+      context.globalCompositeOperation = 'source-over'  // TODO.  not clear why save/restore doesn't affect this
+      context.restore()
+      */
+  }
+
   d3.transition()
     .duration(1500)
     .tween('spin', () => {
       elem.__state = elem.__state || state
 
-      projection.translate([width / 2, height / 2])
-
       let interp = d3.interpolate(elem.__state, state)
-      let context = elem.getContext('2d')
 
       return (t) => {
         elem.__state = state = interp(t)
         projection.rotate(state.rotate)
           .scale(state.scale * Math.min(width, height) / 2)
 
-        path.context(context)
-
-        context.clearRect(0, 0, width, height)
-
-        // graticule
-
-        context.save()
-        context.lineWidth = 1
-        context.setLineDash([1, 3])
-        context.strokeStyle = '#c9c4bc'
-        context.beginPath()
-        path( graticule() )
-        context.stroke()
-        context.restore()
-
-        // land
-
-        context.save()
-        context.fillStyle = 'lightgrey'
-        context.beginPath()
-        path( layers.land )
-        context.fill()
-        context.restore()
-
-        // country borders
-
-        context.save()
-        context.strokeStyle = 'white'
-        context.lineWidth = 1
-        context.beginPath()
-        path( layers.countries )
-        context.stroke()
-        context.restore()
-
+        drawCore()
       }
     }).transition()
       .duration(2000)
@@ -192,140 +339,10 @@ function update(canvas, layers, stats, flows, state) {
         }
       })
       .tween('thematic', () => {
-        // TODO.  thematic elements fade in afterward to globe animation fast
-        //        is there another approach (dynamic simplification?)
-
-        let context = elem.getContext('2d')
-
         return (t) => {
-          // region choropleth
-          if(state.choropleth) {
-            context.save()
-
-            // regions
-
-            layers.regions.features.forEach( (d) => {
-              let value = project(stats[d.id], state.choropleth)
-              if(!value) return
-
-              let faded = d3.color( color(value) )
-              faded.opacity = t
-              context.fillStyle = faded + ""
-              context.beginPath()
-              if(geoArea(d) < GLOBE_AREA * .6)  {
-                path(d)
-                context.fill()
-              } else {
-                // Paths with large area generally have winding artefacts,
-                // and cannot be filled in Canvas.  Record for an error.
-                omitted.add(d.id)
-              }
-            })
-
-            // country borders (again)
-
-            context.save()
-            context.strokeStyle = 'white'
-            context.lineWidth = 1
-            context.beginPath()
-            path( layers.countries )
-            context.stroke()
-            context.restore()
-
-            // legend
-
-            let faded_black = d3.color('black')
-            faded_black.opacity = t
-            faded_black = faded_black + ''
-
-            var fmt = state.format ? d3.format(state.format) : d3.format('2s')
-
-            var x = d3.scaleBand()
-              .rangeRound([width * .5, width - LEGEND_MARGIN])
-              .domain(color.range())
-
-            context.fillStyle = 'rgba(255,255,255,.85)'
-            context.fillRect(x.range()[0] - LEGEND_PADDING[3],
-                             LEGEND_MARGIN - LEGEND_PADDING[0],
-                             x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3],
-                             LEGEND_PADDING[0] + LEGEND_HEIGHT + LEGEND_PADDING[2])
-
-            if(state.label) {
-              context.fillStyle = faded_black
-              context.textBaseline = 'alphabetic'
-              context.textAlign = 'left'
-              context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
-            }
-
-            color.range().map( (c,i) => {
-              let q = color.invertExtent(c)
-              let low = q[0] || color.domain()[0]
-              let high = q[1] || color.domain()[1]
-
-              let faded_color = d3.color(c)
-              faded_color.opacity = t
-              context.fillStyle = faded_color + ""
-
-              context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
-              context.fillStyle = faded_black
-              context.textBaseline = 'hanging'
-              context.textAlign = 'right'
-
-              let label = (i === 0) ? '≤ ' + fmt(high) : fmt(high)
-              context.fillText(label, x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
-            })
-
-            context.restore()
-          }
-
-          // each arc in flow
-          if(arcs) {
-            let ranked = d3.range(0,arcs.length)
-              .sort( (a,b) => d3.descending( arcs[a].rank, arcs[b].rank ))
-
-            let ranked_arcs = ranked.map( (i,k) => {
-              let d = arcs[i]
-              return { from: [d.source_long_def, d.source_lat_def],
-                         to: [d.destination_long_def, d.destination_lat_def],
-                      value: project(d, state['flow-weight']) }
-            })
-
-            let weight = state.scale * 2.5  /* alter line width here if necessary */
-
-            // arcs
-
-            context.save()
-            context.lineCap = 'round'
-            context.lineWidth = weight
-            ranked_arcs.forEach( (d) => {
-              let line = {type: 'LineString', coordinates: [ d.from, d.to ]}
-              let faded_color = d3.color('coral')
-              faded_color.opacity = opacity(d.value)
-
-              // must use GeoJSON so that great arcs are curved according to projection
-              context.beginPath()
-              context.strokeStyle = faded_color + ''
-              path(line)
-              context.stroke()
-            })
-            context.restore()
-            // no support for line endings in GeoJSON so do this in Canvas
-            ranked_arcs.forEach( (d) => {
-              // NB alternative is to use geoPath.circle()...
-              circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
-              circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
-            })
-
-            // clip any projecting circles to the globe's edge
-/*
-            context.save()
-            context.globalCompositeOperation = 'destination-in'
-            path({type: 'Sphere'})
-            context.fill()
-            context.globalCompositeOperation = 'source-over'  // TODO.  not clear why save/restore doesn't affect this
-            context.restore()
-*/
-          }
+          drawCore()
+          if(state.choropleth) { drawChoropleth(t) }
+          if(arcs) { drawFlows(t) }
       }
     })
 }

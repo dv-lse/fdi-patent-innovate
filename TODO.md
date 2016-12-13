@@ -15,8 +15,11 @@
 
 MONDAY:
 - [ ] Fix flow map
+- [ ] Flow map legend
+
 - [ ] Interaction with globe
+- [ ] Ease in and out for animation stages
+
 - [ ] Refactor for clarity (one transition?)
 
-- [ ] Flow map legend
 - [ ] Choropleth & flow map labeling/units
