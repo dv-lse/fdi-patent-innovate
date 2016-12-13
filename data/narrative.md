@@ -9,6 +9,8 @@ date: November 30, 2016
 
 How do they make these investment decisions?
 
+*AD: general comment by Riccardo Crescenzi, globe is great, however it appeared small on his screen (using Firefox on PC)*
+
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 2
@@ -40,17 +42,14 @@ Large, internationalised firms are investing massive amounts of money abroad: a 
 
 Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 
-*AD: As the FDI data is not interactive anymore, this part needs to be written again.
-On the globe, you can visualise the largest FDIs carried out by multinational firms before and after the 2008-9 economic crisis [3]. You can select a country and a continent of origin, a destination, an industrial sector and a stage of product development. See for instance where American software and IT companies invested since the crisis [the visualisation shows the aforementioned flows and then lets the user play with the filters]
 
-**CY: Move the interactive portion of the DV to the end, allowing user to play with heterogeneous results?**
-**AD: I think we should just remove the interactive part of the FDI data from the DV. We will simply show selected examples**
-
-*Aggregate the FDI dataset aggregated by gvc stage and industry sector will appear here.  Globe to show only the top 50 flows: size of arrow is flow in millions of USD.*
+*AD: Need to discuss with Christopher how to show the flows:
+- keep only the top 15 (for AD and RC the more the better)?
+- bundling of flows? (idea suggested by Christopher early in the development of the project)
+- number of flows represented needs to be selected so as to show the geographical spread of FDIs (if selecting the top 15 only shows Europe<->US flows, not very convincing)*
 
 *refs: 1. World FDIs figures: UNCTAD, 2016
 *2. GDP estimates in 2016: IMF, World Economic Outlook Database
-*3. FDIs data: FDI Markets
 
 # **Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
 
