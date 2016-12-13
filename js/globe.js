@@ -19,6 +19,9 @@ let path = geoPath()
 
 let graticule = geoGraticule()
 
+let refresh = null  // timer that refreshes globe @ 24fps
+
+
 function parseColors(s) {
   let m
   // TODO.  improve this function
@@ -317,12 +320,54 @@ function update(canvas, layers, stats, flows, state) {
       */
   }
 
+  function interaction() {
+    // TODO.  might better to alter the values in state.rotation & state.scale
+    let m0, o0, m1
+    let o1 = [0,0]
+
+    let elapsed = null
+    /*
+    let rotator = d3.interval((epoch_step) => {
+      let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - timeout)
+      projection.rotate([-o1[0] + step * 0.01, -o1[1], earth_tilt])
+    }, 38)
+    */
+
+    // See from http://mbostock.github.io/d3/talk/20111018/azimuthal.html
+    d3.select(elem).call(d3.drag()
+      .on('start.interaction', () => {
+        let proj = state.rotate || projection.rotate()
+        m0 = [d3.event.sourceEvent.pageX, d3.event.sourceEvent.pageY]
+        o0 = [-proj[0],-proj[1]]
+      })
+      .on('drag.interaction', () => {
+        if (m0) {
+          m1 = [d3.event.sourceEvent.pageX, d3.event.sourceEvent.pageY]
+          o1 = [o0[0] + (m0[0] - m1[0]) / 4, o0[1] + (m1[1] - m0[1]) / 4]
+          state.rotate = [-o1[0], -o1[1]]
+          projection.rotate(state.rotate)
+          elapsed = d3.now()
+        }
+      }))
+    console.log('installed interaction')
+    let loop = d3.interval( (elapsed) => drawThematic(), 38 )
+    return loop
+  }
+
+  function drawThematic(t=1) {
+    drawCore()
+    if(state.choropleth) { drawChoropleth(t) }
+    // TODO.  move flows to separate animation sequence
+    if(arcs) { drawFlows(t) }
+  }
+
   d3.transition()
     .duration(1500)
     .tween('spin', () => {
       elem.__state = elem.__state || state
-
       let interp = d3.interpolate(elem.__state, state)
+
+      if(refresh) { refresh.stop() }
 
       return (t) => {
         elem.__state = state = interp(t)
@@ -337,14 +382,11 @@ function update(canvas, layers, stats, flows, state) {
         if(!omitted.empty()) {
           console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
         }
+        refresh = interaction()
       })
       .tween('thematic', () => {
-        return (t) => {
-          drawCore()
-          if(state.choropleth) { drawChoropleth(t) }
-          if(arcs) { drawFlows(t) }
-      }
-    })
+        return drawThematic
+      })
 }
 
 function circle(context, coords, radius, fill, stroke) {
