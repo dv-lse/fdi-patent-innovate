@@ -127,6 +127,8 @@ One common way to measure the innovative capacity of a city is to count the numb
 
 Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year [7].
 
+*AD 13/12: Quizz will change, will compare inequality in patents to inequality in the World or in the US*
+
 ---
 
 *Quiz.*
@@ -153,7 +155,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
 
 *refs: 9. Authors’ calculations, based on US Trademark and Patent Office data
 
-# **Method:** Matching regions
+# **Finding twin pairs of regions**
 
 ::: visualisation globe
   rotate: [-46.625290, -23.533773]
@@ -166,7 +168,7 @@ Imagine for instance that the CEO of an American tech firm decides to build a la
 
 You can click on a region and see to which other it is matched [the visualisation highlights the regions that receive the treatment and when the user mouse over one, it highlights this particular region and the others (2?) to which it is matched]
 
-# **Results:** The causal impact of foreign intervention on city-level innovation
+# **Results:** The impact of foreign intervention on city-level innovation
 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
