@@ -9,7 +9,7 @@ date: November 30, 2016
 
 How do they make these investment decisions?
 
-*AD: general comment by Riccardo Crescenzi, globe is great, however it appeared small on his screen (using Firefox on PC)*
+*AD 13/12: general comment by Riccardo Crescenzi, globe is great, however it appeared small on his screen (using Firefox on PC)*
 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
@@ -42,10 +42,18 @@ How do they make these investment decisions?
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
-Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
+*AD 13/12: To be discussed with Christopher: should we show flows from World, then Industrialised economies, then United States? Or would that be too much? I think it would allow us to have shorter slides.
+
+#***Industrialised economies***
+
+Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). 
+
+#***United States***
+
+But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 
 
-*AD: Need to discuss with Christopher how to show the flows:
+*AD 13/12: Need to discuss with Christopher how to show the flows:
 - keep only the top 15 (for AD and RC the more the better)?
 - bundling of flows? (idea suggested by Christopher early in the development of the project)
 - number of flows represented needs to be selected so as to show the geographical spread of FDIs (if selecting the top 15 only shows Europe<->US flows, not very convincing)*
@@ -63,6 +71,11 @@ Almost two thirds of these investments (63%) came from developed economies [the 
   format: '.1f'
   colors: schemeReds-5
 :::
+
+*AD: This slide will change... After discussion with Riccardo, it appears that he would prefer to focus on firm-specific examples rather than show all flows in the world.
+Ideas of firm-specific examples:
+- Renault-Nissan investing in Sunderland rather than somewhere else (or maybe more recent example, Nissan's FDI happened in 1985)
+- Hewlett-Packard and Texas Instruments investing in Bangalore *
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
