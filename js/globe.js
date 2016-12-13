@@ -301,10 +301,16 @@ function update(canvas, layers, stats, flows, state) {
       })
       context.restore()
       // no support for line endings in GeoJSON so do this in Canvas
-      ranked_arcs.forEach( (d) => {
+      ranked_arcs.forEach( (d, i) => {
         // NB alternative is to use geoPath.circle()...
-        circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
-        if(t > .95) {
+        let rot = projection.rotate()
+        let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
+        let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
+
+        if(from_distance < Math.PI / 2) {
+          circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
+        }
+        if(t > .95 && to_distance < Math.PI / 2) {
           circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
         }
       })
