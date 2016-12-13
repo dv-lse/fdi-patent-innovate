@@ -40,7 +40,8 @@ function validate(val, flows, stats) {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
     colors: schemes.schemeBlues[9],
-    format: '.1s'                  // One digit precision, with abbreviation
+    format: '.1s',                 // One digit precision, with abbreviation
+    autorotate: true
   }
 
   let state = Object.assign({}, default_state, val)
@@ -328,16 +329,11 @@ function update(canvas, layers, stats, flows, state) {
 
   function interaction() {
     // TODO.  might better to alter the values in state.rotation & state.scale
+    const TIMEOUT = 1500
     let m0, o0, m1
-    let o1 = [0,0]
+    let o1 = [-state.rotate[0],-state.rotate[1]]
 
-    let elapsed = null
-    /*
-    let rotator = d3.interval((epoch_step) => {
-      let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - timeout)
-      projection.rotate([-o1[0] + step * 0.01, -o1[1], earth_tilt])
-    }, 38)
-    */
+    let elapsed = d3.now()
 
     // See from http://mbostock.github.io/d3/talk/20111018/azimuthal.html
     d3.select(elem).call(d3.drag()
@@ -356,7 +352,14 @@ function update(canvas, layers, stats, flows, state) {
         }
       }))
     console.log('installed interaction')
-    let loop = d3.interval( (elapsed) => drawThematic(), 38 )
+    let loop = d3.interval( (epoch_step) => {
+      if(state.autorotate) {
+        let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)
+        state.rotate = [-o1[0] + step * 0.01, -o1[1]]
+        projection.rotate(state.rotate)
+      }
+      drawThematic()
+    }, 38 )
     return loop
   }
 

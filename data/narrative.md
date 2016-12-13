@@ -25,6 +25,7 @@ How do they make these investment decisions?
   label: Regional Gross Domestic Product Per Capita, in USD
   format: '.2s'
   colors: schemeBlues-7
+  autorotate: false
 :::
 
 **NB. Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.**
