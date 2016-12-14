@@ -20,7 +20,6 @@ body {
 #narrative {
   position: relative;
   width: 330px;
-  overflow: hidden;
   z-index: 2;
 }
 
@@ -42,11 +41,20 @@ body {
   border: 1px solid lightgray;
 }
 
-#narrative a[title] {
+#narrative a[title],
+#narrative a[alt] {
   vertical-align: super;
   font-size: 8pt;
   color: blue;
   text-decoration: none;
+}
+
+#tooltip {
+  position: fixed;
+  background: white;
+  border: 1px solid gray;
+  padding: 8px;
+  z-index: 99;
 }
 
 #nav {
@@ -90,7 +98,6 @@ body {
 }
 
 #viz {
-  display: none;
   position: fixed;
   left: 0px;
   top: 75px;

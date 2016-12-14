@@ -9,6 +9,7 @@ import section from './js/md/section'
 import visualisation from './js/md/visualisation'
 
 import * as globe from './js/globe'
+import tooltip from './js/tooltip'
 import { enforce_rhr } from './js/winding'
 
 
@@ -93,9 +94,13 @@ queue()
 
     makeactive(0)
 
+    // prepare links
+
     d3.selectAll('#narrative a')
-      .each( function() { console.log(this) })
-      .on('mouseover', () => console.log('hello world'))
+      .attr('target', '_blank')
+
+    d3.selectAll('#narrative a[title]')
+      .call(tooltip)
 
     // install event handlers
     window.onscroll = debounce(scrolled, 100)
