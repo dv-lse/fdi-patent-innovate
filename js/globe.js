@@ -104,6 +104,12 @@ function update(canvas, layers, stats, flows, state) {
     // TODO.  determine which region contains the point and show stats
   })
 
+  // TODO.  animation through the zoom
+  d3.select('.scale.up')
+    .on('click', () => state.scale = Math.min(state.scale * 1.5, 8))
+  d3.select('.scale.down')
+    .on('click', () => state.scale = Math.max(state.scale / 1.5, 1))
+
   // render the globe in new state
 
   let color = d3.scaleLinear()
@@ -302,18 +308,26 @@ function update(canvas, layers, stats, flows, state) {
       })
       context.restore()
       // no support for line endings in GeoJSON so do this in Canvas
+      // opacity fade at horizon
+      let horizon = d3.scaleLinear()
+        .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
+        .range([1,0])
+        .clamp(true) // necessary since most calls are outside of domain
       ranked_arcs.forEach( (d, i) => {
         // NB alternative is to use geoPath.circle()...
         let rot = projection.rotate()
         let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
         let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
 
-        if(from_distance < Math.PI / 2) {
-          circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
-        }
-        if(t > .95 && to_distance < Math.PI / 2) {
+        context.globalAlpha = horizon(from_distance)
+        circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
+
+        if(t > .95) {
+          context.globalAlpha = horizon(to_distance)
           circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
         }
+
+        context.globalAlpha = 1
       })
 
       // clip any projecting circles to the globe's edge
@@ -335,8 +349,7 @@ function update(canvas, layers, stats, flows, state) {
 
     let elapsed = d3.now()
 
-    // See from http://mbostock.github.io/d3/talk/20111018/azimuthal.html
-    d3.select(elem).call(d3.drag()
+    let dragged = d3.drag()
       .on('start.interaction', () => {
         let proj = state.rotate || projection.rotate()
         m0 = [d3.event.sourceEvent.pageX, d3.event.sourceEvent.pageY]
@@ -350,14 +363,19 @@ function update(canvas, layers, stats, flows, state) {
           projection.rotate(state.rotate)
           elapsed = d3.now()
         }
-      }))
+      })
+
+    // See http://mbostock.github.io/d3/talk/20111018/azimuthal.html
+    d3.select(elem)
+      .call(dragged)
     console.log('installed interaction')
     let loop = d3.interval( (epoch_step) => {
       if(state.autorotate) {
         let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)
         state.rotate = [-o1[0] + step * 0.01, -o1[1]]
-        projection.rotate(state.rotate)
       }
+      projection.rotate(state.rotate)
+        .scale(state.scale * Math.min(width, height) / 2)
       drawThematic()
     }, 38 )
     return loop

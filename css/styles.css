@@ -1,6 +1,8 @@
 body {
   font-family: Roboto, sans-serif;
   margin: 0 auto;
+  border: 0;
+  padding: 0;
 }
 
 * {
@@ -47,6 +49,30 @@ body {
 }
 #nav .dot.active {
   fill: gray;
+}
+
+/* TODO.  move to bottom right when dealing with canvas sizing */
+#zoom {
+  position: fixed;
+  display: inline-block;
+  left: 385px;
+  top: 85px;
+  z-index: 2;
+}
+
+#zoom .button {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background-color: white;
+  font-size: 24px;
+  color: grey;
+  border: 1px solid grey;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  user-select: none;
 }
 
 #viz {
