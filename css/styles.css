@@ -1,5 +1,6 @@
 body {
   font-family: Roboto, sans-serif;
+  font-size: 12pt;
   margin: 0 auto;
   border: 0;
   padding: 0;
@@ -41,30 +42,11 @@ body {
   border: 1px solid lightgray;
 }
 
-/* CSS to turn links into popup hovers */
-
-#narrative .link::before {
-  cursor: pointer;
-  color: lightblue;
-  content: '\2020';
-}
-
-#narrative .link {
-  position: relative;
-}
-
-#narrative .link a {
-  display: none;
-}
-
-#narrative .link:hover a {
-  display: inline-block;
-  position: absolute;
-  top: -2em;
-  left: -1em;
-  border: 1px solid grey;
-  padding: 8px;
-  background: white;
+#narrative a[title] {
+  vertical-align: super;
+  font-size: 8pt;
+  color: blue;
+  text-decoration: none;
 }
 
 #nav {

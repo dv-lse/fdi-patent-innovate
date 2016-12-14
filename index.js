@@ -7,7 +7,6 @@ import markdown from 'markdown-it'
 import front_matter from './js/md/front_matter'
 import section from './js/md/section'
 import visualisation from './js/md/visualisation'
-import link from './js/md/link'
 
 import * as globe from './js/globe'
 import { enforce_rhr } from './js/winding'
@@ -20,7 +19,6 @@ let md = markdown({
   .use(front_matter)
   .use(section)
   .use(visualisation)
-  .use(link)
 
 //
 // load data & render

@@ -30,7 +30,11 @@ How do they make these investment decisions?
 
 **NB. Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.**
 
-**NB. formats: use a format specifier described [here](https://github.com/d3/d3-format/blob/master/README.md)**
+**NB. formats: use a format specifier [1]**
+
+**NB. Two formats for links are shown above.  The first will show up inline in text, and the second will show a popup with the link title**
+
+[1]: https://github.com/d3/d3-format/blob/master/README.md "D3 formatting documentation"
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
