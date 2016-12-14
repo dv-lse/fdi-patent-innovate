@@ -1,15 +1,13 @@
 function link(md) {
 
-  let defaultRender = md.renderer.rules.link_open || this.defaultRender
-
   md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
     tokens[idx].attrPush(['target', '_blank'])
-    return defaultRender(tokens, idx, options, env, self)
+    return '<span class="link">' + self.renderToken(tokens, idx, options)
   }
-}
 
-link.defaultRender = function(tokens, idx, options, env, self) {
-  return self.renderToken(tokens, idx, options)
+  md.renderer.rules.link_close = function(tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options) + '</span>'
+  }
 }
 
 export default link

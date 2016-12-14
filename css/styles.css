@@ -41,6 +41,32 @@ body {
   border: 1px solid lightgray;
 }
 
+/* CSS to turn links into popup hovers */
+
+#narrative .link::before {
+  cursor: pointer;
+  color: lightblue;
+  content: '\2020';
+}
+
+#narrative .link {
+  position: relative;
+}
+
+#narrative .link a {
+  display: none;
+}
+
+#narrative .link:hover a {
+  display: inline-block;
+  position: absolute;
+  top: -2em;
+  left: -1em;
+  border: 1px solid grey;
+  padding: 8px;
+  background: white;
+}
+
 #nav {
   position: fixed;
   left: 360px;
@@ -82,6 +108,7 @@ body {
 }
 
 #viz {
+  display: none;
   position: fixed;
   left: 0px;
   top: 75px;

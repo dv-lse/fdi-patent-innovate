@@ -95,6 +95,10 @@ queue()
 
     makeactive(0)
 
+    d3.selectAll('#narrative a')
+      .each( function() { console.log(this) })
+      .on('mouseover', () => console.log('hello world'))
+
     // install event handlers
     window.onscroll = debounce(scrolled, 100)
 
