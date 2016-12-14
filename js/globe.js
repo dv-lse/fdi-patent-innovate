@@ -144,7 +144,7 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   let context = elem.getContext('2d')
-  projection.translate([width / 2, height / 2])
+  projection.translate([ 330 + (width - 330) / 2, height / 2])
 
   path.context(context)
 

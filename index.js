@@ -123,7 +123,7 @@ queue()
         .classed('active', (d,i) => i === sectionIndex)
         .transition()
         .duration(500)
-          .style('opacity', (d,i) => i === sectionIndex ? 1 : 0.1)
+          .style('opacity', (d,i) => i === sectionIndex ? .95 : 0.1)
 
       nav.classed('active', (d,i) => i === sectionIndex)
 

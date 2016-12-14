@@ -17,8 +17,10 @@ body {
 }
 
 #narrative {
+  position: relative;
   width: 330px;
   overflow: hidden;
+  z-index: 2;
 }
 
 #narrative header {
@@ -34,12 +36,16 @@ body {
 
 #narrative section {
   margin: 200px 0 200px 15px;
+  padding: 15px;
+  background: white;
+  border: 1px solid lightgray;
 }
 
 #nav {
   position: fixed;
   left: 360px;
   top: 200px;
+  z-index: 2;
 }
 
 #nav .dot {
@@ -77,6 +83,6 @@ body {
 
 #viz {
   position: fixed;
-  left: 380px;
-  top: 80px;
+  left: 0px;
+  top: 75px;
 }
