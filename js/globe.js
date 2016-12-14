@@ -372,7 +372,7 @@ function update(canvas, layers, stats, flows, state) {
     let loop = d3.interval( (epoch_step) => {
       if(state.autorotate) {
         let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)
-        state.rotate = [-o1[0] + step * 0.01, -o1[1]]
+        state.rotate = [-o1[0] + (step * 0.01) % 360, -o1[1]]
       }
       projection.rotate(state.rotate)
         .scale(state.scale * Math.min(width, height) / 2)
