@@ -9,10 +9,12 @@ const LEGEND_MARGIN = 20
 const LEGEND_HEIGHT = 15
 const LEGEND_PADDING = [15, 5, 15, 5]
 
+const AXIS_TILT = 11.5
+
 let projection = geoOrthographic()
   .clipAngle(90)
   .precision(0.6)
-  .rotate([0, 0, 11.5])
+  .rotate([0, 0, AXIS_TILT])
 
 let path = geoPath()
   .projection(projection)
@@ -359,7 +361,7 @@ function update(canvas, layers, stats, flows, state) {
         if (m0) {
           m1 = [d3.event.sourceEvent.pageX, d3.event.sourceEvent.pageY]
           o1 = [o0[0] + (m0[0] - m1[0]) / 4 / state.scale, o0[1] + (m1[1] - m0[1]) / 4 / state.scale]
-          state.rotate = [-o1[0], -o1[1]]
+          state.rotate = [-o1[0], -o1[1], AXIS_TILT]
           projection.rotate(state.rotate)
           elapsed = d3.now()
         }
@@ -372,7 +374,7 @@ function update(canvas, layers, stats, flows, state) {
     let loop = d3.interval( (epoch_step) => {
       if(state.autorotate) {
         let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)
-        state.rotate = [-o1[0] + (step * 0.01) % 360, -o1[1]]
+        state.rotate = [-o1[0] + (step * 0.01) % 360, -o1[1], AXIS_TILT]
       }
       projection.rotate(state.rotate)
         .scale(state.scale * Math.min(width, height) / 2)

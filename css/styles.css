@@ -21,6 +21,11 @@ body {
   position: relative;
   width: 330px;
   z-index: 2;
+  pointer-events: none; /* allow user to drag globe through section margins */
+}
+
+#narrative section * {
+  pointer-events: all;
 }
 
 #narrative header {
@@ -39,6 +44,7 @@ body {
   padding: 15px;
   background: white;
   border: 1px solid lightgray;
+  pointer-events: none; /* allow user to drag globe through section margins */
 }
 
 #narrative a[title],
