@@ -1,5 +1,11 @@
 # TODO
 
+- [ ] Refactor sizing for canvas etc
+- [ ] Interactive: choose region and technology, get error bars
+- [ ] DV hook for error bars
+- [ ] Click on a feature (region / flow link)
+- [ ] Revise DV metadata message fields
+
 - [x] Animation needs to redraw entire canvas on each cycle
 - [x] Natural Earth boundaries jagged
 
@@ -21,4 +27,3 @@
 - [ ] Refactor for clarity (one transition?)
 
 - [ ] Choropleth & flow map labeling/units
-- [ ] Click on a feature (region / flow link)

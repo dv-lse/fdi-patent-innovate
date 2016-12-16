@@ -1,16 +1,16 @@
 import * as d3 from 'd3'
 import { queue } from 'd3-queue'
 import { feature, mesh } from 'topojson-client'
-import debounce from 'debounce'
 import markdown from 'markdown-it'
 
 import front_matter from './js/md/front_matter'
 import section from './js/md/section'
-import visualisation from './js/md/visualisation'
+import message from './js/md/message'
 
+import scroller from './js/scroller'
 import * as globe from './js/globe'
 import tooltip from './js/tooltip'
-import { enforce_rhr } from './js/winding'
+// import { enforce_rhr } from './js/util/winding'
 
 
 let md = markdown({
@@ -19,12 +19,11 @@ let md = markdown({
     typographer: true })
   .use(front_matter)
   .use(section)
-  .use(visualisation)
+  .use(message)
 
 //
 // load data & render
 //
-
 
 queue()
   .defer(d3.text, 'data/narrative.md')
@@ -34,7 +33,8 @@ queue()
     ['source_region_id_g', 'source_country_id_g', 'source_lat_def', 'source_long_def',
      /*'destination_region_id_g', */'destination_country_id_g', 'destination_lat_def', 'destination_long_def',
      'investment_mm', 'jobs', 'rank']))
-  .await( (err, narrative, world, rawstats, rawflows) => {
+  .defer(d3.csv, 'data/results.csv')
+  .await( (err, narrative, world, rawstats, rawflows, results) => {
     if (err) return console.error(err)
 
     // data post-processing
@@ -64,98 +64,37 @@ queue()
     d3.select('#narrative')
       .html(md.render(narrative))
 
-    let sectionPositions = []
-    d3.selectAll('section')
-      .each(function(d,i) {
-        var triggerPos = this.getBoundingClientRect().bottom
-        sectionPositions.push(triggerPos)
-      })
-
-    let nav = d3.select('#nav')
-      .append('svg')
-        .attr('width', 20)
-        .attr('height', sectionPositions.length * 20)
-      .selectAll('.dot')
-      .data(sectionPositions)
-      .enter().append('circle')
-        .attr('class', 'dot')
-        .attr('r', 5)
-        .attr('cx', 10)
-        .attr('cy', (d,i) => 10 + i * 20)
-        .on('click', (d,i) => {
-          d3.transition()
-            .duration(750)
-            .tween('scroll', () => {
-              let target = sectionPositions[i-1] || 0
-              let interp = d3.interpolateNumber(window.pageYOffset || 0, target)
-              return (t) => window.scroll(0, interp(t))
-            })
-          })
-
-    makeactive(0)
-
-    // prepare links
-
     d3.selectAll('#narrative a')
       .attr('target', '_blank')
 
     d3.selectAll('#narrative a[title]')
       .call(tooltip)
 
-    // install event handlers
-    window.onscroll = debounce(scrolled, 100)
+    d3.selectAll('section')
+      .call(scroller, function() {
+        let msg = ['visualisation', null, null]
 
-    function offset(elem) {
-      return Math.abs(elem.getBoundingClientRect().top)
-    }
+        if(this) { msg = JSON.parse(this.text) }
+        update(...msg)
+      })
 
-    function visualise(state) {
-      console.log("Visualising: " + JSON.stringify(state))
-      let viz = d3.select('#viz')
-      if(state) {
-        viz.transition()
-          .duration(500)
-          .style('opacity', 1)
-          .call(globe.update, layers, stats, flows, state)
-      } else {
-        viz.transition()
-          .duration(500)
-          .style('opacity', 0.4)
+    // global event handlers
+
+    function update(action, target, payload) {
+      switch(action) {
+        case 'visualisation': visualise(target, payload); break;
+        default: throw 'Unknown message action: ' + action
       }
     }
 
-    let cur_index = null
-    function makeactive(sectionIndex) {
-      if(sectionIndex === cur_index) return
-
-      let sections = d3.selectAll('section')
-        .classed('active', (d,i) => i === sectionIndex)
+    function visualise(target, state) {
+      let viz = d3.select('#globe')
         .transition()
         .duration(500)
-          .style('opacity', (d,i) => i === sectionIndex ? .95 : 0.1)
-
-      nav.classed('active', (d,i) => i === sectionIndex)
-
-      let state = payload()
-      visualise(state)
-
-      cur_index = sectionIndex
-    }
-
-    function payload() {
-      let payload = null
-      let viz = d3.selectAll('section.active script')
-        .each(function() {
-          payload = payload || JSON.parse(this.text)
-        })
-      return payload
-    }
-
-    function scrolled(ev) {
-      var pos = window.pageYOffset + 150
-      var sectionIndex = d3.bisect(sectionPositions, pos)
-      sectionIndex = Math.max(0, Math.min(sectionIndex, sectionPositions.length-1))
-      makeactive(sectionIndex)
+        .style('opacity', state ? 1 : 0.4)
+      if(state) {
+        viz.call(globe.update, layers, stats, flows, state)
+      }
     }
   })
 

@@ -1,15 +1,23 @@
 import yaml from 'js-yaml'
 
-function visualisation(md) {
-  md.renderer.rules.visualisation = (tokens, idx, options, env) => {
+//
+// Support for embedding a YAML (=JSON) message inside markdown content
+//
+// Clients can
+//
+
+function message(md) {
+  md.renderer.rules.message = (tokens, idx, options, env) => {
     let payload = tokens[idx].content
-    return '<div class="visualisation">' +
-           '<script type="application/json">' +
-           JSON.stringify(payload) +
-           '</script></div>'
+    let info = tokens[idx].info || []
+    let msg = info.concat([payload])
+    let classes = ['message'].concat(info).join(' ')
+    return '<script class="' + classes + '" type="application/json">' +
+           JSON.stringify(msg) +
+           '</script>'
   }
 
-  md.block.ruler.before('fence', 'visualisation', (state, startLine, endLine, silent) => {
+  md.block.ruler.before('fence', 'message', (state, startLine, endLine, silent) => {
     let marker, mem, len, markup, params, nextLine, token, content, message
 
     let pos = state.bMarks[startLine] + state.tShift[startLine]
@@ -27,7 +35,7 @@ function visualisation(md) {
     if (len < 3) { return false }
 
     markup = state.src.slice(mem, pos)
-    params = state.src.slice(pos, max)
+    params = state.src.slice(pos, max).trim()
 
     if (silent) { return true }
 
@@ -57,8 +65,8 @@ function visualisation(md) {
       message       = ex.message + '\n' + content
     }
 
-    token         = state.push('visualisation', 'script', 0)
-    token.info    = params
+    token         = state.push('message', 'script', 0)
+    token.info    = params.split(' ')
     token.content = message
     token.markup  = markup
     token.map     = [ startLine, state.line ]
@@ -67,4 +75,4 @@ function visualisation(md) {
   })
 }
 
-export default visualisation
+export default message

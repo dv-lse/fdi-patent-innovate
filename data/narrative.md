@@ -46,9 +46,9 @@ Large, internationalised firms are investing massive amounts of money abroad: a 
 
 #***Industrialised economies***
 
-Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions). 
+Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions).
 
-#***United States***
+# ***United States***
 
 But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
 

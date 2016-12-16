@@ -83,7 +83,7 @@ $(TMP)/$(NE)_geo.json: $(TMP)/$(NE)/$(NE).shp
 # can be exapanded to enforce the right hand rule for winding... however it appears later simplification produces
 # winding artefacts anyway
 
-#   ndjson-filter -r w=./scripts/winding '(w.enforce_rhr(d), d.id < 1550)' < $< > $@
+#   ndjson-filter -r w=./js/util/winding '(w.enforce_rhr(d), d.id < 1550)' < $< > $@
 
 $(TMP)/regions_geo.json: $(TMP)/Shapefile2_geo.json
 	$(BIN)/ndjson-filter '(d.id < 1550)' < $< > $@

@@ -103,7 +103,7 @@ body {
   user-select: none;
 }
 
-#viz {
+#globe {
   position: fixed;
   left: 0px;
   top: 75px;
