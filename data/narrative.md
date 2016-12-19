@@ -238,7 +238,7 @@ Patent counts in the regions that receive an intervention does indeed grow more 
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
 
-On the globe, you can explore the impacts of FDIs by technology and continent.
+On the graph, you can explore the impacts of FDIs by technology and continent.
 
 # References cited
 

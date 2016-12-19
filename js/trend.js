@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-const margin = { top: 15, right: 40, bottom: 40, left: 15 }
+const margin = { top: 15, right: 40, bottom: 40, left: 100 }
 
 function validate(val, results) {
   let default_state = {
@@ -33,8 +33,6 @@ function update(svg, results, state) {
   let height = svg.attr('height') - margin.top - margin.bottom
 
   let duration = 5000
-  let clock_radius = 15
-  let clock_location = [ width - clock_radius * 5, height - clock_radius * 3 ]
 
   let years = d3.range(-9, 10)
   let record = results.filter( (d) => d.cat === state.category && d.region === state.region )[0]
@@ -48,6 +46,7 @@ function update(svg, results, state) {
       low: record['err' + key + '_down']
     }
   })
+  let baseline = data.find( (d) => d.year === years[0] )
 
   let max = d3.max(data, (d) => d.high)
   let min = d3.min(data, (d) => d.low)
@@ -99,12 +98,39 @@ function update(svg, results, state) {
     .attr('d', area(data))
     .attr('fill', 'lightblue')
 
+  svg.append('g')
+     .selectAll('text')
+     .data(['high', 'value', 'low'])
+    .enter().append('text')
+    .attr('x', x(years[0]))
+    .attr('dx', -5)
+    .attr('y', (c) => y(baseline[c]))
+    .attr('dy', '.3em')
+    .attr('text-anchor', 'end')
+    .attr('font-size', 8)
+    .text( (c) => {
+      switch(c) {
+        case 'high': return 'Highest Test Region'
+        case 'value': return 'Baseline (Control Regions)'
+        case 'low': return 'Lowest Test Region'
+      }
+    })
+
+  // intervention marker
   svg.append('path')
     .attr('d', 'M' + x(0) + ' 0V' + height)
     .attr('stroke', 'red')
     .attr('stroke-width', 1)
     .attr('stroke-dasharray', '5 2')
 
+  // baseline
+  svg.append('path')
+    .attr('d', 'M0 ' + y(0) + 'H' + width)
+    .attr('stroke', 'black')
+    .attr('stroke-width', 1)
+    .attr('stroke-dasharray', '5 2')
+
+  // median difference line
   svg.append('path')
     .attr('d', line(data))
     .attr('stroke-width', 1.5)
@@ -119,7 +145,6 @@ function update(svg, results, state) {
     .attr('stroke', 'blue')
 
 
-
   // axes
 
   svg.append('g')
@@ -127,8 +152,8 @@ function update(svg, results, state) {
     .call(axis_y)
     .append('text')
       .attr('text-anchor', 'start')
-      .attr('x', -height)
-      .attr('dx', '5em')
+      .attr('x', -y(0))
+      .attr('dx', 5)
       .attr('y', 6)
       .attr('dy', '-1em')
       .attr('transform', 'rotate(-90)')
@@ -138,35 +163,13 @@ function update(svg, results, state) {
     svg.append('g')
       .attr('transform', 'translate(0,' + height + ')')
       .call(axis_x)
-
-    // clockface
-
-    let r = d3.scaleLinear()
-      .range([-150, 150])
-      .domain(d3.extent(years))
-
-    let clock = svg.append('g')
-      .attr('transform', 'translate(' + clock_location + ')')
-    clock.append('circle')
-      .attr('r', clock_radius)
-      .attr('fill', 'none')
-      .attr('stroke', 'gray')
-      .attr('stroke-width', 2)
-    clock.append('path')
-      .attr('d', 'M0 0V' + -clock_radius)
-      .attr('stroke', 'black')
-
-    let clock_labels = svg.append('g')
-      .attr('transform', 'translate(' + clock_location + ')')
-      .attr('font-size', 10)
-      .attr('font-family', 'sans-serif')
-      .attr('text-anchor', 'middle')
-
-    clock_labels.append('text')
-      .attr('dy', -clock_radius - 5)
-      .text('0')
-    clock_labels.append('text')
-      .attr('dy', clock_radius + 15)
+      .append('text')
+        .attr('text-anchor', 'start')
+        .attr('x', x(0))
+        .attr('dx', 5)
+        .attr('y', 6)
+        .attr('dy', '-1em')
+        .attr('fill', 'black')
       .text('years from intervention')
 
   // animation
@@ -180,14 +183,6 @@ function update(svg, results, state) {
       .attr('stroke-dashoffset', 0)
     .on('end', function() {
       trendPath.attr('marker-end', 'url(#triangle)')
-    })
-
-  clock.transition()
-    .ease(d3.easeLinear)
-    .duration(duration)
-    .attrTween('transform', function() {
-      let i = d3.interpolate(-10, 10)
-      return (t) => 'translate(' + clock_location + ')rotate(' + r(i(t)) + ')'
     })
 }
 
