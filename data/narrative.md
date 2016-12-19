@@ -7,18 +7,35 @@ date: November 30, 2016
 
 # Where do multinational firms invest?
 
+::: visualisation globe
+  rotate: [0, -20]
+  scale: .7
+  autorotate: true
+:::
+
 How do they make these investment decisions?
 
 *AD 13/12: general comment by Riccardo Crescenzi, globe is great, however it appeared small on his screen (using Firefox on PC)*
 
-::: visualisation globe
-  rotate: [78.3522, -48.8566]
-  scale: 2
-  flows: Retail, in textiles
-  flow-weight: jobs
-:::
+CY 16/12: OK, thanks for letting me know.  I will test on Windows Firefox in late December.
 
-# **How big?** The importance of Foreign Direct Investments
+
+# DV INFO: Markdown narrative
+
+This narrative is written in [Markdown](https://daringfireball.net/projects/markdown/).
+
+The link reference above could also be written with a superscript, like this: [42].
+
+When you use a superscript, a popup citation will appear before navigating to the link.
+
+Examples of the DV control markup is in the next few sections.
+
+[42]: https://daringfireball.net/projects/markdown/ "Official Markdown Documentation"
+
+(CY 16/12)
+
+
+# DV INFO: Choropleths
 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
@@ -30,27 +47,69 @@ How do they make these investment decisions?
   autorotate: false
 :::
 
-**NB. Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.**
+Users can rotate the globe on any slide by clicking and dragging.  To zoom, use the (+) and (-) buttons.
 
-**NB. formats: use a format specifier [1]**
+Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.
 
-**NB. Two formats for links are shown above.  The first will show up inline in text, and the second will show a popup with the link title**
+Label formats: use a format specifier [here](https://github.com/d3/d3-format/blob/master/README.md)
 
-[1]: https://github.com/d3/d3-format/blob/master/README.md "D3 formatting documentation"
+'autorotate': set to true or false to control whether the globe spins.
+
+(CY 16/12)
+
+
+# DV INFO: Flow maps
+
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 2
+  flows: Retail, in textiles
+  flow-weight: investment_mm
+:::
+
+Flow maps show the relative weight of links via opacity.
+
+*AD 13/12: To be discussed with Christopher: should we show flows from World, then Industrialised economies, then United States? Or would that be too much? I think it would allow us to have shorter slides.*
+
+CY 16/12: Yes, this would work fine.  See the next slide for a model.
+
+
+# DV INFO: Flow maps (2)
+
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 2
+  flows: Retail, in textiles|Research & Development, in ICT
+  flow-weight: investment_mm
+:::
+
+You can show links from several groups using a vertical bar, like this:
+```
+flows: Retail, in textiles|Research & Development, in ICT
+```
+
+
+
+# **How big?** The importance of Foreign Direct Investments
 
 # ***World***
 
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
-*AD 13/12: To be discussed with Christopher: should we show flows from World, then Industrialised economies, then United States? Or would that be too much? I think it would allow us to have shorter slides.
-
-#***Industrialised economies***
+# ***Industrialised economies***
 
 Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions).
 
 # ***United States***
 
 But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
+
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 2
+  flows: Retail, in textiles
+  flow-weight: jobs
+:::
 
 
 *AD 13/12: Need to discuss with Christopher how to show the flows:
@@ -170,11 +229,9 @@ You can click on a region and see to which other it is matched [the visualisatio
 
 # **Results:** The impact of foreign intervention on city-level innovation
 
-::: visualisation globe
-  rotate: [2.3522, -48.8566]
-  scale: 7
-  region: all
-  technology: all
+::: visualisation trend
+  category: All technologies
+  region: All regions
 :::
 
 Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not. [DV shows the overall difference-indifferences graph, for all regions and technologies]
@@ -184,8 +241,13 @@ Some factors make regions more receptive to foreign firms’ interventions. Fore
 On the globe, you can explore the impacts of FDIs by technology and continent.
 
 # References cited
+
 *Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.*
+
 *Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553*
+
 *Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.*
+
 *United Nations Conference on Trade and Development (UNCTAD), 2016*
+
 *World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)*

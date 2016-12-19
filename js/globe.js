@@ -57,18 +57,23 @@ function validate(val, flows, stats) {
   }
 
   if(state.rotate.length < 3) {
-    state.rotate[2] = 11.5 // default tilt
+    state.rotate[2] = AXIS_TILT
   }
 
   if(!(state.scale &&
        typeof state.scale === 'number'))
     throw "Globe state: cannot read scale from " + JSON.stringify(state)
 
-  if(state.flows && !(flows[state.flows]))
-    throw "Globe state: cannot identify flow diagram " + state.flows
-
-  if(state['flow-weight'] && !(state['flow-weight'] in flows[state.flows][0]))
-    throw "Globe state: cannot read flow column " + state['flow-weight']
+  if(state.flows) {
+    let groups = state.flows.split('|')
+    let col = state['flow-weight']
+    groups.forEach( (g) => {
+      if(!flows[g])
+        throw "Globe state: cannot identify flow diagram for group " + g
+      if(col && !flows[g][0][col])
+        throw "Globe state: cannot read flow column " + col + " from group " + g
+    })
+  }
 
   // TODO.  better way to check available stat columns
   if(state.choropleth && !(state.choropleth in stats[1])) {
@@ -130,19 +135,20 @@ function update(canvas, layers, stats, flows, state) {
       .domain(values)
   }
 
-  if(state['flow-weight']) {
-    let values = flows[state.flows].map( (d) => project(d, state['flow-weight']))
-    values.filter( (d) => d !== null )
-    opacity.domain(d3.extent(values))
-  }
-
   if(state.colors) {
     let vals = parseColors(state.colors)
     color.range(vals)
   }
 
   if(state.flows) {
-    arcs = flows[state.flows]
+    let groups = state.flows.split('|')
+    groups.forEach( (g) => arcs = arcs.concat(flows[g]) )
+
+    if(state['flow-weight']) {
+      let values = arcs.map( (d) => project(d, state['flow-weight']))
+      values.filter( (d) => d !== null )
+      opacity.domain(d3.extent(values))
+    }
   }
 
   let context = elem.getContext('2d')
@@ -278,69 +284,54 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   function drawFlows(t) {
-    // each arc in flow
-      let ranked = d3.range(0,arcs.length)
-        .sort( (a,b) => d3.descending( arcs[a].rank, arcs[b].rank ))
-
-      let ranked_arcs = ranked.map( (i,k) => {
-        let d = arcs[i]
+    let data = arcs.map( (d) => {
         return { from: [d.source_long_def, d.source_lat_def],
                    to: [d.destination_long_def, d.destination_lat_def],
                 value: project(d, state['flow-weight']) }
       })
 
-      let weight = state.scale * 2.5  /* alter line width here if necessary */
+    let weight = state.scale * 2.5  /* alter line width here if necessary */
 
-      // arcs
+    // arcs
 
-      context.save()
-      context.lineCap = 'round'
-      context.lineWidth = weight
-      ranked_arcs.forEach( (d) => {
-        let interp = d3.geoInterpolate(d.from, d.to)
-        let line = {type: 'LineString', coordinates: [ d.from, interp(t) ]}
-        let faded_color = d3.color('coral')
-        faded_color.opacity = opacity(d.value)
+    context.save()
+    context.lineCap = 'round'
+    context.lineWidth = weight
+    data.forEach( (d) => {
+      let interp = d3.geoInterpolate(d.from, d.to)
+      let line = {type: 'LineString', coordinates: [ d.from, interp(t) ]}
+      let faded_color = d3.color('coral')
+      faded_color.opacity = opacity(d.value)
 
-        // must use GeoJSON so that great arcs are curved according to projection
-        context.beginPath()
-        context.strokeStyle = faded_color + ''
-        path(line)
-        context.stroke()
-      })
-      context.restore()
-      // no support for line endings in GeoJSON so do this in Canvas
-      // opacity fade at horizon
-      let horizon = d3.scaleLinear()
-        .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
-        .range([1,0])
-        .clamp(true) // necessary since most calls are outside of domain
-      ranked_arcs.forEach( (d, i) => {
-        // NB alternative is to use geoPath.circle()...
-        let rot = projection.rotate()
-        let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
-        let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
+      // must use GeoJSON so that great arcs are curved according to projection
+      context.beginPath()
+      context.strokeStyle = faded_color + ''
+      path(line)
+      context.stroke()
+    })
+    context.restore()
+    // no support for line endings in GeoJSON so do this in Canvas
+    // opacity fade at horizon
+    let horizon = d3.scaleLinear()
+      .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
+      .range([1,0])
+      .clamp(true) // necessary since most calls are outside of domain
+    data.forEach( (d, i) => {
+      // NB alternative is to use geoPath.circle()...
+      let rot = projection.rotate()
+      let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
+      let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
 
-        context.globalAlpha = horizon(from_distance)
-        circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
+      context.globalAlpha = horizon(from_distance)
+      circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
 
-        if(t > .95) {
-          context.globalAlpha = horizon(to_distance)
-          circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
-        }
+      if(t > .95) {
+        context.globalAlpha = horizon(to_distance)
+        circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
+      }
 
-        context.globalAlpha = 1
-      })
-
-      // clip any projecting circles to the globe's edge
-      /*
-      context.save()
-      context.globalCompositeOperation = 'destination-in'
-      path({type: 'Sphere'})
-      context.fill()
-      context.globalCompositeOperation = 'source-over'  // TODO.  not clear why save/restore doesn't affect this
-      context.restore()
-      */
+      context.globalAlpha = 1
+    })
   }
 
   function interaction() {
@@ -370,7 +361,6 @@ function update(canvas, layers, stats, flows, state) {
     // See http://mbostock.github.io/d3/talk/20111018/azimuthal.html
     d3.select(elem)
       .call(dragged)
-    console.log('installed interaction')
     let loop = d3.interval( (epoch_step) => {
       if(state.autorotate) {
         let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)

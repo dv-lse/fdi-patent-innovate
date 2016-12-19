@@ -9,6 +9,8 @@ import message from './js/md/message'
 
 import scroller from './js/scroller'
 import * as globe from './js/globe'
+import * as trend from './js/trend'
+
 import tooltip from './js/tooltip'
 // import { enforce_rhr } from './js/util/winding'
 
@@ -30,11 +32,11 @@ queue()
   .defer(d3.json, 'data/topography.json')
   .defer(d3.csv, 'data/regions_countries.csv', lift(Number))
   .defer(d3.csv, 'data/flows.csv', lift(Number,
-    ['source_region_id_g', 'source_country_id_g', 'source_lat_def', 'source_long_def',
-     /*'destination_region_id_g', */'destination_country_id_g', 'destination_lat_def', 'destination_long_def',
+    ['source_lat_def', 'source_long_def',
+     'destination_lat_def', 'destination_long_def',
      'investment_mm', 'jobs', 'rank']))
   .defer(d3.csv, 'data/results.csv')
-  .await( (err, narrative, world, rawstats, rawflows, results) => {
+  .await( (err, narrative, world, rawstats, rawflows, rawresults) => {
     if (err) return console.error(err)
 
     // data post-processing
@@ -59,16 +61,25 @@ queue()
       .key( (d) => d.group )
       .object( rawflows )
 
+    let results_datacols = rawresults.columns.filter( (c) => {
+      return c !== 'region' && c !== 'cat'
+    })
+    let results = rawresults.map(lift(Number, results_datacols))
+
     // render narrative html
 
     d3.select('#narrative')
       .html(md.render(narrative))
+
+    // upgrade link tooltips
 
     d3.selectAll('#narrative a')
       .attr('target', '_blank')
 
     d3.selectAll('#narrative a[title]')
       .call(tooltip)
+
+    // turn sections into a scroller narrative
 
     d3.selectAll('section')
       .call(scroller, function() {
@@ -78,7 +89,7 @@ queue()
         update(...msg)
       })
 
-    // global event handlers
+    // global message handlers
 
     function update(action, target, payload) {
       switch(action) {
@@ -88,12 +99,20 @@ queue()
     }
 
     function visualise(target, state) {
-      let viz = d3.select('#globe')
-        .transition()
+      let trans = d3.transition()
         .duration(500)
-        .style('opacity', state ? 1 : 0.4)
-      if(state) {
-        viz.call(globe.update, layers, stats, flows, state)
+
+      trans.selectAll('.layer')
+        .style('opacity', function() {
+          let id = d3.select(this).attr('id')
+          return id === target ? 1 : 0
+        })
+
+      switch(target) {
+        case 'globe': d3.select('#globe').call(globe.update, layers, stats, flows, state); break;
+        case 'trend': d3.select('#trend').call(trend.update, results, state); break;
+        case null: break;
+        default: throw 'Unkown visualisation ' + target
       }
     }
   })
