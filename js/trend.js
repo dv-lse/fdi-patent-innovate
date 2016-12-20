@@ -1,6 +1,7 @@
 import * as d3 from 'd3'
+import { least_squares } from './util/regression'
 
-const margin = { top: 15, right: 40, bottom: 40, left: 100 }
+const margin = { top: 15, right: 40, bottom: 40, left: 15 }
 
 function validate(val, results) {
   let default_state = {
@@ -32,11 +33,20 @@ function update(svg, results, state) {
   let width = svg.attr('width') - margin.left - margin.right
   let height = svg.attr('height') - margin.top - margin.bottom
 
-  let duration = 5000
+  // determine available test years
 
-  let years = d3.range(-9, 10)
+  let columns = d3.keys(results[0])
+  let years = columns.map( (k) => {
+      let m = k.match(/t(_?\d+)/)
+      if(!m) return null
+      return +(m[1].replace('_', '-'))
+    })
+    .filter( (d) => d )
+    .sort(d3.ascending)
+
+  // reformat data frame by test year
+
   let record = results.filter( (d) => d.cat === state.category && d.region === state.region )[0]
-
   let data = years.map( (i) => {
     let key = ('' + i).replace('-', '_')
     return {
@@ -46,14 +56,25 @@ function update(svg, results, state) {
       low: record['err' + key + '_down']
     }
   })
-  let baseline = data.find( (d) => d.year === years[0] )
+
+  // calculate the pre- and post-intervention trend lines
+
+  let lr = least_squares()
+    .x( (d) => d.year)
+    .y( (d) => d.value)
+  let left = lr(data.filter( (d) => d.year <= 0 ))
+  let right = lr(data.filter( (d) => d.year >= 0 ))
+
+  // some basic stats
 
   let max = d3.max(data, (d) => d.high)
   let min = d3.min(data, (d) => d.low)
 
+  // prepare for visualisation
+
   let x = d3.scaleLinear()
     .range([0,width])
-    .domain(d3.extent(data, (d) => d.year))
+    .domain(d3.extent(years))
 
   let y = d3.scaleLinear()
     .range([height, 0])
@@ -64,6 +85,7 @@ function update(svg, results, state) {
 
   let axis_x = d3.axisBottom()
     .scale(x)
+    .tickFormat( (d) => d===0 ? 'year 0' : d)
 
   let area = d3.area()
     .x( (d) => x(d.year) )
@@ -76,74 +98,82 @@ function update(svg, results, state) {
     .y( (d) => y(d.value) )
     .curve(d3.curveCatmullRom)
 
-  let trendLine = d3.line()
-    .x( (d) => x(d.year) )
-    .y( (d) => y(d.value) )
+  let trendArrow = (fn) => d3.line()
+    .x( (year) => x(year) )
+    .y( (year) => y(fn(year)) )
     .curve(d3.curveLinear)
 
-  svg.html('<marker id="triangle"' +
-            ' viewBox="0 0 10 10" refX="0" refY="5"' +
-            ' markerUnits="strokeWidth"' +
-            ' markerWidth="8" markerHeight="6"' +
-            ' orient="auto">' +
-            '<path d="M 0 0 L 10 5 L 0 10 z" fill="blue"/>' +
-            '</marker>')
+  // emit SVG header material and legend
+
+  svg.html(triangle_marker('triangle-black', 'black')
+         + triangle_marker('triangle-blue', 'blue'))
 
   svg = svg.append('g')
       .attr('transform', 'translate(' + [margin.left, margin.top] + ')')
 
-  // error bars & baseline
+  svg.append('text')
+     .attr('font-size', '12pt')
+     .selectAll('tspan')
+     .data(['Patenting rates:', 'regions with', 'economic intervention'])
+    .enter().append('tspan')
+      .attr('x', 0)
+      .attr('y', height / 3)
+      .attr('dy', (d,i) => (i * 1.2) + 'em')
+      .text((d) => d)
+
+  // error bars
 
   svg.append('path')
     .attr('d', area(data))
     .attr('fill', 'lightblue')
 
-  svg.append('g')
-     .selectAll('text')
-     .data(['high', 'value', 'low'])
-    .enter().append('text')
-    .attr('x', x(years[0]))
-    .attr('dx', -5)
-    .attr('y', (c) => y(baseline[c]))
-    .attr('dy', '.3em')
-    .attr('text-anchor', 'end')
-    .attr('font-size', 8)
-    .text( (c) => {
-      switch(c) {
-        case 'high': return 'Highest Test Region'
-        case 'value': return 'Baseline (Control Regions)'
-        case 'low': return 'Lowest Test Region'
-      }
-    })
-
   // intervention marker
   svg.append('path')
     .attr('d', 'M' + x(0) + ' 0V' + height)
     .attr('stroke', 'red')
-    .attr('stroke-width', 1)
+    .attr('stroke-width', 1.5)
     .attr('stroke-dasharray', '5 2')
 
-  // baseline
+  // baseline & label
   svg.append('path')
-    .attr('d', 'M0 ' + y(0) + 'H' + width)
+    .attr('d', 'M0 ' + y(0) + 'H' + (width - 10))
     .attr('stroke', 'black')
-    .attr('stroke-width', 1)
-    .attr('stroke-dasharray', '5 2')
+    .attr('stroke-width', 1.5)
+    .attr('marker-end', 'url(#triangle-black)')
+
+  svg.append('text')
+    .attr('text-anchor', 'start')
+    .attr('fill', 'black')
+    .attr('font-size', 10)
+    .attr('x', x(2))
+    .attr('y', y(0))
+    .attr('dy', '-.3em')
+    .text('regions without intervention')
 
   // median difference line
   svg.append('path')
     .attr('d', line(data))
-    .attr('stroke-width', 1.5)
+    .attr('stroke-width', .33)
     .attr('fill', 'none')
     .attr('stroke', 'white')
 
-  let trendData = data.filter( (d) => d.year == -9 || d.year == 0 || d.year == 9)
-  let trendPath = svg.append('path')
-    .attr('d', trendLine(trendData))
+  // trend arrows
+
+  let left_arrow_years = d3.range(years[1], 0)
+  svg.append('path')
+    .attr('d', trendArrow(left)(left_arrow_years))
     .attr('stroke-width', 1.5)
     .attr('fill', 'none')
     .attr('stroke', 'blue')
+    .attr('marker-end', 'url(#triangle-blue)')
 
+  let right_arrow_years = d3.range(1, years[years.length-2])
+  svg.append('path')
+    .attr('d', trendArrow(right)(right_arrow_years))
+    .attr('stroke-width', 1.5)
+    .attr('fill', 'none')
+    .attr('stroke', 'blue')
+    .attr('marker-end', 'url(#triangle-blue)')
 
   // axes
 
@@ -153,37 +183,27 @@ function update(svg, results, state) {
     .append('text')
       .attr('text-anchor', 'start')
       .attr('x', -y(0))
-      .attr('dx', 5)
+      .attr('dx', 50)
       .attr('y', 6)
       .attr('dy', '-1em')
       .attr('transform', 'rotate(-90)')
       .attr('fill', 'black')
-      .text('difference in patenting, %')
+      .text('difference from baseline, %')
 
     svg.append('g')
       .attr('transform', 'translate(0,' + height + ')')
       .call(axis_x)
-      .append('text')
-        .attr('text-anchor', 'start')
-        .attr('x', x(0))
-        .attr('dx', 5)
-        .attr('y', 6)
-        .attr('dy', '-1em')
-        .attr('fill', 'black')
-      .text('years from intervention')
+}
 
-  // animation
-
-  let total_length = trendPath.node().getTotalLength()
-  trendPath.attr('stroke-dasharray', total_length + ' ' + total_length)
-    .attr('stroke-dashoffset', total_length)
-    .transition()
-      .ease(d3.easeLinear)
-      .duration(duration)
-      .attr('stroke-dashoffset', 0)
-    .on('end', function() {
-      trendPath.attr('marker-end', 'url(#triangle)')
-    })
+function triangle_marker(id, color) {
+  color = color || 'black'
+  return '<marker id="' + id + '"' +
+            ' viewBox="0 0 10 10" refX="0" refY="5"' +
+            ' markerUnits="strokeWidth"' +
+            ' markerWidth="8" markerHeight="6"' +
+            ' orient="auto">' +
+            '<path d="M 0 0 L 10 5 L 0 10 z" fill="' + color + '"/>' +
+            '</marker>'
 }
 
 export { validate, update }
