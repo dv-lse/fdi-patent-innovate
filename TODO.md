@@ -2,7 +2,6 @@
 
 - [ ] Refactor sizing for canvas etc
 - [ ] Add LSE logo
-- [ ] On trend graph, move the clock to same location as other axis
 
 - [ ] Interactive: choose region and technology, get error bars
 - [ ] Click on a feature (region / flow link)
@@ -18,7 +17,6 @@
 - [x] Markdown links open in new tab
 
 - [x] Markdown links in a bubble
-- [ ] Detect browser resize
 
 - [x] Move globe with gestures
 - [x] Globe rotates?
@@ -34,3 +32,5 @@
 - [ ] Choropleth & flow map labeling/units
 
 - [ ] Line numbers for markup message validation errors
+
+- [ ] On trend graph, move the clock to same location as other axis  NOT TO DO

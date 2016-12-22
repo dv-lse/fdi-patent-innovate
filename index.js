@@ -2,6 +2,7 @@ import * as d3 from 'd3'
 import { queue } from 'd3-queue'
 import { feature, mesh } from 'topojson-client'
 import markdown from 'markdown-it'
+import debounce from 'debounce'
 
 import front_matter from './js/md/front_matter'
 import section from './js/md/section'
@@ -82,12 +83,45 @@ queue()
     // turn sections into a scroller narrative
 
     d3.selectAll('section')
-      .call(scroller, function() {
-        let msg = ['visualisation', null, null]
+      .call(scroller, dispatch)
 
-        if(this) { msg = JSON.parse(this.text) }
-        update(...msg)
-      })
+    function dispatch() {
+      let msg = ['visualisation', null, null]
+      if(this) { msg = JSON.parse(this.text) }
+      update(...msg)
+    }
+
+    // responsive layout
+
+    window.onresize = debounce(resize, 300)
+
+    resize()
+
+    function resize() {
+      let window_w = window.innerWidth
+      let window_h = window.innerHeight
+
+      let banner_h = d3.select('#narrative header').node().getBoundingClientRect().height
+      let trend_l = d3.select('#trend').node().getBoundingClientRect().left
+
+      let plot_h = window_h - banner_h
+      let plot_w = window_w - trend_l
+
+      d3.select('#globe')
+        .attr('width', window_w)
+        .attr('height', plot_h)
+
+      d3.select('#trend')
+        .attr('width', plot_w)
+        .attr('height', plot_h)
+
+      // TODO.  more elegant way to find current payload?
+      d3.select('#narrative section.active script.message')
+        .each(function() {
+          let elem = d3.select(this).node()
+          dispatch.apply(elem)
+        })
+    }
 
     // global message handlers
 

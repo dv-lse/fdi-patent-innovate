@@ -9,6 +9,8 @@ const LEGEND_MARGIN = 20
 const LEGEND_HEIGHT = 15
 const LEGEND_PADDING = [15, 5, 15, 5]
 
+const LEFT_PADDING = 360
+
 const AXIS_TILT = 11.5
 
 let projection = geoOrthographic()
@@ -152,7 +154,7 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   let context = elem.getContext('2d')
-  projection.translate([ 330 + (width - 330) / 2, height / 2])
+  projection.translate([ LEFT_PADDING + (width - LEFT_PADDING) / 2, height / 2])
 
   path.context(context)
 
@@ -247,7 +249,7 @@ function update(canvas, layers, stats, flows, state) {
     var fmt = state.format ? d3.format(state.format) : d3.format('2s')
 
     var x = d3.scaleBand()
-      .rangeRound([width * .5, width - LEGEND_MARGIN])
+      .rangeRound([LEFT_PADDING + (width - LEFT_PADDING) / 2, width - LEGEND_MARGIN])
       .domain(color.range())
 
     context.fillStyle = 'rgba(255,255,255,.85)'
@@ -323,11 +325,11 @@ function update(canvas, layers, stats, flows, state) {
       let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
 
       context.globalAlpha = horizon(from_distance)
-      circle(context, projection(d.from), weight * 1.5, 'white', 'coral')
+      circle(context, projection(d.from), weight, 'white', 'coral')
 
       if(t > .95) {
         context.globalAlpha = horizon(to_distance)
-        circle(context, projection(d.to), weight * 1.5, 'coral', 'coral')
+        circle(context, projection(d.to), weight, 'coral', 'coral')
       }
 
       context.globalAlpha = 1

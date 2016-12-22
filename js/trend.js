@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 import { least_squares } from './util/regression'
 
-const margin = { top: 15, right: 40, bottom: 40, left: 15 }
+const margin = { top: 40, right: 60, bottom: 60, left: 0 }
 
 function validate(val, results) {
   let default_state = {
