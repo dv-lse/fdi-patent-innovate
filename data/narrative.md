@@ -40,7 +40,7 @@ Examples of the DV control markup is in the next few sections.
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
-  choropleth: GDPpc_rIp
+  choropleth: GDPpcRegion_r_ip
   label: Regional Gross Domestic Product Per Capita, in USD
   format: '.2s'
   colors: schemeBlues-7
@@ -63,7 +63,7 @@ Label formats: use a format specifier [here](https://github.com/d3/d3-format/blo
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 2
-  flows: Retail, in textiles
+  flows: Advanced economies
   flow-weight: investment_mm
 :::
 
@@ -79,13 +79,13 @@ CY 16/12: Yes, this would work fine.  See the next slide for a model.
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 2
-  flows: Retail, in textiles|Research & Development, in ICT
+  flows: Advanced economies|United States
   flow-weight: investment_mm
 :::
 
 You can show links from several groups using a vertical bar, like this:
 ```
-flows: Retail, in textiles|Research & Development, in ICT
+flows: Advanced economies|United States
 ```
 
 
@@ -107,8 +107,8 @@ But the United States is the single largest investing country ($300 billions) [t
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 2
-  flows: Retail, in textiles
-  flow-weight: jobs
+  flows: United States
+  flow-weight: investment_mm
 :::
 
 
@@ -125,7 +125,7 @@ But the United States is the single largest investing country ($300 billions) [t
 ::: visualisation globe
   rotate: [2.3522, -57.8566]
   scale: 7
-  choropleth: educ_rIp
+  choropleth: YearsofEducation_r
   label: Mean years of education
   format: '.1f'
   colors: schemeReds-5
@@ -151,7 +151,7 @@ For innovative activities, firms typically seek 3 types of strategic assets: spe
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 7
-  choropleth: popd_rIp
+  choropleth: LnPopulationdensity_r_ip
   label: Population density (per ...)
   format: '.1f'
   colors: schemePiYG-7
