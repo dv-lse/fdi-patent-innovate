@@ -15,10 +15,6 @@ date: November 30, 2016
 
 How do they make these investment decisions?
 
-*AD 13/12: general comment by Riccardo Crescenzi, globe is great, however it appeared small on his screen (using Firefox on PC)*
-
-CY 16/12: OK, thanks for letting me know.  I will test on Windows Firefox in late December.
-
 
 # DV INFO: Markdown narrative
 
@@ -69,10 +65,6 @@ Label formats: use a format specifier [here](https://github.com/d3/d3-format/blo
 
 Flow maps show the relative weight of links via opacity.
 
-*AD 13/12: To be discussed with Christopher: should we show flows from World, then Industrialised economies, then United States? Or would that be too much? I think it would allow us to have shorter slides.*
-
-CY 16/12: Yes, this would work fine.  See the next slide for a model.
-
 
 # DV INFO: Flow maps (2)
 
@@ -91,10 +83,12 @@ flows: Advanced economies|United States
 
 
 # **How big?** The importance of Foreign Direct Investments
+Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
 # ***World***
+These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
 
-Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers. These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
+[1]: https://daringfireball.net/projects/markdown/ "Official Markdown Documentation"
 
 # ***Industrialised economies***
 
