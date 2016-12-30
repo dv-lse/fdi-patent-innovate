@@ -81,12 +81,16 @@ flows: Advanced economies|United States
 ```
 
 
-
+`
 # **How big?** The importance of Foreign Direct Investments
+`
+#
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
 # ***World***
 These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
+
+The most important investments are shown on the globe.
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
