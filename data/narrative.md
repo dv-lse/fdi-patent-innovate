@@ -88,9 +88,9 @@ Large, internationalised firms are investing massive amounts of money abroad: a 
 # ***World***
 These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
 
-[1]: https://daringfireball.net/projects/markdown/ "UNCTAD 2016"
+[1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
-[2]: https://daringfireball.net/projects/markdown/ "GDP estimates in 2016 IMF World Economic Outlook Database"
+[2]: https://www.imf.org/external/pubs/ft/weo/2016/01/weodata/download.aspx "GDP estimates in 2016, IMF World Economic Outlook Database"
 
 # ***Industrialised economies***
 
