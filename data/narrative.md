@@ -15,8 +15,6 @@ date: November 30, 2016
 
 How do they make these investment decisions?
 
-Test
-
 
 # DV INFO: Markdown narrative
 
@@ -88,10 +86,11 @@ flows: Advanced economies|United States
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
 # ***World***
-These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1], or the equivalent of Italy’s Gross Domestic Product [2].
+These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
 
-[1]: https://daringfireball.net/projects/markdown/ "UNCTAD, 2016"
-[2]: https://daringfireball.net/projects/markdown/ "GDP estimates in 2016: IMF, World Economic Outlook Database"
+[1]: https://daringfireball.net/projects/markdown/ "UNCTAD 2016"
+
+[2]: https://daringfireball.net/projects/markdown/ "GDP estimates in 2016 IMF World Economic Outlook Database"
 
 # ***Industrialised economies***
 
