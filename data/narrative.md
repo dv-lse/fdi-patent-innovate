@@ -247,7 +247,7 @@ On the graph, you can explore the impacts of FDIs by technology and continent.
 *Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553*
 
 *Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.*
-
+ 
 *United Nations Conference on Trade and Development (UNCTAD), 2016*
 
 *World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)*
