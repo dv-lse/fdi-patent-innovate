@@ -91,7 +91,9 @@ There are several other European localities that Nissan could have chosen: Lazio
   autorotate: false
 :::
 
-But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
+But Nissan chose the North East for reasons beyond the obvious characteristics of a region: this region of the UK had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
+
+These were the ***regional strategic assets*** of Sunderland in the mid-1980's
 
 #
 
@@ -115,9 +117,9 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   autorotate: false
 :::
 
-On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China. What made the balance tilt in favour of Karnataka --the Indian state where Bangalore is-- is its unique concentration of tech talents and its institutions.
+On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China in 1985. What made the balance tilt in favour of Karnataka --the Indian state where Bangalore is-- is its unique concentration of tech talents and its local institutions, conducive to innovative activities.
 
-More generally, innovative firms typically seek 3 types of strategic assets when investing abroad: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and respected patent laws for instance.
+Nissan, Texas Instruments and all technologically-advanced firms typically seek 3 types of strategic assets when investing abroad: (i) specialised knowledge that is only present in this area, (ii) innovation-prone economic conditions [5] and (iii) favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and respected patent laws for instance.
 
 [4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
 
@@ -144,9 +146,9 @@ While multinational firms from both rich and emerging countries invest abroad to
   autorotate: false
 :::
 
-First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
+Firstly, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
 
-Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). 
+Secondly, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). 
 
 
 [6]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
@@ -161,7 +163,7 @@ Second, multinational firms from developing countries tend to invest in cities w
 
 In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
 
-Economists have long seen technological change as one of the most powerful driver of economic development and welfare improvement. It is then crucial to know if developing regions gain from the interventions of technologically advanced firms. How does the evidence stack up?
+Economists have long seen technological change as one of the most powerful driver of economic development and welfare improvement. It is then crucial to know if developing regions gain from the interventions of technologically-advanced firms. How does the evidence stack up?
 
 
 #
