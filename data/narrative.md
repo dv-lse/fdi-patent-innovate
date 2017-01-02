@@ -84,9 +84,6 @@ You can show links from several groups using a vertical bar, like this:
 flows: Advanced economies|United States
 ```
 
-# Why do multinational firms invest abroad?
-
-
 #
 
 ::: visualisation globe
@@ -108,7 +105,7 @@ Big, internationalised firms are investing large amounts of money abroad: a text
 
 These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
 
-The most important investments are shown on the globe.
+The most important investments in 2014 are shown on the globe.
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
@@ -124,7 +121,7 @@ The most important investments are shown on the globe.
   flow-weight: investment_mm
 :::
 
-Almost two thirds of these investments came from developed economies, with Europe being the largest investing region ($576 billions).
+Almost two thirds of these investments came from developed economies, with Europe being the largest investing region ($576 billions in outflows of FDIs).
 
 #
 
@@ -143,24 +140,49 @@ But the United States is the single largest investing country ($300 billions) [1
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 1
-  flows: United States
-  flow-weight: investment_mm
 :::
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
-They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France are roughly as rich, populous and educated as the Noth East.
+They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. 
 
 #
-But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part suppliers, it was easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
+
+::: visualisation globe
+  rotate: [-139.626112, -35.462933]
+  scale: 1
+:::
+
+For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the Noth East.
 
 #
-Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. On paper, the Bangalore region looked very similar to nearby Punjab in Pakistan, or to the Zheijiang province in coastal China at that time.
+
+::: visualisation globe
+  rotate: [1.38113, -54.9061]
+  scale: 1
+:::
+
+But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
 
 #
-What made the balance tilt in favour of Karnataka, the Indian state where Bangalore is, is its unique concentration of tech talents and its institutions.
 
-More generally, innovative firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
+::: visualisation globe
+  rotate: [96.752984, -32.910409]
+  scale: 1
+:::
+
+Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. 
+
+#
+
+::: visualisation globe
+  rotate: [-77.614656, -12.934513]
+  scale: 1
+:::
+
+On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China. What made the balance tilt in favour of Karnataka, the Indian state where Bangalore is, is its unique concentration of tech talents and its institutions.
+
+More generally, innovative firms typically seek 3 types of strategic assets when investing abroad: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
 
 [4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
 
@@ -172,12 +194,8 @@ More generally, innovative firms typically seek 3 types of strategic assets: spe
 #
 
 ::: visualisation globe
-  rotate: [2.3522, -48.8566]
-  scale: 7
-  choropleth: LnPopulationdensity_r_ip
-  label: Population density (per ...)
-  format: '.1f'
-  colors: schemePiYG-7
+  rotate: [-77.614656, -12.934513]
+  scale: 1
 :::
 
 While multinational firms from both rich and emerging countries invest abroad to capitalise on regional assets, they do so in different ways.
