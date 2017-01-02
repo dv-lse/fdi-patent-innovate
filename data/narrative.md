@@ -5,14 +5,6 @@ date: January 2, 2017
 ---
 
 
-# Intro
-
-::: visualisation globe
-  rotate: [0, -20]
-  scale: .7
-  autorotate: false
-:::
-
 #
 
 ::: visualisation globe
@@ -106,7 +98,7 @@ But Nissan chose the North East for reasons beyond the obvious characteristics o
 ::: visualisation globe
   rotate: [96.752984, -32.910409]
   scale: 1
-  flows: Texas Instrument
+  flows: Texas Instruments
   flow-weight: investment_mm
   autorotate: false
 :::
@@ -118,7 +110,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 ::: visualisation globe
   rotate: [-77.614656, -12.934513]
   scale: 1
-  flows: Texas Instrument
+  flows: Texas Instruments
   flow-weight: investment_mm
   autorotate: false
 :::
