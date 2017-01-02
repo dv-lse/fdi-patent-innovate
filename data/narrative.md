@@ -82,12 +82,19 @@ flows: Advanced economies|United States
 
 
 #
+
+::: visualisation globe
+  rotate: [2.3522, -48.8566]
+  scale: 1
+  autorotate: false
+:::
+
 Big, internationalised firms are investing large amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
 #
 ::: visualisation globe
-  rotate: [78.3522, -48.8566]
-  scale: 2
+  rotate: [2.3522, -48.8566]
+  scale: 1
   flows: World
   flow-weight: investment_mm
 :::
@@ -103,7 +110,7 @@ The most important investments are shown on the globe.
 #
 
 ::: visualisation globe
-  rotate: [78.3522, -48.8566]
+  rotate: [9, -50]
   scale: 2
   flows: Advanced economies
   flow-weight: investment_mm
