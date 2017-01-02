@@ -1,0 +1,8 @@
+source_region_id_g,source_region_g,source_country_g,source_country_id_g,detination_region_id_g,destination_region_g,destination_country_g,destination_country_id_g,source_lat_def,source_long_def,destination_lat_def,destination_long_def,source_city,destination_city,investment_mm,jobs,rank,group
+775,Kanagawa,Japan,1684,509,North,United Kingdom,1778,35.462933,139.626112,54.9061,-1.38113,Yokohama,Sunderland,2,0,0,Nissan
+775,Kanagawa,Japan,1684,1408,Lazio,Italy,1693,35.462933,139.626112,41.8885,12.4865,Yokohama,Rome,1,0,0,Nissan
+775,Kanagawa,Japan,1684,1234,Piedmonte,Italy,1693,35.462933,139.626112,45.0669,12.4865,Yokohama,Turin,1,0,0,Nissan
+775,Kanagawa,Japan,1684,1281,Nord - Pas-de-Calais,France,1774,35.462933,139.626112,50.4356,2.8206,Yokohama,Lens,1,0,0,Nissan
+376,Texas,United States,1663,1492,Karnataka,India,1764,32.910409,-96.752984,12.934513,77.614656,Dallas,Bangalore,2,0,0,Texas Instruments
+376,Texas,United States,1663,723,Punjab w/ Islamabad,Pakistan,1715,32.910409,-96.752984,31.5246,74.3276,Dallas,Lahore,1,0,0,Texas Instruments
+376,Texas,United States,1663,874,Zhejiang,China,1741,32.910409,-96.752984,30.2432,120.1032,Dallas,Hangzhou,1,0,0,Texas Instruments
