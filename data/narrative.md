@@ -175,6 +175,7 @@ Economists have long seen technological change as one of the most powerful drive
   label: Number of patents by region (2005)
   format: '.1f'
   colors: schemePiYG-7
+  autorotate: false
 :::
 
 One common way to measure the innovative capacity of a city is to count the number of residents who are granted patents.
@@ -187,8 +188,13 @@ The colours on the globe represent the patent counts in 2015, by region. While s
 #
 
 ::: visualisation globe
-  rotate: [0, 0]
-  scale: 2.3
+  rotate: [2.3522, -48.8566]
+  scale: 2
+  choropleth: allpat
+  label: Number of patents by region (2005)
+  format: '.1f'
+  colors: schemePiYG-7
+  autorotate: true
 :::
 
 The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010, and very few regions with no patents in 1975 became innovative over the next four decades.
@@ -237,9 +243,19 @@ We aggregate all the years when a foreign company is patenting abroad at time 0 
   region: Asia
 :::
 
-Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation. 
+Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation. Innovation in these two technologies relies greatly on collaborations. As FDIs foster  
 
-Furthermore, two continents stand out: Asia and Europe. These continents are those that benefit the most from foreign interventions.
+#
+
+Furthermore, two continents stand out: Asia and Europe. These continents are those that benefit the most from foreign interventions. Asian and European firms appear to be more likely to absorb the knowledge transmitted through firms investing abroad.
+
+Surpisingly, while Latin America attracts a substantial amount of foreign firms, local economies do not seem to benefit from their presences, in terms of patents.
+
+You can explore the results by technologies and macro regions, using the drop-down menus.
+
+#
+
+
 
 # Credits
 
