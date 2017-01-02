@@ -243,7 +243,7 @@ We aggregate all the years when a foreign company is patenting abroad at time 0 
   region: Asia
 :::
 
-Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation. Innovation in these two technologies relies greatly on collaborations. As FDIs foster  
+Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increases in regional innovation. Innovation in these two technologies relies greatly on collaborations, as FDIs foster collaborations between foreign firms and local firms, as well as among local firms themselves, it is normal to see the largest increases in the most collaborative fields.
 
 #
 
@@ -253,6 +253,11 @@ Surpisingly, while Latin America attracts a substantial amount of foreign firms,
 
 You can explore the results by technologies and macro regions, using the drop-down menus.
 
+#
+
+Ultimately, the overall impact of FDIs on local innovation is positive: foreign firms help cities and region innovate.
+
+The size of the impact depends largely on the technology and the area of the world where firms operate.
 
 # Credits
 
