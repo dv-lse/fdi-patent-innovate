@@ -101,6 +101,7 @@ Big, internationalised firms are investing large amounts of money abroad: a text
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
+  autorotate: false
   flows: World
   flow-weight: investment_mm
 :::
@@ -116,8 +117,9 @@ The most important investments are shown on the globe.
 #
 
 ::: visualisation globe
-  rotate: [9, 50]
+  rotate: [9, -50]
   scale: 1
+  autorotate: false
   flows: Advanced economies
   flow-weight: investment_mm
 :::
@@ -128,19 +130,13 @@ Almost two thirds of these investments came from developed economies, with Europ
 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
-  scale: 2
+  scale: 1
   flows: United States
   flow-weight: investment_mm
 :::
 
 But the United States is the single largest investing country ($300 billions) [1].
 
-::: visualisation globe
-  rotate: [78.3522, -48.8566]
-  scale: 2
-  flows: United States
-  flow-weight: investment_mm
-:::
 
 
 # 
