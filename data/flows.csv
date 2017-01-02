@@ -1,0 +1,199 @@
+source_region_id_g,source_region_g,source_country_g,source_country_id_g,destination_region_id_g,destination_region_g,destination_country_g,destination_country_id_g,source_lat_def,source_long_def,destination_lat_def,destination_long_def,source_city,destination_city,investment_mm,jobs,rank,group
+390,Virginia,United States,1663,1499,"Tagalog, Luzon, W. Visayas",Philippines,1769,38.879971,-77.106773,9.9833326,122.81667,Arlington (VA),Kabankalan,781.0999756,116,20,United States
+366,California,United States,1663,,,Malaysia,1605,37.05106,-122.01469,5.4141674,100.32876,Scotts Valley (CA),Not Specified,782.5399933,3471,19,United States
+539,Idaho,United States,1663,768,Hiroshima,Japan,1694,43.61871,-116.21461,34.396561,132.45963,Boise (ID),Not Specified,858.8599854,2025,18,United States
+548,Michigan,United States,1663,426,Mexico,Mexico,1653,42.331429,-83.045753,19.496874,-99.723267,Detroit (MI),Not Specified,900,2240,17,United States
+548,Michigan,United States,1663,403,Coahuila,Mexico,1653,42.331429,-83.045753,27.058676,-101.70683,Detroit (MI),Not Specified,900,2240,16,United States
+548,Michigan,United States,1663,410,San Luis Potosi,Mexico,1653,42.331429,-83.045753,22.156565,-100.98547,Detroit (MI),Not Specified,916.6000004,2324,15,United States
+548,Michigan,United States,1663,423,Guanajuato,Mexico,1653,42.331429,-83.045753,20.917019,-101.16174,Detroit (MI),Not Specified,942.9000015,2319,14,United States
+548,Michigan,United States,1663,226,Rayong,Thailand,1770,42.331429,-83.045753,12.681396,101.28162,Detroit (MI),Rayong,964.7200317,5368,13,United States
+376,Texas,United States,1663,1350,Prov. Antwerpen,Belgium,1674,32.814018,-96.948891,51.219448,4.4024644,Irving (TX),Antwerp,1041.400002,217,12,United States
+366,California,United States,1663,872,Jiangsu,China,1741,34.142509,-118.25507,32.060253,118.79688,Glendale (CA),Nanjing,1054.699988,2011,11,United States
+366,California,United States,1663,,,Singapore,1611,37.432335,-121.89957,1.352083,103.81984,Milpitas (CA),Singapore,1173.599989,1814,10,United States
+366,California,United States,1663,626,Chaharmahal and Bakhtiyari,"Iran, Islamic Rep.",1690,33.567684,-117.72561,31.961435,50.845631,Aliso Viejo (CA),Not Specified,1180,650,9,United States
+366,California,United States,1663,336,New South Wales,Australia,1576,37.432335,-121.89957,-33.87365,151.20689,Milpitas (CA),Sydney,1364.999998,2344,8,United States
+366,California,United States,1663,549,Ontario,Canada,1632,37.562992,-122.32552,43.653225,-79.383186,San Mateo (CA),Toronto,1386.499966,2811,7,United States
+548,Michigan,United States,1663,857,Guangxi,China,1741,42.331429,-83.045753,24.325502,109.41595,Detroit (MI),Liuzhou,1441.600006,3129,6,United States
+367,Colorado,United States,1663,1514,Midlands,United Kingdom,1778,39.739235,-104.99025,52.240479,-0.90265602,Denver (CO),Northampton,1445,1504,5,United States
+376,Texas,United States,1663,,,Singapore,1611,32.814018,-96.948891,1.352083,103.81984,Irving (TX),Singapore,1461.000023,617,4,United States
+367,Colorado,United States,1663,1516,South East w/ London,United Kingdom,1778,39.739235,-104.99025,51.446209,0.21687201,Denver (CO),Dartford,1639.599997,1763,3,United States
+365,Arizona,United States,1663,318,E. Java,Indonesia,1619,33.448376,-112.07404,-7.5360637,112.2384,Phoenix (AZ),Not Specified,2000,3000,2,United States
+366,California,United States,1663,401,Baja California Norte,Mexico,1653,32.715736,-117.16109,32.568584,-116.6347,San Diego (CA),Tecate,2006,3100,1,United States
+1260,Baden-Wurttemberg,"Germany, West",1779,336,New South Wales,Australia,1576,49.487461,8.4660397,-32.926697,151.77888,Mannheim,Newcastle,771,266,71,Advanced economies
+390,Virginia,United States,1663,1499,"Tagalog, Luzon, W. Visayas",Philippines,1769,38.879971,-77.106773,9.9833326,122.81667,Arlington (VA),Kabankalan,781.0999756,116,70,Advanced economies
+1275,le-de-France,France,1774,719,Balochistan,Pakistan,1715,48.856613,2.352222,28.490734,65.095779,Paris,Not Specified,781.0999756,116,69,Advanced economies
+366,California,United States,1663,,,Malaysia,1605,37.05106,-122.01469,5.4141674,100.32876,Scotts Valley (CA),Not Specified,782.5399933,3471,68,Advanced economies
+867,Taiwan,Taiwan,1738,856,Shanxi,China,1741,25.032969,121.56541,37.873531,112.5624,Taipei,Not Specified,814.4899902,3000,67,Advanced economies
+797,Tokyo,Japan,1694,1499,"Tagalog, Luzon, W. Visayas",Philippines,1769,35.709026,139.73199,13.93469,121.94731,Tokyo,Not Specified,820.999974,2135,66,Advanced economies
+758,Aichi,Japan,1694,401,Baja California Norte,Mexico,1653,35.082394,137.15625,32.514946,-117.03825,Toyota,Tijuana,839.7999878,2068,65,Advanced economies
+1516,South East w/ London,United Kingdom,1778,374,Oklahoma,United States,1663,51.752022,-1.2577263,35.46756,-97.516426,Oxford,Oklahoma City (OK),839.9000001,623,64,Advanced economies
+797,Tokyo,Japan,1694,661,Kirklareli,Turkey,1732,35.709026,139.73199,41.725979,27.483839,Tokyo,Not Specified,846.7999878,262,63,Advanced economies
+525,Alberta,Canada,1632,,,Iraq,1691,51.048615,-114.07085,36.410339,44.387196,Calgary,Not Specified,850.2000122,214,62,Advanced economies
+797,Tokyo,Japan,1694,394,Maryland,United States,1663,35.709026,139.73199,38.522179,-77.102493,Tokyo,Not Specified,852.7999878,15,61,Advanced economies
+539,Idaho,United States,1663,768,Hiroshima,Japan,1694,43.61871,-116.21461,34.396561,132.45963,Boise (ID),Not Specified,858.8599854,2025,60,Advanced economies
+1349,Prov. Brabant,Belgium,1674,276,Cabo Delgado,Mozambique,1589,50.850338,4.3517103,-12.973203,40.517803,Brussels,Pemba,864.9000244,875,59,Advanced economies
+1349,Prov. Brabant,Belgium,1674,274,Tete,Mozambique,1589,50.850338,4.3517103,-16.166668,33.599998,Brussels,Tete,864.9000244,875,58,Advanced economies
+1349,Prov. Brabant,Belgium,1674,281,Inhambane,Mozambique,1589,50.850338,4.3517103,-23.332001,35.382,Brussels,Massinga,864.9000244,875,57,Advanced economies
+1349,Prov. Brabant,Belgium,1674,,,Mozambique,1589,50.850338,4.3517103,-23.86113,35.341137,Brussels,Maxixe,864.9000244,875,56,Advanced economies
+494,Madrid,Spain,1777,512,Wales,United Kingdom,1778,40.416752,-3.7038321,51.87571,-4.9391932,Not Specified,Not Specified,865.5,200,55,Advanced economies
+1160,Lubelskie,Poland,1717,127,Antofagasta,Chile,1552,51.246452,22.568447,-23.83691,-69.28775,Lublin,Not Specified,868.2000122,462,54,Advanced economies
+979,Zug,Switzerland,1727,,,Mauritania,1652,47.195847,8.5286331,24.577377,-9.9018135,Baar,Not Specified,900,1231,53,Advanced economies
+548,Michigan,United States,1663,426,Mexico,Mexico,1653,42.331429,-83.045753,19.496874,-99.723267,Detroit (MI),Not Specified,900,2240,52,Advanced economies
+548,Michigan,United States,1663,403,Coahuila,Mexico,1653,42.331429,-83.045753,27.058676,-101.70683,Detroit (MI),Not Specified,900,2240,51,Advanced economies
+336,New South Wales,Australia,1576,366,California,United States,1663,-33.87365,151.20689,34.092232,-117.43505,Sydney,Fontana (CA),914.1000004,6037,50,Advanced economies
+548,Michigan,United States,1663,410,San Luis Potosi,Mexico,1653,42.331429,-83.045753,22.156565,-100.98547,Detroit (MI),Not Specified,916.6000004,2324,49,Advanced economies
+553,Navarra,Spain,1777,405,Durango,Mexico,1653,42.812527,-1.6457745,24.559267,-104.65878,Pamplona,Not Specified,938.9000015,3130,48,Advanced economies
+1261,Bavaria,"Germany, West",1779,1414,Liaoning,China,1741,48.135124,11.581981,41.805698,123.43147,Munich,Shenyang,940.7999878,2648,47,Advanced economies
+548,Michigan,United States,1663,423,Guanajuato,Mexico,1653,42.331429,-83.045753,20.917019,-101.16174,Detroit (MI),Not Specified,942.9000015,2319,46,Advanced economies
+548,Michigan,United States,1663,226,Rayong,Thailand,1770,42.331429,-83.045753,12.681396,101.28162,Detroit (MI),Rayong,964.7200317,5368,45,Advanced economies
+1261,Bavaria,"Germany, West",1779,384,South Carolina,United States,1663,48.135124,11.581981,34.949566,-81.932045,Munich,Spartanburg (SC),1000,800,44,Advanced economies
+737,Seoul,"Korea, Rep.",1725,1429,Bac Ninh / Bac Giang / Ha Bac,Vietnam,1771,37.566536,126.97797,21.121445,106.11105,Seoul,Not Specified,1000,3000,43,Advanced economies
+1293,Capital region,Denmark,1681,,,Ghana,1755,55.676098,12.568337,5.7089238,0.018655499,Copenhagen,Tema,1000,2074,42,Advanced economies
+1234,Piemonte,Italy,1693,295,Sarawak,Malaysia,1605,44.895214,8.8633327,1.5532783,110.35921,Tortona,Not Specified,1000,833,41,Advanced economies
+797,Tokyo,Japan,1694,384,South Carolina,United States,1663,35.709026,139.73199,34.949566,-81.932045,Tokyo,Spartanburg (SC),1000,500,40,Advanced economies
+1275,le-de-France,France,1774,873,Shanghai,China,1741,48.856613,2.352222,31.230415,121.4737,Paris,Shanghai,1004.12999,2251,39,Advanced economies
+797,Tokyo,Japan,1694,549,Ontario,Canada,1632,35.709026,139.73199,44.15395,-79.869156,Tokyo,Alliston,1034.800001,1422,38,Advanced economies
+376,Texas,United States,1663,1350,Prov. Antwerpen,Belgium,1674,32.814018,-96.948891,51.219448,4.4024644,Irving (TX),Antwerp,1041.400002,217,37,Advanced economies
+737,Seoul,"Korea, Rep.",1725,409,Nuevo Leon,Mexico,1653,37.566536,126.97797,25.686615,-100.31612,Seoul,Monterrey,1047.5,3309,36,Advanced economies
+1197,Noord-Holland,Netherlands,1712,287,Johor,Malaysia,1605,52.370216,4.8951678,1.4648247,103.98636,Amsterdam,Tanjung Langsat,1047.900024,266,35,Advanced economies
+366,California,United States,1663,872,Jiangsu,China,1741,34.142509,-118.25507,32.060253,118.79688,Glendale (CA),Nanjing,1054.699988,2011,34,Advanced economies
+482,Sevilla,Spain,1777,127,Antofagasta,Chile,1552,37.389091,-5.9844589,-22.345005,-69.660706,Seville,Maria Elena,1055.399994,309,33,Advanced economies
+1516,South East w/ London,United Kingdom,1778,127,Antofagasta,Chile,1552,51.507351,-0.12775829,-23.65,-70.400002,London,Not Specified,1097.499969,264,32,Advanced economies
+366,California,United States,1663,,,Singapore,1611,37.432335,-121.89957,1.352083,103.81984,Milpitas (CA),Singapore,1173.599989,1814,31,Advanced economies
+366,California,United States,1663,626,Chaharmahal and Bakhtiyari,"Iran, Islamic Rep.",1690,33.567684,-117.72561,31.961435,50.845631,Aliso Viejo (CA),Not Specified,1180,650,30,Advanced economies
+797,Tokyo,Japan,1694,872,Jiangsu,China,1741,35.709026,139.73199,31.457735,121.13055,Tokyo,Taicang,1201.079992,5701,29,Advanced economies
+797,Tokyo,Japan,1694,214,Chon Buri,Thailand,1770,35.709026,139.73199,13.361143,100.98467,Tokyo,Not Specified,1270.340024,2208,28,Advanced economies
+1268,Lower Saxony,"Germany, West",1779,859,Hubei,China,1741,52.422649,10.786546,30.5931,114.30539,Wolfsburg,Wuhan,1300,3000,27,Advanced economies
+1268,Lower Saxony,"Germany, West",1779,865,Shandong,China,1741,52.422649,10.786546,36.067116,120.38261,Wolfsburg,Qingdao,1360,3000,26,Advanced economies
+366,California,United States,1663,336,New South Wales,Australia,1576,37.432335,-121.89957,-33.87365,151.20689,Milpitas (CA),Sydney,1364.999998,2344,25,Advanced economies
+366,California,United States,1663,549,Ontario,Canada,1632,37.562992,-122.32552,43.653225,-79.383186,San Mateo (CA),Toronto,1386.499966,2811,24,Advanced economies
+548,Michigan,United States,1663,857,Guangxi,China,1741,42.331429,-83.045753,24.325502,109.41595,Detroit (MI),Liuzhou,1441.600006,3129,23,Advanced economies
+1268,Lower Saxony,"Germany, West",1779,866,Tianjin,China,1741,52.422649,10.786546,39.08416,117.20098,Wolfsburg,Tianjin,1444.039998,3539,22,Advanced economies
+367,Colorado,United States,1663,1514,Midlands,United Kingdom,1778,39.739235,-104.99025,52.240479,-0.90265602,Denver (CO),Northampton,1445,1504,21,Advanced economies
+376,Texas,United States,1663,,,Singapore,1611,32.814018,-96.948891,1.352083,103.81984,Irving (TX),Singapore,1461.000023,617,20,Advanced economies
+797,Tokyo,Japan,1694,306,W. Java,Indonesia,1619,35.709026,139.73199,-6.2382698,106.97557,Tokyo,Bekasi,1473.780001,4865,19,Advanced economies
+867,Taiwan,Taiwan,1738,222,Phetchaburi,Thailand,1770,25.032969,121.56541,13.111125,99.939186,Taipei,Phetchaburi,1479.199951,7500,18,Advanced economies
+867,Taiwan,Taiwan,1738,872,Jiangsu,China,1741,22.999901,120.22688,31.385597,120.98074,Tainan,Kunshan,1521.800011,6237,17,Advanced economies
+367,Colorado,United States,1663,1516,South East w/ London,United Kingdom,1778,39.739235,-104.99025,51.446209,0.21687201,Denver (CO),Dartford,1639.599997,1763,16,Advanced economies
+1349,Prov. Brabant,Belgium,1674,278,Nampula,Mozambique,1589,50.850338,4.3517103,-15.116667,39.266666,Brussels,Nampula,1729.800049,1750,15,Advanced economies
+365,Arizona,United States,1663,318,E. Java,Indonesia,1619,33.448376,-112.07404,-7.5360637,112.2384,Phoenix (AZ),Not Specified,2000,3000,14,Advanced economies
+737,Seoul,"Korea, Rep.",1725,353,Ho Chi Minh City|Ho Chi Minh,Vietnam,1771,37.566536,126.97797,10.823099,106.62966,Seoul,Ho Chi Minh,2005.699999,7735,13,Advanced economies
+366,California,United States,1663,401,Baja California Norte,Mexico,1653,32.715736,-117.16109,32.568584,-116.6347,San Diego (CA),Tecate,2006,3100,12,Advanced economies
+1275,le-de-France,France,1774,861,Sichuan w/ Chongqing,China,1741,48.856613,2.352222,30.572269,104.06654,Paris,Chengdu,2040.599998,3274,11,Advanced economies
+1234,Piemonte,Italy,1693,549,Ontario,Canada,1632,45.070313,7.6868563,42.314938,-83.036362,Turin,Windsor,2380,2700,10,Advanced economies
+1268,Lower Saxony,"Germany, West",1779,874,Zhejiang,China,1741,52.422649,10.786546,29.868336,121.54399,Wolfsburg,Ningbo,2407.3,3040,9,Advanced economies
+867,Taiwan,Taiwan,1738,868,Fujian,China,1741,24.80665,120.96693,24.479834,118.08942,Hsinchu,Xiamen,2459.900002,6052,8,Advanced economies
+336,New South Wales,Australia,1576,292,Selangor w/ Kuala Lumpur,Malaysia,1605,-33.87365,151.20689,3.139003,101.68685,Sydney,Kuala Lumpur,2506.899902,3062,7,Advanced economies
+1275,le-de-France,France,1774,,,Saudi Arabia,1721,48.856613,2.352222,16.889168,42.561111,Paris,Jizan,2654.299999,193,6,Advanced economies
+737,Seoul,"Korea, Rep.",1725,355,Khanh Hoa,Vietnam,1771,37.566536,126.97797,12.25851,109.0526,Seoul,Not Specified,2700,3000,5,Advanced economies
+797,Tokyo,Japan,1694,290,Negeri Sembilan,Malaysia,1605,35.709026,139.73199,2.7258058,101.94238,Tokyo,Not Specified,3300,323,4,Advanced economies
+737,Seoul,"Korea, Rep.",1725,1434,Bak Kan / Thai Nguyen,Vietnam,1771,37.566536,126.97797,21.561377,105.87601,Seoul,Not Specified,3399.099987,3943,3,Advanced economies
+549,Ontario,Canada,1632,273,South West,Nigeria,1768,43.653225,-79.383186,5.5324626,5.8987141,Toronto,Not Specified,5000,1109,2,Advanced economies
+812,Kentriki Makedonia,Greece,1687,840,Suez,"Egypt, Arab Rep.",1682,40.621174,23.191803,29.368225,32.174606,Not Specified,Not Specified,10000,3966,1,Advanced economies
+1260,Baden-Wurttemberg,"Germany, West",1779,336,New South Wales,Australia,1576,49.487461,8.4660397,-32.926697,151.77888,Mannheim,Newcastle,771,266,100,World
+390,Virginia,United States,1663,1499,"Tagalog, Luzon, W. Visayas",Philippines,1769,38.879971,-77.106773,9.9833326,122.81667,Arlington (VA),Kabankalan,781.0999756,116,99,World
+1275,le-de-France,France,1774,719,Balochistan,Pakistan,1715,48.856613,2.352222,28.490734,65.095779,Paris,Not Specified,781.0999756,116,98,World
+366,California,United States,1663,,,Malaysia,1605,37.05106,-122.01469,5.4141674,100.32876,Scotts Valley (CA),Not Specified,782.5399933,3471,97,World
+867,Taiwan,Taiwan,1738,856,Shanxi,China,1741,25.032969,121.56541,37.873531,112.5624,Taipei,Not Specified,814.4899902,3000,96,World
+797,Tokyo,Japan,1694,1499,"Tagalog, Luzon, W. Visayas",Philippines,1769,35.709026,139.73199,13.93469,121.94731,Tokyo,Not Specified,820.999974,2135,95,World
+758,Aichi,Japan,1694,401,Baja California Norte,Mexico,1653,35.082394,137.15625,32.514946,-117.03825,Toyota,Tijuana,839.7999878,2068,94,World
+1516,South East w/ London,United Kingdom,1778,374,Oklahoma,United States,1663,51.752022,-1.2577263,35.46756,-97.516426,Oxford,Oklahoma City (OK),839.9000001,623,93,World
+797,Tokyo,Japan,1694,661,Kirklareli,Turkey,1732,35.709026,139.73199,41.725979,27.483839,Tokyo,Not Specified,846.7999878,262,92,World
+525,Alberta,Canada,1632,,,Iraq,1691,51.048615,-114.07085,36.410339,44.387196,Calgary,Not Specified,850.2000122,214,91,World
+1070,Moscow Region,Russian Federationn Federation,1776,,,Iraq,1691,55.755825,37.617298,30.293114,47.292389,Moscow,Not Specified,850.2000122,214,90,World
+797,Tokyo,Japan,1694,394,Maryland,United States,1663,35.709026,139.73199,38.522179,-77.102493,Tokyo,Not Specified,852.7999878,15,89,World
+539,Idaho,United States,1663,768,Hiroshima,Japan,1694,43.61871,-116.21461,34.396561,132.45963,Boise (ID),Not Specified,858.8599854,2025,88,World
+266,Transvaal,South Africa,1595,279,Sofala,Mozambique,1589,-26.204103,28.047304,-19.833332,34.849998,Johannesburg,Beira,864.9000244,875,87,World
+266,Transvaal,South Africa,1595,276,Cabo Delgado,Mozambique,1589,-26.204103,28.047304,-12.973203,40.517803,Johannesburg,Pemba,864.9000244,875,86,World
+1349,Prov. Brabant,Belgium,1674,276,Cabo Delgado,Mozambique,1589,50.850338,4.3517103,-12.973203,40.517803,Brussels,Pemba,864.9000244,875,85,World
+1349,Prov. Brabant,Belgium,1674,274,Tete,Mozambique,1589,50.850338,4.3517103,-16.166668,33.599998,Brussels,Tete,864.9000244,875,84,World
+266,Transvaal,South Africa,1595,278,Nampula,Mozambique,1589,-26.204103,28.047304,-14.542778,40.672779,Johannesburg,Nacala,864.9000244,875,83,World
+1349,Prov. Brabant,Belgium,1674,281,Inhambane,Mozambique,1589,50.850338,4.3517103,-23.332001,35.382,Brussels,Massinga,864.9000244,875,82,World
+1349,Prov. Brabant,Belgium,1674,,,Mozambique,1589,50.850338,4.3517103,-23.86113,35.341137,Brussels,Maxixe,864.9000244,875,81,World
+494,Madrid,Spain,1777,512,Wales,United Kingdom,1778,40.416752,-3.7038321,51.87571,-4.9391932,Not Specified,Not Specified,865.5,200,80,World
+1160,Lubelskie,Poland,1717,127,Antofagasta,Chile,1552,51.246452,22.568447,-23.83691,-69.28775,Lublin,Not Specified,868.2000122,462,79,World
+979,Zug,Switzerland,1727,,,Mauritania,1652,47.195847,8.5286331,24.577377,-9.9018135,Baar,Not Specified,900,1231,78,World
+1414,Liaoning,China,1741,,,Australia,1576,38.914001,121.61469,-28.01726,153.4257,Dalian,Gold Coast,900,3000,77,World
+1414,Liaoning,China,1741,545,Illinois,United States,1663,38.914001,121.61469,41.878113,-87.629799,Dalian,Chicago (IL),900,2963,76,World
+548,Michigan,United States,1663,426,Mexico,Mexico,1653,42.331429,-83.045753,19.496874,-99.723267,Detroit (MI),Not Specified,900,2240,75,World
+548,Michigan,United States,1663,403,Coahuila,Mexico,1653,42.331429,-83.045753,27.058676,-101.70683,Detroit (MI),Not Specified,900,2240,74,World
+336,New South Wales,Australia,1576,366,California,United States,1663,-33.87365,151.20689,34.092232,-117.43505,Sydney,Fontana (CA),914.1000004,6037,73,World
+548,Michigan,United States,1663,410,San Luis Potosi,Mexico,1653,42.331429,-83.045753,22.156565,-100.98547,Detroit (MI),Not Specified,916.6000004,2324,72,World
+553,Navarra,Spain,1777,405,Durango,Mexico,1653,42.812527,-1.6457745,24.559267,-104.65878,Pamplona,Not Specified,938.9000015,3130,71,World
+1261,Bavaria,"Germany, West",1779,1414,Liaoning,China,1741,48.135124,11.581981,41.805698,123.43147,Munich,Shenyang,940.7999878,2648,70,World
+548,Michigan,United States,1663,423,Guanajuato,Mexico,1653,42.331429,-83.045753,20.917019,-101.16174,Detroit (MI),Not Specified,942.9000015,2319,69,World
+548,Michigan,United States,1663,226,Rayong,Thailand,1770,42.331429,-83.045753,12.681396,101.28162,Detroit (MI),Rayong,964.7200317,5368,68,World
+1261,Bavaria,"Germany, West",1779,384,South Carolina,United States,1663,48.135124,11.581981,34.949566,-81.932045,Munich,Spartanburg (SC),1000,800,67,World
+737,Seoul,"Korea, Rep.",1725,1429,Bac Ninh / Bac Giang / Ha Bac,Vietnam,1771,37.566536,126.97797,21.121445,106.11105,Seoul,Not Specified,1000,3000,66,World
+1293,Capital region,Denmark,1681,,,Ghana,1755,55.676098,12.568337,5.7089238,0.018655499,Copenhagen,Tema,1000,2074,65,World
+1234,Piemonte,Italy,1693,295,Sarawak,Malaysia,1605,44.895214,8.8633327,1.5532783,110.35921,Tortona,Not Specified,1000,833,64,World
+655,Dubai,United Arab Emirates,1735,1523,Central,Morocco,1655,25.204849,55.270782,33.573109,-7.5898433,Dubai,Casablanca,1000,3000,63,World
+797,Tokyo,Japan,1694,384,South Carolina,United States,1663,35.709026,139.73199,34.949566,-81.932045,Tokyo,Spartanburg (SC),1000,500,62,World
+1275,le-de-France,France,1774,873,Shanghai,China,1741,48.856613,2.352222,31.230415,121.4737,Paris,Shanghai,1004.12999,2251,61,World
+655,Dubai,United Arab Emirates,1735,,,Lebanon,1701,25.204849,55.270782,33.904663,35.696999,Dubai,Not Specified,1007.1,3228,60,World
+797,Tokyo,Japan,1694,549,Ontario,Canada,1632,35.709026,139.73199,44.15395,-79.869156,Tokyo,Alliston,1034.800001,1422,59,World
+376,Texas,United States,1663,1350,Prov. Antwerpen,Belgium,1674,32.814018,-96.948891,51.219448,4.4024644,Irving (TX),Antwerp,1041.400002,217,58,World
+737,Seoul,"Korea, Rep.",1725,409,Nuevo Leon,Mexico,1653,37.566536,126.97797,25.686615,-100.31612,Seoul,Monterrey,1047.5,3309,57,World
+1197,Noord-Holland,Netherlands,1712,287,Johor,Malaysia,1605,52.370216,4.8951678,1.4648247,103.98636,Amsterdam,Tanjung Langsat,1047.900024,266,56,World
+366,California,United States,1663,872,Jiangsu,China,1741,34.142509,-118.25507,32.060253,118.79688,Glendale (CA),Nanjing,1054.699988,2011,55,World
+482,Sevilla,Spain,1777,127,Antofagasta,Chile,1552,37.389091,-5.9844589,-22.345005,-69.660706,Seville,Maria Elena,1055.399994,309,54,World
+1516,South East w/ London,United Kingdom,1778,127,Antofagasta,Chile,1552,51.507351,-0.12775829,-23.65,-70.400002,London,Not Specified,1097.499969,264,53,World
+654,Abu Dhabi,United Arab Emirates,1735,1491,Andhra Pradesh,India,1764,24.466667,54.366669,17.385044,78.486671,Abu Dhabi,Hyderabad,1116.369987,4880,52,World
+655,Dubai,United Arab Emirates,1735,834,Giza,"Egypt, Arab Rep.",1682,25.204849,55.270782,29.938126,30.91398,Dubai,Sixth of October City,1136.687,5994,51,World
+366,California,United States,1663,,,Singapore,1611,37.432335,-121.89957,1.352083,103.81984,Milpitas (CA),Singapore,1173.599989,1814,50,World
+366,California,United States,1663,626,Chaharmahal and Bakhtiyari,"Iran, Islamic Rep.",1690,33.567684,-117.72561,31.961435,50.845631,Aliso Viejo (CA),Not Specified,1180,650,49,World
+865,Shandong,China,1741,312,Jambi,Indonesia,1619,37.463821,121.44794,-1.6101229,103.61312,Yantai,Not Specified,1200,1864,48,World
+1414,Liaoning,China,1741,366,California,United States,1663,38.914001,121.61469,34.07362,-118.40036,Dalian,Beverly Hills (CA),1200,3000,47,World
+797,Tokyo,Japan,1694,872,Jiangsu,China,1741,35.709026,139.73199,31.457735,121.13055,Tokyo,Taicang,1201.079992,5701,46,World
+873,Shanghai,China,1741,1516,South East w/ London,United Kingdom,1778,31.230415,121.4737,51.507351,-0.12775829,Shanghai,London,1201.7,4838,45,World
+797,Tokyo,Japan,1694,214,Chon Buri,Thailand,1770,35.709026,139.73199,13.361143,100.98467,Tokyo,Not Specified,1270.340024,2208,44,World
+1268,Lower Saxony,"Germany, West",1779,859,Hubei,China,1741,52.422649,10.786546,30.5931,114.30539,Wolfsburg,Wuhan,1300,3000,43,World
+1268,Lower Saxony,"Germany, West",1779,865,Shandong,China,1741,52.422649,10.786546,36.067116,120.38261,Wolfsburg,Qingdao,1360,3000,42,World
+366,California,United States,1663,336,New South Wales,Australia,1576,37.432335,-121.89957,-33.87365,151.20689,Milpitas (CA),Sydney,1364.999998,2344,41,World
+366,California,United States,1663,549,Ontario,Canada,1632,37.562992,-122.32552,43.653225,-79.383186,San Mateo (CA),Toronto,1386.499966,2811,40,World
+548,Michigan,United States,1663,857,Guangxi,China,1741,42.331429,-83.045753,24.325502,109.41595,Detroit (MI),Liuzhou,1441.600006,3129,39,World
+1268,Lower Saxony,"Germany, West",1779,866,Tianjin,China,1741,52.422649,10.786546,39.08416,117.20098,Wolfsburg,Tianjin,1444.039998,3539,38,World
+367,Colorado,United States,1663,1514,Midlands,United Kingdom,1778,39.739235,-104.99025,52.240479,-0.90265602,Denver (CO),Northampton,1445,1504,37,World
+376,Texas,United States,1663,,,Singapore,1611,32.814018,-96.948891,1.352083,103.81984,Irving (TX),Singapore,1461.000023,617,36,World
+797,Tokyo,Japan,1694,306,W. Java,Indonesia,1619,35.709026,139.73199,-6.2382698,106.97557,Tokyo,Bekasi,1473.780001,4865,35,World
+867,Taiwan,Taiwan,1738,222,Phetchaburi,Thailand,1770,25.032969,121.56541,13.111125,99.939186,Taipei,Phetchaburi,1479.199951,7500,34,World
+870,Guangdong w/ Hainan,China,1741,428,Queretaro,Mexico,1653,22.543098,114.05787,20.588818,-100.38988,Shenzhen,Not Specified,1500,1100,33,World
+867,Taiwan,Taiwan,1738,872,Jiangsu,China,1741,22.999901,120.22688,31.385597,120.98074,Tainan,Kunshan,1521.800011,6237,32,World
+1494,Bangkok Metropolis,Thailand,1770,1415,Jilin,China,1741,13.75633,100.50176,41.940975,126.42425,Bangkok,Baishan,1603.829956,3000,31,World
+367,Colorado,United States,1663,1516,South East w/ London,United Kingdom,1778,39.739235,-104.99025,51.446209,0.21687201,Denver (CO),Dartford,1639.599997,1763,30,World
+655,Dubai,United Arab Emirates,1735,1516,South East w/ London,United Kingdom,1778,25.204849,55.270782,52.040623,-0.75941712,Dubai,Milton Keynes,1713.110006,1954,29,World
+1349,Prov. Brabant,Belgium,1674,278,Nampula,Mozambique,1589,50.850338,4.3517103,-15.116667,39.266666,Brussels,Nampula,1729.800049,1750,28,World
+865,Shandong,China,1741,375,Louisiana,United States,1663,35.233749,115.48066,30.017929,-90.791321,Heze,Not Specified,1850,400,27,World
+863,Beijing,China,1741,,,Antigua and Barbuda,1625,39.904209,116.40739,17.074656,-61.81752,Beijing,Not Specified,2000,3000,26,World
+865,Shandong,China,1741,390,Virginia,United States,1663,36.457031,115.98546,37.540726,-77.43605,Liaocheng,Richmond (VA),2000,2000,25,World
+365,Arizona,United States,1663,318,E. Java,Indonesia,1619,33.448376,-112.07404,-7.5360637,112.2384,Phoenix (AZ),Not Specified,2000,3000,24,World
+737,Seoul,"Korea, Rep.",1725,353,Ho Chi Minh City|Ho Chi Minh,Vietnam,1771,37.566536,126.97797,10.823099,106.62966,Seoul,Ho Chi Minh,2005.699999,7735,23,World
+366,California,United States,1663,401,Baja California Norte,Mexico,1653,32.715736,-117.16109,32.568584,-116.6347,San Diego (CA),Tecate,2006,3100,22,World
+653,Sharjah,United Arab Emirates,1735,832,Alexandria,"Egypt, Arab Rep.",1682,25.3575,55.390835,30.762297,29.696268,Sharjah,Not Specified,2008.300049,146,21,World
+1275,le-de-France,France,1774,861,Sichuan w/ Chongqing,China,1741,48.856613,2.352222,30.572269,104.06654,Paris,Chengdu,2040.599998,3274,20,World
+292,Selangor w/ Kuala Lumpur,Malaysia,1605,745,Jeju,"Korea, Rep.",1725,3.139003,101.68685,33.499622,126.53119,Kuala Lumpur,JeJu,2200,3000,19,World
+1234,Piemonte,Italy,1693,549,Ontario,Canada,1632,45.070313,7.6868563,42.314938,-83.036362,Turin,Windsor,2380,2700,18,World
+1268,Lower Saxony,"Germany, West",1779,874,Zhejiang,China,1741,52.422649,10.786546,29.868336,121.54399,Wolfsburg,Ningbo,2407.3,3040,17,World
+292,Selangor w/ Kuala Lumpur,Malaysia,1605,866,Tianjin,China,1741,3.099293,101.64486,39.08416,117.20098,Petaling Jaya,Tianjin,2414.73999,2195,16,World
+867,Taiwan,Taiwan,1738,868,Fujian,China,1741,24.80665,120.96693,24.479834,118.08942,Hsinchu,Xiamen,2459.900002,6052,15,World
+336,New South Wales,Australia,1576,292,Selangor w/ Kuala Lumpur,Malaysia,1605,-33.87365,151.20689,3.139003,101.68685,Sydney,Kuala Lumpur,2506.899902,3062,14,World
+1275,le-de-France,France,1774,,,Saudi Arabia,1721,48.856613,2.352222,16.889168,42.561111,Paris,Jizan,2654.299999,193,13,World
+737,Seoul,"Korea, Rep.",1725,355,Khanh Hoa,Vietnam,1771,37.566536,126.97797,12.25851,109.0526,Seoul,Not Specified,2700,3000,12,World
+875,Hong Kong,Hong Kong,1739,861,Sichuan w/ Chongqing,China,1741,22.396427,114.1095,31.467449,104.67912,Hong Kong,Mianyang,2757.839943,3948,11,World
+863,Beijing,China,1741,1098,Ulyanovsk Region,Russian Federationn Federation,1776,39.904209,116.40739,54.316666,48.366669,Beijing,Ulyanovsk,3000,3000,10,World
+863,Beijing,China,1741,43,Apurmac,Peru,1574,39.904209,116.40739,-14.077382,-72.236382,Beijing,Not Specified,3000,3000,9,World
+873,Shanghai,China,1741,737,Seoul,"Korea, Rep.",1725,31.230415,121.4737,37.566536,126.97797,Shanghai,Seoul,3207.3,3040,8,World
+873,Shanghai,China,1741,287,Johor,Malaysia,1605,31.230415,121.4737,1.4853683,103.76182,Shanghai,Not Specified,3250,3000,7,World
+797,Tokyo,Japan,1694,290,Negeri Sembilan,Malaysia,1605,35.709026,139.73199,2.7258058,101.94238,Tokyo,Not Specified,3300,323,6,World
+737,Seoul,"Korea, Rep.",1725,1434,Bak Kan / Thai Nguyen,Vietnam,1771,37.566536,126.97797,21.561377,105.87601,Seoul,Not Specified,3399.099987,3943,5,World
+859,Hubei,China,1741,719,Balochistan,Pakistan,1715,30.5931,114.30539,28.490734,65.095779,Wuhan,Not Specified,3500,343,4,World
+1492,Karnataka,India,1764,655,Dubai,United Arab Emirates,1735,12.971599,77.594566,25.204849,55.270782,Bangalore,Dubai,4056.599998,3036,3,World
+549,Ontario,Canada,1632,273,South West,Nigeria,1768,43.653225,-79.383186,5.5324626,5.8987141,Toronto,Not Specified,5000,1109,2,World
+812,Kentriki Makedonia,Greece,1687,840,Suez,"Egypt, Arab Rep.",1682,40.621174,23.191803,29.368225,32.174606,Not Specified,Not Specified,10000,3966,1,World
+775,Kanagawa,Japan,1684,509,North,United Kingdom,1778,35.462933,139.626112,54.9061,-1.38113,Yokohama,Sunderland,2,0,0,Nissan
+775,Kanagawa,Japan,1684,1408,Lazio,Italy,1693,35.462933,139.626112,41.8885,12.4865,Yokohama,Rome,1,0,0,Nissan
+775,Kanagawa,Japan,1684,1234,Piedmonte,Italy,1693,35.462933,139.626112,45.0669,12.4865,Yokohama,Turin,1,0,0,Nissan
+775,Kanagawa,Japan,1684,1281,Nord - Pas-de-Calais,France,1774,35.462933,139.626112,50.4356,2.8206,Yokohama,Lens,1,0,0,Nissan
+376,Texas,United States,1663,1492,Karnataka,India,1764,32.910409,-96.752984,12.934513,77.614656,Dallas,Bangalore,2,0,0,Texas Instruments
+376,Texas,United States,1663,723,Punjab w/ Islamabad,Pakistan,1715,32.910409,-96.752984,31.5246,74.3276,Dallas,Lahore,1,0,0,Texas Instruments
+376,Texas,United States,1663,874,Zhejiang,China,1741,32.910409,-96.752984,30.2432,120.1032,Dallas,Hangzhou,1,0,0,Texas Instruments
