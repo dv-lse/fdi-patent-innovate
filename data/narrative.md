@@ -13,7 +13,7 @@ date: November 30, 2016
   autorotate: true
 :::
 
-How do they make these investment decisions? Test
+How do they make these investment decisions? Test.
 
 
 # DV INFO: Markdown narrative
