@@ -79,7 +79,7 @@ They want to tap into the specific qualities of a region: they are seeking ***re
 
 For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. 
 
-There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the Noth East.
+There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the North East.
 
 #
 
@@ -115,9 +115,9 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   autorotate: false
 :::
 
-On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China. What made the balance tilt in favour of Karnataka, the Indian state where Bangalore is, is its unique concentration of tech talents and its institutions.
+On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China. What made the balance tilt in favour of Karnataka --the Indian state where Bangalore is-- is its unique concentration of tech talents and its institutions.
 
-More generally, innovative firms typically seek 3 types of strategic assets when investing abroad: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
+More generally, innovative firms typically seek 3 types of strategic assets when investing abroad: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and respected patent laws for instance.
 
 [4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
 
@@ -145,6 +145,7 @@ While multinational firms from both rich and emerging countries invest abroad to
 :::
 
 First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
+
 Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). 
 
 
@@ -167,7 +168,7 @@ Economists have long seen technological change as one of the most powerful drive
 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
-  scale: 7
+  scale: 2
   choropleth: allpat
   label: Number of patents by region (2005)
   format: '.1f'
@@ -176,7 +177,8 @@ Economists have long seen technological change as one of the most powerful drive
 
 One common way to measure the innovative capacity of a city is to count the number of residents who are granted patents.
 
-Based on this statistic, local economies are extremely unequal in how much they innovate. The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent [7].
+Based on this statistic, local economies are extremely unequal in their innovation potential. 
+The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent [7].
 
 [7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
 
@@ -197,10 +199,19 @@ The distribution of patents is not only concentrated in few cities, it is also v
   scale: 1
 :::
 
-To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. 
-Using a statistical method called propensity score matching, we find the "twin" of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
+To study the impact of foreign direct investment on regional patent count, we select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one in terms of GDP, population and average educational attainment, using a statistical method called ***propensity score matching***.
+
+The regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
 
 #
+
+::: visualisation globe
+  rotate: [-77.614656, -12.934513]
+  scale: 1
+  flows: Texas Instruments
+  flow-weight: investment_mm
+  autorotate: false
+:::
 
 In the case of the FDI by Texas Instrument in Bangalore, one can compare the patent count in Bangalore to the average of patent counts in Punjab (Pakistan) and Zehjian (China). Comparing the patent count in the region receiving the FDI to that of the region with no FDI can give us a good idea of the effect of FDI on innovation.
 
@@ -213,7 +224,9 @@ In the case of the FDI by Texas Instrument in Bangalore, one can compare the pat
 
 The patent count in regions that receive an intervention does indeed grow more than in regions that remained unvisited by foreign firms.
 
-The graph shows the difference in patent count between the treated and the counterfactual regions. If the blue line is above 0, one can say that the patent count in the treated region is significantly higher.
+The graph on the right shows the difference in patent count between the treated and the counterfactual regions (in logarithms). If the blue region is above 0, one can say that the patent count in the treated region is significantly higher.
+
+We aggregate all the years when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, evrything to the right is the aftermath of the intervention.
 
 #
 
