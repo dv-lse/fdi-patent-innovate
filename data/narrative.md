@@ -75,6 +75,7 @@ They want to tap into the specific qualities of a region: they are seeking ***re
   flows: Nissan
   flow-weight: investment_mm
   autorotate: false
+
 :::
 
 For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. 
