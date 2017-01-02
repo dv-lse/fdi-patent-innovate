@@ -226,13 +226,18 @@ The patent count in regions that receive an intervention does indeed grow more t
 
 The graph on the right shows the difference in patent count between the treated and the counterfactual regions (in logarithms). If the blue region is above 0, one can say that the patent count in the treated region is significantly higher.
 
-We aggregate all the years when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, evrything to the right is the aftermath of the intervention.
+We aggregate all the years when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, everything to the right is the aftermath of the intervention.
 
 #
 
-Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
+::: visualisation trend
+  category: All technologies
+  region: Asia
+:::
 
-On the graph, you can explore the impacts of FDIs by technology and continent.
+Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation. 
+
+Furthermore, two continents stand out: Asia and Europe. These continents are those that benefit the most from foreign interventions.
 
 # Credits
 
