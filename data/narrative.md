@@ -5,7 +5,7 @@ date: November 30, 2016
 ---
 
 
-# Where do multinational firms invest?
+# Intro
 
 ::: visualisation globe
   rotate: [0, -20]
@@ -80,6 +80,7 @@ You can show links from several groups using a vertical bar, like this:
 flows: Advanced economies|United States
 ```
 
+# Where do multinational firms invest?
 
 `
 # **How big?** The importance of Foreign Direct Investments
@@ -151,15 +152,18 @@ But the United States is the single largest investing country ($300 billions) [1
 #
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
-They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France are regions that were roughly as rich, populous and educated as the Noth East.
+They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France are roughly as rich, populous and educated as the Noth East.
 
 #
-But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part supliers, it was easier to do business there than in France or Italy, and it could benefit from fiscal arrangements.
+But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part supliers, it was easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
 
 #
-Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. On paper, the Bangalore region looked very similar to nearby Punjab in Pakistan, or to 
+Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. On paper, the Bangalore region looked very similar to nearby Punjab in Pakistan, or to the Zheijiang province in coastal China at that time.
 
-For innovative activities, firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
+#
+What made the balance tilt in favour of Karnataka, the Indian state where Bangalore is, is its unique concentration of tech talents and its institutions.
+
+More generally, innovative firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
 
 [4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
 
