@@ -281,6 +281,8 @@ The distribution of patents is not only concentrated in few cities, it is also v
 To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. 
 Using a statistical method called propensity score matching, we find the "twin" of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
 
+#
+
 In the case of the FDI by Texas Instrument in Bangalore, one can compare the patent count in Bangalore to the average of patent counts in Punjab (Pakistan) and Zehjian (China). Comparing the patent count in the region receiving the FDI to that of the region with no FDI can give us a good idea of the effect of FDI on innovation.
 
 #
