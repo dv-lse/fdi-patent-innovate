@@ -304,6 +304,7 @@ On the graph, you can explore the impacts of FDIs by technology and continent.
 
 # Credits
 
-ERC
-LSE - Department of Geography and Environment
-LSE - Communications Division
+London School of Economics - Department of Geography and Environment
+London School of Economics - Communications Division
+The research leading to these results has received funding from the EuropeanResearch Council under the European Unions Horizon 2020 Programme H2020/2014-2020) (Grant Agreement n 639633-MASSIVE-ERC-2014-STG).
+All errors and omissions are our own.
