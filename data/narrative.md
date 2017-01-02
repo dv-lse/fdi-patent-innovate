@@ -42,7 +42,7 @@ These investments are called Foreign Direct Investments (FDIs) and In 2015 they 
 
 ::: visualisation globe
   rotate: [-9, -50]
-  scale: 1
+  scale: 1.3
   autorotate: false
   flows: Advanced economies
   flow-weight: investment_mm
@@ -73,7 +73,7 @@ But the United States is the single largest investing country ($300 billions) [1
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
-They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. 
+They want to tap into the specific qualities of a region: they are seeking ***regional strategic assets*** [4]. 
 
 #
 
@@ -85,7 +85,9 @@ They want to tap into the specific qualities of a region: they are seeking **reg
   autorotate: false
 :::
 
-For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the Noth East.
+For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. 
+
+There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the Noth East.
 
 #
 
