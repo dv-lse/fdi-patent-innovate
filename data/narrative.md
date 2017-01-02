@@ -138,19 +138,15 @@ Almost two thirds of these investments came from developed economies, with Europ
 But the United States is the single largest investing country ($300 billions) [1].
 
 
-
-# 
+#
 
 ::: visualisation globe
-  rotate: [2.3522, -57.8566]
-  scale: 7
-  choropleth: YearsofEducation_r
-  label: Mean years of education
-  format: '.1f'
-  colors: schemeReds-5
+  rotate: [78.3522, -48.8566]
+  scale: 1
+  flows: United States
+  flow-weight: investment_mm
 :::
 
-#
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
 They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France are roughly as rich, populous and educated as the Noth East.
