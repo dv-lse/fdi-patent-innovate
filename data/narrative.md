@@ -1,7 +1,7 @@
 ---
 title: Do Foreign Direct Investments Help Cities Innovate?
 author: Arnaud Dyevre
-date: November 30, 2016
+date: January 2, 2017
 ---
 
 
@@ -12,79 +12,6 @@ date: November 30, 2016
   scale: .7
   autorotate: false
 :::
-
-
-# DV INFO: Markdown narrative
-
-::: visualisation globe
-  rotate: [0, -20]
-  scale: .7
-  autorotate: false
-:::
-
-This narrative is written in [Markdown](https://daringfireball.net/projects/markdown/).
-
-The link reference above could also be written with a superscript, like this: [42].
-
-When you use a superscript, a popup citation will appear before navigating to the link.
-
-Examples of the DV control markup is in the next few sections.
-
-[42]: https://daringfireball.net/projects/markdown/ "Official Markdown Documentation"
-
-(CY 16/12)
-
-
-# DV INFO: Choropleths
-
-::: visualisation globe
-  rotate: [2.3522, -48.8566]
-  scale: 1
-  choropleth: GDPpcRegion_r_ip
-  label: Regional Gross Domestic Product Per Capita, in USD
-  format: '.2s'
-  colors: schemeBlues-7
-  autorotate: false
-:::
-
-Users can rotate the globe on any slide by clicking and dragging.  To zoom, use the (+) and (-) buttons.
-
-Choropleth colors: you can use any scheme [here](https://github.com/d3/d3-scale-chromatic).  The digit indicates how many quantiles to display.
-
-Label formats: use a format specifier [here](https://github.com/d3/d3-format/blob/master/README.md)
-
-'autorotate': set to true or false to control whether the globe spins.
-
-(CY 16/12)
-
-
-# DV INFO: Flow maps
-
-::: visualisation globe
-  rotate: [78.3522, -48.8566]
-  scale: 2
-  flows: Advanced economies
-  flow-weight: investment_mm
-  autorotate: false
-:::
-
-Flow maps show the relative weight of links via opacity.
-
-
-# DV INFO: Flow maps (2)
-
-::: visualisation globe
-  rotate: [78.3522, -48.8566]
-  scale: 2
-  flows: Advanced economies|United States
-  flow-weight: investment_mm
-  autorotate: false
-:::
-
-You can show links from several groups using a vertical bar, like this:
-```
-flows: Advanced economies|United States
-```
 
 #
 
