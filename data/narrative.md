@@ -13,8 +13,6 @@ date: November 30, 2016
   autorotate: true
 :::
 
-How do they make these investment decisions?
-
 
 # DV INFO: Markdown narrative
 
@@ -84,7 +82,7 @@ flows: Advanced economies|United States
 
 
 #
-Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
+Big, internationalised firms are investing large amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
 #
 ::: visualisation globe
@@ -214,16 +212,12 @@ Based on this metric, local economies are extremely unequal in how much they inn
 
 [7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
 
-*AD 13/12: Quizz will change, will compare inequality in patents to inequality in the World or in the US*
-
-
-
 ::: visualisation globe
   rotate: [0, 0]
   scale: 2.3
 :::
 
-The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010.
+The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010, and very few regions with no patents in 1975 became innovative.
 
 
 #
@@ -235,6 +229,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
 
 To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the "twin" of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
 
+Comparing the patent count in the region receiving the FDI to that of the region with no FDI can give us a good idea of the effect of FDI on innovation.
 
 #
 
@@ -243,20 +238,14 @@ To study the impact of foreign direct investment on regional patent count, let�
   region: All regions
 :::
 
-Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not.
+The patent count in regions that receive an intervention do indeed grow more than in regions that remained unvisited by foreign firms.
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
 
 On the graph, you can explore the impacts of FDIs by technology and continent.
 
-# References cited
+# Credits
 
-*Amin, A., & Cohendet, P. (2004). Architectures of knowledge: Firms, capabilities and communities. Oxford: Oxford University Press.*
-
-*Cohen, W. M., & Levinthal D. A. (1990). Absorptive capacity: A new perspective on learning and innovation. Administrative Science Quarterly, 35(1), 128–152. doi:10.2307/2393553*
-
-*Crescenzi, R., & Rodríguez-Pose, A. (2011). Innovation and regional growth in the European Union. Berlin: Springer-Verlag.*
- 
-*United Nations Conference on Trade and Development (UNCTAD), 2016*
-
-*World Investment Report 2015: Investor Nationality: Policy Challenges (UNCTAD: Geneva)*
+ERC
+LSE - Department of Geography and Environment
+LSE - Communications Division
