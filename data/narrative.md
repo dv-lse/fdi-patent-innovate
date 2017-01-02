@@ -10,7 +10,7 @@ date: November 30, 2016
 ::: visualisation globe
   rotate: [0, -20]
   scale: .7
-  autorotate: true
+  autorotate: false
 :::
 
 
@@ -19,7 +19,7 @@ date: November 30, 2016
 ::: visualisation globe
   rotate: [0, -20]
   scale: .7
-  autorotate: true
+  autorotate: false
 :::
 
 This narrative is written in [Markdown](https://daringfireball.net/projects/markdown/).
@@ -65,6 +65,7 @@ Label formats: use a format specifier [here](https://github.com/d3/d3-format/blo
   scale: 2
   flows: Advanced economies
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 Flow maps show the relative weight of links via opacity.
@@ -77,6 +78,7 @@ Flow maps show the relative weight of links via opacity.
   scale: 2
   flows: Advanced economies|United States
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 You can show links from several groups using a vertical bar, like this:
@@ -130,6 +132,7 @@ Almost two thirds of these investments came from developed economies, with Europ
   scale: 1
   flows: United States
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 But the United States is the single largest investing country ($300 billions) [1].
@@ -140,6 +143,7 @@ But the United States is the single largest investing country ($300 billions) [1
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
   scale: 1
+  autorotate: false
 :::
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
@@ -153,6 +157,7 @@ They want to tap into the specific qualities of a region: they are seeking **reg
   scale: 1
   flows: Nissan
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the Noth East.
@@ -164,6 +169,7 @@ For instance, the Japanese car manufacturer Nissan decided in 1984 to build a pl
   scale: 1
   flows: Nissan
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
@@ -175,6 +181,7 @@ But Nissan chose the North East for reasons beyond the obvious characteristics o
   scale: 1
   flows: Texas Instrument
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. 
@@ -186,6 +193,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   scale: 1
   flows: Texas Instrument
   flow-weight: investment_mm
+  autorotate: false
 :::
 
 On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China. What made the balance tilt in favour of Karnataka, the Indian state where Bangalore is, is its unique concentration of tech talents and its institutions.
@@ -204,12 +212,22 @@ More generally, innovative firms typically seek 3 types of strategic assets when
 ::: visualisation globe
   rotate: [-77.614656, -12.934513]
   scale: 1
+  autorotate: false
 :::
 
 While multinational firms from both rich and emerging countries invest abroad to capitalise on regional assets, they do so in different ways.
 
+#
+
+::: visualisation globe
+  rotate: [-77.614656, -12.934513]
+  scale: 1
+  autorotate: false
+:::
+
 First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
-Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). The specialisation of a region in a particular stage of the value chain represents a clear and easily detectable indication of the availability of specialized externalities.
+Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). 
+
 
 [6]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
 
@@ -239,9 +257,11 @@ Economists have long seen technological change as one of the most powerful drive
 
 One common way to measure the innovative capacity of a city is to count the number of residents who are granted patents.
 
-Based on this metric, local economies are extremely unequal in how much they innovate. The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent. Inequality in innovaton potential is even starker at the level of the city: in 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at least once since 1975, did not have any patent at all that year [7].
+Based on this statistic, local economies are extremely unequal in how much they innovate. The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent [7].
 
 [7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
+
+#
 
 ::: visualisation globe
   rotate: [0, 0]
