@@ -84,6 +84,7 @@ flows: Advanced economies|United States
 `
 # **How big?** The importance of Foreign Direct Investments
 `
+
 #
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
