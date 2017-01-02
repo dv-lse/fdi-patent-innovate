@@ -16,6 +16,12 @@ date: November 30, 2016
 
 # DV INFO: Markdown narrative
 
+::: visualisation globe
+  rotate: [0, -20]
+  scale: .7
+  autorotate: true
+:::
+
 This narrative is written in [Markdown](https://daringfireball.net/projects/markdown/).
 
 The link reference above could also be written with a superscript, like this: [42].
