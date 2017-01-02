@@ -13,7 +13,7 @@ date: January 2, 2017
   autorotate: false
 :::
 
-Big, internationalised firms are investing large amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
+Today, multinational firms are investing enormous amounts of money abroad. These investments are diverse in nature and in importance: they range from a small production plant built by a textile company where labour is cheap, to a fully-fledged research centre established by a high-tech company in a region where there is an abundance of qualified engineers.
 
 #
 ::: visualisation globe
