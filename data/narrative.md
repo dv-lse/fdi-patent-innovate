@@ -40,7 +40,7 @@ These investments are called ***Foreign Direct Investments*** (FDIs) and In 2015
   flow-weight: investment_mm
 :::
 
-Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in outflows of FDIs).
+Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in FDI outflows).
 
 #
 
@@ -146,9 +146,9 @@ While multinational firms from both rich and emerging countries invest abroad to
   autorotate: false
 :::
 
-Firstly, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
+Firstly, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Rolls Royces and Airbuses of the world, they often have a less developed ***absorptive capacity***, needed to fully take advantage of innovation-prone regional factors [6].
 
-Secondly, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). 
+Secondly, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing, for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles, computers, drugs...). 
 
 
 [6]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
@@ -161,7 +161,7 @@ Secondly, multinational firms from developing countries tend to invest in cities
   scale: 1
 :::
 
-In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
+In sum, multinational companies make their location and investment choices to exploit assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted establishments?
 
 Economists have long seen technological change as one of the most powerful driver of economic development and welfare improvement. It is then crucial to know if developing regions gain from the interventions of technologically-advanced firms. How does the evidence stack up?
 
