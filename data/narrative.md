@@ -134,15 +134,10 @@ But the United States is the single largest investing country ($300 billions) [1
 :::
 
 
-*AD 13/12: Need to discuss with Christopher how to show the flows:
-- keep only the top 15 (for AD and RC the more the better)?
-- bundling of flows? (idea suggested by Christopher early in the development of the project)
-- number of flows represented needs to be selected so as to show the geographical spread of FDIs (if selecting the top 15 only shows Europe<->US flows, not very convincing)*
-
-*refs: 1. World FDIs figures: UNCTAD, 2016
-*2. GDP estimates in 2016: IMF, World Economic Outlook Database
-
-# **Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
+# 
+`
+**Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
+`
 
 ::: visualisation globe
   rotate: [2.3522, -57.8566]
@@ -153,20 +148,25 @@ But the United States is the single largest investing country ($300 billions) [1
   colors: schemeReds-5
 :::
 
-*AD: This slide will change... After discussion with Riccardo, it appears that he would prefer to focus on firm-specific examples rather than show all flows in the world.
-Ideas of firm-specific examples:
-- Renault-Nissan investing in Sunderland rather than somewhere else (or maybe more recent example, Nissan's FDI happened in 1985)
-- Hewlett-Packard and Texas Instruments investing in Bangalore *
-
+#
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
-They want to tap into the specific qualities of a region: they are seeking regional strategic assets [4]. For example, firms who want to conquer new markets are interested in regions with a lot of consumers with substantial purchasing powers. Have a look at the locations where multinational firms are creating new sales subsidiaries [DV automatically selects “Sales” as Global Value Chain stage] + [display the GDP of the regions as different colours on a heatmap]: they are opening them in the richest regions. By contrast, look at where IT companies are concentrating R&D labs and management activities [DV automatically selects “Headquarters” as a GVC stage and it selects the industry “IT and Software”] + [display the average level of education in the regions, as different colours on a heatmap]: these are mostly regions with the most educated population (and workforce).
+They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France are regions that were roughly as rich, populous and educated as the Noth East.
+
+#
+But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part supliers, it was easier to do business there than in France or Italy, and it could benefit from fiscal arrangements.
+
+#
+Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. On paper, the Bangalore region looked very similar to nearby Punjab in Pakistan, or to 
 
 For innovative activities, firms typically seek 3 types of strategic assets: specialised knowledge that is only present in this area, innovation-prone economic conditions [5] and favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and patent law for instance.
 
-*refs: 4. Crescenzi, Pietrobelli & Rabelloti (2015)
-*5. Crescenzi and Rodrigues-Pose (2011)
-*6. Amin and Cohendet (2004)
+[4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
+
+[5]: http://journals.sagepub.com/doi/abs/10.1068/a43492?id=a43492& "Crescenzi & Rodrigues-Pose (2011)"
+
+[6]: https://global.oup.com/academic/product/architectures-of-knowledge-9780199253326?cc=fr&lang=en& "Amin & Cohendet (2004)"
+
 
 # **How?** Firms from developed and emerging economies invest differently
 
