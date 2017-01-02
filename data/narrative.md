@@ -116,8 +116,8 @@ The most important investments are shown on the globe.
 #
 
 ::: visualisation globe
-  rotate: [9, -50]
-  scale: 2
+  rotate: [9, 50]
+  scale: 1
   flows: Advanced economies
   flow-weight: investment_mm
 :::
