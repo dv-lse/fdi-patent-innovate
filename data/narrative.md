@@ -232,14 +232,14 @@ Economists have long seen technological change as one of the most powerful drive
   rotate: [2.3522, -48.8566]
   scale: 7
   choropleth: allpat
-  label: Population density (per ...)
+  label: Number of patents by region (2005)
   format: '.1f'
   colors: schemePiYG-7
 :::
 
 One common way to measure the innovative capacity of a city is to count the number of residents who are granted patents.
 
-Based on this metric, local economies are extremely unequal in how much they innovate. The colours on the globe represent the patent counts, by region. While some regions are innovation hubs, most of the emerged land has no patent. Inequality in innovaton potential is even starker at the level of the city: in 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at least once since 1975, did not have any patent at all that year [7].
+Based on this metric, local economies are extremely unequal in how much they innovate. The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent. Inequality in innovaton potential is even starker at the level of the city: in 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at least once since 1975, did not have any patent at all that year [7].
 
 [7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
 
@@ -248,7 +248,7 @@ Based on this metric, local economies are extremely unequal in how much they inn
   scale: 2.3
 :::
 
-The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010, and very few regions with no patents in 1975 became innovative.
+The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010, and very few regions with no patents in 1975 became innovative over the next four decades.
 
 
 #
@@ -258,9 +258,10 @@ The distribution of patents is not only concentrated in few cities, it is also v
   scale: 1
 :::
 
-To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the "twin" of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
+To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. 
+Using a statistical method called propensity score matching, we find the "twin" of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
 
-Comparing the patent count in the region receiving the FDI to that of the region with no FDI can give us a good idea of the effect of FDI on innovation.
+In the case of the FDI by Texas Instrument in Bangalore, one can compare the patent count in Bangalore to the average of patent counts in Punjab (Pakistan) and Zehjian (China). Comparing the patent count in the region receiving the FDI to that of the region with no FDI can give us a good idea of the effect of FDI on innovation.
 
 #
 
@@ -269,7 +270,11 @@ Comparing the patent count in the region receiving the FDI to that of the region
   region: All regions
 :::
 
-The patent count in regions that receive an intervention do indeed grow more than in regions that remained unvisited by foreign firms.
+The patent count in regions that receive an intervention does indeed grow more than in regions that remained unvisited by foreign firms.
+
+The graph shows the difference in patent count between the treated and the counterfactual regions. If the blue line is above 0, one can say that the patent count in the treated region is significantly higher.
+
+#
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
 
