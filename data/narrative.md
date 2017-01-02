@@ -13,7 +13,7 @@ date: January 2, 2017
   autorotate: false
 :::
 
-Today, multinational firms are investing enormous amounts of money abroad. These investments are diverse in nature and in importance: they range from a small production plant built by a textile company where labour is cheap, to a fully-fledged research centre established by a high-tech company in a region where there is an abundance of qualified engineers.
+Today, multinational firms are investing enormous amounts of money abroad. These investments are diverse in nature and in importance: they range from a small production plant built by a textile company in a location where labour is cheap, to a fully-fledged research centre established by a high-tech company in a region where there is an abundance of qualified engineers.
 
 #
 ::: visualisation globe
@@ -24,7 +24,7 @@ Today, multinational firms are investing enormous amounts of money abroad. These
   flow-weight: investment_mm
 :::
 
-These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
+These investments are called ***Foreign Direct Investments*** (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
@@ -40,13 +40,13 @@ These investments are called Foreign Direct Investments (FDIs) and In 2015 they 
   flow-weight: investment_mm
 :::
 
-Almost two thirds of these investments came from developed economies, with Europe being the largest investing region ($576 billions in outflows of FDIs).
+Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in outflows of FDIs).
 
 #
 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
-  scale: 1
+  scale: 1.2
   flows: United States
   flow-weight: investment_mm
   autorotate: false
@@ -91,7 +91,7 @@ There are several other European localities that Nissan could have chosen: Lazio
   autorotate: false
 :::
 
-But Nissan chose the North East for reasons beyond the obvious characteristics of a region: this region of the UK had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
+But Nissan chose the North East for reasons beyond the obvious characteristics of a region: it had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
 
 These were the ***regional strategic assets*** of Sunderland in the mid-1980's
 
@@ -119,7 +119,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 
 On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China in 1985. What made the balance tilt in favour of Karnataka --the Indian state where Bangalore is-- is its unique concentration of tech talents and its local institutions, conducive to innovative activities.
 
-Nissan, Texas Instruments and all technologically-advanced firms typically seek 3 types of strategic assets when investing abroad: (i) specialised knowledge that is only present in this area, (ii) innovation-prone economic conditions [5] and (iii) favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and respected patent laws for instance.
+Nissan, Texas Instruments and all technologically-advanced firms typically seek 3 types of strategic assets when investing abroad: (i) specialised knowledge that is only present in this area, (ii) innovation-prone economic conditions [5] and (iii) favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and respected patent laws.
 
 [4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
 
@@ -197,7 +197,7 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   autorotate: true
 :::
 
-The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010, and very few regions with no patents in 1975 became innovative over the next four decades.
+The distribution of patents is not only concentrated in few cities, it is also very stable over time: the most innovative regions in 1975 remained the most innovative in 2005, and very few regions with no patents in 1975 became hubs of innovation over the next four decades.
 
 
 #
@@ -252,9 +252,6 @@ Furthermore, two continents stand out: Asia and Europe. These continents are tho
 Surpisingly, while Latin America attracts a substantial amount of foreign firms, local economies do not seem to benefit from their presences, in terms of patents.
 
 You can explore the results by technologies and macro regions, using the drop-down menus.
-
-#
-
 
 
 # Credits
