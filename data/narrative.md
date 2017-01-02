@@ -151,6 +151,8 @@ They want to tap into the specific qualities of a region: they are seeking **reg
 ::: visualisation globe
   rotate: [-139.626112, -35.462933]
   scale: 1
+  flows: Nissan
+  flow-weight: investment_mm
 :::
 
 For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the Noth East.
@@ -160,6 +162,8 @@ For instance, the Japanese car manufacturer Nissan decided in 1984 to build a pl
 ::: visualisation globe
   rotate: [1.38113, -54.9061]
   scale: 1
+  flows: Nissan
+  flow-weight: investment_mm
 :::
 
 But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part suppliers, it was also easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
@@ -169,6 +173,8 @@ But Nissan chose the North East for reasons beyond the obvious characteristics o
 ::: visualisation globe
   rotate: [96.752984, -32.910409]
   scale: 1
+  flows: Texas Instrument
+  flow-weight: investment_mm
 :::
 
 Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. 
@@ -178,6 +184,8 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 ::: visualisation globe
   rotate: [-77.614656, -12.934513]
   scale: 1
+  flows: Texas Instrument
+  flow-weight: investment_mm
 :::
 
 On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China. What made the balance tilt in favour of Karnataka, the Indian state where Bangalore is, is its unique concentration of tech talents and its institutions.
@@ -209,8 +217,8 @@ Second, multinational firms from developing countries tend to invest in cities w
 #
 
 ::: visualisation globe
-  rotate: [-37.6173, -55.7558]
-  scale: 5
+  rotate: [-77.614656, -12.934513]
+  scale: 1
 :::
 
 In sum, multinational companies make their location and investment choices to use assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted firms?
