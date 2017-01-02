@@ -13,7 +13,7 @@ date: November 30, 2016
   autorotate: true
 :::
 
-How do they make these investment decisions? Test.
+How do they make these investment decisions?
 
 
 # DV INFO: Markdown narrative
@@ -87,7 +87,14 @@ flows: Advanced economies|United States
 #
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
 
-# ***World***
+#
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 2
+  flows: World
+  flow-weight: investment_mm
+:::
+
 These investments are called Foreign Direct Investments (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
 
 The most important investments are shown on the globe.
@@ -96,13 +103,27 @@ The most important investments are shown on the globe.
 
 [2]: https://www.imf.org/external/pubs/ft/weo/2016/01/weodata/download.aspx "GDP estimates in 2016, IMF World Economic Outlook Database"
 
-# ***Industrialised economies***
+#
 
-Almost two thirds of these investments (63%) came from developed economies [the animation is showing flows from developed economies in 2014, arrows represent the dollar value, if there are too many messy flows we may want to use only the top 50 or 75% of flows], with Europe being the largest investing region ($576 billions).
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 2
+  flows: Advanced economies
+  flow-weight: investment_mm
+:::
 
-# ***United States***
+Almost two thirds of these investments came from developed economies, with Europe being the largest investing region ($576 billions).
 
-But the United States is the single largest investing country ($300 billions) [the animation is showing investments from the United States in 2014] [1].
+#
+
+::: visualisation globe
+  rotate: [78.3522, -48.8566]
+  scale: 2
+  flows: United States
+  flow-weight: investment_mm
+:::
+
+But the United States is the single largest investing country ($300 billions) [1].
 
 ::: visualisation globe
   rotate: [78.3522, -48.8566]
