@@ -80,11 +80,8 @@ You can show links from several groups using a vertical bar, like this:
 flows: Advanced economies|United States
 ```
 
-# Where do multinational firms invest?
+# Why do multinational firms invest abroad?
 
-`
-# **How big?** The importance of Foreign Direct Investments
-`
 
 #
 Large, internationalised firms are investing massive amounts of money abroad: a textile company may want to build a production plant where labour is cheap, or a tech company may want to set up a research centre where there is an abundance of qualified engineers.
@@ -136,9 +133,6 @@ But the United States is the single largest investing country ($300 billions) [1
 
 
 # 
-`
-**Why?** MNEs want to take advantage of regional strategic assets and region-specific institutional arrangements
-`
 
 ::: visualisation globe
   rotate: [2.3522, -57.8566]
@@ -155,7 +149,7 @@ What motivates big companies to invest abroad? Why would they set up a factory o
 They want to tap into the specific qualities of a region: they are seeking **regional strategic assets** [4]. For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France are roughly as rich, populous and educated as the Noth East.
 
 #
-But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part supliers, it was easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
+But Nissan chose the North East for reasons beyond the obvious characteristics of a region: the North East had many sophisticated auto part suppliers, it was easier to do business there than in France or Italy, and Nissan could benefit from fiscal arrangements there.
 
 #
 Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. On paper, the Bangalore region looked very similar to nearby Punjab in Pakistan, or to the Zheijiang province in coastal China at that time.
@@ -172,7 +166,7 @@ More generally, innovative firms typically seek 3 types of strategic assets: spe
 [6]: https://global.oup.com/academic/product/architectures-of-knowledge-9780199253326?cc=fr&lang=en& "Amin & Cohendet (2004)"
 
 
-# **How?** Firms from developed and emerging economies invest differently
+#
 
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
@@ -183,17 +177,15 @@ More generally, innovative firms typically seek 3 types of strategic assets: spe
   colors: schemePiYG-7
 :::
 
-*I am not convinced that this is a very useful aspect of the narrative. At least for the main point that we are trying to get across. I suggest we work on the other aspects first and come back to this slide later.*
-*AD: As discussed a few weeks ago, I agree that this part is not fundamental. Can we however keep the text as a new slide? But without any other animation*
-
 While multinational firms from both rich and emerging countries invest abroad to capitalise on regional assets, they do so in different ways.
 
 First, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Apples and Microsoft of the world, they often lack the absorptive capacity needed to fully take advantage of innovation-prone regional contexts [6].
 Second, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles or computers for instance). The specialisation of a region in a particular stage of the value chain represents a clear and easily detectable indication of the availability of specialized externalities.
 
-*6. Cohen and Levinthal (1990)*
+[6]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
 
-# Transition
+
+#
 
 ::: visualisation globe
   rotate: [-37.6173, -55.7558]
@@ -204,63 +196,54 @@ In sum, multinational companies make their location and investment choices to us
 
 Economists have long seen technological change as one of the most powerful driver of economic development and welfare improvement. It is then crucial to know if developing regions gain from the interventions of technologically advanced firms. How does the evidence stack up?
 
-# What is the impact of investments on the ability to innovate of the host region? 
 
-# **How unequal?** Innovation capacity is very unequal and stable over time
+#
 
-One common way to measure the innovative capacity of a city is to count the number of inventors who are granted patents in this city.
+::: visualisation globe
+  rotate: [2.3522, -48.8566]
+  scale: 7
+  choropleth: allpat
+  label: Population density (per ...)
+  format: '.1f'
+  colors: schemePiYG-7
+:::
 
-Based on this metric, cities are extremely unequal in how much they innovate. The spikes on the globe represent the [logarithms of] the patent counts, by city. While some regions are very “spiky”, most of the emerged land has no patent. In 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at some point earlier, did not have any patent at all that year [7].
+One common way to measure the innovative capacity of a city is to count the number of residents who are granted patents.
+
+Based on this metric, local economies are extremely unequal in how much they innovate. The colours on the globe represent the patent counts, by region. While some regions are innovation hubs, most of the emerged land has no patent. Inequality in innovaton potential is even starker at the level of the city: in 2010, Tokyo –the most innovative city- had 9,580 patents, while more than 50,000 cities that patented at least once since 1975, did not have any patent at all that year [7].
+
+[7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
 
 *AD 13/12: Quizz will change, will compare inequality in patents to inequality in the World or in the US*
 
----
 
-*Quiz.*
-
-Let’s compare inequality in patent count to wealth inequality. In the UK, it is estimated that the 10% richest individuals in Britain own 47% of the country’s wealth [8]. This is a quite unequal distribution of wealth. But how unequal is the distribution of patents in the world according to you? In 2005, what share of patents did the top 10% of the regions own?
-
-50% 60% 70% 80% 90% ?
-
-*correct answer 90%
-
----
-
-*refs: 7. Data from the US Patents and Trademark Office*
-*8. Office of National Statistics, WAS database for the OECD (data accessed via IFS paper: http://onlinelibrary.wiley.com/doi/10.1111/j.1475-5890.2016.12084/full)*
 
 ::: visualisation globe
   rotate: [0, 0]
   scale: 2.3
 :::
 
-The distribution of patents is not only concentrated in few cities, it is also very stable over time: out of the regions that were in the bottom quintile of patent count between 1975 and 1990, only 0.21% reached the top quintile between 1991 and 2010. Conversely, only 0.11% went from the top to the bottom quintile [9]. You can use the year cursor to see how patenting evolves from 1975 to 2005.
+The distribution of patents is not only concentrated in few cities, it is also very stable over time: most of the innovative regions in 1975 remained innovative in 2010.
 
-**AD: so I think we will not use the cursor by year? We are using patent count in 2005 only if I remember correctly? If that's the case, we will not write the last sentence.
 
-*refs: 9. Authors’ calculations, based on US Trademark and Patent Office data
-
-# **Finding twin pairs of regions**
+#
 
 ::: visualisation globe
   rotate: [-46.625290, -23.533773]
   scale: 1
 :::
 
-To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the statistical twin of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except the fact that they have been visited by a foreign firm.
+To study the impact of foreign direct investment on regional patent count, let’s select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one, in this precise year. Using a statistical method called propensity score matching, we find the "twin" of a region with similar GDP, population and average level of education. The regions that receive a foreign intervention and those that do not are thus almost identical in every observable aspect except the fact that one has been visited by a foreign firm.
 
-Imagine for instance that the CEO of an American tech firm decides to build a lab in a high-growth country. He hesitates between a region in Mexico and another in Costa Rica: they have the same level of education, same GDP per capita and the same population. They would both be great locations for the new lab. In the end, the CEO just decides to flip a coin to decide where to go: Mexico is the lucky winner and the lab that she built starts to boost innovative activity in the region. By comparing the patent counts in Mexico and Costa Rica, we can then estimate how valuable a foreign direct investment is to Mexico’s innovative capacity.
 
-You can click on a region and see to which other it is matched [the visualisation highlights the regions that receive the treatment and when the user mouse over one, it highlights this particular region and the others (2?) to which it is matched]
-
-# **Results:** The impact of foreign intervention on city-level innovation
+#
 
 ::: visualisation trend
   category: All technologies
   region: All regions
 :::
 
-Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not. [DV shows the overall difference-indifferences graph, for all regions and technologies]
+Patent counts in the regions that receive an intervention does indeed grow more than in regions that did not.
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increase in regional innovation [DV zoom in to show results for these two sectors only]. Furthermore, you can notice that two continents stand out: Asia and Europe [DV selects the regions belonging to these two continents: Western Europe, Eastern Europe, East Asia, Southeast Asia and South Asia]. These continents are those that benefit the most from foreign interventions. (More on the interpretation of the results)
 
