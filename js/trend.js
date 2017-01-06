@@ -167,7 +167,7 @@ function update(svg, results, state) {
     .attr('stroke', 'blue')
     .attr('marker-end', 'url(#triangle-blue)')
 
-  let right_arrow_years = d3.range(1, years[years.length-2])
+  let right_arrow_years = d3.range(1, years[years.length-1])
   svg.append('path')
     .attr('d', trendArrow(right)(right_arrow_years))
     .attr('stroke-width', 1.5)

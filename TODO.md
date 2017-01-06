@@ -1,5 +1,8 @@
 # TODO
 
+- [ ] Dropdowns for selecting trend continent / technology
+- [ ] Fixed aspect ratio for trendline
+
 - [ ] Refactor sizing for canvas etc
 - [ ] Add LSE logo
 
