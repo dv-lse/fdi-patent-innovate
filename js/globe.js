@@ -123,7 +123,7 @@ function update(canvas, layers, stats, flows, state) {
 
   let color = d3.scaleLinear()
   let opacity = d3.scaleLinear()
-    .range([.1,1])
+    .range([0.3,0.7])
 
   let arcs = []
 
@@ -161,24 +161,6 @@ function update(canvas, layers, stats, flows, state) {
   // TODO.  move partials somewhere more logical...
   function drawCore() {
     context.clearRect(0, 0, width, height)
-
-    /*
-
-    // space
-    context.save()
-    context.fillStyle = 'white'
-    context.fillRect(0, 0, width, height)
-    context.restore()
-
-    // globe
-    context.save()
-    context.fillStyle = 'white'
-    context.beginPath()
-    path({ type:'Sphere' })
-    context.fill()
-    context.restore()
-
-    */
 
     // graticule
 
@@ -285,7 +267,8 @@ function update(canvas, layers, stats, flows, state) {
     context.restore()
   }
 
-  function drawFlows(t) {
+  function drawFlows(t, cycle) {
+    console.log(cycle)
     let data = arcs.map( (d) => {
         return { from: [d.source_long_def, d.source_lat_def],
                    to: [d.destination_long_def, d.destination_lat_def],
@@ -296,43 +279,49 @@ function update(canvas, layers, stats, flows, state) {
 
     // arcs
 
-    context.save()
-    context.lineCap = 'round'
-    context.lineWidth = weight
-    data.forEach( (d) => {
-      let interp = d3.geoInterpolate(d.from, d.to)
-      let line = {type: 'LineString', coordinates: [ d.from, interp(t) ]}
-      let faded_color = d3.color('coral')
-      faded_color.opacity = opacity(d.value)
-
-      // must use GeoJSON so that great arcs are curved according to projection
-      context.beginPath()
-      context.strokeStyle = faded_color + ''
-      path(line)
-      context.stroke()
-    })
-    context.restore()
     // no support for line endings in GeoJSON so do this in Canvas
     // opacity fade at horizon
     let horizon = d3.scaleLinear()
       .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
       .range([1,0])
       .clamp(true) // necessary since most calls are outside of domain
-    data.forEach( (d, i) => {
-      // NB alternative is to use geoPath.circle()...
+
+    data.forEach( (d,i) => {
+      let line = {type: 'LineString', coordinates: [ d.from, d.to ]}
+      let faded_color = d3.color('coral')
+      faded_color.opacity = opacity(d.value)
+
+      context.save()
+
+      context.globalAlpha = 1.0
+      context.lineCap = 'round'
+      context.lineWidth = weight
+
+      // must use GeoJSON so that great arcs are curved according to projection
+      context.beginPath()
+      context.strokeStyle = faded_color + ''
+      path(line)
+      context.stroke()
+      context.restore()
+
+      let interp = d3.geoInterpolate(d.from, d.to)
+      let bubble = interp((i / data.length + cycle) % 1)
+
       let rot = projection.rotate()
       let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
       let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
+      let bubble_distance = d3.geoDistance([-rot[0],-rot[1]], bubble)
+
+      context.globalAlpha = horizon(bubble_distance)
+      circle(context, projection(bubble), weight / 5, 'coral', 'coral')
 
       context.globalAlpha = horizon(from_distance)
       circle(context, projection(d.from), weight, 'white', 'coral')
 
-      if(t > .95) {
-        context.globalAlpha = horizon(to_distance)
-        circle(context, projection(d.to), weight, 'coral', 'coral')
-      }
+      context.globalAlpha = horizon(to_distance)
+      circle(context, projection(d.to), weight, 'white', 'coral')
 
-      context.globalAlpha = 1
+      context.globalAlpha = 1.0
     })
   }
 
@@ -364,22 +353,23 @@ function update(canvas, layers, stats, flows, state) {
     d3.select(elem)
       .call(dragged)
     let loop = d3.interval( (epoch_step) => {
+      let cycle = (Math.floor(epoch_step / 100) % 100) / 100
       if(state.autorotate) {
         let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)
         state.rotate = [-o1[0] + (step * 0.01) % 360, -o1[1], AXIS_TILT]
       }
       projection.rotate(state.rotate)
         .scale(state.scale * Math.min(width, height) / 2)
-      drawThematic()
+      drawThematic(1, cycle)
     }, 38 )
     return loop
   }
 
-  function drawThematic(t=1) {
+  function drawThematic(t=1, cycle=0) {
     drawCore()
     if(state.choropleth) { drawChoropleth(t) }
     // TODO.  move flows to separate animation sequence
-    if(arcs) { drawFlows(t) }
+    if(arcs) { drawFlows(1, cycle) }
   }
 
   d3.transition()
