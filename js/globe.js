@@ -272,7 +272,7 @@ function update(canvas, layers, stats, flows, state) {
     context.restore()
   }
 
-  function drawFlows(t, cycle) {
+  function drawFlows(cycle) {
     let data = arcs.map( (d) => {
         return { from: [d.source_long_def, d.source_lat_def],
                    to: [d.destination_long_def, d.destination_lat_def],
@@ -373,11 +373,17 @@ function update(canvas, layers, stats, flows, state) {
     drawCore()
     if(state.choropleth) { drawChoropleth(t) }
     // TODO.  move flows to separate animation sequence
-    if(arcs) { drawFlows(1, cycle) }
+    if(arcs) { drawFlows(cycle) }
   }
 
   d3.transition()
     .duration(1500)
+    .on('end', () => {
+      if(!omitted.empty()) {
+        console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
+      }
+      refresh = interaction()
+    })
     .tween('spin', () => {
       elem.__state = elem.__state || state
       let interp = d3.interpolate(elem.__state, state)
@@ -390,18 +396,9 @@ function update(canvas, layers, stats, flows, state) {
           .scale(state.scale * Math.min(width, height) / 2)
 
         drawCore()
+        drawThematic()
       }
-    }).transition()
-      .duration(2000)
-      .on('end', () => {
-        if(!omitted.empty()) {
-          console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
-        }
-        refresh = interaction()
-      })
-      .tween('thematic', () => {
-        return drawThematic
-      })
+    })
 }
 
 function circle(context, coords, radius, fill, stroke) {
