@@ -232,7 +232,9 @@ function update(canvas, layers, stats, flows, state) {
     let data = arcs.map( (d) => {
         return { from: [d.source_long_def, d.source_lat_def],
                    to: [d.destination_long_def, d.destination_lat_def],
-                value: project(d, state['flow-weight']) }
+                 from_label: project(d, state['origin-labels']),
+                 to_label: project(d, state['destination-labels']),
+                 value: project(d, state['flow-weight']) }
       })
 
     let weight = state.scale * 2.5  /* alter line width here if necessary */
@@ -276,10 +278,10 @@ function update(canvas, layers, stats, flows, state) {
       circle(context, projection(bubble), weight / 5, 'coral', 'coral')
 
       context.globalAlpha = horizon(from_distance)
-      circle(context, projection(d.from), weight, 'white', 'coral')
+      circle(context, projection(d.from), weight, 'white', 'coral', d.from_label)
 
       context.globalAlpha = horizon(to_distance)
-      circle(context, projection(d.to), weight, 'white', 'coral')
+      circle(context, projection(d.to), weight, 'white', 'coral', d.to_label)
 
       context.globalAlpha = 1.0
     })
@@ -407,7 +409,7 @@ function update(canvas, layers, stats, flows, state) {
     })
 }
 
-function circle(context, coords, radius, fill, stroke) {
+function circle(context, coords, radius, fill, stroke, label) {
   context.save()
   context.fillStyle = fill
   context.strokeStyle = stroke
@@ -415,6 +417,11 @@ function circle(context, coords, radius, fill, stroke) {
   context.arc(coords[0], coords[1], radius, 0, 2 * Math.PI, true)
   context.fill()
   context.stroke()
+  if(label) {
+    context.fillStyle = 'black'
+    context.strokeStyle = 'none'
+    context.fillText(label, coords[0] + radius + 2, coords[1] + radius + 2)
+  }
   context.restore()
 }
 
