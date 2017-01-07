@@ -3,6 +3,11 @@
 - [ ] Dropdowns for selecting trend continent / technology
 - [ ] Fixed aspect ratio for trendline
 
+- [ ] Option to label origin and dest. of link
+- [ ] Keep existing flows static across slides
+- [ ] Legend for links
+- [x] Buckets for patent display
+
 - [ ] Refactor sizing for canvas etc
 - [ ] Add LSE logo
 

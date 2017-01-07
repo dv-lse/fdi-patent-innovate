@@ -16,6 +16,7 @@ date: January 2, 2017
 Today, multinational firms are investing enormous amounts of money abroad. These investments are diverse in nature and in importance: they range from a small production plant built by a textile company in a location where labour is cheap, to a fully-fledged research centre established by a high-tech company in a region where there is an abundance of qualified engineers.
 
 #
+
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
@@ -65,7 +66,7 @@ But the United States is the single largest investing country ($300 billions) [1
 
 What motivates big companies to invest abroad? Why would they set up a factory or a research laboratory outside of their home country?
 
-They want to tap into the specific qualities of a region: they are seeking ***regional strategic assets*** [4]. 
+They want to tap into the specific qualities of a region: they are seeking ***regional strategic assets*** [4].
 
 #
 
@@ -75,10 +76,9 @@ They want to tap into the specific qualities of a region: they are seeking ***re
   flows: Nissan
   flow-weight: investment_mm
   autorotate: false
-
 :::
 
-For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK. 
+For instance, the Japanese car manufacturer Nissan decided in 1984 to build a plant in Sunderland, in the North East region of the UK.
 
 There are several other European localities that Nissan could have chosen: Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. They are roughly as rich, populous and educated as the North East.
 
@@ -106,7 +106,7 @@ These were the ***regional strategic assets*** of Sunderland in the mid-1980's
   autorotate: false
 :::
 
-Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India. 
+Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India.
 
 #
 
@@ -149,7 +149,7 @@ While multinational firms from both rich and emerging countries invest abroad to
 
 Firstly, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Rolls Royces and Airbuses of the world, they often have a less developed ***absorptive capacity***, needed to fully take advantage of innovation-prone regional factors [6].
 
-Secondly, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing, for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles, computers, drugs...). 
+Secondly, multinational firms from developing countries tend to invest in cities where a lot of companies are pursuing the same activity in the value chain (R&D or Design and Testing, for instance), but they are not necessarily attracted by cluster or firms in the same industry (automobiles, computers, drugs...).
 
 
 [6]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
@@ -174,14 +174,15 @@ Economists have long seen technological change as one of the most powerful drive
   scale: 2
   choropleth: allpat
   label: Number of patents by region (2005)
-  format: '.1f'
-  colors: schemePiYG-7
+  format: '.1s'
+  thresholds: [0, 1, 5, 25, 50, 100, 200, 500, 2000, 49800]
+  colors: Reds
   autorotate: false
 :::
 
 One common way to measure the innovative capacity of a city is to count the number of residents who are granted patents.
 
-Based on this statistic, local economies are extremely unequal in their innovation potential. 
+Based on this statistic, local economies are extremely unequal in their innovation potential.
 The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent [7].
 
 [7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
@@ -193,8 +194,9 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   scale: 2
   choropleth: allpat
   label: Number of patents by region (2005)
-  format: '.1f'
-  colors: schemePiYG-7
+  format: '.1s'
+  thresholds: [0, 1, 5, 25, 50, 100, 200, 500, 2000, 49800]
+  colors: Reds
   autorotate: true
 :::
 

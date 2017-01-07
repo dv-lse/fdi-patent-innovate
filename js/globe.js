@@ -5,6 +5,8 @@ import { geoPath, geoGraticule, geoOrthographic, geoArea } from 'd3-geo'
 
 const GLOBE_AREA = geoArea({type: 'Sphere'})
 
+const DEFAULT_QUANTILES = 5
+
 const LEGEND_MARGIN = 20
 const LEGEND_HEIGHT = 15
 const LEGEND_PADDING = [15, 5, 15, 5]
@@ -26,24 +28,11 @@ let graticule = geoGraticule()
 let refresh = null  // timer that refreshes globe @ 24fps
 
 
-function parseColors(s) {
-  let m
-  // TODO.  improve this function
-  if(typeof s !== 'string') { return s }
-  else if(m = /^(\w+)-(\d+)$/.exec(s)) {
-    return schemes[ m[1] ][ +m[2] ] || s
-  } else if(m = /^(\w+)$/.exec(s)) {
-    return schemes[ m[1] ] || s
-  } else {
-    return s
-  }
-}
-
 function validate(val, flows, stats) {
   let default_state = {
     rotate: [ 0.1278, -51.5074 ],  // London
     scale: 50,
-    colors: schemes.schemeBlues[9],
+    colors: 'Blues',
     format: '.1s',                 // One digit precision, with abbreviation
     autorotate: true
   }
@@ -82,7 +71,13 @@ function validate(val, flows, stats) {
     throw "Globe state: cannot read choropleth column " + state.choropleth
   }
 
-  if(state.colors && !(parseColors(state.colors)))
+  if(state.thresholds && !(Array.isArray(state.thresholds) && state.thresholds.every( (d,i,a) => {
+    return i === 0 || d >= a[i-1]
+  }))) {
+    throw "Globe state: thresholds must be sorted array of numbers"
+  }
+
+  if(state.colors && !schemes['interpolate' + state.colors])
     throw "Globe state: cannot parse color descriptor " + state.colors
 
   try {
@@ -137,9 +132,16 @@ function update(canvas, layers, stats, flows, state) {
       .domain(values)
   }
 
+  if(state.thresholds) {
+    color = d3.scaleThreshold()
+      .domain(state.thresholds)
+  }
+
   if(state.colors) {
-    let vals = parseColors(state.colors)
-    color.range(vals)
+    let interp = schemes['interpolate' + state.colors]
+    let num_buckets = 1 + state.thresholds ? state.thresholds.length : DEFAULT_QUANTILES
+    let range = d3.range(0,num_buckets).map( (i) => interp(i / num_buckets))
+    color.range(range)
   }
 
   if(state.flows) {
@@ -248,9 +250,13 @@ function update(canvas, layers, stats, flows, state) {
     }
 
     color.range().map( (c,i) => {
-      let q = color.invertExtent(c)
-      let low = q[0] || color.domain()[0]
-      let high = q[1] || color.domain()[1]
+      let high
+
+      if(state.thresholds) {
+        high = state.thresholds[i]
+      } else {
+        high = color.invertExtent(c)[1] || color.domain()[1]
+      }
 
       context.fillStyle = c
 
@@ -259,8 +265,7 @@ function update(canvas, layers, stats, flows, state) {
       context.textBaseline = 'hanging'
       context.textAlign = 'right'
 
-      let label = (i === 0) ? '≤ ' + fmt(high) : fmt(high)
-      context.fillText(label, x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
+      context.fillText(fmt(high), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
     })
 
     context.globalAlpha = 1
@@ -268,7 +273,6 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   function drawFlows(t, cycle) {
-    console.log(cycle)
     let data = arcs.map( (d) => {
         return { from: [d.source_long_def, d.source_lat_def],
                    to: [d.destination_long_def, d.destination_lat_def],
