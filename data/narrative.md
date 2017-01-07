@@ -23,6 +23,7 @@ Today, multinational firms are investing enormous amounts of money abroad. These
   autorotate: false
   flows: World
   flow-weight: investment_mm
+  label: Top 100 FDIs in 2014
 :::
 
 These investments are called ***Foreign Direct Investments*** (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
@@ -39,6 +40,7 @@ These investments are called ***Foreign Direct Investments*** (FDIs) and In 2015
   autorotate: false
   flows: Advanced economies
   flow-weight: investment_mm
+  label: Most important FDIs from industrialised nations
 :::
 
 Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in FDI outflows).
@@ -50,6 +52,7 @@ Almost two thirds of these investments came from industrialised economies, with 
   scale: 1.2
   flows: United States
   flow-weight: investment_mm
+  label: Most important American FDIs
   autorotate: false
 :::
 
