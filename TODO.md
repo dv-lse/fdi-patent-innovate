@@ -1,6 +1,7 @@
 # TODO
 
 - [ ] Dropdowns for selecting trend continent / technology
+- [ ] Transition between slides for trendline
 - [ ] Fixed aspect ratio for trendline
 
 - [x] Option to label origin and dest. of link
@@ -11,7 +12,6 @@
 - [x] Refactor sizing for canvas etc
 - [ ] Add LSE logo
 
-- [ ] Interactive: choose region and technology, get error bars
 - [ ] Click on a feature (region / flow link)
 - [ ] Move font references local
 
