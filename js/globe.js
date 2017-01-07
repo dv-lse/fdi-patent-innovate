@@ -195,10 +195,9 @@ function update(canvas, layers, stats, flows, state) {
     context.restore()
   }
 
-  function drawChoropleth(t) {
+  function drawChoropleth() {
     // region choropleth
     context.save()
-    context.globalAlpha = t
 
     // regions
 
@@ -226,49 +225,6 @@ function update(canvas, layers, stats, flows, state) {
     context.beginPath()
     path( layers.countries )
     context.stroke()
-    context.restore()
-
-    // legend
-
-    var fmt = state.format ? d3.format(state.format) : d3.format('2s')
-
-    var x = d3.scaleBand()
-      .rangeRound([LEFT_PADDING + (width - LEFT_PADDING) / 2, width - LEGEND_MARGIN])
-      .domain(color.range())
-
-    context.fillStyle = 'rgba(255,255,255,.85)'
-    context.fillRect(x.range()[0] - LEGEND_PADDING[3],
-                     LEGEND_MARGIN - LEGEND_PADDING[0],
-                     x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3],
-                     LEGEND_PADDING[0] + LEGEND_HEIGHT + LEGEND_PADDING[2])
-
-    if(state.label) {
-      context.fillStyle = 'black'
-      context.textBaseline = 'alphabetic'
-      context.textAlign = 'left'
-      context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
-    }
-
-    color.range().map( (c,i) => {
-      let high
-
-      if(state.thresholds) {
-        high = state.thresholds[i]
-      } else {
-        high = color.invertExtent(c)[1] || color.domain()[1]
-      }
-
-      context.fillStyle = c
-
-      context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
-      context.fillStyle = 'black'
-      context.textBaseline = 'hanging'
-      context.textAlign = 'right'
-
-      context.fillText(fmt(high), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
-    })
-
-    context.globalAlpha = 1
     context.restore()
   }
 
@@ -329,6 +285,54 @@ function update(canvas, layers, stats, flows, state) {
     })
   }
 
+  function drawLegend() {
+    if(!state.label) return
+
+    let fmt = state.format ? d3.format(state.format) : d3.format('2s')
+    let legend_height = LEGEND_PADDING[0] + (state.choropleth ? LEGEND_HEIGHT : 0) + LEGEND_PADDING[2]
+
+    let x = d3.scaleBand()
+      .rangeRound([LEFT_PADDING + (width - LEFT_PADDING) / 2, width - LEGEND_MARGIN])
+      .domain(color.range())
+
+    context.save()
+    context.fillStyle = 'rgba(255,255,255,.85)'
+    context.fillRect(x.range()[0] - LEGEND_PADDING[3],
+                     LEGEND_MARGIN - LEGEND_PADDING[0],
+                     x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3],
+                     legend_height)
+
+    if(state.label) {
+      context.fillStyle = 'black'
+      context.textBaseline = 'alphabetic'
+      context.textAlign = 'left'
+      context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
+    }
+
+    if(state.choropleth) {
+      color.range().map( (c,i) => {
+        let high
+
+        if(state.thresholds) {
+          high = state.thresholds[i]
+        } else {
+          high = color.invertExtent(c)[1] || color.domain()[1]
+        }
+
+        context.fillStyle = c
+
+        context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
+        context.fillStyle = 'black'
+        context.textBaseline = 'hanging'
+        context.textAlign = 'right'
+
+        context.fillText(fmt(high), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
+      })
+    }
+
+    context.restore()
+  }
+
   function interaction() {
     // TODO.  might better to alter the values in state.rotation & state.scale
     const TIMEOUT = 1500
@@ -365,13 +369,14 @@ function update(canvas, layers, stats, flows, state) {
       projection.rotate(state.rotate)
         .scale(state.scale * Math.min(width, height) / 2)
       drawThematic(1, cycle)
+      drawLegend()
     }, 38 )
     return loop
   }
 
   function drawThematic(t=1, cycle=0) {
     drawCore()
-    if(state.choropleth) { drawChoropleth(t) }
+    if(state.choropleth) { drawChoropleth() }
     // TODO.  move flows to separate animation sequence
     if(arcs) { drawFlows(cycle) }
   }
@@ -397,6 +402,7 @@ function update(canvas, layers, stats, flows, state) {
 
         drawCore()
         drawThematic()
+        drawLegend()
       }
     })
 }
