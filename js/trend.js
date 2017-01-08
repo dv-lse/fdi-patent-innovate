@@ -6,17 +6,14 @@ const margin = { top: 40, right: 60, bottom: 60, left: 0 }
 function validate(val, results) {
   let default_state = {
     category: 'All technologies',
-    region: 'All regions'
+    region: 'All regions',
+    explore: false
   }
 
   let state = Object.assign({}, default_state, val)
 
-  let categories = d3.set()
-  let regions = d3.set()
-  results.forEach( (d) => {
-    categories.add(d.cat)
-    regions.add(d.region)
-  })
+  let categories = d3.set(results, (d) => d.cat)
+  let regions = d3.set(results, (d) => d.region)
 
   if(!(categories.has(state.category)))
     throw "Trend state: cannot read category from " + JSON.stringify(state)
@@ -25,6 +22,121 @@ function validate(val, results) {
 
   return state
 }
+
+function install(svg, regions, categories) {
+
+  // emit SVG header material and legend
+
+  svg.html(triangle_marker('triangle-black', 'black')
+         + triangle_marker('triangle-blue', 'blue'))
+
+  svg = svg.append('g')
+    .attr('id', 'panel')
+    .attr('transform', 'translate(' + [margin.left, margin.top] + ')')
+
+  svg.append('text')
+     .attr('font-size', '12pt')
+     .selectAll('tspan')
+     .data(['Patenting rates:', 'regions with', 'economic intervention'])
+    .enter().append('tspan')
+      .attr('x', 0)
+      .attr('y', 20)
+      .attr('dy', (d,i) => (i * 1.2) + 'em')
+      .text((d) => d)
+
+    svg.append('path')
+      .attr('class', 'area')
+      .attr('fill', 'lightblue')
+
+    // intervention marker
+    svg.append('path')
+      .attr('class', 'intervention')
+      .attr('stroke', 'red')
+      .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '5 2')
+
+    // baseline & label
+    svg.append('path')
+      .attr('class', 'baseline')
+      .attr('stroke', 'black')
+      .attr('stroke-width', 1.5)
+      .attr('marker-end', 'url(#triangle-black)')
+
+    svg.append('text')
+      .attr('class', 'baseline_label')
+      .attr('text-anchor', 'start')
+      .attr('fill', 'black')
+      .attr('font-size', 10)
+      .attr('dy', '-.3em')
+      .text('regions without intervention')
+
+    // median difference line
+    svg.append('path')
+      .attr('class', 'median_difference')
+      .attr('stroke-width', .33)
+      .attr('fill', 'none')
+      .attr('stroke', 'white')
+
+    svg.append('path')
+      .attr('class', 'left_arrow')
+      .attr('stroke-width', 1.5)
+      .attr('fill', 'none')
+      .attr('stroke', 'blue')
+      .attr('marker-end', 'url(#triangle-blue)')
+
+    svg.append('path')
+      .attr('class', 'right_arrow')
+      .attr('stroke-width', 1.5)
+      .attr('fill', 'none')
+      .attr('stroke', 'blue')
+      .attr('marker-end', 'url(#triangle-blue)')
+
+    // axes
+
+    svg.append('g')
+      .attr('class', 'axis y')
+      .append('text')
+        .attr('class', 'label')
+        .attr('text-anchor', 'start')
+        .attr('dx', 50)
+        .attr('y', 6)
+        .attr('dy', '-1em')
+        .attr('transform', 'rotate(-90)')
+        .attr('fill', 'black')
+        .text('difference from baseline, %')
+
+    svg.append('g')
+      .attr('class', 'axis x')
+
+    let selectors = svg.append('g')
+      .attr('class', 'selectors')
+      .attr('transform', 'translate(50,120)')
+
+    let group = selectors.selectAll('g')
+      .data(d3.entries({region: regions, category: categories}))
+      .enter().append('g')
+        .attr('class', (d) => d.key)
+        .attr('transform', (d,i) => 'translate(' + (i * 100) + ')')
+
+    let item = group.selectAll('text')
+      .data( (d) => d.value )
+      .enter().append('text')
+        .attr('class', (d) => downcase(d))
+        .attr('y', (d,i) => (i * 1.2) + 'em')
+        .text( (d) => d )
+
+    function triangle_marker(id, color) {
+      color = color || 'black'
+      return '<marker id="' + id + '"' +
+                ' viewBox="0 0 10 10" refX="0" refY="5"' +
+                ' markerUnits="strokeWidth"' +
+                ' markerWidth="8" markerHeight="6"' +
+                ' orient="auto">' +
+                '<path d="M 0 0 L 10 5 L 0 10 z" fill="' + color + '"/>' +
+                '</marker>'
+    }
+}
+
 
 function update(svg, results, state) {
 
@@ -67,8 +179,8 @@ function update(svg, results, state) {
 
   // some basic stats
 
-  let max = d3.max(data, (d) => d.high)
-  let min = d3.min(data, (d) => d.low)
+  let max = state.max || d3.max(data, (d) => d.high)
+  let min = state.min || d3.min(data, (d) => d.low)
 
   // prepare for visualisation
 
@@ -103,107 +215,66 @@ function update(svg, results, state) {
     .y( (year) => y(fn(year)) )
     .curve(d3.curveLinear)
 
-  // emit SVG header material and legend
+  // selectors
 
-  svg.html(triangle_marker('triangle-black', 'black')
-         + triangle_marker('triangle-blue', 'blue'))
+  let selectors = svg.select('.selectors')
+    .attr('visibility', state.explore ? '' : 'hidden')
 
-  svg = svg.append('g')
-      .attr('transform', 'translate(' + [margin.left, margin.top] + ')')
-
-  svg.append('text')
-     .attr('font-size', '12pt')
-     .selectAll('tspan')
-     .data(['Patenting rates:', 'regions with', 'economic intervention'])
-    .enter().append('tspan')
-      .attr('x', 0)
-      .attr('y', height / 3)
-      .attr('dy', (d,i) => (i * 1.2) + 'em')
-      .text((d) => d)
+  let attributes = ['region', 'category']
+  attributes.forEach( (key) => {
+    selectors.selectAll('g.' + key + ' text')
+      .classed('active', (d) => d === state[key] )
+      .on('click', (d) => {
+        state[key] = d
+        update(svg, results, state)
+      })
+  })
 
   // error bars
 
-  svg.append('path')
+  svg.select('.area')
     .attr('d', area(data))
-    .attr('fill', 'lightblue')
 
   // intervention marker
-  svg.append('path')
+  svg.select('.intervention')
     .attr('d', 'M' + x(0) + ' 0V' + height)
-    .attr('stroke', 'red')
-    .attr('stroke-width', 1.5)
-    .attr('stroke-dasharray', '5 2')
 
   // baseline & label
-  svg.append('path')
+  svg.select('.baseline')
     .attr('d', 'M0 ' + y(0) + 'H' + (width - 10))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 1.5)
-    .attr('marker-end', 'url(#triangle-black)')
 
-  svg.append('text')
-    .attr('text-anchor', 'start')
-    .attr('fill', 'black')
-    .attr('font-size', 10)
+  svg.select('.baseline_label')
     .attr('x', x(2))
     .attr('y', y(0))
-    .attr('dy', '-.3em')
-    .text('regions without intervention')
 
   // median difference line
-  svg.append('path')
+  svg.select('.median_difference')
     .attr('d', line(data))
-    .attr('stroke-width', .33)
-    .attr('fill', 'none')
-    .attr('stroke', 'white')
 
   // trend arrows
 
   let left_arrow_years = d3.range(years[1], 0)
-  svg.append('path')
+  svg.select('.left_arrow')
     .attr('d', trendArrow(left)(left_arrow_years))
-    .attr('stroke-width', 1.5)
-    .attr('fill', 'none')
-    .attr('stroke', 'blue')
-    .attr('marker-end', 'url(#triangle-blue)')
 
   let right_arrow_years = d3.range(1, years[years.length-1])
-  svg.append('path')
+  svg.select('.right_arrow')
     .attr('d', trendArrow(right)(right_arrow_years))
-    .attr('stroke-width', 1.5)
-    .attr('fill', 'none')
-    .attr('stroke', 'blue')
-    .attr('marker-end', 'url(#triangle-blue)')
 
   // axes
-
-  svg.append('g')
+  svg.select('.axis.y')
     .attr('transform', 'translate(' + width + ')')
     .call(axis_y)
-    .append('text')
-      .attr('text-anchor', 'start')
+    .select('.label')
       .attr('x', -y(0))
-      .attr('dx', 50)
-      .attr('y', 6)
-      .attr('dy', '-1em')
-      .attr('transform', 'rotate(-90)')
-      .attr('fill', 'black')
-      .text('difference from baseline, %')
 
-    svg.append('g')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(axis_x)
+  svg.select('.axis.x')
+    .attr('transform', 'translate(0,' + height + ')')
+    .call(axis_x)
 }
 
-function triangle_marker(id, color) {
-  color = color || 'black'
-  return '<marker id="' + id + '"' +
-            ' viewBox="0 0 10 10" refX="0" refY="5"' +
-            ' markerUnits="strokeWidth"' +
-            ' markerWidth="8" markerHeight="6"' +
-            ' orient="auto">' +
-            '<path d="M 0 0 L 10 5 L 0 10 z" fill="' + color + '"/>' +
-            '</marker>'
+function downcase(s) {
+  return s.toLowerCase().replace(/\W/g, '_')
 }
 
-export { validate, update }
+export { install, validate, update }

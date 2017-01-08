@@ -91,6 +91,13 @@ queue()
       update(...msg)
     }
 
+    // install trendline svg shell
+    let all_regions = d3.set(results, (d) => d.region).values().sort()
+    let all_categories = d3.set(results, (d) => d.cat).values().sort()
+
+    d3.select('#trend')
+      .call(trend.install, all_regions, all_categories)
+
     // responsive layout
 
     window.onresize = debounce(resize, 300)
@@ -133,18 +140,21 @@ queue()
     }
 
     function visualise(target, state) {
-      let trans = d3.transition()
-        .duration(500)
-
-      trans.selectAll('.layer')
-        .style('opacity', function() {
+      d3.selectAll('.layer')
+        .style('visibility', function() {
           let id = d3.select(this).attr('id')
-          return id === target ? 1 : 0
+          return id === target ? 'visible' : 'hidden'
         })
 
+      d3.select('#zoom')
+        .style('visibility', 'hidden')
+
       switch(target) {
-        case 'globe': d3.select('#globe').call(globe.update, layers, stats, flows, state); break;
-        case 'trend': d3.select('#trend').call(trend.update, results, state); break;
+        case 'globe': d3.select('#globe').call(globe.update, layers, stats, flows, state);
+                      d3.select('#zoom').style('visibility', 'visible');
+                      break;
+        case 'trend': d3.select('#trend').call(trend.update, results, state);
+                      break;
         case null: break;
         default: throw 'Unkown visualisation ' + target
       }

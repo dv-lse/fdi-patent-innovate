@@ -120,3 +120,14 @@ body {
   top: 70px;
   z-index: 0;
 }
+
+#trend .selectors {
+  font-size: 8pt;
+  fill: grey;
+  cursor: pointer;
+}
+
+#trend .selectors .active {
+  text-decoration: underline;
+  fill: red;
+}
