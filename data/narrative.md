@@ -244,7 +244,6 @@ In the case of the FDI by Texas Instrument in Bangalore, one can compare the pat
 ::: visualisation trend
   category: All technologies
   region: All regions
-  max: 1.0
 :::
 
 The patent count in regions that receive an intervention does indeed grow more than in regions that remained unvisited by foreign firms.
@@ -258,7 +257,6 @@ We aggregate all the years when a foreign company is patenting abroad at time 0 
 ::: visualisation trend
   category: All technologies
   region: East Asia
-  max: 1.0
 :::
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increases in regional innovation. Innovation in these two technologies relies greatly on collaborations, as FDIs foster collaborations between foreign firms and local firms, as well as among local firms themselves, it is normal to see the largest increases in the most collaborative fields.
@@ -268,7 +266,6 @@ Some factors make regions more receptive to foreign firms’ interventions. Fore
 ::: visualisation trend
   category: All technologies
   region: East Asia
-  max: 1.0
   explore: true
 :::
 

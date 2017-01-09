@@ -25,6 +25,9 @@ function validate(val, results) {
 
 function install(svg, regions, categories) {
 
+  let width = svg.attr('width') - margin.left - margin.right
+  let height = svg.attr('height') - margin.top - margin.bottom
+
   // emit SVG header material and legend
 
   svg.html(triangle_marker('triangle-black', 'black')
@@ -55,20 +58,34 @@ function install(svg, regions, categories) {
       .attr('stroke-width', 1.5)
       .attr('stroke-dasharray', '5 2')
 
-    // baseline & label
-    svg.append('path')
+    // baseline & labels
+    // TODO.  would be better not to approximate y translate here
+    let baseline = svg.append('g')
       .attr('class', 'baseline')
+      .attr('transform', 'translate(0,' + (height * 9 / 10) + ')')
+
+    baseline.append('path')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.5)
       .attr('marker-end', 'url(#triangle-black)')
 
-    svg.append('text')
+    baseline.append('text')
       .attr('class', 'baseline_label')
       .attr('text-anchor', 'start')
       .attr('fill', 'black')
       .attr('font-size', 10)
       .attr('dy', '-.3em')
       .text('regions without intervention')
+
+    baseline.append('text')
+      .attr('class', 'y_label')
+      .attr('text-anchor', 'start')
+      .attr('dy', '-.7em')
+      .attr('dx', '1em')
+      .attr('transform', 'rotate(-90)')
+      .attr('fill', 'black')
+      .attr('font-size', 10)
+      .text('difference from baseline, %')
 
     // median difference line
     svg.append('path')
@@ -95,15 +112,6 @@ function install(svg, regions, categories) {
 
     svg.append('g')
       .attr('class', 'axis y')
-      .append('text')
-        .attr('class', 'label')
-        .attr('text-anchor', 'start')
-        .attr('dx', 50)
-        .attr('y', 6)
-        .attr('dy', '-1em')
-        .attr('transform', 'rotate(-90)')
-        .attr('fill', 'black')
-        .text('difference from baseline, %')
 
     svg.append('g')
       .attr('class', 'axis x')
@@ -179,8 +187,8 @@ function update(svg, results, state) {
 
   // some basic stats
 
-  let max = state.max || d3.max(data, (d) => d.high)
-  let min = state.min || d3.min(data, (d) => d.low)
+  let max = d3.max(data, (d) => d.high)
+  let min = d3.min(data, (d) => d.low)
 
   // prepare for visualisation
 
@@ -230,43 +238,50 @@ function update(svg, results, state) {
       })
   })
 
-  // error bars
-
-  svg.select('.area')
-    .attr('d', area(data))
-
   // intervention marker
   svg.select('.intervention')
     .attr('d', 'M' + x(0) + ' 0V' + height)
 
-  // baseline & label
-  svg.select('.baseline')
-    .attr('d', 'M0 ' + y(0) + 'H' + (width - 10))
+  // error bars
 
-  svg.select('.baseline_label')
-    .attr('x', x(2))
-    .attr('y', y(0))
+  let t0 = svg.transition()
+    .duration(1250)
+
+  t0.select('.area')
+    .attr('d', area(data))
 
   // median difference line
-  svg.select('.median_difference')
+  t0.select('.median_difference')
     .attr('d', line(data))
+
+  // baseline & label
+  svg.select('.baseline path')
+    .attr('d', 'M0 0H' + (width - 10))
+
+  svg.select('.baseline .baseline_label')
+    .attr('x', x(2))
+
+  svg.select('.baseline .y_label')
+    .attr('y', width)
+
+  t0.select('.baseline')
+    .attr('transform', 'translate(0,' + y(0) + ')')
 
   // trend arrows
 
   let left_arrow_years = d3.range(years[1], 0)
-  svg.select('.left_arrow')
+  t0.select('.left_arrow')
     .attr('d', trendArrow(left)(left_arrow_years))
 
   let right_arrow_years = d3.range(1, years[years.length-1])
-  svg.select('.right_arrow')
+  t0.select('.right_arrow')
     .attr('d', trendArrow(right)(right_arrow_years))
 
   // axes
   svg.select('.axis.y')
     .attr('transform', 'translate(' + width + ')')
+  t0.select('.axis.y')
     .call(axis_y)
-    .select('.label')
-      .attr('x', -y(0))
 
   svg.select('.axis.x')
     .attr('transform', 'translate(0,' + height + ')')
