@@ -203,7 +203,7 @@ function update(canvas, layers, stats, flows, state) {
 
     layers.regions.features.forEach( (d) => {
       let value = project(stats[d.id], state.choropleth)
-      if(!value) return
+      if(value === null) return
 
       context.fillStyle = color(value)
       context.beginPath()
