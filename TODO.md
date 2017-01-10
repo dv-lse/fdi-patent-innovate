@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] Dropdowns for selecting trend continent / technology
-- [ ] Transition between slides for trendline
+- [x] Dropdowns for selecting trend continent / technology
+- [x] Transition between slides for trendline
 - [ ] Fixed aspect ratio for trendline
 
 - [x] Option to label origin and dest. of link
