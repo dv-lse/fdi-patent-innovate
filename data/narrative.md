@@ -277,11 +277,23 @@ You can explore the results by technologies and macro region at right.
 
 #
 
+::: visualisation trend
+  category: All technologies
+  region: All regions
+  explore: true
+:::
+
 Ultimately, the overall impact of FDIs on local innovation is positive: foreign firms help cities and region innovate.
 
 The size of the impact depends largely on the technology and the area of the world where firms operate.
 
 # Credits
+
+::: visualisation trend
+  category: All technologies
+  region: All regions
+  explore: true
+:::
 
 London School of Economics - Department of Geography and Environment
 
