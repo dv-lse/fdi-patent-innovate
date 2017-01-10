@@ -17,14 +17,13 @@ TMP=/tmp
 
 BIN=node_modules/.bin
 
-default: data/topography.json data/regions_countries.csv
+default: data/topography.json
 
 clean:
 	rm $(TMP)/*.json \
 	   $(TMP)/*.csv \
 		 $(TMP)/*.csv \
-		 data/topography.json \
-		 data/regions_countries.csv
+		 data/topography.json
 
 data/%: $(TMP)/%
 	cp $< $@
@@ -58,12 +57,6 @@ $(TMP)/$(NE).zip:
 
 $(TMP)/$(NE)/%: $(TMP)/$(NE).zip
 	unzip -u -d $(TMP)/$(NE) $<
-
-
-# Extract columns from patenting data
-
-$(TMP)/regions_countries.csv: $(TMP)/file1.csv
-	python3 scripts/regions_countries.py
 
 # Extract layers from ESRI shapefiles
 
@@ -99,4 +92,4 @@ $(TMP)/topography_full.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
 # Simplification
 
 $(TMP)/topography.json: $(TMP)/topography_full.json
-	$(BIN)/toposimplify -F -p 1 $< > $@
+	$(BIN)/toposimplify -F -p 0.02 $< > $@
