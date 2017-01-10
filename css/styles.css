@@ -87,14 +87,13 @@ body {
 #zoom {
   position: fixed;
   display: inline-block;
-  left: 340px;
-  top: 75px;
+  right: 0;
+  bottom: 0;
   z-index: 99;
 }
 
 #zoom .button {
-  display: table-cell;
-  vertical-align: middle;
+  margin: 3px;
   text-align: center;
   background-color: white;
   font-size: 24px;
