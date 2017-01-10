@@ -171,9 +171,9 @@ function update(svg, results, state) {
     let key = ('' + i).replace('-', '_')
     return {
       year: i,
-      high: record['err' + key + '_up'],
-      value: record['t' + key],
-      low: record['err' + key + '_down']
+      high: record ? record['err' + key + '_up'] : 0,
+      value: record ? record['t' + key] : 0,
+      low: record ? record['err' + key + '_down'] : 0
     }
   })
 
