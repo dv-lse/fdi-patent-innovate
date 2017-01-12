@@ -209,7 +209,7 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   format: '.1s'
   thresholds: [0, 1, 5, 25, 50, 100, 200, 500, 2000, 49800]
   colors: Reds
-  autorotate: true
+  autorotate: false
 :::
 
 The distribution of patents is not only concentrated in few cities, it is also very stable over time: the most innovative regions in 1975 remained the most innovative in 2005, and very few regions with no patents in 1975 became hubs of innovation over the next four decades.
