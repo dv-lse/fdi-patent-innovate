@@ -24,6 +24,7 @@ Today, multinational firms are investing enormous amounts of money abroad. These
   flows: World
   flow-weight: investment_mm
   label: Top 100 FDIs in 2014
+  font-size: 4em
 :::
 
 These ***Foreign Direct Investments*** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, or the equivalent of Italy’s Gross Domestic Product [2].
