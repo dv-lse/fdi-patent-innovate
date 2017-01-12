@@ -133,7 +133,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 
 On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China in 1985. What made the balance tilt in favour of Karnataka --the Indian state where Bangalore is-- is its unique concentration of tech talents and its local institutions, conducive to innovative activities.
 
-Nissan, Texas Instruments and all technologically-advanced firms typically seek 3 types of strategic assets when investing abroad: (i) specialised knowledge that is only present in this area, (ii) innovation-prone economic conditions [5] and (iii) favourable local institutional arrangements and norms [6] like a strong enforcement of intellectual property rights and respected patent laws.
+Nissan, Texas Instruments and all technologically-advanced firms typically seek 3 types of strategic assets when investing abroad: (i) specialised knowledge that is only present in this area, (ii) innovation-prone economic conditions [5] and (iii) favourable local institutional arrangements and norms [6].
 
 [4]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20 "Crescenzi, Pietrobelli & Rabelloti (2016)"
 
