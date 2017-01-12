@@ -24,7 +24,6 @@ Today, multinational firms are investing enormous amounts of money abroad. These
   flows: World
   flow-weight: investment_mm
   label: Top 100 FDIs in 2014
-  font-size: 4em
 :::
 
 These ***Foreign Direct Investments*** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, or the equivalent of Italy’s Gross Domestic Product [2].
@@ -258,7 +257,7 @@ We aggregate all the years when a foreign company is patenting abroad at time 0 
 
 ::: visualisation trend
   category: All technologies
-  region: East Asia
+  region: Western Europe
 :::
 
 Some factors make regions more receptive to foreign firms’ interventions. Foreign direct investments in computers and drugs lead to powerful increases in regional innovation. Innovation in these two technologies relies greatly on collaborations, as FDIs foster collaborations between foreign firms and local firms, as well as among local firms themselves, it is normal to see the largest increases in the most collaborative fields.
