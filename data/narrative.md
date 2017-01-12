@@ -274,7 +274,7 @@ Furthermore, two continents stand out: Asia and Europe. These continents are tho
 
 Surpisingly, while Latin America attracts a substantial amount of foreign firms, local economies do not seem to benefit from their presences, in terms of patents.
 
-You can explore the results by technologies and macro region at right.
+You can explore the results by technologies and macro regions by clicking on the categories of your choice in the menus.
 
 #
 
