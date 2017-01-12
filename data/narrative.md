@@ -26,7 +26,9 @@ Today, multinational firms are investing enormous amounts of money abroad. These
   label: Top 100 FDIs in 2014
 :::
 
-These investments are called ***Foreign Direct Investments*** (FDIs) and In 2015 they amounted to 1.8 trillion US dollars [1]. or the equivalent of Italy’s Gross Domestic Product [2].
+These ***Foreign Direct Investments*** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, or the equivalent of Italy’s Gross Domestic Product [2].
+
+You can rotate the globe with your mouse and zoom in or out with the buttons in the top left corner.
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
