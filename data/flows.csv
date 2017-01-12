@@ -192,7 +192,7 @@ source_region_id_g,source_region_g,source_country_g,source_country_id_g,destinat
 812,Kentriki Makedonia,Greece,1687,840,Suez,"Egypt, Arab Rep.",1682,40.621174,23.191803,29.368225,32.174606,Not Specified,Not Specified,10000,3966,1,World
 775,Kanagawa,Japan,1684,509,North,United Kingdom,1778,35.462933,139.626112,54.9061,-1.38113,Yokohama,Sunderland,2,0,0,Nissan
 775,Kanagawa,Japan,1684,1408,Lazio,Italy,1693,35.462933,139.626112,41.8885,12.4865,Yokohama,Rome,1,0,0,Nissan
-775,Kanagawa,Japan,1684,1234,Piedmonte,Italy,1693,35.462933,139.626112,45.0669,7.668027 ,Yokohama,Turin,1,0,0,Nissan
+775,Kanagawa,Japan,1684,1234,Piedmont,Italy,1693,35.462933,139.626112,45.0669,7.668027 ,Yokohama,Turin,1,0,0,Nissan
 775,Kanagawa,Japan,1684,1281,Nord - Pas-de-Calais,France,1774,35.462933,139.626112,50.4356,2.8206,Yokohama,Lens,1,0,0,Nissan
 376,Texas,United States,1663,1492,Karnataka,India,1764,32.910409,-96.752984,12.934513,77.614656,Dallas,Bangalore,2,0,0,Texas Instruments
 376,Texas,United States,1663,723,Punjab,Pakistan,1715,32.910409,-96.752984,31.5246,74.3276,Dallas,Lahore,1,0,0,Texas Instruments
