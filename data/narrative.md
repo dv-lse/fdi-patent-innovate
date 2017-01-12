@@ -77,7 +77,7 @@ They want to tap into the specific qualities of a region: they are seeking ***re
 
 ::: visualisation globe
   rotate: [-139.626112, -35.462933]
-  scale: 1
+  scale: 1.5
   flows: Nissan
   flow-weight: investment_mm
   origin-labels: source_region_g
@@ -93,7 +93,7 @@ There are several other European localities that Nissan could have chosen: Lazio
 
 ::: visualisation globe
   rotate: [1.38113, -54.9061]
-  scale: 1
+  scale: 1.5
   flows: Nissan
   flow-weight: investment_mm
   origin-labels: source_region_g
@@ -109,7 +109,7 @@ These were the ***regional strategic assets*** of Sunderland in the mid-1980's
 
 ::: visualisation globe
   rotate: [96.752984, -32.910409]
-  scale: 1
+  scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
   origin-labels: source_region_g
@@ -123,7 +123,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 
 ::: visualisation globe
   rotate: [-77.614656, -12.934513]
-  scale: 1
+  scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
   origin-labels: source_region_g
