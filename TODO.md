@@ -1,5 +1,16 @@
 # TODO
 
+- [ ] Oceans, background: ref to http://bl.ocks.org/dwtkns/4686432
+- [ ] Flows: ref to http://prcweb.co.uk/lab/ukwind/
+      [ ] DiD graphs: intervention line like a flow?
+- [ ] 100% + top 1% + bottom 80% selector
+- [ ] Flow labels larger
+- [ ] Legend text larger
+- [ ] DiD text all larger
+
+- [ ] Slides too high on 16/9 screen?
+- [ ] Night lights option?  NEED DATASET
+
 - [x] Dropdowns for selecting trend continent / technology
 - [x] Transition between slides for trendline
 - [ ] Fixed aspect ratio for trendline
