@@ -197,7 +197,9 @@ One common way to measure the innovative capacity of a city is to count the numb
 Based on this statistic, local economies are extremely unequal in their innovation potential.
 The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent [7].
 
-[7]: http://rosencrantz.berkeley.edu/ "Data from the US Patents and Trademark Office"
+(This map is heavy, it may slow down the visualisation)
+
+[7]: http://www.patentsview.org/download/ "Data from the US Patents and Trademark Office"
 
 #
 
