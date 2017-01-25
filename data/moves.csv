@@ -1,0 +1,1541 @@
+geoid_r,Region,Country,diff
+1,Amazonas,,-1
+2,Delta Amacuro,,-1
+3,Alto Paraguay,Paraguay,0
+4,Alto Paran,Paraguay,0
+5,Amambay,Paraguay,0
+6,Asuncin,Paraguay,0
+7,Boquern,Paraguay,0
+8,Caaguaz,Paraguay,0
+9,Caazap,Paraguay,0
+10,Canindey,Paraguay,0
+11,Central,Paraguay,-1
+12,Concepcin,Paraguay,0
+13,Cordillera,Paraguay,0
+14,Guair,Paraguay,0
+15,Itapa,Paraguay,0
+16,Misiones,Paraguay,0
+17,eembuc,Paraguay,0
+18,Paraguar,Paraguay,0
+19,Presidente Hayes,Paraguay,0
+20,San Pedro,Paraguay,0
+21,Colonia,Uruguay,-1
+22,San Jos,Uruguay,-1
+23,Artigas,Uruguay,-1
+24,Flores,Uruguay,-1
+25,Paysand,Uruguay,-1
+26,Ro Negro,Uruguay,-1
+27,Salto,Uruguay,-1
+28,Soriano,Uruguay,-1
+29,Cerro Largo,Uruguay,-1
+30,Durazno,Uruguay,-1
+31,Rivera,Uruguay,-1
+32,Tacuaremb,Uruguay,-1
+33,Treinta y Tres,Uruguay,-1
+34,Canelones,Uruguay,1
+35,Florida,Uruguay,-1
+36,Lavalleja,Uruguay,-1
+37,Maldonado,Uruguay,1
+38,Montevideo,Uruguay,0
+39,Rocha,Uruguay,-1
+40,Lambayeque,Peru,-1
+41,Piura,Peru,-1
+42,Tumbes,Peru,-1
+43,Apurmac,Peru,-1
+44,Arequipa,Peru,0
+45,Cusco,Peru,0
+46,Madre de Dios,Peru,-1
+47,Puno,Peru,-1
+48,Moquegua,Peru,-1
+49,Tacna,Peru,-1
+50,Ancash,Peru,-1
+51,Cajamarca,Peru,-1
+52,Hunuco,Peru,-1
+53,La Libertad,Peru,-1
+54,Pasco,Peru,-1
+55,San Martn,Peru,-1
+56,Amazonas,Peru,-1
+57,Loreto w/ Ucayali,Peru,-1
+58,Ayacucho,Peru,-1
+59,Huancavelica,Peru,-1
+60,Ica,Peru,-1
+61,Junn,Peru,-1
+62,Lima w/ Callao,Peru,0
+63,Bocas Del Toro,Panama,0
+64,Chiriqu,Panama,0
+65,Cocl,Panama,0
+66,Coln,Panama,0
+67,Herrera,Panama,0
+68,Los Santos,Panama,0
+69,Panam City,Panama,0
+70,Veraguas,Panama,1
+71,Darin,Panama,1
+73,Pacfico Central,Nicaragua,1
+74,Pacfico Norte,Nicaragua,-1
+75,Pacfico Sur,Nicaragua,0
+76,Interior Sur,Nicaragua,0
+77,Azuay,Ecuador,1
+78,El Oro,Ecuador,0
+79,Loja,Ecuador,0
+80,Zamora Chinchipe,Ecuador,0
+81,Galapagos,Ecuador,0
+82,Bolivar,Ecuador,0
+83,Caar,Ecuador,0
+84,Cotopaxi,Ecuador,0
+85,Guayas,Ecuador,1
+86,Los Rios,Ecuador,1
+87,Manabi,Ecuador,0
+88,Chimborazo,Ecuador,1
+89,Morona Santiago,Ecuador,0
+90,Napo w/ Orellana,Ecuador,0
+91,Pichincha,Ecuador,0
+92,Pastaza,Ecuador,0
+93,Tungurahua,Ecuador,0
+94,Esmeraldas,Ecuador,0
+95,Carchi,Ecuador,0
+96,Imbabura,Ecuador,0
+97,Sucumbios,Ecuador,0
+98,Nuevos Departamentos,Colombia,0
+99,Antioquia,Colombia,0
+100,Boyaca,Colombia,-1
+101,Cordoba,Colombia,-1
+102,Santander,Colombia,0
+103,La Guajira,Colombia,-1
+104,Caldas,Colombia,-1
+105,Cundinamarca,Colombia,-1
+106,Bogota,Colombia,0
+107,Quindio,Colombia,-1
+108,Risaralda,Colombia,-1
+109,Tolima,Colombia,0
+110,Caqueta,Colombia,-1
+111,Cauca,Colombia,-1
+112,Huila,Colombia,-1
+113,Narino,Colombia,-1
+114,Valle del Cauca,Colombia,0
+115,Atlantico,Colombia,-1
+116,Bolivar,Colombia,-1
+117,Cesar,Colombia,-1
+118,Choco,Colombia,-1
+119,Magdalena,Colombia,-1
+120,Sucre,Colombia,-1
+121,Norte de Santander,Colombia,-1
+122,Meta,Colombia,-1
+124,Aisn del General Carlos Ibez del Campo,Chile,-1
+125,Magallanes y Antrtica Chilena,Chile,-1
+126,Tarapac,Chile,1
+127,Antofagasta,Chile,0
+128,Atacama,Chile,0
+129,Coquimbo,Chile,0
+130,Regin Metropolitana de Santiago,Chile,1
+131,Valparaso,Chile,0
+132,Araucana,Chile,0
+133,Biobo,Chile,0
+134,Libertador General Bernardo O'Higgins,Chile,0
+135,Los Lagos,Chile,0
+136,Maule,Chile,-1
+137,Acre,Brazil,0
+138,"Amazonas, MG, MG do Sul, Rondnia, Roraima",Brazil,0
+139,Maranho,Brazil,-1
+140,Par and Amap,Brazil,0
+141,"Gois, DF, Tocantins",Brazil,0
+142,Minas Gerais,Brazil,0
+143,Rio Grande do Sul,Brazil,0
+144,So Paulo,Brazil,0
+145,Paran,Brazil,0
+146,Santa Catarina,Brazil,0
+147,Cear,Brazil,0
+148,Piau,Brazil,0
+149,Alagoas,Brazil,0
+150,Bahia,Brazil,0
+151,Esprito Santo,Brazil,0
+152,Paraba,Brazil,-1
+153,Pernambuco,Brazil,0
+154,Rio de Janeiro,Brazil,0
+155,Rio Grande do Norte,Brazil,0
+156,Sergipe,Brazil,-1
+157,La Paz,Bolivia,-1
+158,Oruro,Bolivia,-1
+159,Pando,Bolivia,-1
+160,Cochabamba,Bolivia,0
+161,Chuquisaca,Bolivia,0
+162,Beni,Bolivia,0
+163,Potos,Bolivia,0
+164,Santa Cruz,Bolivia,0
+165,Tarija,Bolivia,-1
+166,Santa Cruz,Argentina,-1
+167,Tierra del Fuego,Argentina,-1
+168,San Juan,Argentina,-1
+169,Chubut,Argentina,1
+170,Mendoza,Argentina,0
+171,Neuqun,Argentina,0
+172,Buenos Aires,Argentina,0
+173,Ciudad de Bs. As.,Argentina,0
+174,La Pampa,Argentina,-1
+175,Ro Negro,Argentina,0
+176,San Luis,Argentina,-1
+177,Crdoba,Argentina,0
+178,Catamarca,Argentina,1
+179,Jujuy,Argentina,0
+180,La Rioja,Argentina,1
+181,Salta,Argentina,0
+182,Santiago del Estero,Argentina,-1
+183,Tucumn,Argentina,-1
+184,Chaco,Argentina,-1
+185,Formosa,Argentina,-1
+186,Corrientes,Argentina,0
+187,Entre Ros,Argentina,-1
+188,Santa Fe,Argentina,0
+189,Misiones,Argentina,0
+190,Estado Anzotegui,,-1
+191,Estado Apure,,-1
+192,Estado Aragua,,0
+193,Estado Barinas,,-1
+194,Estado Bolvar,,0
+195,Estado Carabobo,,-1
+196,Estado Cojedes,,-1
+197,Estado Falcn,,-1
+198,Estado Gurico,,-1
+199,Estado Lara,,0
+200,Estado Mrida,,-1
+201,Estado Miranda,,-1
+202,Estado Monagas,,0
+203,Estado Nueva Esparta,,-1
+204,Estado Portuguesa,,-1
+205,Estado Sucre,,-1
+206,Estado Tchira,,-1
+207,Estado Trujillo,,-1
+208,Estado Yaracuy,,-1
+209,Estado Zulia,,0
+210,Kerala,India,1
+212,Tamil Nadu,India,1
+213,Chanthaburi,Thailand,1
+214,Chon Buri,Thailand,1
+215,Chumphon,Thailand,-1
+216,Krabi,Thailand,-1
+217,Nakhon Si Thammarat,Thailand,1
+218,Narathiwat,Thailand,0
+219,Pattani,Thailand,-1
+220,Phangnga,Thailand,0
+221,Phatthalung,Thailand,-1
+222,Phetchaburi,Thailand,-1
+223,Phuket,Thailand,1
+224,Phachuap Khiri Khan,Thailand,0
+225,Ranong,Thailand,-1
+226,Rayong,Thailand,1
+227,Samut Songkhram,Thailand,-1
+228,Satun,Thailand,0
+229,Songkhla,Thailand,1
+230,Surat Thani,Thailand,-1
+231,Trang,Thailand,0
+232,Trat,Thailand,1
+233,Yala,Thailand,-1
+234,Arusha,Tanzania,-1
+235,D'Salaam,Tanzania,-1
+236,Dodoma,Tanzania,-1
+237,Iringa,Tanzania,0
+238,Kagera,Tanzania,1
+240,Kigoma,Tanzania,-1
+241,Kilimanjaro,Tanzania,-1
+242,Lindi,Tanzania,-1
+243,Mara,Tanzania,0
+244,Mbeya,Tanzania,-1
+245,Morogoro,Tanzania,-1
+246,Mtwara,Tanzania,-1
+247,Mwanza,Tanzania,1
+248,Pwani,Tanzania,-1
+249,Rukwa,Tanzania,-1
+250,Ruvuma,Tanzania,-1
+251,Shinyanga,Tanzania,-1
+252,Singida,Tanzania,-1
+253,Tabora,Tanzania,-1
+254,Tanga,Tanzania,-1
+255,Central,Sri Lanka,1
+256,Eastern,Sri Lanka,1
+257,North Central,Sri Lanka,1
+258,Northern,Sri Lanka,0
+259,North Western,Sri Lanka,1
+260,Sabaragamuwa,Sri Lanka,1
+261,Southern,Sri Lanka,1
+262,Uva,Sri Lanka,1
+263,Western,Sri Lanka,0
+265,Cape Province,South Africa,0
+266,Transvaal,South Africa,0
+267,Orange Free State,South Africa,0
+268,Natal,South Africa,0
+269,Central Visayas,Philippines,1
+270,Mindanao,Philippines,1
+271,Eastern Visayas,Philippines,-1
+272,South East,Nigeria,1
+273,South West,Nigeria,-1
+274,Tete,Mozambique,1
+275,Manica,Mozambique,1
+276,Cabo Delgado,Mozambique,1
+277,Niassa,Mozambique,0
+278,Nampula,Mozambique,1
+279,Sofala,Mozambique,0
+280,Zambezia,Mozambique,1
+281,Inhambane,Mozambique,0
+282,Gaza,Mozambique,0
+283,Maputo,Mozambique,0
+284,Perak,Malaysia,1
+285,Pulau Pinang,Malaysia,0
+286,Kedah and Perlis,Malaysia,1
+287,Johor,Malaysia,0
+288,Kelantan,Malaysia,1
+289,Melaka,Malaysia,1
+290,Negeri Sembilan,Malaysia,1
+291,Pahang,Malaysia,1
+292,Selangor w/ Kuala Lumpur,Malaysia,1
+293,Terengganu,Malaysia,1
+294,Sabah w/ Labuan,Malaysia,0
+295,Sarawak,Malaysia,1
+296,Nyanza and Western,Kenya,0
+297,"Northeast., East., Rift Valley",Kenya,-1
+298,Coast,Kenya,0
+299,Central,Kenya,1
+300,Nairobi,Kenya,0
+301,Aceh,Indonesia,0
+302,N. Sumatra,Indonesia,1
+303,Riau,Indonesia,0
+304,E. Kalimantan,Indonesia,0
+305,N. Sulawesi,Indonesia,0
+306,W. Java,Indonesia,0
+307,C. Java,Indonesia,0
+308,Maluku,Indonesia,-1
+309,W. Sumatra,Indonesia,1
+310,Yogyakarta,Indonesia,1
+311,Bengkulu,Indonesia,-1
+312,Jambi,Indonesia,0
+313,Jakarta,Indonesia,0
+314,W. Kalimantan,Indonesia,0
+315,Lampung,Indonesia,-1
+316,S. Sumatra,Indonesia,-1
+317,Bali,Indonesia,0
+318,E. Java,Indonesia,1
+319,S. Kalimantan,Indonesia,-1
+320,C. Kalimantan,Indonesia,-1
+321,W. Nusa Tenggara,Indonesia,0
+322,E. Nusa Tenggara,Indonesia,1
+323,S. Sulawesi,Indonesia,1
+324,S.E. Sulawesi,Indonesia,0
+325,C. Sulawesi,Indonesia,-1
+326,Papua,Indonesia,-1
+327,Borgou,Benin,0
+328,Zou,Benin,0
+329,Atlantique,Benin,0
+330,Mono,Benin,0
+331,Oueme,Benin,0
+332,Atacora,Benin,0
+333,Northern Territory,Australia,0
+334,Western Australia,Australia,0
+335,Capital Territory,Australia,0
+336,New South Wales,Australia,0
+337,South Australia,Australia,0
+338,Victoria,Australia,0
+339,Queensland,Australia,0
+340,Tasmania,Australia,-1
+341,Dong Thap,Vietnam,1
+342,An Giang,Vietnam,0
+343,Bac Lieu / Ca Mau,Vietnam,0
+344,Ben Tre,Vietnam,1
+345,Soc Trang / Can Tho / Hau Gian,Vietnam,1
+346,Kien Giang,Vietnam,0
+347,Long An,Vietnam,1
+348,Tien Giang,Vietnam,0
+349,Tra Vinh / Vinh Long,Vietnam,1
+350,Dong Nai / Ba Ria-Vung Tau,Vietnam,0
+351,Binh Duong / Binh Phuoc,Vietnam,1
+352,Binh Thuan / Ninh Thuan,Vietnam,0
+353,Ho Chi Minh City|Ho Chi Minh,Vietnam,1
+354,Tay Ninh,Vietnam,0
+355,Khanh Hoa,Vietnam,0
+356,Dak Lack,Vietnam,1
+357,Lam Dong,Vietnam,1
+358,Berea,Lesotho,0
+359,"Leribe, Maseru, Mokhot., QN, TT",Lesotho,0
+360,Mafeteng,Lesotho,0
+361,Mohale's Hoek,Lesotho,0
+362,Quthing,Lesotho,0
+363,Butha-Buthe,Lesotho,0
+364,Hawaii,United States,0
+365,Arizona,United States,0
+366,California,United States,0
+367,Colorado,United States,0
+368,Nevada,United States,0
+369,New Mexico,United States,0
+370,Utah,United States,0
+371,Arkansas,United States,0
+372,Kansas,United States,0
+373,Missouri,United States,0
+374,Oklahoma,United States,0
+375,Louisiana,United States,0
+376,Texas,United States,0
+378,Connecticut,United States,0
+379,Rhode Island,United States,0
+380,Alabama,United States,0
+381,Florida,United States,0
+382,Georgia,United States,0
+383,Mississippi,United States,0
+384,South Carolina,United States,0
+385,Indiana,United States,0
+386,Kentucky,United States,0
+387,North Carolina,United States,0
+388,Ohio,United States,0
+389,Tennessee,United States,0
+390,Virginia,United States,0
+391,West Virginia,United States,0
+392,Delaware,United States,0
+393,District of Columbia,United States,0
+394,Maryland,United States,0
+395,New Jersey,United States,0
+396,Norte,Portugal,0
+397,Algarve,Portugal,1
+398,Centro,Portugal,1
+399,Lisboa,Portugal,0
+400,Alentejo,Portugal,1
+401,Baja California Norte,Mexico,0
+402,Baja California Sur,Mexico,0
+403,Coahuila,Mexico,0
+404,Chihuahua,Mexico,0
+405,Durango,Mexico,0
+406,Sinaloa,Mexico,0
+407,Sonora,Mexico,0
+408,Zacatecas,Mexico,-1
+409,Nuevo Leon,Mexico,-1
+410,San Luis Potosi,Mexico,0
+411,Tamaulipas,Mexico,1
+412,Aguascalientes,Mexico,0
+413,Colima,Mexico,-1
+414,Jalisco,Mexico,0
+415,Michoacan,Mexico,-1
+416,Nayarit,Mexico,-1
+417,Campeche,Mexico,-1
+418,Oaxaca,Mexico,0
+419,Puebla,Mexico,0
+420,Tabasco,Mexico,0
+421,Tlaxcala,Mexico,-1
+422,Distrito Federal,Mexico,-1
+423,Guanajuato,Mexico,0
+424,Guerrero,Mexico,0
+425,Hidalgo,Mexico,0
+426,Mexico,Mexico,-1
+427,Morelos,Mexico,0
+428,Queretaro,Mexico,0
+429,Veracruz,Mexico,-1
+430,Chiapas,Mexico,0
+431,Quintana Roo,Mexico,0
+432,Yucatan,Mexico,0
+433,Atlntida,Honduras,0
+434,Coln,Honduras,0
+435,Francisco Morazn,Honduras,1
+437,,,1
+438,Olancho,Honduras,0
+439,Yoro,Honduras,0
+440,Comayagua,Honduras,-1
+441,Corts,Honduras,0
+442,Intibuc,Honduras,0
+443,La Paz,Honduras,0
+444,Santa Brbara,Honduras,0
+445,Copn,Honduras,0
+446,Lempira,Honduras,0
+447,Ocotepeque,Honduras,0
+448,Baja Verapaz,Guatemala,0
+449,Huhuetenango,Guatemala,0
+450,El Petn,Guatemala,0
+451,Quich,Guatemala,0
+452,Quetzaltenango,Guatemala,0
+453,Retalhuleu,Guatemala,0
+454,San Marcos,Guatemala,0
+455,Alta Verapaz,Guatemala,0
+456,Chimaltenango,Guatemala,0
+457,Escuintla,Guatemala,0
+458,Guatemala City,Guatemala,0
+459,Suchitepquez,Guatemala,0
+460,Sacatepquez,Guatemala,0
+461,Solol,Guatemala,0
+462,Totonicapn,Guatemala,0
+463,El Progreso,Guatemala,0
+464,Santa Rosa,Guatemala,0
+465,Izabal,Guatemala,0
+466,Chiquimula,Guatemala,0
+467,Jalapa,Guatemala,0
+468,Jutiapa,Guatemala,0
+469,Zacapa,Guatemala,0
+470,Ahuachapn,El Salvador,1
+471,Cabaas,El Salvador,0
+472,Cuscatln,El Salvador,0
+473,Chalatenango,El Salvador,0
+474,Santa Ana,El Salvador,0
+475,Almera,Spain,0
+476,Cdiz,Spain,0
+477,Crdoba,Spain,0
+478,Granada,Spain,0
+479,Huelva,Spain,1
+480,Jan,Spain,0
+481,Mlaga,Spain,0
+482,Sevilla,Spain,0
+483,Albacete,Spain,0
+484,Ciudad Real,Spain,1
+485,Cuenca,Spain,1
+486,Guadalajara,Spain,1
+487,Toledo,Spain,1
+488,vila,Spain,0
+489,Salamanca,Spain,0
+490,Segovia,Spain,0
+491,Soria,Spain,0
+492,Valladolid,Spain,1
+493,Zamora,Spain,1
+494,Madrid,Spain,0
+495,Valencia/Valncia,Spain,1
+496,Badajoz,Spain,0
+497,Cceres,Spain,1
+498,"Palmas, Las",Spain,0
+499,Murcia,Spain,0
+500,Minnesota,United States,0
+501,Montana,United States,0
+502,North Dakota,United States,0
+503,Washington,United States,0
+504,South Dakota,United States,0
+505,New Hampshire,United States,0
+506,Vermont,United States,0
+507,Wisconsin,United States,0
+508,Maine,United States,0
+509,North,United Kingdom,0
+510,North West,United Kingdom,0
+511,South West,United Kingdom,0
+512,Wales,United Kingdom,0
+513,Scotland,United Kingdom,0
+514,Northern Ireland,United Kingdom,0
+515,Border,Ireland,0
+516,Midland,Ireland,0
+517,West,Ireland,1
+518,Mid-East w/ Dublin,Ireland,0
+519,Mid-West,Ireland,0
+520,South-East,Ireland,0
+521,South-West,Ireland,0
+522,Bretagne,France,0
+523,Manitoba,Canada,0
+524,Saskatchewan,Canada,0
+525,Alberta,Canada,0
+526,British Columbia,Canada,0
+527,"Yukon Territory, Northwest Territories, and Nunavut",Canada,0
+528,Quebec,Canada,0
+529,New Brunswick,Canada,0
+530,Nova Scotia,Canada,0
+531,Newfoundland-Labrador,Canada,-1
+532,Prince Edward Island,Canada,0
+533,Cantabria,Spain,0
+534,Corua (A),Spain,0
+535,lava,Spain,0
+536,Guipzcoa,Spain,0
+537,Vizcaya,Spain,-1
+538,Asturias,Spain,0
+539,Idaho,United States,0
+540,Oregon,United States,0
+541,Wyoming,United States,0
+542,Iowa,United States,0
+543,Nebraska,United States,0
+544,Massachusetts,United States,0
+545,Illinois,United States,0
+546,New York,United States,0
+547,Pennsylvania,United States,0
+548,Michigan,United States,0
+549,Ontario,Canada,0
+550,Burgos,Spain,0
+551,Len,Spain,0
+552,Palencia,Spain,0
+553,Navarra,Spain,0
+554,Lugo,Spain,1
+555,Ourense,Spain,0
+556,Pontevedra,Spain,0
+557,"Rioja, La",Spain,0
+558,Ceuta y Melilla,Spain,0
+559,Arunachal Pradesh,India,1
+560,Assam w/ Mizoram,India,1
+561,Bihar,India,0
+562,Chandigarh,India,1
+563,Madhya Pradesh,India,0
+564,,,1
+565,"Goa, Daman and Diu",India,1
+566,Delhi,India,1
+567,Gujarat,India,0
+568,Haryana,India,1
+569,Himachal Pradesh,India,0
+570,Jammu & Kashmir,India,0
+571,Maharashtra,India,0
+572,Manipur,India,1
+573,Meghalaya,India,0
+574,Nagaland,India,0
+575,Orissa,India,0
+576,Punjab,India,1
+577,Rajasthan,India,1
+578,Sikkim,India,-1
+579,Tripura,India,1
+580,Uttar Pradesh,India,1
+581,West Bengal,India,1
+582,Ang Tong,Thailand,-1
+583,Buri Ram,Thailand,1
+584,Chai Nat,Thailand,1
+585,Chaiyaphum,Thailand,0
+586,Chian Mai,Thailand,1
+587,Chiang Rai,Thailand,1
+588,Kalasin,Thailand,0
+589,Kam Phaeng Phet,Thailand,-1
+590,Kanchanaburi,Thailand,1
+591,Khon Kaen,Thailand,1
+592,Lampang,Thailand,1
+593,Lamphun,Thailand,1
+594,Loei,Thailand,0
+595,Lop Buri,Thailand,0
+596,Mae Hong Son,Thailand,-1
+597,Maha Sarakham,Thailand,1
+598,Nakhon Nayok,Thailand,-1
+599,Nakhon Pathom,Thailand,0
+600,Nakhon Ratchasima,Thailand,1
+601,Nakhon Sawan,Thailand,1
+602,Nan,Thailand,0
+603,Nong Khai,Thailand,1
+604,Nonthaburi,Thailand,1
+605,Pratum Thani,Thailand,1
+606,Phayao,Thailand,-1
+607,Phetchabun,Thailand,-1
+608,Phichit,Thailand,0
+609,Phitsanulok,Thailand,-1
+610,Phra Nakhon Sri Ayuthaya,Thailand,1
+611,Phrae,Thailand,0
+612,Roi Et,Thailand,1
+613,Sakon Nakhon,Thailand,0
+614,Saraburi,Thailand,1
+615,Si Sa Ket,Thailand,1
+616,Singburi,Thailand,0
+617,Sukhothai,Thailand,-1
+618,Suphan Buri,Thailand,1
+619,Surin,Thailand,-1
+620,Tak,Thailand,0
+621,Uthai Thani,Thailand,-1
+622,Uttaradit,Thailand,-1
+623,Yasothon,Thailand,-1
+624,Ardebil,"Iran, Islamic Rep.",0
+625,Bushehr,"Iran, Islamic Rep.",0
+626,Chaharmahal and Bakhtiyari,"Iran, Islamic Rep.",0
+627,East Azarbayejan,"Iran, Islamic Rep.",1
+628,Esfahan,"Iran, Islamic Rep.",0
+629,Fars,"Iran, Islamic Rep.",1
+630,Gilan,"Iran, Islamic Rep.",1
+631,Mazandaran & Golestan,"Iran, Islamic Rep.",0
+632,Hamedan,"Iran, Islamic Rep.",0
+633,Hormozgan,"Iran, Islamic Rep.",1
+634,Ilam,"Iran, Islamic Rep.",0
+635,Kerman,"Iran, Islamic Rep.",1
+636,Kermanshah,"Iran, Islamic Rep.",1
+637,Khuzestan,"Iran, Islamic Rep.",1
+638,Kohgiluyeh and Boyerahmad,"Iran, Islamic Rep.",0
+639,Kordestan,"Iran, Islamic Rep.",1
+640,Lorestan,"Iran, Islamic Rep.",0
+641,Markazi,"Iran, Islamic Rep.",1
+642,Khorasan & Yazd,"Iran, Islamic Rep.",1
+643,Zanjan & Qazvin,"Iran, Islamic Rep.",0
+644,Qom,"Iran, Islamic Rep.",0
+645,Semnan,"Iran, Islamic Rep.",0
+646,Sistan and Baluchestan,"Iran, Islamic Rep.",0
+647,Tehran,"Iran, Islamic Rep.",1
+648,West Azarbayejan,"Iran, Islamic Rep.",0
+649,Ras al Khaimah,United Arab Emirates,-1
+650,Umm al Qaiwan,United Arab Emirates,-1
+651,Fujaira,United Arab Emirates,-1
+652,Ajman,United Arab Emirates,0
+653,Sharjah,United Arab Emirates,1
+654,Abu Dhabi,United Arab Emirates,0
+655,Dubai,United Arab Emirates,0
+656,Aydin,Turkey,1
+657,Izmir,Turkey,1
+658,Balikesir,Turkey,0
+659,Canakkale,Turkey,0
+660,Edirne,Turkey,-1
+661,Kirklareli,Turkey,-1
+662,Tekirdag,Turkey,1
+663,Bilecik,Turkey,-1
+664,"Bursa, Istanbul, Kocaeli",Turkey,1
+665,Sakarya,Turkey,1
+666,Ankara and Kirikkale,Turkey,0
+667,Bolu and Duzce,Turkey,1
+668,"Cankiri, Zonguldak",Turkey,1
+669,Eskisehir,Turkey,1
+670,Kastamonu,Turkey,-1
+671,Antalya,Turkey,0
+672,Konya,Turkey,1
+673,Afyonkarahisar,Turkey,1
+674,Burdur,Turkey,-1
+675,Denizli,Turkey,-1
+676,Isparta,Turkey,-1
+677,Kutahya,Turkey,-1
+678,Manisa,Turkey,1
+679,Mugla,Turkey,0
+680,Usak,Turkey,-1
+681,Adiyaman,Turkey,1
+682,Elazig,Turkey,-1
+683,Kahramanmaras,Turkey,-1
+684,Malatya,Turkey,-1
+685,Sanliurfa,Turkey,-1
+686,"Adana, Gaziantep",Turkey,0
+687,Mersin,Turkey,1
+688,Kirsehir,Turkey,-1
+689,Kayseri,Turkey,1
+690,Nigde and Aksaray,Turkey,1
+691,Nevsehir,Turkey,-1
+692,Hatay,Turkey,-1
+693,Amasya,Turkey,-1
+694,Corum,Turkey,0
+695,Giresun,Turkey,-1
+696,Ordu,Turkey,-1
+697,Sinop,Turkey,-1
+698,Sivas,Turkey,-1
+699,Samsun,Turkey,-1
+700,Tokat,Turkey,0
+701,Yozgat,Turkey,-1
+702,Artvin,Turkey,-1
+703,Erzurum,Turkey,-1
+704,Erzincan,Turkey,-1
+705,Gumushane,Turkey,-1
+706,Rize,Turkey,-1
+707,Trabzon,Turkey,-1
+708,Agri,Turkey,-1
+709,"Kars, Ardahan and Igdir",Turkey,-1
+710,Bingol,Turkey,-1
+711,Diyarbakir,Turkey,0
+712,Mus,Turkey,-1
+713,Tunceli,Turkey,-1
+714,Bitlis,Turkey,0
+715,"Hakkari, Mardin, Siirt",Turkey,0
+716,Van,Turkey,0
+717,"Cagayan Valley, Cordillera, Illogos",Philippines,0
+718,Metro Manila,Philippines,0
+719,Balochistan,Pakistan,0
+720,,,0
+721,,,0
+723,Punjab w/ Islamabad,Pakistan,0
+724,Sindh,Pakistan,0
+725,NWFP,Pakistan,1
+726,Central,Nepal,1
+727,Eastern,Nepal,1
+728,Far-west,Nepal,0
+729,Mid-west,Nepal,0
+730,Western,Nepal,0
+731,Osh Oblast,Kyrgyz Republic,-1
+732,Jalal-Abad Oblast,Kyrgyz Republic,0
+733,Chungbuk,"Korea, Rep.",1
+734,Incheon,"Korea, Rep.",0
+735,Gangwon,"Korea, Rep.",1
+736,Gyeonggi,"Korea, Rep.",0
+737,Seoul,"Korea, Rep.",0
+738,Jeonbuk,"Korea, Rep.",1
+739,Jeollanam-do w/ Gwangju,"Korea, Rep.",0
+740,Chungnam w/ Daejeon,"Korea, Rep.",0
+741,Gyeongbuk,"Korea, Rep.",0
+742,Gyeongnam w/ Ulsan,"Korea, Rep.",0
+743,Busan,"Korea, Rep.",1
+744,Daegu,"Korea, Rep.",1
+745,Jeju,"Korea, Rep.",1
+746,Ajloun,Jordan,0
+747,Amman,Jordan,1
+748,Aqaba,Jordan,0
+749,Balqa,Jordan,0
+750,Irbid,Jordan,1
+751,Jarash,Jordan,0
+752,Karak,Jordan,0
+753,Maan,Jordan,0
+754,Madaba,Jordan,0
+755,Mafraq,Jordan,0
+756,Tafeila,Jordan,0
+757,Zarqa,Jordan,0
+758,Aichi,Japan,0
+759,Akita,Japan,0
+760,Aomori,Japan,0
+761,Chiba,Japan,0
+762,Ehime,Japan,0
+763,Fukui,Japan,0
+764,Fukuoka,Japan,0
+765,Fukushima,Japan,0
+766,Gifu,Japan,0
+767,Gumma,Japan,0
+768,Hiroshima,Japan,0
+769,Hyogo,Japan,0
+770,Ibaraki,Japan,0
+771,Ishikawa,Japan,0
+772,Iwate,Japan,0
+773,Kagawa,Japan,0
+774,Kagoshima,Japan,0
+775,Kanagawa,Japan,0
+776,Kochi,Japan,0
+777,Kumamoto,Japan,0
+778,Kyoto,Japan,0
+779,Mie,Japan,0
+780,Miyagi,Japan,0
+781,Miyazaki,Japan,-1
+782,Nagano,Japan,0
+783,Nagasaki,Japan,0
+784,Nara,Japan,0
+785,Niigata,Japan,0
+786,Oita,Japan,0
+787,Okayama,Japan,0
+788,Okinawa,Japan,-1
+789,Osaka,Japan,0
+790,Saga,Japan,0
+791,Saitama,Japan,0
+792,Shiga,Japan,0
+793,Shimane,Japan,-1
+794,Shizuoka,Japan,0
+795,Tochigi,Japan,0
+796,Tokushima,Japan,0
+797,Tokyo,Japan,0
+798,Tottori,Japan,0
+799,Toyama,Japan,0
+800,Wakayama,Japan,0
+801,Yamagata,Japan,0
+802,Yamaguchi,Japan,0
+803,Yamanashi,Japan,0
+804,Sardegna,Italy,0
+805,Basilicata,Italy,0
+806,Calabria,Italy,-1
+807,Campania,Italy,0
+808,Molise,Italy,0
+809,Puglia,Italy,0
+810,Sicilia,Italy,0
+811,Anatoliki Makedonia & Thraki,Greece,0
+812,Kentriki Makedonia,Greece,0
+813,Ipeiros & Dytiki Makedonia,Greece,0
+814,Thessalia,Greece,0
+815,"Sterea Ellada, Attiki, Ionia Nisia",Greece,0
+816,Peloponnisos & Dytiki Ellada,Greece,0
+817,Nisi Aigao,Greece,0
+818,Kriti,Greece,0
+819,East,Macedonia,-1
+820,Northeast,Macedonia,-1
+821,Pelagonia,Macedonia,-1
+822,Polog,Macedonia,-1
+823,Skopje,Macedonia,0
+824,Southeast,Macedonia,-1
+825,Southwest,Macedonia,-1
+826,Vardar,Macedonia,-1
+827,Dakahlia,"Egypt, Arab Rep.",1
+828,,,0
+829,Behera,"Egypt, Arab Rep.",1
+830,Fayoum,"Egypt, Arab Rep.",0
+831,Gharbia,"Egypt, Arab Rep.",0
+832,Alexandria,"Egypt, Arab Rep.",0
+833,Ismailia,"Egypt, Arab Rep.",0
+834,Giza,"Egypt, Arab Rep.",1
+835,Menoufia,"Egypt, Arab Rep.",0
+836,Menia,"Egypt, Arab Rep.",1
+837,Cairo,"Egypt, Arab Rep.",0
+838,Kaliobia,"Egypt, Arab Rep.",0
+839,,,1
+840,Suez,"Egypt, Arab Rep.",1
+841,Shrkia,"Egypt, Arab Rep.",1
+842,Aswan,"Egypt, Arab Rep.",0
+843,Assiut,"Egypt, Arab Rep.",1
+844,Beni Suef,"Egypt, Arab Rep.",0
+845,Port Said,"Egypt, Arab Rep.",0
+846,Damietta,"Egypt, Arab Rep.",-1
+847,,,0
+848,Kafr El Sheikh,"Egypt, Arab Rep.",0
+849,,,0
+850,Qena,"Egypt, Arab Rep.",-1
+852,Suhag,"Egypt, Arab Rep.",0
+853,Tibet,China,0
+854,Qinghai,China,1
+855,Shaanxi,China,0
+856,Shanxi,China,0
+857,Guangxi,China,0
+858,Guizhou,China,0
+859,Hubei,China,1
+860,Hunan,China,0
+861,Sichuan w/ Chongqing,China,1
+862,Yunnan,China,0
+863,Beijing,China,0
+864,Henan,China,0
+865,Shandong,China,1
+866,Tianjin,China,1
+867,Taiwan,Taiwan,0
+868,Fujian,China,0
+869,Anhui,China,1
+870,Guangdong w/ Hainan,China,1
+871,Jiangxi,China,0
+872,Jiangsu,China,1
+873,Shanghai,China,0
+874,Zhejiang,China,1
+875,Hong Kong,Hong Kong,0
+876,,,1
+877,Blagoevgrad,Bulgaria,1
+878,Haskovo,Bulgaria,1
+879,Smolyan,Bulgaria,0
+880,Karzhali,Bulgaria,0
+881,Berat,Albania,0
+882,Dibra,Albania,-1
+883,Durres,Albania,0
+884,Elbasan,Albania,-1
+885,Fleri,Albania,0
+886,Gjirokastra,Albania,0
+887,Korca,Albania,0
+888,Lezha,Albania,0
+889,Tirana,Albania,0
+890,Vlora,Albania,0
+891,Barcelona,Spain,0
+892,Tarragona,Spain,0
+893,"Balears, Illes",Spain,0
+894,Akmola & Astana City,Kazakhstan,0
+895,Aktobe,Kazakhstan,0
+896,Atyrau,Kazakhstan,1
+897,East Kazakhstan,Kazakhstan,-1
+898,North Kazakhstan,Kazakhstan,-1
+899,Pavlodar,Kazakhstan,-1
+900,Karagandy,Kazakhstan,-1
+901,Kostanai,Kazakhstan,0
+902,West Kazakhstan,Kazakhstan,1
+903,Harju county,Estonia,1
+904,Hiiu county,Estonia,0
+905,Ida-Viru county,Estonia,0
+906,Jrva county,Estonia,-1
+907,Jgeva county,Estonia,0
+908,Lne-Viru county,Estonia,1
+909,Lne county,Estonia,1
+910,Prnu county,Estonia,1
+912,Plva county,Estonia,1
+913,Rapla county,Estonia,1
+914,Saare county,Estonia,1
+915,Tartu county,Estonia,1
+916,Valga county,Estonia,1
+917,Viljandi county,Estonia,0
+918,Vru county,Estonia,0
+919,Kuldgas rajons,Latvia,0
+920,Liepjas rajons,Latvia,-1
+921,Saldus district,Latvia,0
+922,Talsu rajons,Latvia,0
+923,Ventspils district,Latvia,0
+924,Balvi district,Latvia,0
+925,Daugavpils rajons,Latvia,-1
+926,Krslavas rajons,Latvia,0
+927,Ludzas rajons,Latvia,0
+928,Preiu rajons,Latvia,0
+929,Rzeknes rajons,Latvia,0
+930,Limbau rajons,Latvia,0
+931,Ogres rajons,Latvia,1
+932,Rgas rajons,Latvia,0
+933,Tukums district,Latvia,0
+934,Aluksne district,Latvia,0
+935,Csu rajons,Latvia,0
+936,Gulbenes rajons,Latvia,0
+937,Madonas rajons,Latvia,0
+938,Valkas rajons,Latvia,0
+939,Valmieras rajons,Latvia,0
+940,Aizkraukle district,Latvia,0
+941,Bauskas rajons,Latvia,0
+942,Dobeles rajons,Latvia,0
+943,Jkabpils rajons,Latvia,0
+944,Jelgavas rajons,Latvia,-1
+945,Brcko,Bosnia and Herzegovina,-1
+946,Bosansko-podrinjski k.,Bosnia and Herzegovina,0
+947,Herceg-bosanski k.,Bosnia and Herzegovina,0
+948,Srednjo-bosanski k.,Bosnia and Herzegovina,0
+949,Hercegovacko-nerevtvanski k.,Bosnia and Herzegovina,-1
+950,Posavski k.,Bosnia and Herzegovina,0
+951,Sarajevski k.,Bosnia and Herzegovina,0
+952,Tuzlanski k.,Bosnia and Herzegovina,1
+953,Unsko-sanski k.,Bosnia and Herzegovina,0
+954,Zapadno-hercegovacki k.,Bosnia and Herzegovina,0
+955,Zenicko-dobojski k.,Bosnia and Herzegovina,0
+956,Rep. Srpska,Bosnia and Herzegovina,0
+957,Waadt,Switzerland,0
+958,Wallis,Switzerland,0
+959,Genf,Switzerland,0
+960,Bern w/ Jura,Switzerland,0
+961,Freiburg,Switzerland,0
+962,Solothurn,Switzerland,0
+963,Neuenburg,Switzerland,0
+964,Basel-Stadt,Switzerland,0
+965,Basel-Land,Switzerland,0
+966,Aargau,Switzerland,0
+967,Zrich,Switzerland,0
+968,Glarus,Switzerland,-1
+969,Schaffhausen,Switzerland,0
+970,Appenzell A&I Rh.,Switzerland,-1
+971,St. Gallen,Switzerland,0
+972,Graubnden,Switzerland,0
+973,Thurgau,Switzerland,0
+974,Luzern,Switzerland,0
+975,Uri,Switzerland,0
+976,Schwyz,Switzerland,0
+977,Obwalden,Switzerland,0
+978,Nidwalden,Switzerland,-1
+979,Zug,Switzerland,0
+980,Tessin,Switzerland,0
+981,Stockholm,Sweden,0
+982,Uppsala,Sweden,0
+983,Sdermanland,Sweden,0
+984,stergtland,Sweden,0
+985,rebro,Sweden,-1
+986,Vstmanland,Sweden,0
+987,Jnkping,Sweden,0
+988,Kronoberg,Sweden,-1
+989,Kalmar,Sweden,0
+990,Gotland,Sweden,0
+991,Blekinge,Sweden,-1
+992,Skne,Sweden,0
+993,Halland,Sweden,0
+994,Vstra Gtaland,Sweden,0
+995,Vrmland,Sweden,0
+996,Dalarna,Sweden,0
+997,Gvleborg,Sweden,0
+998,Vsternorrland,Sweden,-1
+999,Jmtland,Sweden,0
+1000,Vsterbotten,Sweden,-1
+1001,Norrbotten,Sweden,0
+1002,Pomurska,Slovenia,1
+1003,Podravska,Slovenia,1
+1004,Koroska,Slovenia,1
+1005,Savinjska,Slovenia,1
+1006,Zasavska,Slovenia,1
+1007,Spodnjeposavska,Slovenia,0
+1008,Jugovzhodna Slovenija,Slovenia,1
+1009,Notranjsko-kraska,Slovenia,1
+1010,Osrednjeslovenska,Slovenia,0
+1011,Gorenjska,Slovenia,0
+1012,Goriska,Slovenia,0
+1013,Obalno-kraska,Slovenia,0
+1014,Bratislavsk kraj,Slovak Republic,0
+1015,Trnavsk kraj,Slovak Republic,1
+1016,Trenciansky kraj,Slovak Republic,0
+1017,Nitriansky kraj,Slovak Republic,1
+1018,Zilinsk kraj,Slovak Republic,1
+1019,Banskobystrick kraj,Slovak Republic,1
+1020,Presovsk kraj,Slovak Republic,1
+1021,Kosick kraj,Slovak Republic,1
+1022,Borski,Serbia,0
+1023,Branicevski,Serbia,0
+1024,City of Belgrade,Serbia,0
+1025,Jablanicki,Serbia,-1
+1026,Juznobacki,Serbia,0
+1027,Juznobanatski,Serbia,-1
+1028,Kolubarski,Serbia,0
+1029,Macvanski,Serbia,0
+1030,Moravski,Serbia,-1
+1031,Nisavski,Serbia,1
+1032,Pirotski,Serbia,-1
+1033,Podunavski,Serbia,0
+1034,Pomoravski,Serbia,0
+1035,Rasinski,Serbia,0
+1036,Raski,Serbia,-1
+1037,Severnobacki,Serbia,-1
+1038,Severnobanatski,Serbia,0
+1039,Srednjebanatski,Serbia,1
+1040,Sremski,Serbia,-1
+1041,Sumadijski,Serbia,1
+1042,Toplicki,Serbia,0
+1043,Zajecarski,Serbia,0
+1044,Zapadnobacki,Serbia,-1
+1045,Zlatiborski,Serbia,0
+1046,Tomsk Region,Russian Federation,0
+1047,Republic of Adygea,Russian Federation,0
+1048,Karachay-Cherkess Republic,Russian Federation,-1
+1049,Republic of Ingushetia,Russian Federation,0
+1050,Kabardino-Balkaria,Russian Federation,0
+1051,Republic of North Ossetia-Alania,Russian Federation,0
+1052,Stavropol Territory,Russian Federation,-1
+1053,Kaliningrad Region,Russian Federation,-1
+1054,Murmansk Region,Russian Federation,-1
+1055,Novgorod Region,Russian Federation,1
+1056,Pskov Region,Russian Federation,1
+1057,Leningrad Region,Russian Federation,0
+1058,Bryansk Region,Russian Federation,0
+1059,Smolensk Region,Russian Federation,-1
+1060,Republic of Karelia,Russian Federation,0
+1061,Ivanovo Region,Russian Federation,0
+1062,Kostroma Region,Russian Federation,-1
+1063,Nizhny Novgorod Region,Russian Federation,0
+1064,Tver Region,Russian Federation,1
+1065,Vologda Region,Russian Federation,-1
+1066,Yaroslavl Region,Russian Federation,-1
+1067,Kaluga Region,Russian Federation,0
+1068,Kursk Region,Russian Federation,1
+1069,Lipetsk Region,Russian Federation,-1
+1070,Moscow Region,Russian Federation,0
+1071,Orel Region,Russian Federation,0
+1072,Rostov Region,Russian Federation,0
+1073,Tula Region,Russian Federation,0
+1074,Volgograd Region,Russian Federation,-1
+1075,Belgorod Region,Russian Federation,-1
+1076,Krasnodar Region,Russian Federation,-1
+1077,Republic of Mordovia,Russian Federation,1
+1078,Penza Region,Russian Federation,-1
+1079,Ryazan Region,Russian Federation,0
+1080,Tambov Region,Russian Federation,0
+1081,Vladimir Region,Russian Federation,-1
+1082,Voronezh Region,Russian Federation,0
+1083,Republic of Bashkortostan,Russian Federation,0
+1084,Chelyabinsk Region,Russian Federation,0
+1085,Kurgan Region,Russian Federation,1
+1086,Republic of Komi,Russian Federation,-1
+1087,Kirov Region,Russian Federation,1
+1088,Republic of Mari El,Russian Federation,1
+1089,Sverdlovsk Region,Russian Federation,0
+1090,Udmurt Republic,Russian Federation,0
+1091,Astrakhan Region,Russian Federation,1
+1092,Chuvash Republic,Russian Federation,0
+1093,Republic of Kalmykia,Russian Federation,1
+1094,Orenburg Region,Russian Federation,-1
+1095,Samara Region,Russian Federation,0
+1096,Saratov Region,Russian Federation,0
+1097,Republic of Tatarstan,Russian Federation,-1
+1098,Ulyanovsk Region,Russian Federation,0
+1099,Omsk Region,Russian Federation,-1
+1100,Altai Territory,Russian Federation,0
+1101,Altai Republic,Russian Federation,-1
+1102,Kemerovo Region,Russian Federation,-1
+1103,Republic of Khakassia,Russian Federation,1
+1104,Novosibirsk Region,Russian Federation,-1
+1105,,,-1
+1106,Republic of Tyva,Russian Federation,0
+1107,Republic of Buryatia,Russian Federation,1
+1108,Amur Region,Russian Federation,0
+1109,Republic of Sakha (Yakutia),Russian Federation,-1
+1110,Jewish Autonomous Region,Russian Federation,1
+1111,Khabarovsk Territory,Russian Federation,-1
+1112,Magadan Region,Russian Federation,-1
+1113,Sakhalin Region,Russian Federation,0
+1114,Bihor,Romania,1
+1115,Bistrita-Nasaud,Romania,1
+1116,Cluj,Romania,1
+1117,Maramures,Romania,1
+1118,Satu Mare,Romania,1
+1119,Salaj,Romania,1
+1120,Alba,Romania,1
+1121,Brasov,Romania,1
+1122,Covasna,Romania,0
+1123,Harghita,Romania,1
+1124,Mures,Romania,1
+1125,Sibiu,Romania,1
+1126,Bacau,Romania,1
+1127,Botosani,Romania,1
+1128,Iasi,Romania,1
+1129,Neamt,Romania,1
+1130,Suceava,Romania,1
+1131,Vaslui,Romania,1
+1132,Braila,Romania,0
+1133,Buzau,Romania,1
+1134,Constanta,Romania,1
+1135,Galati,Romania,1
+1136,Tulcea,Romania,1
+1137,Vrancea,Romania,0
+1138,Arges,Romania,1
+1139,Calarasi,Romania,1
+1140,Dambovita,Romania,1
+1141,Giurgiu,Romania,1
+1142,Ialomita,Romania,1
+1143,Prahova,Romania,0
+1144,Teleorman,Romania,1
+1145,Bucuresti[Bucharest],Romania,0
+1146,Ilfov,Romania,1
+1147,Dolj,Romania,1
+1148,Gorj,Romania,1
+1149,Mehedinti,Romania,0
+1150,Olt,Romania,1
+1151,Valcea,Romania,1
+1152,Arad,Romania,1
+1153,Caras-Severin,Romania,1
+1154,Hunedoara,Romania,1
+1155,Timis,Romania,1
+1156,Ldzkie,Poland,0
+1157,Mazowieckie,Poland,0
+1158,Malopolskie,Poland,0
+1159,Slaskie,Poland,0
+1160,Lubelskie,Poland,0
+1161,Podkarpackie,Poland,0
+1162,Swietokrzyskie,Poland,1
+1163,Podlaskie,Poland,1
+1164,Wielkopolskie,Poland,0
+1165,Lubuskie,Poland,1
+1166,Dolnoslaskie,Poland,0
+1167,Opolskie,Poland,-1
+1168,Kujawsko-Pomorskie,Poland,0
+1169,Warminsko-Mazurskie,Poland,1
+1170,Pomorskie-Zachodniopomorskie,Poland,0
+1171,Oslo,Norway,0
+1172,Akershus,Norway,0
+1173,Hedmark,Norway,0
+1174,Oppland,Norway,0
+1175,stfold,Norway,-1
+1176,Buskerud,Norway,-1
+1177,Vestfold,Norway,0
+1178,Telemark,Norway,-1
+1179,Aust-Agder,Norway,0
+1180,Vest-Agder,Norway,0
+1181,Rogaland,Norway,0
+1182,Hordaland,Norway,0
+1183,SognogFjordane,Norway,0
+1184,Mre og Romsdal,Norway,0
+1185,Sr-Trndelag,Norway,0
+1186,Nord-Trndelag,Norway,0
+1187,Nordland,Norway,0
+1188,Troms Romsa,Norway,0
+1189,Finnmark Finnmrku,Norway,0
+1190,Groningen,Netherlands,0
+1191,Friesland,Netherlands,0
+1192,Drenthe,Netherlands,0
+1193,Overijssel,Netherlands,0
+1194,Gelderland,Netherlands,0
+1195,Flevoland,Netherlands,0
+1196,Utrecht,Netherlands,0
+1197,Noord-Holland,Netherlands,0
+1198,Zuid-Holland,Netherlands,0
+1199,Zeeland,Netherlands,0
+1200,Noord-Brabant,Netherlands,0
+1201,Limburg,Netherlands,0
+1202,Bayan-Olgii,Mongolia,0
+1203,Dornogobi,Mongolia,1
+1204,Khentii,Mongolia,0
+1205,Arkhangai,Mongolia,0
+1206,Bayankhongor,Mongolia,0
+1207,Zavkhan,Mongolia,0
+1208,Gobi-Altai,Mongolia,0
+1209,Khovd,Mongolia,0
+1210,Khubusgul,Mongolia,0
+1211,Uvs,Mongolia,0
+1212,Bulgan w/ Orkhon,Mongolia,0
+1213,Dundgobi w/ Gobisumber,Mongolia,0
+1214,Darkhan-Uul,Mongolia,0
+1215,Uvurkhangai,Mongolia,0
+1216,Selenge,Mongolia,1
+1217,Tuv,Mongolia,0
+1218,Ulaanbaatar,Mongolia,1
+1219,Dornod,Mongolia,0
+1220,Sukhbaatar,Mongolia,1
+1221,Alytaus apskritis,Lithuania,0
+1222,Kauno apskritis,Lithuania,0
+1223,Klaipedos apskritis,Lithuania,1
+1224,Marijampoles apskritis,Lithuania,1
+1225,Panevezio apskritis,Lithuania,1
+1226,Siauliu apskritis,Lithuania,0
+1227,Taurages apskritis,Lithuania,1
+1228,Telsiu apskritis,Lithuania,0
+1229,Utenos apskritis,Lithuania,1
+1230,Vilniaus apskritis,Lithuania,0
+1231,Emilia-Romagna,Italy,0
+1232,Liguria,Italy,0
+1233,Marche,Italy,0
+1234,Piemonte,Italy,0
+1235,Valle d'Aosta/Valle d'Aoste,Italy,0
+1236,Lombardia,Italy,0
+1237,Friuli-Venezia Giulia,Italy,0
+1238,Trentino-Alto Adige,Italy,0
+1239,Veneto,Italy,0
+1240,Budapest,Hungary,0
+1241,Pest,Hungary,0
+1242,Fejr,Hungary,0
+1243,Komrom-E,Hungary,0
+1244,Veszprm,Hungary,0
+1245,Gyor-M-S,Hungary,0
+1246,Vas,Hungary,-1
+1247,Zala,Hungary,0
+1248,Baranya,Hungary,0
+1249,Somogy,Hungary,-1
+1250,Tolna,Hungary,-1
+1251,Borsod-A-Z,Hungary,0
+1252,Heves,Hungary,-1
+1253,Ngrd,Hungary,-1
+1254,Hajd򭂩har,Hungary,0
+1255,Jsz-N-Sz,Hungary,0
+1256,Szabolcs-Sz-B,Hungary,0
+1257,Bcs-Kiskun,Hungary,0
+1258,Bks,Hungary,1
+1259,Csongrd,Hungary,0
+1260,Baden-Wurttemberg,"Germany, West",0
+1261,Bavaria,"Germany, West",0
+1262,Berlin,"Germany, West",0
+1263,Brandenburg,"Germany, East",0
+1264,Bremen,"Germany, West",0
+1265,Hamburg,"Germany, West",0
+1266,Hesse,"Germany, West",0
+1267,Mecklenburg-West Pomerania,"Germany, East",0
+1268,Lower Saxony,"Germany, West",0
+1269,North Rhine-Westphalia,"Germany, West",0
+1270,Rhineland-Palatinate,"Germany, West",0
+1271,Saarland,"Germany, West",0
+1272,Saxony,"Germany, East",0
+1273,Saxony-Anhalt,"Germany, East",0
+1274,Schleswig-Holstein,"Germany, West",0
+1275,le-de-France,France,0
+1276,Champagne-Ardenne,France,0
+1277,Picardie,France,0
+1278,Haute-Normandie,France,0
+1279,Centre,France,0
+1280,Bourgogne,France,0
+1281,Nord - Pas-de-Calais,France,0
+1282,Lorraine,France,0
+1283,Alsace,France,0
+1284,Franche-Comt,France,0
+1285,Limousin,France,0
+1286,Rhne-Alpes,France,0
+1287,Auvergne,France,0
+1288,It-Suomi,Finland,0
+1289,Etel-Suomi w/ Uusimaa,Finland,0
+1290,Vli-Suomi,Finland,0
+1291,Pohjois-Suomi,Finland,0
+1292,Ahvenanmaa/land,Finland,1
+1293,Capital region,Denmark,0
+1294,Bornholm,Denmark,0
+1295,stsjlland & Vest- og Sydsjlland,Denmark,0
+1296,Fyn,Denmark,0
+1297,Jylland,Denmark,0
+1298,Praha,Czech Republic,0
+1299,Stredocesk kraj,Czech Republic,0
+1300,Jihoceck kraj,Czech Republic,0
+1301,Plzensk kraj,Czech Republic,0
+1302,Karlovarsk kraj,Czech Republic,0
+1303,steck kraj,Czech Republic,0
+1304,Libereck kraj,Czech Republic,0
+1305,Krlovhradeck kraj,Czech Republic,0
+1306,Pardubick kraj,Czech Republic,0
+1307,Kraj Vysocina,Czech Republic,0
+1308,Jihomoravsk kraj,Czech Republic,-1
+1309,Olomouck kraj,Czech Republic,0
+1310,Zlnsk kraj,Czech Republic,0
+1311,Moravskoslezsk kraj,Czech Republic,0
+1312,City of Zagreb,Croatia,0
+1313,Zagreb County,Croatia,1
+1314,Krapina-Zagorje,Croatia,1
+1315,Varadin,Croatia,1
+1316,Koprivnica-Krievci,Croatia,1
+1317,Medimurje,Croatia,1
+1318,Bjelovar-Bilogora,Croatia,1
+1319,Virovitica-Podravina,Croatia,0
+1320,Poega-Slavonia,Croatia,1
+1321,Brod-Posavina,Croatia,0
+1322,Osijek-Baranja,Croatia,0
+1323,Vukovar-Syrmia,Croatia,1
+1324,Karlovac,Croatia,1
+1325,Sisak-Moslavina,Croatia,0
+1326,Primorje-Gorski Kotar,Croatia,0
+1327,Lika-Senj,Croatia,0
+1328,Zadar,Croatia,1
+1329,ibenik-Knin,Croatia,-1
+1330,Split-Dalmatia,Croatia,0
+1331,Istria,Croatia,1
+1332,Dubrovnik-Neretva,Croatia,-1
+1333,Heilongjiang,China,0
+1334,Vidin,Bulgaria,1
+1335,Montana,Bulgaria,1
+1336,Vratsa,Bulgaria,0
+1337,Pleven,Bulgaria,0
+1338,Lovech,Bulgaria,1
+1339,Veliko Tarnovo,Bulgaria,0
+1340,Gabrovo,Bulgaria,-1
+1341,Ruse,Bulgaria,0
+1342,Razgrad,Bulgaria,0
+1343,Silistra,Bulgaria,0
+1344,Varna,Bulgaria,-1
+1345,Dobrich,Bulgaria,0
+1346,Shumen,Bulgaria,1
+1347,Targovishte,Bulgaria,1
+1348,Sofia Stolitsa,Bulgaria,-1
+1349,Prov. Brabant,Belgium,0
+1350,Prov. Antwerpen,Belgium,0
+1351,Prov. Limburg (BE),Belgium,0
+1352,Prov. Oost-Vlaanderen,Belgium,0
+1353,Prov. West-Vlaanderen,Belgium,0
+1354,Prov. Hainaut,Belgium,0
+1355,Prov. Lige,Belgium,0
+1356,Prov. Luxembourg (BE),Belgium,0
+1357,Prov. Namur,Belgium,0
+1358,Vorarlberg,Austria,0
+1359,Burgenland,Austria,-1
+1360,Steiermark,Austria,0
+1361,Karnten,Austria,0
+1362,Oberoesterreich,Austria,0
+1363,Salzburg,Austria,0
+1364,Tirol,Austria,0
+1365,Niederoesterreich,Austria,0
+1366,Wien,Austria,0
+1367,Cherkasy,Ukraine,0
+1368,Chernihiv,Ukraine,1
+1369,Chernivtsi,Ukraine,-1
+1370,Crimea & Sevastopol,Ukraine,-1
+1371,Dnipropetrovsk,Ukraine,0
+1372,Donetsk,Ukraine,0
+1373,Ivano-Frankivsk,Ukraine,-1
+1374,Kharkiv,Ukraine,-1
+1375,Kherson,Ukraine,-1
+1376,Khmelnytskiy,Ukraine,1
+1377,Kyiv_city,Ukraine,0
+1378,Kyiv_sub,Ukraine,1
+1379,Kirovohrad,Ukraine,-1
+1380,Lviv,Ukraine,1
+1381,Luhansk,Ukraine,-1
+1382,Mykolayiv,Ukraine,-1
+1383,Odesa,Ukraine,0
+1384,Poltava,Ukraine,-1
+1385,Rivne,Ukraine,-1
+1386,Sumy,Ukraine,0
+1387,Ternopil,Ukraine,1
+1388,Zakarpattya,Ukraine,1
+1389,Vinnytsya,Ukraine,-1
+1390,Volyn,Ukraine,-1
+1391,Zaporizhzhya,Ukraine,-1
+1392,Zhytomyr,Ukraine,1
+1393,Almaty,Kazakhstan,0
+1394,Manghistau,Kazakhstan,0
+1395,Kyzylorda,Kazakhstan,1
+1396,South Kazakhstan,Kazakhstan,-1
+1397,Zhambyl,Kazakhstan,1
+1398,Pcinjski,Serbia,0
+1399,Republic of Dagestan,Russian Federation,1
+1400,Primorsky Krai,Russian Federation,0
+1401,Umnugobi,Mongolia,0
+1402,Naryn Oblast,Kyrgyz Republic,0
+1403,Talas Oblast,Kyrgyz Republic,0
+1404,Issyk-Kul Oblast,Kyrgyz Republic,-1
+1405,Hokkaido,Japan,0
+1406,Toscana,Italy,0
+1407,Abruzzo,Italy,0
+1408,Lazio,Italy,0
+1409,Umbria,Italy,-1
+1410,Languedoc-Roussillon,France,0
+1411,Xinjiang,China,1
+1412,Gansu w/ Inner Mongolia & Ningxia,China,1
+1413,Hebei,China,1
+1414,Liaoning,China,0
+1415,Jilin,China,0
+1416,Burgas,Bulgaria,0
+1417,Sliven,Bulgaria,0
+1418,Yambol,Bulgaria,0
+1419,Stara Zagora,Bulgaria,0
+1420,Sofia,Bulgaria,0
+1421,Pernik,Bulgaria,1
+1422,Kyustendil,Bulgaria,1
+1423,Plovdiv,Bulgaria,-1
+1424,Pazardzhik,Bulgaria,1
+1425,Kukes,Albania,0
+1426,Shkoder,Albania,-1
+1427,Girona,Spain,0
+1428,Lleida,Spain,1
+1429,Bac Ninh / Bac Giang / Ha Bac,Vietnam,0
+1430,Hai Duong,Vietnam,0
+1431,Hai Phong,Vietnam,1
+1432,Hanoi / Ha Tay,Vietnam,0
+1433,Thai Binh,Vietnam,1
+1434,Bak Kan / Thai Nguyen,Vietnam,0
+1435,Cao Bang,Vietnam,1
+1436,Tuyen Quan / Ha Gian,Vietnam,0
+1437,Lang Son,Vietnam,0
+1438,Yen Bai / Lao Chai / Lao Cai,Vietnam,0
+1439,Quang Ninh,Vietnam,0
+1440,Ha Tinh / Nghe An,Vietnam,1
+1441,Quang Binh,Vietnam,1
+1442,Quang Tri,Vietnam,0
+1443,Thua Thien - Hue,Vietnam,1
+1444,Thanh Hoa,Vietnam,1
+1445,Da Nam / Quang Nam,Vietnam,1
+1446,Quang Ngai,Vietnam,0
+1447,Son La,Vietnam,0
+1448,Arkhangelsk Region,Russian Federation,0
+1449,Perm,Russian Federation,0
+1450,Tyumen Region,Russian Federation,0
+1451,Krasnoyarsk Territory,Russian Federation,0
+1452,Irkutsk Region,Russian Federation,0
+1453,Trans-Baikal Territory,Russian Federation,0
+1454,Kamchatka,Russian Federation,1
+1455,Bishkek,Kyrgyz Republic,1
+1456,Chui Oblast,Kyrgyz Republic,0
+1457,Provence-Cte d'Azur-Corse,France,0
+1458,Thuringia,"Germany, East",0
+1459,Andijan,Uzbekistan,0
+1460,Bukhara,Uzbekistan,-1
+1461,Fergana,Uzbekistan,-1
+1462,Karakalpakstan,Uzbekistan,0
+1463,Kashkadarya,Uzbekistan,0
+1464,Khorezm,Uzbekistan,0
+1465,Namangan,Uzbekistan,0
+1466,Samarkand,Uzbekistan,0
+1467,Syrdarya,Uzbekistan,0
+1468,Surkhandarya,Uzbekistan,0
+1469,Tashkent City,Uzbekistan,-1
+1470,Tashkent,Uzbekistan,-1
+1471,Amnat Chaeron / Ubon Ratchathani,Thailand,1
+1472,Mukhadan / Nakhon Phanom,Thailand,-1
+1473,Nong Bua Lam Phu / Udon Thani,Thailand,1
+1474,Atlantico Norte & Sur,Nicaragua,-1
+1475,Interior Central,Nicaragua,0
+1476,Interior Norte,Nicaragua,0
+1477,Valle,Honduras,0
+1478,Choluteca,Honduras,1
+1479,El Paraso,Honduras,0
+1480,La Libertad,El Salvador,1
+1481,La Paz,El Salvador,0
+1482,Sonsonate,El Salvador,0
+1483,San Salvador,El Salvador,-1
+1484,La Unin,El Salvador,0
+1485,Morazn,El Salvador,0
+1486,San Miguel,El Salvador,0
+1487,San Vicente,El Salvador,0
+1488,Usulutn,El Salvador,0
+1489,Distrito Federal,,0
+1490,Andaman & Nicobar Islands,India,0
+1491,Andhra Pradesh,India,1
+1492,Karnataka,India,1
+1493,Pondicherry,India,1
+1494,Bangkok Metropolis,Thailand,1
+1495,Chachoengsao,Thailand,1
+1496,Ratchaburi,Thailand,-1
+1497,Samut Prakan,Thailand,1
+1498,Samut Sakhon,Thailand,1
+1499,"Tagalog, Luzon, W. Visayas",Philippines,0
+1500,Bicol Region,Philippines,0
+1501,North East,Nigeria,0
+1502,North West,Nigeria,0
+1503,Binh Dinh,Vietnam,1
+1504,Phu Yen,Vietnam,0
+1505,Gia Lia / Kon Tum,Vietnam,1
+1506,Prachin Buri / Sa Kaeo,Thailand,1
+1507,Huesca,Spain,1
+1508,Teruel,Spain,0
+1509,Zaragoza,Spain,0
+1510,Alicante/Alacant,Spain,0
+1511,Castelln/Castell,Spain,0
+1512,Alaska,United States,0
+1513,Yorkshire,United Kingdom,0
+1514,Midlands,United Kingdom,0
+1515,East Anglia,United Kingdom,0
+1516,South East w/ London,United Kingdom,0
+1517,Chukotka Autonomous Okrug,Russian Federation,0
+1518,Basse-Normandie,France,0
+1519,Pays de la Loire,France,0
+1520,Poitou-Charentes,France,0
+1521,Aquitaine,France,0
+1522,Midi-Pyrnes,France,0
+1523,Central,Morocco,1
+1524,Tansift,Morocco,0
+1525,North-Central,Morocco,1
+1526,Northwestern,Morocco,0
+1527,Southern,Morocco,0
+1528,South-Central,Morocco,1
+1529,Eastern,Morocco,-1
+1530,Barisal,Bangladesh,0
+1531,Patuakhali,Bangladesh,0
+1532,Chittagong H.T.,Bangladesh,0
+1533,Chittagong,Bangladesh,1
+1534,Comilla,Bangladesh,0
+1535,Noakhali,Bangladesh,0
+1536,Dhaka,Bangladesh,1
+1537,Faridpur,Bangladesh,-1
+1538,Jamalpur,Bangladesh,0
+1539,Mymensingh,Bangladesh,0
+1540,Tangail,Bangladesh,0
+1541,Jessore,Bangladesh,-1
+1542,Khulna,Bangladesh,0
+1543,Kushtia,Bangladesh,0
+1544,Bogra,Bangladesh,0
+1545,Dinajpur,Bangladesh,0
+1546,Pabna,Bangladesh,0
+1547,Rajshahi,Bangladesh,1
+1548,Rangpur,Bangladesh,-1
+1549,Sylhet,Bangladesh,0
+1692,Israel,Israel,0
