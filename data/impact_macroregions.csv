@@ -1,4 +1,4 @@
-id,x_center,y_center,OBJECTID,Shape_Leng,Shape_Area,Region,Country_str,macroregion,impact
+geoid_r,x_center,y_center,OBJECTID,Shape_Leng,Shape_Area,Region,Country_str,macroregion,impact
 1675,90.435249,27.414328,1675,775691.7609,22392023371,,Bhutan,,
 275,33.432442,-19.039837,275,1406445.123,33432632555,Manica,Mozambique,,
 826,21.896736,41.487034,826,291344.6892,2206145228,Vardar,Macedonia,,
