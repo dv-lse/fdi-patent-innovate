@@ -7,6 +7,7 @@ function validate(val, results) {
   let default_state = {
     category: 'All technologies',
     region: 'All regions',
+    firms: 'All firms',
     explore: false
   }
 
@@ -14,16 +15,19 @@ function validate(val, results) {
 
   let categories = d3.set(results, (d) => d.cat)
   let regions = d3.set(results, (d) => d.region)
+  let firms = d3.set(results, (d) => d.firms)
 
   if(!(categories.has(state.category)))
     throw "Trend state: cannot read category from " + JSON.stringify(state)
   if(!(regions.has(state.region)))
     throw "Trend state: cannot read region from " + JSON.stringify(state)
+  if(!(firms.has(state.firms)))
+    throw "Trend state: cannot read firms from " + JSON.stringify(state)
 
   return state
 }
 
-function install(svg, regions, categories) {
+function install(svg, regions, categories, firms) {
 
   let width = svg.attr('width') - margin.left - margin.right
   let height = svg.attr('height') - margin.top - margin.bottom
@@ -121,10 +125,10 @@ function install(svg, regions, categories) {
       .attr('transform', 'translate(50,120)')
 
     let group = selectors.selectAll('g')
-      .data(d3.entries({region: regions, category: categories}))
+      .data(d3.entries({region: regions, category: categories, firms: firms }))
       .enter().append('g')
         .attr('class', (d) => d.key)
-        .attr('transform', (d,i) => 'translate(' + (i * 100) + ')')
+        .attr('transform', (d,i) => 'translate(' + (i % 2 * 120) + ',' + (Math.floor(i / 2) * 120) + ')')
 
     let item = group.selectAll('text')
       .data( (d) => d.value )
@@ -166,7 +170,7 @@ function update(svg, results, state) {
 
   // reformat data frame by test year
 
-  let record = results.filter( (d) => d.cat === state.category && d.region === state.region )[0]
+  let record = results.filter( (d) => d.cat === state.category && d.region === state.region && d.firms == state.firms )[0]
   let data = years.map( (i) => {
     let key = ('' + i).replace('-', '_')
     return {
@@ -228,10 +232,10 @@ function update(svg, results, state) {
   let selectors = svg.select('.selectors')
     .attr('visibility', state.explore ? '' : 'hidden')
 
-  let attributes = ['region', 'category']
+  let attributes = ['region', 'category', 'firms']
   attributes.forEach( (key) => {
     selectors.selectAll('g.' + key + ' text')
-      .classed('active', (d) => d === state[key] )
+      .classed('selected', (d) => d === state[key] )
       .on('click', (d) => {
         state[key] = d
         update(svg, results, state)

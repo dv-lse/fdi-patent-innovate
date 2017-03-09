@@ -126,7 +126,7 @@ body {
   cursor: pointer;
 }
 
-#trend .selectors .active {
+#trend .selectors .selected {
   text-decoration: underline;
   fill: red;
 }

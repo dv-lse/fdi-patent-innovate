@@ -63,7 +63,7 @@ queue()
       .object( rawflows )
 
     let results_datacols = rawresults.columns.filter( (c) => {
-      return c !== 'region' && c !== 'cat'
+      return !(c == 'region' || c == 'cat' || c == 'firms')
     })
     let results = rawresults.map(lift(Number, results_datacols))
 
@@ -94,9 +94,10 @@ queue()
     // install trendline svg shell
     let all_regions = d3.set(results, (d) => d.region).values().sort()
     let all_categories = d3.set(results, (d) => d.cat).values().sort()
+    let all_firms = d3.set(results, (d) => d.firms).values().sort()
 
     d3.select('#trend')
-      .call(trend.install, all_regions, all_categories)
+      .call(trend.install, all_regions, all_categories, all_firms)
 
     // responsive layout
 

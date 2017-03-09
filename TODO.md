@@ -1,9 +1,12 @@
 # TODO
 
+- [ ] Grey out trend options based on availability
+- [ ] 100% + top 1% + bottom 80% selector
+
+- [ ] Globe should keep rotation across slides [ unless specified in narrative ]
 - [ ] Oceans, background: ref to http://bl.ocks.org/dwtkns/4686432
 - [ ] Flows: ref to http://prcweb.co.uk/lab/ukwind/
       [ ] DiD graphs: intervention line like a flow?
-- [ ] 100% + top 1% + bottom 80% selector
 - [ ] Flow labels larger
 - [ ] Legend text larger
 - [ ] DiD text all larger
