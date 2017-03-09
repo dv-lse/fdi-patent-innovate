@@ -164,12 +164,19 @@ function update(canvas, layers, stats, flows, state) {
   function drawCore() {
     context.clearRect(0, 0, width, height)
 
+    // Ocean background
+
+    context.save()
+    context.fillStyle = 'rgba(173,216,230,.4)'
+    path({type:'Sphere'})
+    context.fill()
+    context.restore()
+
     // graticule
 
     context.save()
-    context.lineWidth = 1
-    context.setLineDash([1, 3])
-    context.strokeStyle = '#c9c4bc'
+    context.lineWidth = .5
+    context.strokeStyle = 'rgba(0,0,0,.2)'
     context.beginPath()
     path( graticule() )
     context.stroke()
@@ -178,7 +185,7 @@ function update(canvas, layers, stats, flows, state) {
     // land
 
     context.save()
-    context.fillStyle = 'lightgrey'
+    context.fillStyle = state.choropleth ? 'lightgrey' : '#755739'
     context.beginPath()
     path( layers.land )
     context.fill()
@@ -187,8 +194,8 @@ function update(canvas, layers, stats, flows, state) {
     // country borders
 
     context.save()
-    context.strokeStyle = 'white'
-    context.lineWidth = 1
+    context.strokeStyle = 'rgba(255,255,255,.5)'
+    context.lineWidth = 1.5
     context.beginPath()
     path( layers.countries )
     context.stroke()
@@ -337,7 +344,6 @@ function update(canvas, layers, stats, flows, state) {
 
   function interaction() {
     // TODO.  might better to alter the values in state.rotation & state.scale
-    const TIMEOUT = 1500
     let m0, o0, m1
     let o1 = [-state.rotate[0],-state.rotate[1]]
 
@@ -365,7 +371,7 @@ function update(canvas, layers, stats, flows, state) {
     let loop = d3.interval( (epoch_step) => {
       let cycle = (Math.floor(epoch_step / 100) % 100) / 100
       if(state.autorotate) {
-        let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed - TIMEOUT)
+        let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed)
         state.rotate = [-o1[0] + (step * 0.01) % 360, -o1[1], AXIS_TILT]
       }
       projection.rotate(state.rotate)
