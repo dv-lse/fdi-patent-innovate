@@ -56,9 +56,9 @@ function install(svg, results) {
     // intervention marker
     svg.append('path')
       .attr('class', 'intervention')
-      .attr('stroke', 'red')
-      .attr('stroke-width', 1.5)
-      .attr('stroke-dasharray', '5 2')
+      .attr('stroke', 'coral')
+      .attr('stroke-width', 3)
+      .attr('opacity', .7)
 
     // baseline & labels
     // TODO.  would be better not to approximate y translate here
