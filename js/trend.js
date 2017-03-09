@@ -2,6 +2,12 @@ import * as d3 from 'd3'
 import { least_squares } from './util/regression'
 
 const margin = { top: 40, right: 60, bottom: 60, left: 0 }
+const attributes = ['region', 'category', 'firms']
+
+
+function matches(state, results) {
+  return results.filter((r) => attributes.every((ra) => r[ra] === state[ra] || !(ra in state)))
+}
 
 function validate(val, results) {
   let default_state = {
@@ -13,21 +19,13 @@ function validate(val, results) {
 
   let state = Object.assign({}, default_state, val)
 
-  let categories = d3.set(results, (d) => d.cat)
-  let regions = d3.set(results, (d) => d.region)
-  let firms = d3.set(results, (d) => d.firms)
-
-  if(!(categories.has(state.category)))
-    throw "Trend state: cannot read category from " + JSON.stringify(state)
-  if(!(regions.has(state.region)))
-    throw "Trend state: cannot read region from " + JSON.stringify(state)
-  if(!(firms.has(state.firms)))
-    throw "Trend state: cannot read firms from " + JSON.stringify(state)
+  if(matches(state, results).length < 1)
+    throw "Trend results: cannot match " + JSON.stringify(state)
 
   return state
 }
 
-function install(svg, regions, categories, firms) {
+function install(svg, results) {
 
   let width = svg.attr('width') - margin.left - margin.right
   let height = svg.attr('height') - margin.top - margin.bottom
@@ -122,19 +120,19 @@ function install(svg, regions, categories, firms) {
 
     let selectors = svg.append('g')
       .attr('class', 'selectors')
-      .attr('transform', 'translate(50,120)')
+      .attr('transform', 'translate(0,120)')
 
     let group = selectors.selectAll('g')
-      .data(d3.entries({region: regions, category: categories, firms: firms }))
+      .data(attributes)
       .enter().append('g')
-        .attr('class', (d) => d.key)
+        .attr('class', (d) => d)
         .attr('transform', (d,i) => 'translate(' + (i % 2 * 120) + ',' + (Math.floor(i / 2) * 120) + ')')
 
     let item = group.selectAll('text')
-      .data( (d) => d.value )
+      .data( (d) => d3.set(results, (r) => r[d]).values().sort(d3.ascending) )
       .enter().append('text')
         .attr('class', (d) => downcase(d))
-        .attr('y', (d,i) => (i * 1.2) + 'em')
+        .attr('y', (d,i) => (i * 1.3) + 'em')
         .text( (d) => d )
 
     function triangle_marker(id, color) {
@@ -165,12 +163,12 @@ function update(svg, results, state) {
       if(!m) return null
       return +(m[1].replace('_', '-'))
     })
-    .filter( (d) => d )
+    .filter((d) => d)
     .sort(d3.ascending)
 
   // reformat data frame by test year
 
-  let record = results.filter( (d) => d.cat === state.category && d.region === state.region && d.firms == state.firms )[0]
+  let record = matches(state, results)[0]
   let data = years.map( (i) => {
     let key = ('' + i).replace('-', '_')
     return {
@@ -233,10 +231,17 @@ function update(svg, results, state) {
     .attr('visibility', state.explore ? '' : 'hidden')
 
   let attributes = ['region', 'category', 'firms']
+
   attributes.forEach( (key) => {
+    // TODO.  use matches function here?
+    let context_results = results.filter((r) => attributes.every((ra) => ra == key || r[ra] == state[ra]))
+    let context = d3.set(context_results, (r) => r[key])
+
     selectors.selectAll('g.' + key + ' text')
-      .classed('selected', (d) => d === state[key] )
+      .classed('selected', (d) => d === state[key])
+      .classed('active', (d) => context.has(d))
       .on('click', (d) => {
+        if(!context.has(d)) return
         state[key] = d
         update(svg, results, state)
       })
@@ -296,4 +301,4 @@ function downcase(s) {
   return s.toLowerCase().replace(/\W/g, '_')
 }
 
-export { install, validate, update }
+export { install, validate, update, attributes }
