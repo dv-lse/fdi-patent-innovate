@@ -18,7 +18,7 @@ const AXIS_TILT = 11.5
 let projection = geoOrthographic()
   .clipAngle(90)
   .precision(0.6)
-  .rotate([0, 0, AXIS_TILT])
+  .rotate([ 0.1278, -51.5074, AXIS_TILT ])  // London
 
 let path = geoPath()
   .projection(projection)
@@ -30,8 +30,8 @@ let refresh = null  // timer that refreshes globe @ 24fps
 
 function validate(val, flows, stats) {
   let default_state = {
-    rotate: [ 0.1278, -51.5074 ],  // London
-    scale: 50,
+    rotate: projection.rotate(),
+    scale: 1,                      // NB should be projection.scale() but this is in different units
     colors: 'Blues',
     format: '.1s',                 // One digit precision, with abbreviation
     autorotate: true

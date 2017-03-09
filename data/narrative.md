@@ -18,8 +18,6 @@ Today, multinational firms are investing enormous amounts of money abroad. These
 #
 
 ::: visualisation globe
-  rotate: [2.3522, -48.8566]
-  scale: 1
   autorotate: false
   flows: World
   flow-weight: investment_mm
@@ -28,7 +26,7 @@ Today, multinational firms are investing enormous amounts of money abroad. These
 
 These ***Foreign Direct Investments*** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, or the equivalent of Italy’s Gross Domestic Product [2].
 
-You can rotate the globe with your mouse and zoom in or out with the buttons in the top left corner.
+You can rotate the globe with your mouse and zoom in or out with the buttons in the corner.
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
