@@ -288,6 +288,23 @@ Ultimately, the overall impact of FDIs on local innovation is positive: foreign 
 
 The size of the impact depends largely on the technology and the area of the world where firms operate.
 
+
+# Conclusion
+
+::: visualisation globe
+  flows: World
+  flow-weight: investment_mm
+  label: World flows and regional impact
+  choropleth: impact
+  format: '.1d'
+  thresholds: [0, .5, 1.5, 5]
+  colors: Reds
+  autorotate: false
+:::
+
+*Can we go back to the globe in the last slide? And show both the flows and the macro-regions colored by the size of the impact? I will need to provide you with another data set for this. I think it would be a nice way to conclude and to link the impact to the flows.*
+
+
 # Credits
 
 ::: visualisation trend
