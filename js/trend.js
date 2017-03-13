@@ -40,7 +40,7 @@ function install(svg, results) {
     .attr('transform', 'translate(' + [margin.left, margin.top] + ')')
 
   svg.append('text')
-     .attr('font-size', '12pt')
+     .attr('font-size', '16pt')
      .selectAll('tspan')
      .data(['Patenting rates:', 'regions with', 'economic intervention'])
     .enter().append('tspan')
@@ -75,7 +75,7 @@ function install(svg, results) {
       .attr('class', 'baseline_label')
       .attr('text-anchor', 'start')
       .attr('fill', 'black')
-      .attr('font-size', 10)
+      .attr('font-size', 12)
       .attr('dy', '-.3em')
       .text('regions without intervention')
 
@@ -86,7 +86,7 @@ function install(svg, results) {
       .attr('dx', '1em')
       .attr('transform', 'rotate(-90)')
       .attr('fill', 'black')
-      .attr('font-size', 10)
+      .attr('font-size', 12)
       .text('difference from baseline, %')
 
     // median difference line
@@ -126,13 +126,14 @@ function install(svg, results) {
       .data(attributes)
       .enter().append('g')
         .attr('class', (d) => d)
-        .attr('transform', (d,i) => 'translate(' + (i % 2 * 120) + ',' + (Math.floor(i / 2) * 120) + ')')
+        .attr('transform', (d,i) => 'translate(' + (i % 2 * 120) + ',' + (Math.floor(i / 2) * 140) + ')')
 
     let item = group.selectAll('text')
       .data( (d) => d3.set(results, (r) => r[d]).values().sort(d3.ascending) )
       .enter().append('text')
         .attr('class', (d) => downcase(d))
-        .attr('y', (d,i) => (i * 1.3) + 'em')
+        .attr('y', (d,i) => (i * 1.2) + 'em')
+        .attr('font-size', 14)
         .text( (d) => d )
 
     function triangle_marker(id, color) {

@@ -7,7 +7,11 @@ const GLOBE_AREA = geoArea({type: 'Sphere'})
 
 const DEFAULT_QUANTILES = 5
 
-const LEGEND_MARGIN = 20
+const LABEL_FONT = '18px Roboto'
+const LEGEND_FONT = '18px Roboto'
+const TICK_FONT = '12px Roboto'
+
+const LEGEND_MARGIN = 35
 const LEGEND_HEIGHT = 15
 const LEGEND_PADDING = [15, 5, 15, 5]
 
@@ -298,23 +302,29 @@ function update(canvas, layers, stats, flows, state) {
     if(!state.label) return
 
     let fmt = state.format ? d3.format(state.format) : d3.format('2s')
-    let legend_height = LEGEND_PADDING[0] + (state.choropleth ? LEGEND_HEIGHT : 0) + LEGEND_PADDING[2]
+
+    let em_height = context.measureText('M').width
+    let legend_height = LEGEND_PADDING[0] + (state.choropleth ? LEGEND_HEIGHT + em_height : 0) + LEGEND_PADDING[2]
 
     let x = d3.scaleBand()
       .rangeRound([LEFT_PADDING + (width - LEFT_PADDING) / 2, width - LEGEND_MARGIN])
       .domain(color.range())
 
+    let left = x.range()[0] - LEGEND_PADDING[3]
+    let top = LEGEND_MARGIN - LEGEND_PADDING[0] - em_height
+    let legend_width = x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3]
+
     context.save()
-    context.fillStyle = 'rgba(255,255,255,.85)'
-    context.fillRect(x.range()[0] - LEGEND_PADDING[3],
-                     LEGEND_MARGIN - LEGEND_PADDING[0],
-                     x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3],
-                     legend_height)
+    context.fillStyle = 'rgba(255,255,255,.95)'
+    context.fillRect(left, top, legend_width, legend_height)
+    context.strokeStyle = 'black'
+    context.strokeRect(left, top, legend_width, legend_height)
 
     if(state.label) {
       context.fillStyle = 'black'
-      context.textBaseline = 'alphabetic'
+      context.textBaseline = 'bottom'
       context.textAlign = 'left'
+      context.font = LEGEND_FONT
       context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
     }
 
@@ -332,8 +342,9 @@ function update(canvas, layers, stats, flows, state) {
 
         context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
         context.fillStyle = 'black'
-        context.textBaseline = 'hanging'
+        context.textBaseline = 'top'
         context.textAlign = 'right'
+        context.font = TICK_FONT
 
         context.fillText(fmt(high), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
       })
@@ -424,9 +435,17 @@ function circle(context, coords, radius, fill, stroke, label) {
   context.fill()
   context.stroke()
   if(label) {
-    context.fillStyle = 'black'
-    context.strokeStyle = 'none'
-    context.fillText(label, coords[0] + radius + 2, coords[1] + radius + 2)
+    context.font = LABEL_FONT
+    let padding = 5
+    let x = coords[0] + radius + padding * 2
+    let y = coords[1]
+    let width = context.measureText(label).width + padding * 2
+    let height = context.measureText('M').width + padding * 2
+    context.fillStyle = 'rgba(255,255,255,1)'
+    context.fillRect(x, y - height / 2, width, height)
+    context.fillStyle = context.strokeStyle = 'rgba(0,0,0,.7)'
+    context.strokeRect(x, y - height / 2, width, height)
+    context.fillText(label, x + padding, y + padding)
   }
   context.restore()
 }
