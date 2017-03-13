@@ -85,7 +85,7 @@ function validate(val, flows, stats) {
     throw "Globe state: cannot parse color descriptor " + state.colors
 
   try {
-    d3.format(state.format)
+    Array.isArray(state.format) || d3.format(state.format)
   } catch(e) {
     throw "Globe state: cannot parse format descriptor " + state.format
   }
@@ -301,7 +301,9 @@ function update(canvas, layers, stats, flows, state) {
   function drawLegend() {
     if(!state.label) return
 
-    let fmt = state.format ? d3.format(state.format) : d3.format('2s')
+    let fmt = d3.format('2s')
+    if(state.format)
+      fmt = Array.isArray(state.format) ? (d,i) => state.format[i] : d3.format(state.format)
 
     let em_height = context.measureText('M').width
     let legend_height = LEGEND_PADDING[0] + (state.choropleth ? LEGEND_HEIGHT + em_height : 0) + LEGEND_PADDING[2]
@@ -346,7 +348,7 @@ function update(canvas, layers, stats, flows, state) {
         context.textAlign = 'right'
         context.font = TICK_FONT
 
-        context.fillText(fmt(high), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
+        context.fillText(fmt(high, i), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
       })
     }
 
