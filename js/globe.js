@@ -273,20 +273,15 @@ function update(canvas, layers, stats, flows, state) {
       // must use GeoJSON so that great arcs are curved according to projection
       context.beginPath()
       context.strokeStyle = faded_color + ''
+      context.setLineDash([5, 15])
+      context.lineDashOffset = -Math.floor(cycle * 100)
       path(line)
       context.stroke()
       context.restore()
 
-      let interp = d3.geoInterpolate(d.from, d.to)
-      let bubble = interp((i / data.length + cycle) % 1)
-
       let rot = projection.rotate()
       let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
       let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
-      let bubble_distance = d3.geoDistance([-rot[0],-rot[1]], bubble)
-
-      context.globalAlpha = horizon(bubble_distance)
-      circle(context, projection(bubble), weight / 5, 'coral', 'coral')
 
       context.globalAlpha = horizon(from_distance)
       circle(context, projection(d.from), weight, 'white', 'coral', d.from_label)
