@@ -284,10 +284,10 @@ function update(canvas, layers, stats, flows, state) {
       let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
 
       context.globalAlpha = horizon(from_distance)
-      circle(context, projection(d.from), weight, 'white', 'coral', d.from_label)
+      circle(context, projection(d.from), weight, 'white', 'coral', d.from_label, 1)
 
       context.globalAlpha = horizon(to_distance)
-      circle(context, projection(d.to), weight, 'white', 'coral', d.to_label)
+      circle(context, projection(d.to), weight, 'white', 'coral', d.to_label, -1)
 
       context.globalAlpha = 1.0
     })
@@ -423,7 +423,8 @@ function update(canvas, layers, stats, flows, state) {
     })
 }
 
-function circle(context, coords, radius, fill, stroke, label) {
+function circle(context, coords, radius, fill, stroke, label=null, label_sign=1) {
+  label_sign = label_sign >= 0 ? 1 : -1
   context.save()
   context.fillStyle = fill
   context.strokeStyle = stroke
@@ -434,10 +435,11 @@ function circle(context, coords, radius, fill, stroke, label) {
   if(label) {
     context.font = LABEL_FONT
     let padding = 5
-    let x = coords[0] + radius + padding * 2
-    let y = coords[1]
     let width = context.measureText(label).width + padding * 2
     let height = context.measureText('M').width + padding * 2
+    let x = coords[0] + (radius + padding * 2) * label_sign
+    let y = coords[1]
+    x = label_sign > 0 ? x : x - width
     context.fillStyle = 'rgba(255,255,255,1)'
     context.fillRect(x, y - height / 2, width, height)
     context.fillStyle = context.strokeStyle = 'rgba(0,0,0,.7)'
