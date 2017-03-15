@@ -43,7 +43,11 @@ You can rotate the globe with your mouse and zoom in or out with the buttons in 
   label: Most important FDIs from industrialised nations
 :::
 
+
+
 Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in FDI outflows).
+
+
 
 #
 
@@ -56,7 +60,11 @@ Almost two thirds of these investments came from industrialised economies, with 
   autorotate: false
 :::
 
+
+
 But the United States is the single largest investing country ($300 billions) [1].
+
+
 
 
 #
