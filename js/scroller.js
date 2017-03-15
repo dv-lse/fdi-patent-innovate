@@ -78,9 +78,8 @@ function scroller(sel, callback) {
   }
 
   function scrolled(ev) {
-    let margin = Math.max(150, window.innerHeight / 8)
-    let pos = window.pageYOffset + margin
-    let sectionIndex = d3.bisect(sectionPositions, pos)
+    var pos = window.pageYOffset + 150
+    var sectionIndex = d3.bisect(sectionPositions, pos)
     sectionIndex = Math.max(0, Math.min(sectionIndex, sectionPositions.length-1))
     make_active(sectionIndex)
   }
