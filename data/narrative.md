@@ -96,6 +96,7 @@ There are several other European localities that Nissan could have chosen: Lazio
   flow-weight: investment_mm
   origin-labels: source_region_g
   destination-labels: destination_region_g
+  highlight-over: 1
   autorotate: false
 :::
 
@@ -126,6 +127,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   flow-weight: investment_mm
   origin-labels: source_region_g
   destination-labels: destination_region_g
+  highlight-over: 1
   autorotate: false
 :::
 

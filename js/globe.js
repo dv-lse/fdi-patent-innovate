@@ -60,14 +60,12 @@ function validate(val, flows, stats) {
     throw "Globe state: cannot read scale from " + JSON.stringify(state)
 
   if(state.flows) {
-    let groups = state.flows.split('|')
+    let g = flows[state.flows]
     let col = state['flow-weight']
-    groups.forEach( (g) => {
-      if(!flows[g])
-        throw "Globe state: cannot identify flow diagram for group " + g
-      if(col && !flows[g][0][col])
-        throw "Globe state: cannot read flow column " + col + " from group " + g
-    })
+    if(!g)
+      throw "Globe state: cannot identify flow diagram for group " + state.flows
+    if(col && !g[0][col])
+      throw "Globe state: cannot read flow column " + col + " from group " + state.flows
   }
 
   // TODO.  better way to check available stat columns
@@ -122,7 +120,7 @@ function update(canvas, layers, stats, flows, state) {
 
   let color = d3.scaleLinear()
   let opacity = d3.scaleLinear()
-    .range([0.3,0.7])
+    .range([0.5,1])
 
   let arcs = []
 
@@ -261,7 +259,8 @@ function update(canvas, layers, stats, flows, state) {
 
     data.forEach( (d,i) => {
       let line = {type: 'LineString', coordinates: [ d.from, d.to ]}
-      let faded_color = d3.color('coral')
+      let highlight = state['highlight-over'] && d.value > +state['highlight-over']
+      let faded_color = highlight ? d3.color('red') : d3.color('coral')
       faded_color.opacity = opacity(d.value)
 
       context.save()
