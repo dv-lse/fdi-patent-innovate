@@ -58,6 +58,7 @@ function install(svg, results) {
       .attr('class', 'intervention')
       .attr('stroke', 'coral')
       .attr('stroke-width', 3)
+      .attr('stroke-dasharray', [15, 5])
       .attr('opacity', .7)
 
     // baseline & labels
