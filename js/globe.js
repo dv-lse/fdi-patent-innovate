@@ -187,7 +187,7 @@ function update(canvas, layers, stats, flows, state) {
     // land
 
     context.save()
-    context.fillStyle = state.choropleth ? 'lightgrey' : '#755739'
+    context.fillStyle = state.choropleth ? 'lightgrey' : 'darkgrey'   //'#755739'
     context.beginPath()
     path( layers.land )
     context.fill()
