@@ -101,6 +101,7 @@ queue()
     function resize() {
       let window_w = window.innerWidth
       let window_h = window.innerHeight
+      let focus_line = window_h / 2
 
       let banner_h = d3.select('#narrative header').node().getBoundingClientRect().height
       let trend_l = d3.select('#trend').node().getBoundingClientRect().left
@@ -115,6 +116,9 @@ queue()
       d3.select('#trend')
         .attr('width', plot_w)
         .attr('height', plot_h)
+
+      d3.select('#narrative')
+        .style('margin-top', focus_line + 'px')
 
       // TODO.  more elegant way to find current payload?
       d3.select('#narrative section.active script.message')

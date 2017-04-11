@@ -31,6 +31,7 @@ body {
 #narrative header {
   position: fixed;
   width: 100%;
+  height: 65px;
   padding-left: 20px;
   top: 0;
   background: black;
@@ -40,11 +41,15 @@ body {
 }
 
 #narrative section {
-  margin: 200px 0 200px 15px;
+  margin: 0 0 100px 15px;
   padding: 15px;
   background: white;
-  border: 1px solid lightgray;
   pointer-events: none; /* allow user to drag globe through section margins */
+  border: 1px solid white;
+}
+
+#narrative section:first-of-type {
+  transform: translate(0, -50%);
 }
 
 #narrative a[title],
@@ -70,7 +75,7 @@ body {
 #nav {
   position: fixed;
   left: 340px;
-  top: 200px;
+  top: 150px;
   z-index: 2;
 }
 
