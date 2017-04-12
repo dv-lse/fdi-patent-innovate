@@ -101,13 +101,14 @@ queue()
     function resize() {
       let window_w = window.innerWidth
       let window_h = window.innerHeight
-      let focus_line = window_h / 2
 
       let banner_h = d3.select('#narrative header').node().getBoundingClientRect().height
       let trend_l = d3.select('#trend').node().getBoundingClientRect().left
 
       let plot_h = window_h - banner_h
       let plot_w = window_w - trend_l
+
+      let focus_line = (window_h + banner_h) / 2
 
       d3.select('#globe')
         .attr('width', window_w)
