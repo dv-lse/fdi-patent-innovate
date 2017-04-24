@@ -221,6 +221,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
 ::: visualisation globe
   rotate: [-46.625290, -23.533773]
   scale: 1
+  autorotate: false
 :::
 
 To study the impact of foreign direct investment on regional patent count, we select a region that receives an FDI by an innovative firm in a given year. We then find another region that looks very similar to the first one in terms of GDP, population and average educational attainment, using a statistical method called ***propensity score matching***.
