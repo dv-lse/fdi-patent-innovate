@@ -207,8 +207,8 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   scale: 2
   choropleth: diff2
   label: Patents by region, 1975 to 2005
-  format: [ 'Moved up' ]
-  thresholds: [ 2 ]
+  format: [ 'Stable', 'Moved up' ]
+  thresholds: [ 1, 2 ]
   colors: Reds
   autorotate: false
 :::
