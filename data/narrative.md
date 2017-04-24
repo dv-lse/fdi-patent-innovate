@@ -209,7 +209,7 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   label: Patents by region, 1975 to 2005
   format: [ 'Stable', 'Moved up' ]
   thresholds: [ 1, 2 ]
-  colors: Reds
+  colors: RdGy
   autorotate: false
 :::
 
