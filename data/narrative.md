@@ -207,8 +207,8 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   scale: 2
   choropleth: diff2
   label: Patents by region, 1975 to 2005
-  format: [ 'Moved to a higher quintile' ]
-  thresholds: [1]
+  format: [ 'Stayed in the same quintile (or moved down)' , 'Moved to a higher quintile' ]
+  thresholds: [0, 1]
   colors: Reds
   autorotate: false
 :::
