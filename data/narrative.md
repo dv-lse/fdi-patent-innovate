@@ -146,7 +146,7 @@ Nissan, Texas Instruments and all technologically-advanced firms typically seek 
 ::: visualisation globe
   rotate: [-77.614656, -12.934513]
   scale: 1
-  autorotate: true
+  autorotate: false
 :::
 
 While multinational firms from both rich and emerging countries invest abroad to capitalise on regional assets, they do so in different ways.
@@ -155,7 +155,7 @@ While multinational firms from both rich and emerging countries invest abroad to
 
 ::: visualisation globe
   scale: 1
-  autorotate: true
+  autorotate: false
 :::
 
 Firstly, MNEs from developing countries are less likely than those from rich countries to benefit from the technological competence of the region where they invest. As few of them can rival with the technological capabilities of the IBMs, Rolls Royces and Airbuses of the world, they often have a less developed ***absorptive capacity***, needed to fully take advantage of innovation-prone regional factors [6].
@@ -170,7 +170,7 @@ Secondly, multinational firms from developing countries tend to invest in cities
 
 ::: visualisation globe
   scale: 1
-  autorotate: true
+  autorotate: false
 :::
 
 In sum, multinational companies make their location and investment choices to exploit assets that are specific to a region. In this sense, they clearly benefit from setting a plant abroad. But do the host regions benefit from the newly implanted establishments?
