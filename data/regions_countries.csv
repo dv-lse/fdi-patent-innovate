@@ -1537,8 +1537,7 @@ geoid_r,macroregion,impact,diff,diff2,year_c,region,allpat,didAll,Europe28,LatAm
 1536,,-1,,0,2012,Dhaka,3,-.13145238,0,0,1
 1537,,-1,,0,2012,Faridpur,0,-.0099999998,0,0,1
 1538,,0,,0,2012,Jamalpur,0,,0,0,1
-1539,,0,,0,2012,Mymensingh
-Mymensingh,0,,0,0,1
+1539,,0,,0,2012,Myensingh,0,,0,0,1
 1540,,0,,0,2012,Tangali,0,,0,0,1
 1541,,0,,0,2012,Jessore,0,,0,0,1
 1542,,0,,0,2012,Khulna,0,,0,0,1
