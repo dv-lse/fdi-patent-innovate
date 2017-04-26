@@ -1530,9 +1530,7 @@ geoid_r,macroregion,impact,diff,diff2,year_c,region,allpat,didAll,Europe28,LatAm
 1529,,0,,0,2012,Eastern,0,,0,0,0
 1530,,0,,0,2012,Barisal,0,,0,0,1
 1531,,0,,0,2012,Patuakhali,0,,0,0,1
-1532,,0,,0,2012,Chittagong H.T.
-Chittagong H.T.
-,0,,0,0,1
+1532,,0,,0,2012,Chittagong H.T.,0,,0,0,1
 1533,,0,,0,2012,Chittagong,1,,0,0,1
 1534,,0,,0,2012,Comilla,0,,0,0,1
 1535,,0,,0,2012,Noakhali,0,,0,0,1
