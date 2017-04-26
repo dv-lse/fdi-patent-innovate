@@ -299,7 +299,7 @@ The size of the impact depends largely on the technology and the area of the wor
   label: World flows and regional impact
   choropleth: impact
   format: '.1d'
-  thresholds: [0, .5, 1.5, 5]
+  thresholds: [-1.5, 0, .5, 1.5, 5.5, 6.5]
   colors: Reds
   autorotate: false
 :::
