@@ -63,7 +63,9 @@
     "process": "github:jspm/nodelibs-process@^0.1.0"
   },
   "npm:ieee754@1.1.8": {},
-  "npm:isarray@1.0.0": {},
+  "npm:isarray@1.0.0": {
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0"
+  },
   "npm:base64-js@0.0.8": {},
   "github:jspm/nodelibs-child_process@0.1.0": {},
   "npm:d3-format@1.0.2": {},
@@ -197,9 +199,9 @@
   "npm:argparse@1.0.9": {
     "sprintf-js": "npm:sprintf-js@~1.0.2",
     "util": "github:jspm/nodelibs-util@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
     "path": "github:jspm/nodelibs-path@^0.1.0",
-    "fs": "github:jspm/nodelibs-fs@^0.1.0",
-    "process": "github:jspm/nodelibs-process@^0.1.0"
+    "fs": "github:jspm/nodelibs-fs@^0.1.0"
   },
   "npm:markdown-it@8.0.1": {
     "argparse": "npm:argparse@^1.0.7",
@@ -346,9 +348,9 @@
     "d3-transition": "npm:d3-transition@^1.0.0"
   },
   "npm:iconv-lite@0.4.15": {
-    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
     "process": "github:jspm/nodelibs-process@^0.1.0",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
     "string_decoder": "github:jspm/nodelibs-string_decoder@^0.1.0",
     "stream": "github:jspm/nodelibs-stream@^0.1.0"
   },

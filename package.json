@@ -20,7 +20,7 @@
     }
   },
   "devDependencies": {
-    "jspm": "^0.16.47",
+    "jspm": "^0.16.53",
     "ndjson-cli": "^0.2.0",
     "shapefile": "^0.5.8",
     "topojson": "^2.0.0",
