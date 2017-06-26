@@ -63,12 +63,12 @@ $(TMP)/$(NE)/%: $(TMP)/$(NE).zip
 $(TMP)/Shapefile2_geo.json: $(TMP)/Shapefile2.shp $(TMP)/Shapefile2.shx $(TMP)/Shapefile2.dbf $(TMP)/Shapefile2.prj
 	$(BIN)/shp2json -n $(TMP)/Shapefile2.shp \
 	   | $(BIN)/ndjson-map '(d.id = d.properties.OBJECTID, d.properties = { Region: d.properties.Region, Country: d.properties.Country }, d)' \
-		 | geostitch -n > $@
+		 | $(BIN)/geostitch -n > $@
 
 $(TMP)/$(NE)_geo.json: $(TMP)/$(NE)/$(NE).shp
 	$(BIN)/shp2json -n $< \
 	   | $(BIN)/ndjson-map '(d.id = d.properties.iso_n3, delete d.properties, d)' \
-		 | geostitch -n > $@
+		 | $(BIN)/geostitch -n > $@
 
 
 # Topojson, with three layers:  regions (from Shapefile2), countries (from Natural Earth), and land (Natural Earth)
