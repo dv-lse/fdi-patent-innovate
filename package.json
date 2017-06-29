@@ -24,7 +24,6 @@
     "jspm": "^0.16.53",
     "ndjson-cli": "^0.2.0",
     "shapefile": "^0.5.11",
-    "topojson": "^3.0.0",
     "topojson-server": "^3.0.0",
     "topojson-simplify": "^2.0.0"
   }

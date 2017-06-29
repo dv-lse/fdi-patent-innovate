@@ -42,10 +42,16 @@ queue()
 
     // data post-processing
 
+    let symbols = feature(world, world.objects.regions)
+    symbols.features.forEach( (f) => {
+      f.geometry = { type: 'Point', coordinates: d3.geoCentroid(f) }
+    })
+
     let layers = {
       land: feature(world, world.objects.land),
       countries: mesh(world, world.objects.countries, (a,b) => a !== b),
-      regions: feature(world, world.objects.regions)
+      regions: mesh(world, world.objects.regions, (a,b) => a !== b),
+      symbols: symbols
     }
 
     // workaround: topojson-simplify 2.0.0 occasionally inverts winding order,

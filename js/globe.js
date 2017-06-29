@@ -11,9 +11,13 @@ const LABEL_FONT = '18px Roboto'
 const LEGEND_FONT = '18px Roboto'
 const TICK_FONT = '12px Roboto'
 
-const LEGEND_MARGIN = 35
+const SYMBOL_WIDTH = 50
+const SYMBOL_FILL = 'rgba(70,130,180,.6)'
+const SYMBOL_STROKE = 'rgba(255,255,255,.6)'
+
+const LEGEND_MARGIN = 15
 const LEGEND_HEIGHT = 15
-const LEGEND_PADDING = [15, 5, 15, 5]
+const LEGEND_PADDING = [15, 5, 10, 5]
 
 const LEFT_PADDING = 360
 
@@ -36,7 +40,6 @@ function validate(val, flows, stats) {
   let default_state = {
     rotate: projection.rotate(),
     scale: 1,                      // NB should be projection.scale() but this is in different units
-    colors: 'Blues',
     format: '.1s',                 // One digit precision, with abbreviation
     autorotate: true
   }
@@ -69,8 +72,8 @@ function validate(val, flows, stats) {
   }
 
   // TODO.  better way to check available stat columns
-  if(state.choropleth && !(state.choropleth in stats[1])) {
-    throw "Globe state: cannot read choropleth column " + state.choropleth
+  if(state.symbols && !(state.symbols in stats[1])) {
+    throw "Globe state: cannot read symbols column " + state.symbols
   }
 
   if(state.thresholds && !(Array.isArray(state.thresholds) && state.thresholds.every( (d,i,a) => {
@@ -78,9 +81,6 @@ function validate(val, flows, stats) {
   }))) {
     throw "Globe state: thresholds must be sorted array of numbers"
   }
-
-  if(state.colors && !schemes['interpolate' + state.colors])
-    throw "Globe state: cannot parse color descriptor " + state.colors
 
   try {
     Array.isArray(state.format) || d3.format(state.format)
@@ -118,32 +118,30 @@ function update(canvas, layers, stats, flows, state) {
 
   // render the globe in new state
 
-  let color = d3.scaleLinear()
   let opacity = d3.scaleLinear()
     .range([0.5,1])
+
+  let symbolscale = d3.scalePow()
+    .exponent(0.5)
+    .range([0,SYMBOL_WIDTH])
+
+  // no support for line endings in GeoJSON so do this in Canvas
+  // opacity fade at horizon
+  let horizon = d3.scaleLinear()
+    .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
+    .range([1,0])
+    .clamp(true) // necessary since most calls are outside of domain
 
   let arcs = []
 
   let omitted = d3.set()
 
-  if(state.choropleth) {
-    let values = stats.map( (d) => project(d, state.choropleth))
+  if(state.symbols) {
+    let values = stats.map( (d) => project(d, state.symbols))
     values.filter( (d) => d !== null )
 
-    color = d3.scaleQuantile()
-      .domain(values)
-  }
-
-  if(state.thresholds) {
-    color = d3.scaleThreshold()
-      .domain(state.thresholds)
-  }
-
-  if(state.colors) {
-    let interp = schemes['interpolate' + state.colors]
-    let num_buckets = 1 + state.thresholds ? state.thresholds.length : DEFAULT_QUANTILES
-    let range = d3.range(0,num_buckets).map( (i) => interp(i / num_buckets))
-    color.range(range)
+    symbolscale.domain(d3.extent(values))
+      .nice()
   }
 
   if(state.flows) {
@@ -187,7 +185,7 @@ function update(canvas, layers, stats, flows, state) {
     // land
 
     context.save()
-    context.fillStyle = state.choropleth ? 'lightgrey' : 'darkgrey'   //'#755739'
+    context.fillStyle = 'darkgrey'
     context.beginPath()
     path( layers.land )
     context.fill()
@@ -202,38 +200,37 @@ function update(canvas, layers, stats, flows, state) {
     path( layers.countries )
     context.stroke()
     context.restore()
+
+    // region borders
+    if(projection.scale() > 500) {
+      context.save()
+      context.strokeStyle = 'rgba(255,255,255,0.2)'
+      context.lineWidth = 1
+      context.beginPath()
+      path( layers.regions )
+      context.stroke()
+    }
   }
 
-  function drawChoropleth() {
-    // region choropleth
+  function drawSymbols() {
     context.save()
-
-    // regions
-
-    layers.regions.features.forEach( (d) => {
-      let value = project(stats[d.id], state.choropleth)
+    layers.symbols.features.forEach( (f) => {
+      let value = project(stats[f.id], state.symbols)
       if(value === null) return
 
-      context.fillStyle = color(value)
-      context.beginPath()
-      if(geoArea(d) < GLOBE_AREA * .6)  {
-        path(d)
-        context.fill()
-      } else {
-        // Paths with large area generally have winding artefacts,
-        // and cannot be filled in Canvas.  Record for an error.
-        omitted.add(d.id)
-      }
+      let radius = symbolscale(value)
+
+      let coords = f.geometry.coordinates
+
+      let rot = projection.rotate()
+      let distance = d3.geoDistance([-rot[0],-rot[1]], coords)
+      if(distance > Math.PI / 2) return
+
+      context.globalAlpha = horizon(distance)
+      circle(context, projection(coords), radius, SYMBOL_FILL, SYMBOL_STROKE)
+      context.globalAlpha = 1.0
     })
 
-    // country borders (again)
-
-    context.save()
-    context.strokeStyle = 'white'
-    context.lineWidth = 1
-    context.beginPath()
-    path( layers.countries )
-    context.stroke()
     context.restore()
   }
 
@@ -249,13 +246,6 @@ function update(canvas, layers, stats, flows, state) {
     let weight = state.scale * 2.5  /* alter line width here if necessary */
 
     // arcs
-
-    // no support for line endings in GeoJSON so do this in Canvas
-    // opacity fade at horizon
-    let horizon = d3.scaleLinear()
-      .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
-      .range([1,0])
-      .clamp(true) // necessary since most calls are outside of domain
 
     data.forEach( (d,i) => {
       let line = {type: 'LineString', coordinates: [ d.from, d.to ]}
@@ -300,18 +290,14 @@ function update(canvas, layers, stats, flows, state) {
       fmt = Array.isArray(state.format) ? (d,i) => state.format[i] : d3.format(state.format)
 
     let em_height = context.measureText('M').width
-    let legend_height = LEGEND_PADDING[0] + (state.choropleth ? LEGEND_HEIGHT + em_height : 0) + LEGEND_PADDING[2]
+    let legend_height = LEGEND_PADDING[0] + (state.symbols ? LEGEND_HEIGHT + SYMBOL_WIDTH * 2 : 0) + LEGEND_PADDING[2]
 
-    let x = d3.scaleBand()
-      .rangeRound([LEFT_PADDING + (width - LEFT_PADDING) / 2, width - LEGEND_MARGIN])
-      .domain(color.range())
-
-    let left = x.range()[0] - LEGEND_PADDING[3]
-    let top = LEGEND_MARGIN - LEGEND_PADDING[0] - em_height
-    let legend_width = x.range()[1] - x.range()[0] + LEGEND_PADDING[1] + LEGEND_PADDING[3]
+    let top = LEGEND_MARGIN //- LEGEND_PADDING[0] - em_height
+    let legend_width = 300 // width - LEGEND_MARGIN - LEFT_PADDING + (width - LEFT_PADDING) / 2 + LEGEND_PADDING[1] + LEGEND_PADDING[3]
+    let left = width - LEGEND_MARGIN * 2 - legend_width // LEFT_PADDING + (width - LEFT_PADDING) / 2 - LEGEND_PADDING[3]
 
     context.save()
-    context.fillStyle = 'rgba(255,255,255,.95)'
+    context.fillStyle = 'lightgray' //'rgba(255,255,255,.95)'
     context.fillRect(left, top, legend_width, legend_height)
     context.strokeStyle = 'black'
     context.strokeRect(left, top, legend_width, legend_height)
@@ -321,17 +307,46 @@ function update(canvas, layers, stats, flows, state) {
       context.textBaseline = 'bottom'
       context.textAlign = 'left'
       context.font = LEGEND_FONT
-      context.fillText(state.label, x.range()[0], LEGEND_MARGIN - 2)
+      context.fillText(state.label, left + LEGEND_PADDING[3], LEGEND_MARGIN + LEGEND_PADDING[0] + em_height)
     }
 
-    if(state.choropleth) {
-      color.range().map( (c,i) => {
+    if(state.symbols) {
+      let ticks = (state.thresholds || symbolscale.ticks(4)).slice().reverse()
+      let coords = ticks.map( (c) => {
+        let radius = symbolscale(c)
+        let coords = [left + legend_width / 3, top + legend_height - LEGEND_PADDING[2] - radius]
+        return { value: c, radius: radius, coords: coords }
+      })
+
+      coords.forEach( (d) => circle(context, d.coords, d.radius, SYMBOL_FILL, SYMBOL_STROKE) )
+
+      context.font = '12px sans-serif'
+      context.textBaseline = 'middle'
+      context.textAlign = 'right'
+      context.strokeStyle = 'white'
+      context.fillStyle = 'black'
+
+      coords.forEach( (d, i) => {
+        if(d.value === 0) return
+        let offset = SYMBOL_WIDTH * 3/2
+        context.beginPath()
+        context.moveTo(d.coords[0], d.coords[1] - d.radius)
+        context.lineTo(d.coords[0] + offset, d.coords[1] - d.radius)
+        context.stroke()
+        context.fillText(fmt(d.value), d.coords[0] + offset + 50, d.coords[1] - d.radius)
+      })
+      context.restore()
+    }
+
+/*
+    if(state.symbols) {
+      symbolscale.range().map( (c,i) => {
         let high
 
         if(state.thresholds) {
           high = state.thresholds[i]
         } else {
-          high = color.invertExtent(c)[1] || color.domain()[1]
+          high = symbolscale.domain()[1]
         }
 
         context.fillStyle = c
@@ -345,6 +360,7 @@ function update(canvas, layers, stats, flows, state) {
         context.fillText(fmt(high, i), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
       })
     }
+*/
 
     context.restore()
   }
@@ -391,7 +407,7 @@ function update(canvas, layers, stats, flows, state) {
 
   function drawThematic(t=1, cycle=0) {
     drawCore()
-    if(state.choropleth) { drawChoropleth() }
+    if(state.symbols) { drawSymbols() }
     // TODO.  move flows to separate animation sequence
     if(arcs) { drawFlows(cycle) }
   }
@@ -422,15 +438,17 @@ function update(canvas, layers, stats, flows, state) {
     })
 }
 
-function circle(context, coords, radius, fill, stroke, label=null, label_sign=1) {
+function circle(context, coords, radius, fill, stroke=null, label=null, label_sign=1) {
   label_sign = label_sign >= 0 ? 1 : -1
   context.save()
   context.fillStyle = fill
-  context.strokeStyle = stroke
+  if(stroke)
+    context.strokeStyle = stroke
   context.beginPath()
   context.arc(coords[0], coords[1], radius, 0, 2 * Math.PI, true)
   context.fill()
-  context.stroke()
+  if(stroke)
+    context.stroke()
   if(label) {
     context.font = LABEL_FONT
     let padding = 5

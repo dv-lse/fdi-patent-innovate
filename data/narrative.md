@@ -183,11 +183,10 @@ Economists have long seen technological change as one of the most powerful drive
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 2
-  choropleth: allpat
+  symbols: allpat
   label: Number of patents by region (2005)
-  format: '.1s'
-  thresholds: [0, 1, 5, 25, 50, 100, 200, 500, 2000, 49800]
-  colors: Reds
+  format: ',d'
+  thresholds: [100, 1000, 4000, 10000, 20000, 40000]
   autorotate: false
 :::
 
@@ -195,8 +194,6 @@ One common way to measure the innovative capacity of a city is to count the numb
 
 Based on this statistic, local economies are extremely unequal in their innovation potential.
 The colours on the globe represent the patent counts in 2015, by region. While some regions are innovation hubs, most of the emerged land has no patent [7].
-
-(This map is heavy, it may slow down the visualisation)
 
 [7]: http://www.patentsview.org/download/ "Data from the US Patents and Trademark Office"
 
@@ -209,7 +206,6 @@ The colours on the globe represent the patent counts in 2015, by region. While s
   label: Patents by region, 1975 to 2005
   format: [ 'Stable', 'Moved up' ]
   thresholds: [ 1, 2 ]
-  colors: Reds
   autorotate: false
 :::
 
@@ -300,7 +296,6 @@ The size of the impact depends largely on the technology and the area of the wor
   choropleth: impact
   format: [ 'Decrease', 'Stable',  'Between 0 & 1', '1 and 2', '2 & 5', 'more than 5' ]
   thresholds: [-1.5, 0, .5, 1.5, 5.5, 6.5]
-  colors: Reds
   autorotate: false
 :::
 
