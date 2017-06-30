@@ -41,7 +41,9 @@ function validate(val, flows, stats) {
     rotate: projection.rotate(),
     scale: 1,                      // NB should be projection.scale() but this is in different units
     format: '.1s',                 // One digit precision, with abbreviation
-    autorotate: true
+    color: SYMBOL_FILL,
+    autorotate: true,
+    legend: true
   }
 
   let state = Object.assign({}, default_state, val)
@@ -144,6 +146,11 @@ function update(canvas, layers, stats, flows, state) {
       .nice()
   }
 
+  if(state['max-size']) {
+    let size = state['max-size']
+    symbolscale.range([0,size])
+  }
+
   if(state.flows) {
     let groups = state.flows.split('|')
     groups.forEach( (g) => arcs = arcs.concat(flows[g]) )
@@ -227,7 +234,7 @@ function update(canvas, layers, stats, flows, state) {
       if(distance > Math.PI / 2) return
 
       context.globalAlpha = horizon(distance)
-      circle(context, projection(coords), radius, SYMBOL_FILL, SYMBOL_STROKE)
+      circle(context, projection(coords), radius, state.color, SYMBOL_STROKE)
       context.globalAlpha = 1.0
     })
 
@@ -290,7 +297,7 @@ function update(canvas, layers, stats, flows, state) {
       fmt = Array.isArray(state.format) ? (d,i) => state.format[i] : d3.format(state.format)
 
     let em_height = context.measureText('M').width
-    let legend_height = LEGEND_PADDING[0] + (state.symbols ? LEGEND_HEIGHT + SYMBOL_WIDTH * 2 : 0) + LEGEND_PADDING[2]
+    let legend_height = LEGEND_PADDING[0] + (state.symbols && state.legend ? LEGEND_HEIGHT + SYMBOL_WIDTH * 2 : 0) + LEGEND_PADDING[2]
 
     let top = LEGEND_MARGIN //- LEGEND_PADDING[0] - em_height
     let legend_width = 300 // width - LEGEND_MARGIN - LEFT_PADDING + (width - LEFT_PADDING) / 2 + LEGEND_PADDING[1] + LEGEND_PADDING[3]
@@ -310,7 +317,7 @@ function update(canvas, layers, stats, flows, state) {
       context.fillText(state.label, left + LEGEND_PADDING[3], LEGEND_MARGIN + LEGEND_PADDING[0] + em_height)
     }
 
-    if(state.symbols) {
+    if(state.symbols && state.legend) {
       let ticks = (state.thresholds || symbolscale.ticks(4)).slice().reverse()
       let coords = ticks.map( (c) => {
         let radius = symbolscale(c)
@@ -318,7 +325,7 @@ function update(canvas, layers, stats, flows, state) {
         return { value: c, radius: radius, coords: coords }
       })
 
-      coords.forEach( (d) => circle(context, d.coords, d.radius, SYMBOL_FILL, SYMBOL_STROKE) )
+      coords.forEach( (d) => circle(context, d.coords, d.radius, state.color, SYMBOL_STROKE) )
 
       context.font = '12px sans-serif'
       context.textBaseline = 'middle'
@@ -422,12 +429,18 @@ function update(canvas, layers, stats, flows, state) {
     })
     .tween('spin', () => {
       elem.__state = elem.__state || state
+
+      // TODO.  clarify this logic -- it turns out we only want to interpolate rotate & scale
+      elem.__state.color = state.color
+      elem.__state.label = state.label
+
       let interp = d3.interpolate(elem.__state, state)
 
       if(refresh) { refresh.stop() }
 
       return (t) => {
         elem.__state = state = interp(t)
+
         projection.rotate(state.rotate)
           .scale(state.scale * Math.min(width, height) / 2)
 

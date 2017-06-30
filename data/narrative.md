@@ -202,10 +202,11 @@ The colours on the globe represent the patent counts in 2015, by region. While s
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 2
-  choropleth: diff2
-  label: Patents by region, 1975 to 2005
-  format: [ 'Stable', 'Moved up' ]
-  thresholds: [ 1, 2 ]
+  symbols: diff2
+  max-size: 15
+  label: Regions rising to patenting top 100
+  legend: false
+  color: rgba(255,153,0,.6)
   autorotate: false
 :::
 
