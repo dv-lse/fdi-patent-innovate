@@ -3,8 +3,11 @@ import yaml from 'js-yaml'
 function front_matter(md) {
   md.renderer.rules.front_matter = (tokens, idx, options, env) => {
     let metadata = tokens[idx].content
-    if(!metadata.title) { return '' }
-    return '<header><h1>' + metadata.title + '</h1></header>'
+    if(!metadata.title && !metadata.author) { return '' }
+    return '<header>' +
+           (metadata.title ? '<h1>' + metadata.title + '</h1>' : '') +
+           (metadata.author ? '<address>' + metadata.author.join('<br/>') + '</address>' : '') +
+           '</header>'
   }
 
   md.block.ruler.before('table', 'front_matter', (state, startLine, endLine, silent) => {
