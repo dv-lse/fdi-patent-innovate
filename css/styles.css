@@ -10,6 +10,17 @@ body {
   box-sizing: border-box;
 }
 
+#lse-logo {
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  height: 50px;
+  width: 50px;
+  background: url(../images/lse-logo-150.gif) no-repeat;
+  background-size: 50px 50px;
+  z-index: 99;
+}
+
 #wrapper {
   display: inline-block;
   width: 100%;
