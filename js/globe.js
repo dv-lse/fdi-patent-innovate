@@ -221,13 +221,14 @@ function update(canvas, layers, stats, flows, state) {
 
   function drawSymbols() {
     context.save()
-    layers.symbols.features.forEach( (f) => {
-      let value = project(stats[f.id], state.symbols)
+
+    stats.forEach( (d) => {
+      let value = project(d, state.symbols)
       if(value === null) return
 
       let radius = symbolscale(value)
 
-      let coords = f.geometry.coordinates
+      let coords = [ d['lon'], d['lat'] ]
 
       let rot = projection.rotate()
       let distance = d3.geoDistance([-rot[0],-rot[1]], coords)
@@ -344,30 +345,6 @@ function update(canvas, layers, stats, flows, state) {
       })
       context.restore()
     }
-
-/*
-    if(state.symbols) {
-      symbolscale.range().map( (c,i) => {
-        let high
-
-        if(state.thresholds) {
-          high = state.thresholds[i]
-        } else {
-          high = symbolscale.domain()[1]
-        }
-
-        context.fillStyle = c
-
-        context.fillRect(x(c), LEGEND_MARGIN, x.bandwidth(), LEGEND_HEIGHT)
-        context.fillStyle = 'black'
-        context.textBaseline = 'top'
-        context.textAlign = 'right'
-        context.font = TICK_FONT
-
-        context.fillText(fmt(high, i), x(c) + x.bandwidth(), LEGEND_MARGIN + LEGEND_HEIGHT + 2)
-      })
-    }
-*/
 
     context.restore()
   }

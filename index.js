@@ -29,29 +29,23 @@ let md = markdown({
 //
 
 queue()
-  .defer(d3.text, 'data/narrative.md')
-  .defer(d3.json, 'data/topography.json')
-  .defer(d3.csv, 'data/regions_countries.csv', lift(Number))
-  .defer(d3.csv, 'data/flows.csv', lift(Number,
+  .defer(d3.text, 'world/narrative.md')
+  .defer(d3.json, 'world/topography.json')
+  .defer(d3.csv, 'world/regions.csv', lift(Number))
+  .defer(d3.csv, 'world/flows.csv', lift(Number,
     ['source_lat_def', 'source_long_def',
      'destination_lat_def', 'destination_long_def',
-     'investment_mm', 'jobs', 'rank']))
-  .defer(d3.csv, 'data/results.csv')
+     'investment_mm']))
+  .defer(d3.csv, 'world/results.csv')
   .await( (err, narrative, world, rawstats, rawflows, rawresults) => {
     if (err) return console.error(err)
 
     // data post-processing
 
-    let symbols = feature(world, world.objects.regions)
-    symbols.features.forEach( (f) => {
-      f.geometry = { type: 'Point', coordinates: d3.geoCentroid(f) }
-    })
-
     let layers = {
       land: feature(world, world.objects.land),
-      countries: mesh(world, world.objects.countries, (a,b) => a !== b),
-      regions: mesh(world, world.objects.regions, (a,b) => a !== b),
-      symbols: symbols
+      countries: feature(world, world.objects.countries),
+      regions: feature(world, world.objects.regions)
     }
 
     // workaround: topojson-simplify 2.0.0 occasionally inverts winding order,
@@ -62,7 +56,7 @@ queue()
     // layers.regions.features.forEach(enforce_rhr)
 
     let stats = Array()
-    rawstats.forEach( (d) => stats[d.geoid_r] = d)
+    rawstats.forEach( (d) => stats[d.id] = d)
 
     let flows = d3.nest()
       .key( (d) => d.group )

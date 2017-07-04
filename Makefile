@@ -2,12 +2,11 @@
 # Process to generate the source data files
 #
 # gdrive must be set up beforehand ('brew install gdrive', then follow API key instructions)
-# topojson must be set up beforehand ('npm install topojson')
 #
 
 # To set up required tools:
 #   brew install gdrive gdal
-#   npm install topojson topojson-simplify
+#   npm install
 
 # options are 110m, 50m, 10m
 NE_RES=50m
@@ -17,16 +16,13 @@ TMP=/tmp
 
 BIN=node_modules/.bin
 
-default: data/topography.json
+default: world/topography.json world/regions.csv world/flows.csv world/narrative.md world/results.csv
 
 clean:
 	rm $(TMP)/*.json \
 	   $(TMP)/*.csv \
 		 $(TMP)/*.csv \
-		 data/topography.json
-
-data/%: $(TMP)/%
-	cp $< $@
+		 world/*
 
 
 # GDrive download
@@ -62,34 +58,50 @@ $(TMP)/$(NE)/%: $(TMP)/$(NE).zip
 
 $(TMP)/Shapefile2_geo.json: $(TMP)/Shapefile2.shp $(TMP)/Shapefile2.shx $(TMP)/Shapefile2.dbf $(TMP)/Shapefile2.prj
 	$(BIN)/shp2json -n $(TMP)/Shapefile2.shp \
-	   | $(BIN)/ndjson-map '(d.id = d.properties.OBJECTID, d.properties = { Region: d.properties.Region, Country: d.properties.Country }, d)' \
-		 | $(BIN)/geostitch -n > $@
+	| $(BIN)/ndjson-map '(d.id = d.properties.OBJECTID, d.properties = { Region: d.properties.Region, Country: d.properties.Country }, d)' \
+	| $(BIN)/geostitch -n > $@
 
 $(TMP)/$(NE)_geo.json: $(TMP)/$(NE)/$(NE).shp
 	$(BIN)/shp2json -n $< \
-	   | $(BIN)/ndjson-map '(d.id = d.properties.iso_n3, delete d.properties, d)' \
-		 | $(BIN)/geostitch -n > $@
+	| $(BIN)/ndjson-map '(d.id = d.properties.iso_n3, delete d.properties, d)' \
+	| $(BIN)/geostitch -n > $@
 
-
-# Topojson, with three layers:  regions (from Shapefile2), countries (from Natural Earth), and land (Natural Earth)
-
-# can be exapanded to enforce the right hand rule for winding... however it appears later simplification produces
-# winding artefacts anyway
-
-#   ndjson-filter -r w=./js/util/winding '(w.enforce_rhr(d), d.id < 1550)' < $< > $@
+# Merged region info: (a) extract stats from data/regions_countries.csv; (b) centroids calculated from Shapefile2
 
 $(TMP)/regions_geo.json: $(TMP)/Shapefile2_geo.json
 	$(BIN)/ndjson-filter '(d.id < 1550)' < $< > $@
 
-$(TMP)/topography_full.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
+$(TMP)/centroids.json: $(TMP)/regions_geo.json
+	$(BIN)/ndjson-map -r d3=d3-geo '(coords = d3.geoCentroid(d), { id: d.id, lon: coords[0], lat: coords[1], region: d.properties.Region, country: d.properties.Country })' < $< > $@
+
+world/regions.csv: data/regions_countries.csv $(TMP)/centroids.json
+	$(BIN)/csv2json -n < $< \
+	| $(BIN)/ndjson-map '({id: +d.geoid_r, allpat: +d.allpat, diff2: +d.diff2, impact: +d.impact})' \
+  | $(BIN)/ndjson-join 'd.id' - $(TMP)/centroids.json \
+	| $(BIN)/ndjson-map '(Object.assign({}, d[0], d[1]))' \
+	| $(BIN)/json2csv -n > $@
+
+
+# Topojson, with three layers:  regions mesh (from Shapefile2), countries mesh (from Natural Earth), and land (Natural Earth)
+
+world/topography.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
 	$(BIN)/geo2topo -q 1e4 -n \
 	     regions=$(TMP)/regions_geo.json \
 			 countries=$(TMP)/$(NE)_geo.json \
 		 | $(BIN)/topomerge land=countries \
-		 > $@
+		 | $(BIN)/topomerge --mesh -f 'a !== b' countries=countries \
+		 | $(BIN)/topomerge --mesh -f 'a !== b' regions=regions \
+		 | $(BIN)/toposimplify -F -p 0.02 - > $@
+
+# Arcs, simplified
+
+world/flows.csv: data/flows.csv
+	$(BIN)/csv2json -n $< \
+	  | $(BIN)/ndjson-map "{group: d.group, source_region_g: d.source_region_g, destination_region_g: d.destination_region_g, source_long_def: d.source_long_def, source_lat_def: d.source_lat_def, destination_long_def: d.destination_long_def, destination_lat_def: d.destination_lat_def, investment_mm: d.investment_mm, pop: d.pop, educ: d.educ, 'GDP/cap': d['GDP/cap']}" \
+	  | $(BIN)/json2csv -n > $@
 
 
-# Simplification
+# Files not needing translation
 
-$(TMP)/topography.json: $(TMP)/topography_full.json
-	$(BIN)/toposimplify -F -p 0.02 $< > $@
+world/%: data/%
+	cp $< $@
