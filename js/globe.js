@@ -8,6 +8,7 @@ const GLOBE_AREA = geoArea({type: 'Sphere'})
 const DEFAULT_QUANTILES = 5
 
 const LABEL_FONT = '18px Roboto'
+const SUBLABEL_FONT = '11px Roboto'
 const LEGEND_FONT = '18px Roboto'
 const TICK_FONT = '12px Roboto'
 
@@ -42,7 +43,7 @@ function validate(val, flows, stats) {
     scale: 1,                      // NB should be projection.scale() but this is in different units
     format: '.1s',                 // One digit precision, with abbreviation
     color: SYMBOL_FILL,
-    autorotate: true,
+    autorotate: false,
     legend: true
   }
 
@@ -248,6 +249,7 @@ function update(canvas, layers, stats, flows, state) {
                    to: [d.destination_long_def, d.destination_lat_def],
                  from_label: project(d, state['origin-labels']),
                  to_label: project(d, state['destination-labels']),
+                 note: project(d, state['destination-sublabels']),
                  value: project(d, state['flow-weight']) }
       })
 
@@ -284,7 +286,7 @@ function update(canvas, layers, stats, flows, state) {
       circle(context, projection(d.from), weight, 'white', 'coral', d.from_label, 1)
 
       context.globalAlpha = horizon(to_distance)
-      circle(context, projection(d.to), weight, 'white', 'coral', d.to_label, -1)
+      circle(context, projection(d.to), weight, 'white', 'coral', d.to_label, -1, d.note)
 
       context.globalAlpha = 1.0
     })
@@ -375,11 +377,12 @@ function update(canvas, layers, stats, flows, state) {
     // See http://mbostock.github.io/d3/talk/20111018/azimuthal.html
     d3.select(elem)
       .call(dragged)
+
     let loop = d3.interval( (epoch_step) => {
       let cycle = (Math.floor(epoch_step / 100) % 100) / 100
       if(state.autorotate) {
         let step = !elapsed ? epoch_step : Math.max(0, d3.now() - elapsed)
-        state.rotate = [-o1[0] + (step * 0.01) % 360, -o1[1], AXIS_TILT]
+        state.rotate = [-o1[0] + (step * 0.002) % 360, -o1[1], AXIS_TILT]
       }
       projection.rotate(state.rotate)
         .scale(state.scale * Math.min(width, height) / 2)
@@ -428,7 +431,7 @@ function update(canvas, layers, stats, flows, state) {
     })
 }
 
-function circle(context, coords, radius, fill, stroke=null, label=null, label_sign=1) {
+function circle(context, coords, radius, fill, stroke=null, label=null, label_sign=1, sublabel=null) {
   label_sign = label_sign >= 0 ? 1 : -1
   context.save()
   context.fillStyle = fill
@@ -447,11 +450,12 @@ function circle(context, coords, radius, fill, stroke=null, label=null, label_si
     let x = coords[0] + (radius + padding * 2) * label_sign
     let y = coords[1]
     x = label_sign > 0 ? x : x - width
-    context.fillStyle = 'rgba(255,255,255,1)'
-    context.fillRect(x, y - height / 2, width, height)
-    context.fillStyle = context.strokeStyle = 'rgba(0,0,0,.7)'
-    context.strokeRect(x, y - height / 2, width, height)
+    context.fillStyle = 'black'
     context.fillText(label, x + padding, y + padding)
+    if(sublabel) {
+      context.font = SUBLABEL_FONT
+      context.fillText(sublabel, x + padding, y + height / 2 + padding)
+    }
   }
   context.restore()
 }
