@@ -27,7 +27,7 @@ Multinationals mobilise enormous investments around the world. Their foreign act
   label: Top 100 FDIs in 2014
 :::
 
-Global flows of ***Foreign Direct Investments*** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2].
+Global flows of **Foreign Direct Investments** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2].
 
 You can rotate the globe with your mouse and zoom in or out with the buttons in the corner.
 
@@ -58,7 +58,7 @@ Almost two thirds of these investments came from industrialised economies, with 
 
 What are the drivers of foreign investments by multinationals? What characteristics make countries, regions and cities attractive to multinationals?
 
-In some cases multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In other cases multinationals tap into innovative ideas and knowledge of their target regions, seeking ***regional strategic assets*** [3].
+In some cases multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In other cases multinationals tap into innovative ideas and knowledge of their target regions, seeking **regional strategic assets** [3].
 
 [3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20&
 #
@@ -93,9 +93,9 @@ In principle a number of other European regions had characteristics similar to S
   autorotate: false
 :::
 
-A number of tangible and intangible factors influenced Nissan’s decision to invest in Sunderland. An important role was played by the abundance of workers with relevant skills and knowledge (made redundant by the declining shipyard industry) as well as the commitment of the UK government to support the industrial recovery of the regions.  
+A number of tangible and intangible factors influenced Nissan’s decision to invest in Sunderland. An important role was played by the abundance of workers with relevant skills and knowledge (made redundant by the declining shipyard industry) as well as the commitment of the UK government to support the industrial recovery of the regions.
 
-These were some of the ***regional strategic assets*** of Sunderland in the mid-1980's
+These were some of the **regional strategic assets** of Sunderland in the mid-1980's
 
 #
 
@@ -139,7 +139,7 @@ We studied thousands of investment decisions (similar to those of Nissan and Tex
 2. US multinationals care more about market access and technological factors and less about local socio-institutional arrangements when compared to intra-EU investments;
 3. Multinationals from emerging economies:
 a) Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments [4].
-b) They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).  
+b) They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
 
 
 [4]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
@@ -202,7 +202,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
 
 Have foreign investments helped cities to become more innovative? To answer we looked at (almost) all regions of the world. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
 
-More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and control regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  ***propensity score matching***.
+More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and control regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
 
 #
 
