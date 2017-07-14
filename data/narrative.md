@@ -12,7 +12,7 @@ date: January 2, 2017
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
-  autorotate: false
+  autorotate: true
 :::
 
 Today, multinational firms are investing enormous amounts of money abroad. These investments are diverse in nature and in importance: they range from a small production plant built by a textile company in a location where labour is cheap, to a fully-fledged research centre established by a high-tech company in a region where there is an abundance of qualified engineers.
@@ -81,6 +81,7 @@ They want to tap into the specific qualities of a region: they are seeking ***re
   flow-weight: investment_mm
   origin-labels: source_region_g
   destination-labels: destination_region_g
+  destination-sublabels: note
   autorotate: false
 :::
 
@@ -292,27 +293,16 @@ Ultimately, the overall impact of FDIs on local innovation is positive: foreign 
 The size of the impact depends largely on the technology and the area of the world where firms operate.
 
 
-# Conclusion
+# Conclusion & Credits
 
 ::: visualisation globe
   flows: World
   flow-weight: investment_mm
+  flow-hover-radius: 25
   label: World flows and regional impact
-  choropleth: impact
-  format: [ 'Decrease', 'Stable',  'Between 0 & 1', '1 and 2', '2 & 5', 'more than 5' ]
-  thresholds: [-1.5, 0, .5, 1.5, 5.5, 6.5]
+  symbols: didAll
+  max-size: 10
   autorotate: false
-:::
-
-*Can we go back to the globe in the last slide? And show both the flows and the macro-regions colored by the size of the impact? I will need to provide you with another data set for this. I think it would be a nice way to conclude and to link the impact to the flows.*
-
-
-# Credits
-
-::: visualisation trend
-  category: All technologies
-  region: All regions
-  explore: true
 :::
 
 

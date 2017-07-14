@@ -36,6 +36,12 @@ let graticule = geoGraticule()
 
 let refresh = null  // timer that refreshes globe @ 24fps
 
+let focus = {
+  coords: null,
+  arc: null,
+  region: null
+}
+
 
 function validate(val, flows, stats) {
   let default_state = {
@@ -107,10 +113,28 @@ function update(canvas, layers, stats, flows, state) {
 
   // install event handlers
 
-  d3.select(elem).on('click.globe', function() {
-    let pos = projection.invert(d3.mouse(this))
-    console.log(pos)
-    // TODO.  determine which region contains the point and show stats
+  d3.select(elem).on('mousemove.globe', function() {
+    // TODO should be debounced (but then d3.event has already been cleared...)
+
+    let point, dists
+    let radius = +state['flow-hover-radius']
+
+    point = d3.mouse(this)
+    focus.coords = projection.invert(point)
+
+    dists = arcs.map( (d) => Math.min(distance(point, projection([d.source_long_def, d.source_lat_def])),
+                                      distance(point, projection([d.destination_long_def, d.destination_lat_def]))) )
+    focus.endpoints = dists.reduce( (o, n, i) => n < radius ? (o[i] = true, o) : o, {})
+
+    dists = arcs.map( (d) => arc_distance([ d.source_long_def, d.source_lat_def ],
+                                          [ d.destination_long_def, d.destination_lat_def ],
+                                          focus.coords))
+    focus.arc = +dists.reduce( (closest, next, i) => next < dists[closest] ? i : closest, 0)
+
+    // console.log(dists.map((d,i) => (i===focus.arc ? '*' : '') + i + ':' + d).join(' '))
+
+    dists = d3.keys(stats).reduce( (o, id) => (o[id] = d3.geoDistance([stats[id].lon, stats[id].lat], focus.coords), o), {})
+    focus.region = +d3.keys(dists).reduce( (closest, id) => dists[id] < dists[closest] ? id : closest, 1)
   })
 
   // TODO.  animation through the zoom
@@ -227,7 +251,7 @@ function update(canvas, layers, stats, flows, state) {
       let value = project(d, state.symbols)
       if(value === null) return
 
-      let radius = symbolscale(value)
+      let radius = Math.abs(symbolscale(value))
 
       let coords = [ d['lon'], d['lat'] ]
 
@@ -244,51 +268,46 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   function drawFlows(cycle) {
-    let data = arcs.map( (d) => {
-        return { from: [d.source_long_def, d.source_lat_def],
-                   to: [d.destination_long_def, d.destination_lat_def],
-                 from_label: project(d, state['origin-labels']),
-                 to_label: project(d, state['destination-labels']),
-                 note: project(d, state['destination-sublabels']),
-                 value: project(d, state['flow-weight']) }
-      })
+    const horizon = Math.PI / 2 * .90
 
-    let weight = state.scale * 2.5  /* alter line width here if necessary */
+    let weight = Math.min(7, state.scale * 2)  /* line width in pixels */
 
-    // arcs
+    arcs.forEach( (d,i) => {
+      let value = project(d, state['flow-weight'])
+      let geoLine = {type: 'LineString', coordinates: [ [ d.source_long_def, d.source_lat_def ],
+                                                        [ d.destination_long_def, d.destination_lat_def ] ]}
+      let highlight = state['highlight-over'] && value > +state['highlight-over']
+      let color = highlight ? d3.color('red') : d3.color('coral')
+      let white = d3.color('white')
 
-    data.forEach( (d,i) => {
-      let line = {type: 'LineString', coordinates: [ d.from, d.to ]}
-      let highlight = state['highlight-over'] && d.value > +state['highlight-over']
-      let faded_color = highlight ? d3.color('red') : d3.color('coral')
-      faded_color.opacity = opacity(d.value)
+      white.opacity = color.opacity = focus.endpoints[i] ? 1.0 : 0.3
 
       context.save()
 
-      context.globalAlpha = 1.0
       context.lineCap = 'round'
       context.lineWidth = weight
 
       // must use GeoJSON so that great arcs are curved according to projection
       context.beginPath()
-      context.strokeStyle = faded_color + ''
+      context.strokeStyle = color + ''
       context.setLineDash([5, 15])
       context.lineDashOffset = -Math.floor(cycle * 100)
-      path(line)
+      path(geoLine)
       context.stroke()
       context.restore()
 
       let rot = projection.rotate()
-      let from_distance = d3.geoDistance([-rot[0],-rot[1]], d.from)
-      let to_distance = d3.geoDistance([-rot[0],-rot[1]], d.to)
+      let start_dist = d3.geoDistance([-rot[0],-rot[1]], [d.source_long_def, d.source_lat_def])
+      let dest_dist = d3.geoDistance([-rot[0],-rot[1]], [d.destination_long_def, d.destination_lat_def])
+      let focused = i === focus.arc
 
-      context.globalAlpha = horizon(from_distance)
-      circle(context, projection(d.from), weight, 'white', 'coral', d.from_label, 1)
+      if(start_dist < horizon)
+        circle(context, projection([d.source_long_def, d.source_lat_def]), weight,
+                        white, color, project(d, state['origin-labels']), 1, focused ? project(d, state['origin-sublabels']) : null)
 
-      context.globalAlpha = horizon(to_distance)
-      circle(context, projection(d.to), weight, 'white', 'coral', d.to_label, -1, d.note)
-
-      context.globalAlpha = 1.0
+      if(dest_dist < horizon)
+        circle(context, projection([d.destination_long_def, d.destination_lat_def]), weight,
+               white, color, project(d, state['destination-labels']), -1, focused ? project(d, state['destination-sublabels']) : null)
     })
   }
 
@@ -323,7 +342,7 @@ function update(canvas, layers, stats, flows, state) {
     if(state.symbols && state.legend) {
       let ticks = (state.thresholds || symbolscale.ticks(4)).slice().reverse()
       let coords = ticks.map( (c) => {
-        let radius = symbolscale(c)
+        let radius = Math.abs(symbolscale(c))
         let coords = [left + legend_width / 3, top + legend_height - LEGEND_PADDING[2] - radius]
         return { value: c, radius: radius, coords: coords }
       })
@@ -392,11 +411,19 @@ function update(canvas, layers, stats, flows, state) {
     return loop
   }
 
+  function drawCursor() {
+    const hover_color = 'rgba(255,255,255,.3)'
+
+    if(state['flow-hover-radius'] && focus.coords)
+      circle(context, projection(focus.coords), +state['flow-hover-radius'], hover_color, hover_color)
+  }
+
   function drawThematic(t=1, cycle=0) {
     drawCore()
-    if(state.symbols) { drawSymbols() }
+    if(state['flow-hover-radius']) { drawCursor() }
     // TODO.  move flows to separate animation sequence
     if(arcs) { drawFlows(cycle) }
+    if(state.symbols) { drawSymbols() }
   }
 
   d3.transition()
@@ -458,6 +485,59 @@ function circle(context, coords, radius, fill, stroke=null, label=null, label_si
     }
   }
   context.restore()
+}
+
+
+function distance(a, b) {
+  return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2))
+}
+
+function arc_distance(a, b, c) {
+
+  /* perpendicular distance (in radians) of point p from great circle defined by arc a */
+  /* see: http://www.movable-type.co.uk/scripts/latlong-vectors.html and
+          http://mathforum.org/library/drmath/view/51785.html */
+
+  // cross-track distance:
+  //   (1) cross b & c vectors to get vector defining great circle
+  //   (2) measure angle between great circle and point of interest
+
+  let gc = cross(nvector(a), nvector(b))
+  let alpha = angle(gc, nvector(c)) - Math.PI / 2
+
+  return Math.abs(alpha)
+
+
+  function nvector(d) {
+    const radians = Math.PI / 180
+    let lambda = d[0] * radians
+    let phi = d[1] * radians
+    let v = { x : Math.cos(phi) * Math.cos(lambda),
+              y : Math.cos(phi) * Math.sin(lambda),
+              z : Math.sin(phi) }
+    return v
+  }
+
+  function cross(a, b) {
+    let v = { x : a.y*b.z - a.z*b.y,
+          y : a.z*b.x - a.x*b.z,
+          z : a.x*b.y - a.y*b.x }
+    return v
+  }
+
+  function length(a) {
+    return Math.sqrt(a.x*a.x + a.y*a.y + a.z*a.z)
+  }
+
+  function dot(a, b) {
+    return a.x*b.x + a.y*b.y + a.z*b.z
+  }
+
+  function angle(a,b) {
+    let sinTheta = length(cross(a,b))
+    let cosTheta = dot(a,b)
+    return Math.atan2(sinTheta, cosTheta)
+  }
 }
 
 function project(d, col) {

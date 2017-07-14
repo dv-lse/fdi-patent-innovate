@@ -29,9 +29,11 @@ let md = markdown({
 //
 
 queue()
-  .defer(d3.text, 'world/narrative.md')
+  .defer(d3.text, 'data/narrative.md')
   .defer(d3.json, 'world/topography.json')
-  .defer(d3.csv, 'world/regions.csv', lift(Number))
+  .defer(d3.csv, 'world/regions.csv', lift(Number,
+    ['id', 'allpat', 'diff2', 'impact',
+     'lat', 'lon']))
   .defer(d3.csv, 'world/flows.csv', lift(Number,
     ['source_lat_def', 'source_long_def',
      'destination_lat_def', 'destination_long_def',
