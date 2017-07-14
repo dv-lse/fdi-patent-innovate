@@ -5,6 +5,9 @@ const margin = { top: 40, right: 60, bottom: 60, left: 0 }
 const attributes = ['region', 'category', 'firms']
 
 
+let extent = d3.local()
+
+
 function matches(state, results) {
   return results.filter((r) => attributes.every((ra) => r[ra] === state[ra] || !(ra in state)))
 }
@@ -31,6 +34,8 @@ function install(svg, results) {
   let height = svg.attr('height') - margin.top - margin.bottom
 
   // emit SVG header material and legend
+
+  extent.set(svg.node(), [-.1, 0.1])
 
   svg.html(triangle_marker('triangle-black', 'black')
          + triangle_marker('triangle-blue', 'blue'))
@@ -194,11 +199,6 @@ function update(svg, results, state) {
   let left = lr(data.filter( (d) => d.year <= 0 ))
   let right = lr(data.filter( (d) => d.year >= 0 ))
 
-  // some basic stats
-
-  let max = d3.max(data, (d) => d.high)
-  let min = d3.min(data, (d) => d.low)
-
   // prepare for visualisation
 
   let x = d3.scaleLinear()
@@ -207,7 +207,6 @@ function update(svg, results, state) {
 
   let y = d3.scaleLinear()
     .range([height, 0])
-    .domain([min, max])
 
   let axis_y = d3.axisRight()
     .scale(y)
@@ -258,50 +257,65 @@ function update(svg, results, state) {
   svg.select('.intervention')
     .attr('d', 'M' + x(0) + ' 0V' + height)
 
-  // error bars
+  // error bars, in two phases
+
+  let minmax0 = extent.get(svg.node())
+  let minmax1 = [ d3.min(data, (d) => d.low),
+                  d3.max(data, (d) => d.high) ]
+  extent.set(svg.node(), minmax1)
 
   let t0 = svg.transition()
     .duration(1250)
 
-  t0.select('.area')
-    .attr('d', area(data))
+  y.domain(minmax0)
+  draw()
 
-  // median difference line
-  t0.select('.median_difference')
-    .attr('d', line(data))
+  y.domain(minmax1)
+  t0 = t0.transition()
+    .duration(1250)
+  draw()
 
-  // baseline & label
-  svg.select('.baseline path')
-    .attr('d', 'M0 0H' + (width - 10))
+  function draw() {
+    t0.select('.area')
+      .attr('d', area(data))
 
-  svg.select('.baseline .baseline_label')
-    .attr('x', x(2))
+    // median difference line
+    t0.select('.median_difference')
+      .attr('d', line(data))
 
-  svg.select('.baseline .y_label')
-    .attr('y', width)
+    // baseline & label
+    svg.select('.baseline path')
+      .attr('d', 'M0 0H' + (width - 10))
 
-  t0.select('.baseline')
-    .attr('transform', 'translate(0,' + y(0) + ')')
+    svg.select('.baseline .baseline_label')
+      .attr('x', x(2))
 
-  // trend arrows
+    svg.select('.baseline .y_label')
+      .attr('y', width)
 
-  let left_arrow_years = d3.range(years[1], 0)
-  t0.select('.left_arrow')
-    .attr('d', trendArrow(left)(left_arrow_years))
+    t0.select('.baseline')
+      .attr('transform', 'translate(0,' + y(0) + ')')
 
-  let right_arrow_years = d3.range(1, years[years.length-1])
-  t0.select('.right_arrow')
-    .attr('d', trendArrow(right)(right_arrow_years))
+    // trend arrows
 
-  // axes
-  svg.select('.axis.y')
-    .attr('transform', 'translate(' + width + ')')
-  t0.select('.axis.y')
-    .call(axis_y)
+    let left_arrow_years = d3.range(years[1], 0)
+    t0.select('.left_arrow')
+      .attr('d', trendArrow(left)(left_arrow_years))
 
-  svg.select('.axis.x')
-    .attr('transform', 'translate(0,' + height + ')')
-    .call(axis_x)
+    let right_arrow_years = d3.range(1, years[years.length-1])
+    t0.select('.right_arrow')
+      .attr('d', trendArrow(right)(right_arrow_years))
+
+    // axes
+    svg.select('.axis.y')
+      .attr('transform', 'translate(' + width + ')')
+    t0.select('.axis.y')
+      .call(axis_y)
+
+    svg.select('.axis.x')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(axis_x)
+  }
 }
 
 function downcase(s) {
