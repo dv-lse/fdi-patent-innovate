@@ -53,13 +53,18 @@ function install(svg, results) {
       .attr('class', 'area')
       .attr('fill', 'lightblue')
 
-    // intervention marker
-    svg.append('path')
+    // intervention marker and animation
+    let intervention = svg.append('path')
       .attr('class', 'intervention')
       .attr('stroke', 'coral')
       .attr('stroke-width', 3)
       .attr('stroke-dasharray', [15, 5])
       .attr('opacity', .7)
+
+    let loop = d3.interval( (epoch_step) => {
+      let cycle = (Math.floor(epoch_step / 100) % 100) / 100
+      intervention.attr('stroke-dashoffset', -Math.floor(cycle * 100))
+    })
 
     // baseline & labels
     // TODO.  would be better not to approximate y translate here
