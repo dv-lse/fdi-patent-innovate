@@ -1,8 +1,9 @@
 import * as d3 from 'd3'
 import * as schemes from 'd3-scale-chromatic'
 import { feature } from 'topojson-client'
-import { geoPath, geoGraticule, geoOrthographic, geoArea } from 'd3-geo'
+import { geoPath, geoOrthographic, geoArea } from 'd3-geo'
 
+import * as core from './layers/core'
 import { arc_distance } from './util/nvector'
 
 const LABEL_FONT = '18px Roboto'
@@ -29,8 +30,6 @@ let projection = geoOrthographic()
 
 let path = geoPath()
   .projection(projection)
-
-let graticule = geoGraticule()
 
 let refresh = null  // timer that refreshes globe @ 24fps
 
@@ -190,57 +189,6 @@ function update(canvas, layers, stats, flows, state) {
 
   path.context(context)
 
-  // TODO.  move partials somewhere more logical...
-  function drawCore() {
-    context.clearRect(0, 0, width, height)
-
-    // Ocean background
-
-    context.save()
-    context.fillStyle = 'rgba(173,216,230,.4)'
-    path({type:'Sphere'})
-    context.fill()
-    context.restore()
-
-    // graticule
-
-    context.save()
-    context.lineWidth = .5
-    context.strokeStyle = 'rgba(0,0,0,.2)'
-    context.beginPath()
-    path( graticule() )
-    context.stroke()
-    context.restore()
-
-    // land
-
-    context.save()
-    context.fillStyle = 'darkgrey'
-    context.beginPath()
-    path( layers.land )
-    context.fill()
-    context.restore()
-
-    // country borders
-
-    context.save()
-    context.strokeStyle = 'rgba(255,255,255,.5)'
-    context.lineWidth = 1.5
-    context.beginPath()
-    path( layers.countries )
-    context.stroke()
-    context.restore()
-
-    // region borders
-    if(projection.scale() > 500) {
-      context.save()
-      context.strokeStyle = 'rgba(255,255,255,0.2)'
-      context.lineWidth = 1
-      context.beginPath()
-      path( layers.regions )
-      context.stroke()
-    }
-  }
 
   function drawSymbols() {
     context.save()
@@ -417,11 +365,14 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   function drawThematic(t=1, cycle=0) {
-    drawCore()
+    context.clearRect(0, 0, width, height)
+    core.draw(context, projection, layers)
+    /*
     if(state['flow-hover-radius']) { drawCursor() }
     // TODO.  move flows to separate animation sequence
     if(arcs) { drawFlows(cycle) }
     if(state.symbols) { drawSymbols() }
+    */
   }
 
   d3.transition()
@@ -449,7 +400,8 @@ function update(canvas, layers, stats, flows, state) {
         projection.rotate(state.rotate)
           .scale(state.scale * Math.min(width, height) / 2)
 
-        drawCore()
+        context.clearRect(0, 0, width, height)
+        core.draw(context, projection, layers)
         drawThematic()
         drawLegend()
       }
