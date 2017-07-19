@@ -3,9 +3,7 @@ import * as schemes from 'd3-scale-chromatic'
 import { feature } from 'topojson-client'
 import { geoPath, geoGraticule, geoOrthographic, geoArea } from 'd3-geo'
 
-const GLOBE_AREA = geoArea({type: 'Sphere'})
-
-const DEFAULT_QUANTILES = 5
+import { arc_distance } from './util/nvector'
 
 const LABEL_FONT = '18px Roboto'
 const SUBLABEL_FONT = '11px Roboto'
@@ -487,57 +485,8 @@ function circle(context, coords, radius, fill, stroke=null, label=null, label_si
   context.restore()
 }
 
-
 function distance(a, b) {
   return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2))
-}
-
-function arc_distance(a, b, c) {
-
-  /* perpendicular distance (in radians) of point p from great circle defined by arc a */
-  /* see: http://www.movable-type.co.uk/scripts/latlong-vectors.html and
-          http://mathforum.org/library/drmath/view/51785.html */
-
-  // cross-track distance:
-  //   (1) cross b & c vectors to get vector defining great circle
-  //   (2) measure angle between great circle and point of interest
-
-  let gc = cross(nvector(a), nvector(b))
-  let alpha = angle(gc, nvector(c)) - Math.PI / 2
-
-  return Math.abs(alpha)
-
-
-  function nvector(d) {
-    const radians = Math.PI / 180
-    let lambda = d[0] * radians
-    let phi = d[1] * radians
-    let v = { x : Math.cos(phi) * Math.cos(lambda),
-              y : Math.cos(phi) * Math.sin(lambda),
-              z : Math.sin(phi) }
-    return v
-  }
-
-  function cross(a, b) {
-    let v = { x : a.y*b.z - a.z*b.y,
-          y : a.z*b.x - a.x*b.z,
-          z : a.x*b.y - a.y*b.x }
-    return v
-  }
-
-  function length(a) {
-    return Math.sqrt(a.x*a.x + a.y*a.y + a.z*a.z)
-  }
-
-  function dot(a, b) {
-    return a.x*b.x + a.y*b.y + a.z*b.z
-  }
-
-  function angle(a,b) {
-    let sinTheta = length(cross(a,b))
-    let cosTheta = dot(a,b)
-    return Math.atan2(sinTheta, cosTheta)
-  }
 }
 
 function project(d, col) {
