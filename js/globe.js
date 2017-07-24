@@ -1,13 +1,10 @@
 import * as d3 from 'd3'
-import * as schemes from 'd3-scale-chromatic'
-import { feature } from 'topojson-client'
-import { geoPath, geoOrthographic, geoArea } from 'd3-geo'
+import { geoPath, geoOrthographic } from 'd3-geo'
 
-import * as core from './layers/core'
+import { core } from './layers/core'
+import { flowmap } from './layers/flowmap'
 import { arc_distance } from './util/nvector'
 
-const LABEL_FONT = '18px Roboto'
-const SUBLABEL_FONT = '11px Roboto'
 const LEGEND_FONT = '18px Roboto'
 const TICK_FONT = '12px Roboto'
 
@@ -97,7 +94,7 @@ function validate(val, flows, stats) {
   return state
 }
 
-function update(canvas, layers, stats, flows, state) {
+function update(canvas, layers, stats, flowinfo, state) {
   let elem = canvas.node()
   let bounds = elem.getBoundingClientRect()
 
@@ -106,29 +103,33 @@ function update(canvas, layers, stats, flows, state) {
 
   // validate application state / narrative
 
-  state = validate(state, flows, stats)
+  state = validate(state, flowinfo, stats)
 
   // install event handlers
 
   d3.select(elem).on('mousemove.globe', function() {
     // TODO should be debounced (but then d3.event has already been cleared...)
 
-    let point, dists
+    let point, arcs, dists, id
     let radius = +state['flow-hover-radius']
 
     point = d3.mouse(this)
     focus.coords = projection.invert(point)
 
-    dists = arcs.map( (d) => Math.min(distance(point, projection([d.source_long_def, d.source_lat_def])),
-                                      distance(point, projection([d.destination_long_def, d.destination_lat_def]))) )
-    focus.endpoints = dists.reduce( (o, n, i) => n < radius ? (o[i] = true, o) : o, {})
+    if(state.flows) {
+      arcs = flowinfo[state.flows]
+      dists = arcs.map( (d) => Math.min(distance(point, projection([d.source_long_def, d.source_lat_def])),
+                                        distance(point, projection([d.destination_long_def, d.destination_lat_def]))) )
+      focus.endpoints = dists.reduce( (o, n, i) => n < radius ? (o[i] = true, o) : o, {})
 
-    dists = arcs.map( (d) => arc_distance([ d.source_long_def, d.source_lat_def ],
-                                          [ d.destination_long_def, d.destination_lat_def ],
-                                          focus.coords))
-    focus.arc = +dists.reduce( (closest, next, i) => next < dists[closest] ? i : closest, 0)
+      dists = arcs.map( (d) => arc_distance([ d.source_long_def, d.source_lat_def ],
+                                            [ d.destination_long_def, d.destination_lat_def ],
+                                            focus.coords))
+      idx = +dists.reduce( (closest, next, i) => next < dists[closest] ? i : closest, 0)
+      focus.arc_id = arcs[idx].id
 
-    // console.log(dists.map((d,i) => (i===focus.arc ? '*' : '') + i + ':' + d).join(' '))
+      // console.log(dists.map((d,i) => (arcs[i].id===focus.arc_id ? '*' : '') + arcs[i].id + ':' + d).join(' '))
+    }
 
     dists = d3.keys(stats).reduce( (o, id) => (o[id] = d3.geoDistance([stats[id].lon, stats[id].lat], focus.coords), o), {})
     focus.region = +d3.keys(dists).reduce( (closest, id) => dists[id] < dists[closest] ? id : closest, 1)
@@ -149,15 +150,6 @@ function update(canvas, layers, stats, flows, state) {
     .exponent(0.5)
     .range([0,SYMBOL_WIDTH])
 
-  // no support for line endings in GeoJSON so do this in Canvas
-  // opacity fade at horizon
-  let horizon = d3.scaleLinear()
-    .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
-    .range([1,0])
-    .clamp(true) // necessary since most calls are outside of domain
-
-  let arcs = []
-
   let omitted = d3.set()
 
   if(state.symbols) {
@@ -174,14 +166,7 @@ function update(canvas, layers, stats, flows, state) {
   }
 
   if(state.flows) {
-    let groups = state.flows.split('|')
-    groups.forEach( (g) => arcs = arcs.concat(flows[g]) )
-
-    if(state['flow-weight']) {
-      let values = arcs.map( (d) => project(d, state['flow-weight']))
-      values.filter( (d) => d !== null )
-      opacity.domain(d3.extent(values))
-    }
+    // opacity.domain(d3.extent(arcs, (d) => d.weight || 1))
   }
 
   let context = elem.getContext('2d')
@@ -191,6 +176,13 @@ function update(canvas, layers, stats, flows, state) {
 
 
   function drawSymbols() {
+
+    // opacity fade at horizon
+    let horizon = d3.scaleLinear()
+      .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
+      .range([1,0])
+      .clamp(true) // necessary since most calls are outside of domain
+
     context.save()
 
     stats.forEach( (d) => {
@@ -211,50 +203,6 @@ function update(canvas, layers, stats, flows, state) {
     })
 
     context.restore()
-  }
-
-  function drawFlows(cycle) {
-    const horizon = Math.PI / 2 * .90
-
-    let weight = Math.min(7, state.scale * 2)  /* line width in pixels */
-
-    arcs.forEach( (d,i) => {
-      let value = project(d, state['flow-weight'])
-      let geoLine = {type: 'LineString', coordinates: [ [ d.source_long_def, d.source_lat_def ],
-                                                        [ d.destination_long_def, d.destination_lat_def ] ]}
-      let highlight = state['highlight-over'] && value > +state['highlight-over']
-      let color = highlight ? d3.color('red') : d3.color('coral')
-      let white = d3.color('white')
-
-      white.opacity = color.opacity = focus.endpoints[i] ? 1.0 : 0.3
-
-      context.save()
-
-      context.lineCap = 'round'
-      context.lineWidth = weight
-
-      // must use GeoJSON so that great arcs are curved according to projection
-      context.beginPath()
-      context.strokeStyle = color + ''
-      context.setLineDash([5, 15])
-      context.lineDashOffset = -Math.floor(cycle * 100)
-      path(geoLine)
-      context.stroke()
-      context.restore()
-
-      let rot = projection.rotate()
-      let start_dist = d3.geoDistance([-rot[0],-rot[1]], [d.source_long_def, d.source_lat_def])
-      let dest_dist = d3.geoDistance([-rot[0],-rot[1]], [d.destination_long_def, d.destination_lat_def])
-      let focused = i === focus.arc
-
-      if(start_dist < horizon)
-        circle(context, projection([d.source_long_def, d.source_lat_def]), weight,
-                        white, color, project(d, state['origin-labels']), 1, focused ? project(d, state['origin-sublabels']) : null)
-
-      if(dest_dist < horizon)
-        circle(context, projection([d.destination_long_def, d.destination_lat_def]), weight,
-               white, color, project(d, state['destination-labels']), -1, focused ? project(d, state['destination-sublabels']) : null)
-    })
   }
 
   function drawLegend() {
@@ -366,11 +314,37 @@ function update(canvas, layers, stats, flows, state) {
 
   function drawThematic(t=1, cycle=0) {
     context.clearRect(0, 0, width, height)
-    core.draw(context, projection, layers)
+
+    let globe = core(context, projection)
+    let flowLayer = flowmap(context, projection)
+      .origin((d) => [ d.source_long_def, d.source_lat_def ])
+      .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
+      .markers((d) => state.markers ? state.markers.map( (m) => [d,m] ) : [])
+      .markerText((d) => project(d[0], d[1].label))
+      .markerDetail((d) => focus.arc_id === d[0].id ? project(d[0], d[1].detail) : null)
+
+    // draw each GIS layer in turn
+
+    globe(layers)
+    if(state.flows) {
+      flowLayer.cycle(cycle)
+      flowLayer(flowinfo[state.flows])
+    }
+
     /*
     if(state['flow-hover-radius']) { drawCursor() }
     // TODO.  move flows to separate animation sequence
-    if(arcs) { drawFlows(cycle) }
+    if(state.flows) {
+      flows.draw(context, projection, arcs, cycle)
+      // clean, but how to configure focus on arc to show sublabels?
+      (a) mouse over one arc to show sublabels data
+      (b) highlight arcs with endpoints near focus point
+      (c) nothing
+
+      sublabels are series of pairs with label, formatted value
+    }
+    */
+    /*
     if(state.symbols) { drawSymbols() }
     */
   }
@@ -400,41 +374,10 @@ function update(canvas, layers, stats, flows, state) {
         projection.rotate(state.rotate)
           .scale(state.scale * Math.min(width, height) / 2)
 
-        context.clearRect(0, 0, width, height)
-        core.draw(context, projection, layers)
         drawThematic()
         drawLegend()
       }
     })
-}
-
-function circle(context, coords, radius, fill, stroke=null, label=null, label_sign=1, sublabel=null) {
-  label_sign = label_sign >= 0 ? 1 : -1
-  context.save()
-  context.fillStyle = fill
-  if(stroke)
-    context.strokeStyle = stroke
-  context.beginPath()
-  context.arc(coords[0], coords[1], radius, 0, 2 * Math.PI, true)
-  context.fill()
-  if(stroke)
-    context.stroke()
-  if(label) {
-    context.font = LABEL_FONT
-    let padding = 5
-    let width = context.measureText(label).width + padding * 2
-    let height = context.measureText('M').width + padding * 2
-    let x = coords[0] + (radius + padding * 2) * label_sign
-    let y = coords[1]
-    x = label_sign > 0 ? x : x - width
-    context.fillStyle = 'black'
-    context.fillText(label, x + padding, y + padding)
-    if(sublabel) {
-      context.font = SUBLABEL_FONT
-      context.fillText(sublabel, x + padding, y + height / 2 + padding)
-    }
-  }
-  context.restore()
 }
 
 function distance(a, b) {

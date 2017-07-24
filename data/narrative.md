@@ -68,9 +68,10 @@ In some cases multinational corporations are attracted by the size and market po
   scale: 1.5
   flows: Nissan
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
-  destination-sublabels: note
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
+      detail: note
   autorotate: false
 :::
 
@@ -86,9 +87,10 @@ In principle a number of other European regions had characteristics similar to S
   scale: 1.45
   flows: Nissan
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
-  destination-sublabels: note
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
+      detail: note
   highlight-over: 1
   autorotate: false
 :::
@@ -104,8 +106,9 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
   autorotate: false
 :::
 
@@ -118,9 +121,10 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
-  destination-sublabels: note
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
+      detail: note
   highlight-over: 1
   autorotate: false
 :::
@@ -185,7 +189,6 @@ Based on this statistic, local economies are extremely unequal in their innovati
   symbols: diff2
   max-size: 15
   label: Regions rising to patenting top 100
-  legend: false
   color: rgba(255,153,0,.6)
   autorotate: false
 :::
