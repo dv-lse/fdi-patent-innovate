@@ -1,4 +1,4 @@
-import { range, max } from 'd3'
+import { range, min, max } from 'd3'
 import { geoPath, geoDistance, geoInterpolate } from 'd3-geo'
 
 import { arc_distance } from '../util/nvector'
@@ -31,21 +31,22 @@ function flowmap(context, projection) {
 
   function flowmap(data) {
     let lineWidth = Math.min(4, projection.scale() * 2)
+    let fudge = Math.pow(10, -5)
 
-    let dists = data.map( (d) => arc_distance([ d.source_long_def, d.source_lat_def ],
-                                              [ d.destination_long_def, d.destination_lat_def ],
-                                              focus))
-    let closest = +dists.reduce( (c,n,i) => n < dists[c] ? i : c, 0)
+    let source_closest = min(data, (d) => geoDistance(focus, [ d.source_long_def, d.source_lat_def ]))
+    let destination_closest = min(data, (d) => geoDistance(focus, [ d.destination_long_def, d.destination_lat_def ]))
+    let focus_horizon = min([source_closest, destination_closest]) + fudge
+    let focused = []
 
     data.forEach( (d,i) => {
-      arc(d, lineWidth, i != closest ? ARC_COLOR : FOCUS_ARC_COLOR)
+      let source_dist = geoDistance(focus, [ d.source_long_def, d.source_lat_def ])
+      let destination_dist = geoDistance(focus, [ d.destination_long_def, d.destination_lat_def ])
 
-      if(focus) {
-        let dist = arc_distance(origin(d), destination(d), focus)
-        if(dist < closest.dist) {
-          closest.dist = dist
-          closest.data = d
-        }
+      if(source_dist <= focus_horizon || destination_dist < focus_horizon) {
+        arc(d, lineWidth, FOCUS_ARC_COLOR)
+        focused.push(i)
+      } else {
+        arc(d, lineWidth, ARC_COLOR)
       }
     })
 
@@ -54,7 +55,9 @@ function flowmap(context, projection) {
       endpoint(destination(d))
     })
 
-    annotate(data[closest])
+    focused.forEach((i) => {
+      annotate(data[i])
+    })
 
     function arc(d, width, color) {
       context.save()
