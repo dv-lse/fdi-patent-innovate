@@ -38,7 +38,6 @@ function angle(a,b) {
 }
 
 function arc_distance(a, b, c) {
-
   let gc = cross(nvector(a), nvector(b))
   let alpha = angle(gc, nvector(c)) - Math.PI / 2
 

@@ -1,16 +1,15 @@
 import * as d3 from 'd3'
-import { geoPath, geoOrthographic } from 'd3-geo'
+import { geoOrthographic } from 'd3-geo'
 
 import { core } from './layers/core'
 import { flowmap } from './layers/flowmap'
-import { arc_distance } from './util/nvector'
+import { symbols } from './layers/symbols'
 
 const LEGEND_FONT = '18px Roboto'
 const TICK_FONT = '12px Roboto'
 
-const SYMBOL_WIDTH = 50
 const SYMBOL_FILL = 'rgba(70,130,180,.6)'
-const SYMBOL_STROKE = 'rgba(255,255,255,.6)'
+const SYMBOL_RADIUS = 50
 
 const LEGEND_MARGIN = 15
 const LEGEND_HEIGHT = 15
@@ -25,16 +24,7 @@ let projection = geoOrthographic()
   .precision(0.6)
   .rotate([ 0.1278, -51.5074, AXIS_TILT ])  // London
 
-let path = geoPath()
-  .projection(projection)
-
 let refresh = null  // timer that refreshes globe @ 24fps
-
-let focus = {
-  coords: null,
-  arc: null,
-  region: null
-}
 
 
 function validate(val, flows, stats) {
@@ -67,11 +57,8 @@ function validate(val, flows, stats) {
 
   if(state.flows) {
     let g = flows[state.flows]
-    let col = state['flow-weight']
     if(!g)
       throw "Globe state: cannot identify flow diagram for group " + state.flows
-    if(col && !g[0][col])
-      throw "Globe state: cannot read flow column " + col + " from group " + state.flows
   }
 
   // TODO.  better way to check available stat columns
@@ -105,163 +92,96 @@ function update(canvas, layers, stats, flowinfo, state) {
 
   state = validate(state, flowinfo, stats)
 
-  // install event handlers
+  // render the globe in new state
+
+  let context = elem.getContext('2d')
+  projection.translate([ LEFT_PADDING + (width - LEFT_PADDING) / 2, height / 2])
+
+  let omitted = d3.set()
+
+  // gis layers
+
+  let commas = d3.format(',d')
+  let value_fmt = d3.format(state.format)
+  let globe = core(context, projection)
+  let flowLayer = flowmap(context, projection)
+    .origin((d) => [ d.source_long_def, d.source_lat_def ])
+    .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
+    .markers((d) => [ '$' + commas(d.investment_mm) + 'm',
+                      d.source_region_g + ', ' + d.source_country_g,
+                      '→ ' + d.destination_region_g + ', ' + d.destination_country_g ] )
+//    .markers((d) => state.markers ? state.markers.map( (m) => [d,m] ) : [])
+//    .markerText((d) => project(d[0], d[1].label))
+//    .markerDetail((d) => project(d[0], d[1].detail))
+  let symbolLayer = symbols(context, projection)
+    .values((d) => project(d, state.symbols))
+    .labels((d) => d.region + ', ' + d.country)
+    .detail((d) => state.suffix ? value_fmt(d) + ' ' + state.suffix : '')
+    .color(state.color)
+    .maxRadius(state['max-radius'] || SYMBOL_RADIUS)
+
+  // event handlers
 
   d3.select(elem).on('mousemove.globe', function() {
     // TODO should be debounced (but then d3.event has already been cleared...)
+    let point = d3.mouse(this)
+    let coords = projection.invert(point)
 
-    let point, arcs, dists, id
-    let radius = +state['flow-hover-radius']
-
-    point = d3.mouse(this)
-    focus.coords = projection.invert(point)
-
-    if(state.flows) {
-      arcs = flowinfo[state.flows]
-      dists = arcs.map( (d) => Math.min(distance(point, projection([d.source_long_def, d.source_lat_def])),
-                                        distance(point, projection([d.destination_long_def, d.destination_lat_def]))) )
-      focus.endpoints = dists.reduce( (o, n, i) => n < radius ? (o[i] = true, o) : o, {})
-
-      dists = arcs.map( (d) => arc_distance([ d.source_long_def, d.source_lat_def ],
-                                            [ d.destination_long_def, d.destination_lat_def ],
-                                            focus.coords))
-      idx = +dists.reduce( (closest, next, i) => next < dists[closest] ? i : closest, 0)
-      focus.arc_id = arcs[idx].id
-
-      // console.log(dists.map((d,i) => (arcs[i].id===focus.arc_id ? '*' : '') + arcs[i].id + ':' + d).join(' '))
-    }
-
-    dists = d3.keys(stats).reduce( (o, id) => (o[id] = d3.geoDistance([stats[id].lon, stats[id].lat], focus.coords), o), {})
-    focus.region = +d3.keys(dists).reduce( (closest, id) => dists[id] < dists[closest] ? id : closest, 1)
+    flowLayer.focus(coords)
+    symbolLayer.focus(coords)
   })
 
-  // TODO.  animation through the zoom
   d3.select('.scale.up')
     .on('click', () => state.scale = Math.min(state.scale * 1.5, 8))
   d3.select('.scale.down')
     .on('click', () => state.scale = Math.max(state.scale / 1.5, 1))
 
-  // render the globe in new state
+  // animate globe to updated state
 
-  let opacity = d3.scaleLinear()
-    .range([0.5,1])
+  d3.transition()
+    .duration(1500)
+    .on('end', () => {
+      if(!omitted.empty()) {
+        console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
+      }
+      refresh = interaction()
+    })
+    .tween('spin', () => {
+      elem.__state = elem.__state || state
 
-  let symbolscale = d3.scalePow()
-    .exponent(0.5)
-    .range([0,SYMBOL_WIDTH])
+      // TODO.  clarify this logic -- it turns out we only want to interpolate rotate & scale
+      elem.__state.color = state.color
+      elem.__state.label = state.label
 
-  let omitted = d3.set()
+      let interp = d3.interpolate(elem.__state, state)
 
-  if(state.symbols) {
-    let values = stats.map( (d) => project(d, state.symbols))
-    values.filter( (d) => d !== null )
+      if(refresh) { refresh.stop() }
 
-    symbolscale.domain(d3.extent(values))
-      .nice()
-  }
+      return (t) => {
+        elem.__state = state = interp(t)
 
-  if(state['max-size']) {
-    let size = state['max-size']
-    symbolscale.range([0,size])
-  }
+        projection.rotate(state.rotate)
+          .scale(state.scale * Math.min(width, height) / 2)
 
-  if(state.flows) {
-    // opacity.domain(d3.extent(arcs, (d) => d.weight || 1))
-  }
-
-  let context = elem.getContext('2d')
-  projection.translate([ LEFT_PADDING + (width - LEFT_PADDING) / 2, height / 2])
-
-  path.context(context)
-
-
-  function drawSymbols() {
-
-    // opacity fade at horizon
-    let horizon = d3.scaleLinear()
-      .domain([Math.PI / 2 * .75, Math.PI / 2 * .90])
-      .range([1,0])
-      .clamp(true) // necessary since most calls are outside of domain
-
-    context.save()
-
-    stats.forEach( (d) => {
-      let value = project(d, state.symbols)
-      if(value === null) return
-
-      let radius = Math.abs(symbolscale(value))
-
-      let coords = [ d['lon'], d['lat'] ]
-
-      let rot = projection.rotate()
-      let distance = d3.geoDistance([-rot[0],-rot[1]], coords)
-      if(distance > Math.PI / 2) return
-
-      context.globalAlpha = horizon(distance)
-      circle(context, projection(coords), radius, state.color, SYMBOL_STROKE)
-      context.globalAlpha = 1.0
+        draw()
+      }
     })
 
-    context.restore()
-  }
+  function draw(t=1, cycle=0) {
+    context.clearRect(0, 0, width, height)
 
-  function drawLegend() {
-    if(!state.label) return
+    // draw each GIS layer on context in turn
 
-    let fmt = d3.format('2s')
-    if(state.format)
-      fmt = Array.isArray(state.format) ? (d,i) => state.format[i] : d3.format(state.format)
+    globe(layers)
 
-    let em_height = context.measureText('M').width
-    let legend_height = LEGEND_PADDING[0] + (state.symbols && state.legend ? LEGEND_HEIGHT + SYMBOL_WIDTH * 2 : 0) + LEGEND_PADDING[2]
-
-    let top = LEGEND_MARGIN //- LEGEND_PADDING[0] - em_height
-    let legend_width = 300 // width - LEGEND_MARGIN - LEFT_PADDING + (width - LEFT_PADDING) / 2 + LEGEND_PADDING[1] + LEGEND_PADDING[3]
-    let left = width - LEGEND_MARGIN * 2 - legend_width // LEFT_PADDING + (width - LEFT_PADDING) / 2 - LEGEND_PADDING[3]
-
-    context.save()
-    context.fillStyle = 'lightgray' //'rgba(255,255,255,.95)'
-    context.fillRect(left, top, legend_width, legend_height)
-    context.strokeStyle = 'black'
-    context.strokeRect(left, top, legend_width, legend_height)
-
-    if(state.label) {
-      context.fillStyle = 'black'
-      context.textBaseline = 'bottom'
-      context.textAlign = 'left'
-      context.font = LEGEND_FONT
-      context.fillText(state.label, left + LEGEND_PADDING[3], LEGEND_MARGIN + LEGEND_PADDING[0] + em_height)
+    if(state.flows) {
+      flowLayer.cycle(cycle)
+      flowLayer(flowinfo[state.flows])
     }
 
-    if(state.symbols && state.legend) {
-      let ticks = (state.thresholds || symbolscale.ticks(4)).slice().reverse()
-      let coords = ticks.map( (c) => {
-        let radius = Math.abs(symbolscale(c))
-        let coords = [left + legend_width / 3, top + legend_height - LEGEND_PADDING[2] - radius]
-        return { value: c, radius: radius, coords: coords }
-      })
-
-      coords.forEach( (d) => circle(context, d.coords, d.radius, state.color, SYMBOL_STROKE) )
-
-      context.font = '12px sans-serif'
-      context.textBaseline = 'middle'
-      context.textAlign = 'right'
-      context.strokeStyle = 'white'
-      context.fillStyle = 'black'
-
-      coords.forEach( (d, i) => {
-        if(d.value === 0) return
-        let offset = SYMBOL_WIDTH * 3/2
-        context.beginPath()
-        context.moveTo(d.coords[0], d.coords[1] - d.radius)
-        context.lineTo(d.coords[0] + offset, d.coords[1] - d.radius)
-        context.stroke()
-        context.fillText(fmt(d.value), d.coords[0] + offset + 50, d.coords[1] - d.radius)
-      })
-      context.restore()
+    if(state.symbols) {
+      symbolLayer(stats)
     }
-
-    context.restore()
   }
 
   function interaction() {
@@ -299,89 +219,10 @@ function update(canvas, layers, stats, flowinfo, state) {
       }
       projection.rotate(state.rotate)
         .scale(state.scale * Math.min(width, height) / 2)
-      drawThematic(1, cycle)
-      drawLegend()
+      draw(1, cycle)
     }, 38 )
     return loop
   }
-
-  function drawCursor() {
-    const hover_color = 'rgba(255,255,255,.3)'
-
-    if(state['flow-hover-radius'] && focus.coords)
-      circle(context, projection(focus.coords), +state['flow-hover-radius'], hover_color, hover_color)
-  }
-
-  function drawThematic(t=1, cycle=0) {
-    context.clearRect(0, 0, width, height)
-
-    let globe = core(context, projection)
-    let flowLayer = flowmap(context, projection)
-      .origin((d) => [ d.source_long_def, d.source_lat_def ])
-      .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
-      .markers((d) => state.markers ? state.markers.map( (m) => [d,m] ) : [])
-      .markerText((d) => project(d[0], d[1].label))
-      .markerDetail((d) => focus.arc_id === d[0].id ? project(d[0], d[1].detail) : null)
-
-    // draw each GIS layer in turn
-
-    globe(layers)
-    if(state.flows) {
-      flowLayer.cycle(cycle)
-      flowLayer(flowinfo[state.flows])
-    }
-
-    /*
-    if(state['flow-hover-radius']) { drawCursor() }
-    // TODO.  move flows to separate animation sequence
-    if(state.flows) {
-      flows.draw(context, projection, arcs, cycle)
-      // clean, but how to configure focus on arc to show sublabels?
-      (a) mouse over one arc to show sublabels data
-      (b) highlight arcs with endpoints near focus point
-      (c) nothing
-
-      sublabels are series of pairs with label, formatted value
-    }
-    */
-    /*
-    if(state.symbols) { drawSymbols() }
-    */
-  }
-
-  d3.transition()
-    .duration(1500)
-    .on('end', () => {
-      if(!omitted.empty()) {
-        console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
-      }
-      refresh = interaction()
-    })
-    .tween('spin', () => {
-      elem.__state = elem.__state || state
-
-      // TODO.  clarify this logic -- it turns out we only want to interpolate rotate & scale
-      elem.__state.color = state.color
-      elem.__state.label = state.label
-
-      let interp = d3.interpolate(elem.__state, state)
-
-      if(refresh) { refresh.stop() }
-
-      return (t) => {
-        elem.__state = state = interp(t)
-
-        projection.rotate(state.rotate)
-          .scale(state.scale * Math.min(width, height) / 2)
-
-        drawThematic()
-        drawLegend()
-      }
-    })
-}
-
-function distance(a, b) {
-  return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2))
 }
 
 function project(d, col) {

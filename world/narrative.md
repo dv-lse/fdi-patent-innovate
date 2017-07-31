@@ -87,9 +87,10 @@ In principle a number of other European regions had characteristics similar to S
   scale: 1.45
   flows: Nissan
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
-  destination-sublabels: note
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
+      detail: note
   highlight-over: 1
   autorotate: false
 :::
@@ -105,8 +106,9 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
   autorotate: false
 :::
 
@@ -119,9 +121,10 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
-  destination-sublabels: note
+  markers:
+    - label: source_region_g
+    - label: destination_region_g
+      detail: note
   highlight-over: 1
   autorotate: false
 :::
@@ -166,6 +169,7 @@ But do host economies really benefit from foreign investment?
   rotate: [2.3522, -48.8566]
   scale: 2
   symbols: allpat
+  symbol-markers: region
   label: Number of patents by region (2005)
   format: ',d'
   thresholds: [100, 1000, 4000, 10000, 20000, 40000]
@@ -184,9 +188,10 @@ Based on this statistic, local economies are extremely unequal in their innovati
   rotate: [2.3522, -48.8566]
   scale: 2
   symbols: diff2
-  max-size: 15
-  label: Regions rising to patenting top 100
+  max-radius: 15
+  symbol-markers: region
   color: rgba(255,153,0,.6)
+  label: Regions rising to patenting top 100
   autorotate: false
 :::
 

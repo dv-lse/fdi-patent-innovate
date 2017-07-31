@@ -23,7 +23,6 @@ Multinationals mobilise enormous investments around the world. Their foreign act
 ::: visualisation globe
   autorotate: false
   flows: World
-  flow-weight: investment_mm
   label: Top 100 FDIs in 2014
 :::
 
@@ -42,7 +41,6 @@ You can rotate the globe with your mouse and zoom in or out with the buttons in 
   scale: 1.3
   autorotate: false
   flows: Advanced economies
-  flow-weight: investment_mm
   label: Most important FDIs from industrialised nations
 :::
 
@@ -67,11 +65,7 @@ In some cases multinational corporations are attracted by the size and market po
   rotate: [-139.626112, -35.462933]
   scale: 1.5
   flows: Nissan
-  flow-weight: investment_mm
-  markers:
-    - label: source_region_g
-    - label: destination_region_g
-      detail: note
+  detail: note
   autorotate: false
 :::
 
@@ -86,11 +80,7 @@ In principle a number of other European regions had characteristics similar to S
   rotate: [-52, -46]
   scale: 1.45
   flows: Nissan
-  flow-weight: investment_mm
-  markers:
-    - label: source_region_g
-    - label: destination_region_g
-      detail: note
+  detail: note
   highlight-over: 1
   autorotate: false
 :::
@@ -105,10 +95,6 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   rotate: [96.752984, -32.910409]
   scale: 1.5
   flows: Texas Instruments
-  flow-weight: investment_mm
-  markers:
-    - label: source_region_g
-    - label: destination_region_g
   autorotate: false
 :::
 
@@ -120,11 +106,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   rotate: [-77.614656, -12.934513]
   scale: 1.5
   flows: Texas Instruments
-  flow-weight: investment_mm
-  markers:
-    - label: source_region_g
-    - label: destination_region_g
-      detail: note
+  detail: note
   highlight-over: 1
   autorotate: false
 :::
@@ -171,6 +153,7 @@ But do host economies really benefit from foreign investment?
   symbols: allpat
   label: Number of patents by region (2005)
   format: ',d'
+  suffix: patents
   thresholds: [100, 1000, 4000, 10000, 20000, 40000]
   autorotate: false
 :::
@@ -187,9 +170,9 @@ Based on this statistic, local economies are extremely unequal in their innovati
   rotate: [2.3522, -48.8566]
   scale: 2
   symbols: diff2
-  max-size: 15
-  label: Regions rising to patenting top 100
+  max-radius: 15
   color: rgba(255,153,0,.6)
+  label: Regions rising to patenting top 100
   autorotate: false
 :::
 
@@ -213,9 +196,6 @@ More technically, the regions that receive a foreign intervention ("treated" reg
   rotate: [-77.614656, -12.934513]
   scale: 1
   flows: Texas Instruments
-  flow-weight: investment_mm
-  origin-labels: source_region_g
-  destination-labels: destination_region_g
   autorotate: false
 :::
 
@@ -280,8 +260,6 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
 
 ::: visualisation globe
   flows: World
-  flow-weight: investment_mm
-  flow-hover-radius: 25
   label: World flows and regional impact
   symbols: didAll
   max-size: 10

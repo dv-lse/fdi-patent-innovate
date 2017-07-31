@@ -39,7 +39,7 @@ queue()
      'destination_lat_def', 'destination_long_def',
      'investment_mm']))
   .defer(d3.csv, 'world/results.csv')
-  .await( (err, narrative, world, rawstats, rawflows, rawresults) => {
+  .await( (err, narrative, world, stats, rawflows, rawresults) => {
     if (err) return console.error(err)
 
     // data post-processing
@@ -56,9 +56,6 @@ queue()
     //      topojson-simplify -F eliminates most of these artefacts
 
     // layers.regions.features.forEach(enforce_rhr)
-
-    let stats = Array()
-    rawstats.forEach( (d) => stats[d.id] = d)
 
     let flows = d3.nest()
       .key( (d) => d.group )
