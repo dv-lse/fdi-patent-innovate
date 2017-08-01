@@ -153,7 +153,7 @@ But do host economies really benefit from foreign investment?
   symbols: allpat
   label: Number of patents by region (2005)
   format: ',d'
-  suffix: patents
+  suffix: Patents
   thresholds: [100, 1000, 4000, 10000, 20000, 40000]
   autorotate: false
 :::

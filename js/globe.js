@@ -115,8 +115,10 @@ function update(canvas, layers, stats, flowinfo, state) {
 //    .markerDetail((d) => project(d[0], d[1].detail))
   let symbolLayer = symbols(context, projection)
     .values((d) => project(d, state.symbols))
-    .labels((d) => d.region + ', ' + d.country)
-    .detail((d) => state.suffix ? value_fmt(d) + ' ' + state.suffix : '')
+    .detail((d) => [
+                     d.region ? d.region + ' (' + d.country + ')' : d.country,
+                     state.suffix ? [ state.suffix, value_fmt(d[state.symbols]) ] : null
+                   ])
     .color(state.color)
     .maxRadius(state['max-radius'] || SYMBOL_RADIUS)
 

@@ -1,13 +1,14 @@
 import { scaleLinear, scalePow, extent, range, format } from 'd3'
 import { geoPath, geoDistance } from 'd3-geo'
 
+import { annotate } from '../detail'
+
 const STROKE = 'rgba(255,255,255,.6)'
 const FOCUS_STROKE = 'black'
 const FILL = 'lightblue'
 const MAX_RADIUS = 15
 
-const LABEL_FONT = '18px Roboto'
-const SUBLABEL_FONT = '11px Roboto'
+const ANNOTATE_OFFSET = 3
 
 function symbols(context, projection) {
 
@@ -15,7 +16,6 @@ function symbols(context, projection) {
   let color = constant(FILL)
   let detail = format('d')
   let maxRadius = MAX_RADIUS
-  let labels = constant(null)
   let focus = [0,0]
 
   let path = geoPath()
@@ -48,21 +48,29 @@ function symbols(context, projection) {
       draw(d, false)
     })
 
+    context.restore()
+
     // draw and label symbol closest to focus
 
-    draw(stats[closest], true)
-    annotate(stats[closest])
+    let d = stats[closest]
+    let point = projection([d['lon'], d['lat']])
 
-    context.restore()
+    point[1] += radius(d) + ANNOTATE_OFFSET
+
+    draw(d, true)
+    annotate(context, point, detail(d))
+  }
+
+  function radius(d) {
+    let value = values(d)
+    return Math.abs(symbolscale(value))
   }
 
   function draw(d, focused) {
-    let value = values(d)
-    if(!value) return
+    if(!(values(d))) return
 
     let center = [d['lon'], d['lat']]
     let point = projection(center)
-    let radius = Math.abs(symbolscale(value))
 
     let rot = projection.rotate()
     let distance = geoDistance([-rot[0], -rot[1]], center)
@@ -72,30 +80,11 @@ function symbols(context, projection) {
     context.fillStyle = color(d)
     context.strokeStyle = focused ? FOCUS_STROKE : STROKE
     context.beginPath()
-    context.arc(point[0], point[1], radius, 0, 2 * Math.PI, true)
+    context.arc(point[0], point[1], radius(d), 0, 2 * Math.PI, true)
     context.fill()
     context.stroke()
 
     context.globalAlpha = 1.0
-  }
-
-  function annotate(d) {
-    let value = values(d)
-    let info = detail(value)
-    let point = projection([d['lon'], d['lat']])
-    let radius = Math.abs(symbolscale(value))
-
-    context.font = LABEL_FONT
-    context.fillStyle = 'black'
-    context.textAlign = 'center'
-    context.textBaseline = 'top'
-
-    let em_height = context.measureText('M').width
-    let label = labels(d)
-
-    context.fillText(label, point[0], point[1] + radius)
-    if(info)
-      context.fillText(info, point[0], point[1] + radius + em_height)
   }
 
   symbols.values = function(_) {
@@ -112,10 +101,6 @@ function symbols(context, projection) {
 
   symbols.maxRadius = function(_) {
     return arguments.length ? (maxRadius = +_, symbols) : maxRadius
-  }
-
-  symbols.labels = function(_) {
-    return arguments.length ? (labels = typeof _ === 'function' ? _ : constant(_), symbols) : labels
   }
 
   symbols.focus = function(_) {
