@@ -23,6 +23,7 @@ Multinationals mobilise enormous investments around the world. Their foreign act
 ::: visualisation globe
   autorotate: false
   flows: World
+  detail: [ ['Invested', 'investment_mm', '$,', 'm'] ]
   label: Top 100 FDIs in 2014
 :::
 
@@ -41,6 +42,7 @@ You can rotate the globe with your mouse and zoom in or out with the buttons in 
   scale: 1.3
   autorotate: false
   flows: Advanced economies
+  detail: [ ['Invested', 'investment_mm', '$,', 'm'] ]
   label: Most important FDIs from industrialised nations
 :::
 
@@ -65,7 +67,7 @@ In some cases multinational corporations are attracted by the size and market po
   rotate: [-139.626112, -35.462933]
   scale: 1.5
   flows: Nissan
-  detail: note
+  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   autorotate: false
 :::
 
@@ -80,7 +82,7 @@ In principle a number of other European regions had characteristics similar to S
   rotate: [-52, -46]
   scale: 1.45
   flows: Nissan
-  detail: note
+  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   highlight-over: 1
   autorotate: false
 :::
@@ -106,7 +108,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   rotate: [-77.614656, -12.934513]
   scale: 1.5
   flows: Texas Instruments
-  detail: note
+  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   highlight-over: 1
   autorotate: false
 :::
@@ -152,8 +154,7 @@ But do host economies really benefit from foreign investment?
   scale: 2
   symbols: allpat
   label: Number of patents by region (2005)
-  format: ',d'
-  suffix: Patents
+  detail: [ [ 'Patents', 'allpat', ',d' ] ]
   thresholds: [100, 1000, 4000, 10000, 20000, 40000]
   autorotate: false
 :::
@@ -263,8 +264,6 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   flows: World
   label: World flows and regional impact
   symbols: didAll
-  format: ',d'
-  suffix: Patents
   max-radius: 25
   thresholds: [1, 3, 6]
   autorotate: false

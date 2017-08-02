@@ -97,7 +97,7 @@ world/topography.json: $(TMP)/regions_geo.json $(TMP)/$(NE)_geo.json
 
 world/flows.csv: data/flows.csv
 	$(BIN)/csv2json -n $< \
-	  | $(BIN)/ndjson-map "{id: i, group: d.group, source_region_g: d.source_region_g, source_country_g: d.source_country_g, destination_region_g: d.destination_region_g, destination_country_g: d.destination_country_g, source_long_def: d.source_long_def, source_lat_def: d.source_lat_def, destination_long_def: d.destination_long_def, destination_lat_def: d.destination_lat_def, investment_mm: d.investment_mm, note: 'Pop ' + d.pop + ', Avg Educ ' + d.educ + ' years, GDP/C ' + d['GDP/cap']}" \
+	  | $(BIN)/ndjson-map "(d.id = i, delete d['countrymode1'], d)" \
 	  | $(BIN)/json2csv -n > $@
 
 

@@ -95,23 +95,20 @@ function update(canvas, layers, stats, flowinfo, state) {
   // gis layers
   let fmt_region = (r,c) => r ? r + ' (' + c + ')' : c
 
-  let commas = d3.format(',d')
-  let value_fmt = d3.format(state.format)
   let globe = core(context, projection)
   let flowLayer = flowmap(context, projection)
     .origin((d) => [ d.source_long_def, d.source_lat_def ])
     .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
     .detail((d) => [ fmt_region(d.source_region_g, d.source_country_g),
-                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g),
-                     [ 'Investment', '$' + commas(d.investment_mm) + 'm']])
+                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g) ]
+                   .concat(props(d, state.detail)))
   let symbolLayer = symbols(context, projection)
     .values((d) => project(d, state.symbols))
-    .detail((d) => [ fmt_region(d.region, d.country),
-                     state.suffix ? [ state.suffix, value_fmt(d[state.symbols]) ] : null
-                   ])
+    .detail((d) => [ fmt_region(d.region, d.country) ]
+                   .concat(props(d, state.detail)))
     .color(state.color)
     .maxRadius(state['max-radius'] || SYMBOL_RADIUS)
-    .tickFormat(value_fmt)
+    .tickFormat(d3.format(',d'))
 
   if(state.thresholds)
     symbolLayer.ticks(state.thresholds)
@@ -233,6 +230,18 @@ function update(canvas, layers, stats, flowinfo, state) {
 
 function project(d, col) {
   return (d && col in d) ? d[col] : null
+}
+
+function props(d, cols) {
+  if(!cols) return null
+  return cols.map( (e) => {
+    switch(e.length) {
+      case 2: return [ e[0], project(d, e[1]) ]
+      case 3: return [ e[0], d3.format(e[2])(project(d, e[1])) ]
+      case 4: return [ e[0], d3.format(e[2])(project(d, e[1])) + e[3] ]
+      default: return project(d, e)
+    }
+  })
 }
 
 export { validate, update }
