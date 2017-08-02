@@ -4,16 +4,10 @@ import { geoOrthographic } from 'd3-geo'
 import { core } from './layers/core'
 import { flowmap } from './layers/flowmap'
 import { symbols } from './layers/symbols'
-
-const LEGEND_FONT = '18px Roboto'
-const TICK_FONT = '12px Roboto'
+import { legend } from './layers/legend'
 
 const SYMBOL_FILL = 'rgba(70,130,180,.6)'
 const SYMBOL_RADIUS = 50
-
-const LEGEND_MARGIN = 15
-const LEGEND_HEIGHT = 15
-const LEGEND_PADDING = [15, 5, 10, 5]
 
 const LEFT_PADDING = 360
 
@@ -33,8 +27,7 @@ function validate(val, flows, stats) {
     scale: 1,                      // NB should be projection.scale() but this is in different units
     format: '.1s',                 // One digit precision, with abbreviation
     color: SYMBOL_FILL,
-    autorotate: false,
-    legend: true
+    autorotate: false
   }
 
   let state = Object.assign({}, default_state, val)
@@ -121,6 +114,10 @@ function update(canvas, layers, stats, flowinfo, state) {
                    ])
     .color(state.color)
     .maxRadius(state['max-radius'] || SYMBOL_RADIUS)
+    .tickFormat(value_fmt)
+
+  if(state.thresholds)
+    symbolLayer.ticks(state.thresholds)
 
   // event handlers
 
@@ -170,6 +167,8 @@ function update(canvas, layers, stats, flowinfo, state) {
     })
 
   function draw(t=1, cycle=0) {
+    let legendLayer = legend(context)
+
     context.clearRect(0, 0, width, height)
 
     // draw each GIS layer on context in turn
@@ -179,10 +178,18 @@ function update(canvas, layers, stats, flowinfo, state) {
     if(state.flows) {
       flowLayer.cycle(cycle)
       flowLayer(flowinfo[state.flows])
+      legendLayer.enqueue(flowLayer.drawLegend)
     }
 
     if(state.symbols) {
       symbolLayer(stats)
+      legendLayer.enqueue(symbolLayer.drawLegend)
+    }
+
+    if(state.label) {
+      context.translate(width,0)
+      legendLayer(state.label)
+      context.translate(-width,0)
     }
   }
 

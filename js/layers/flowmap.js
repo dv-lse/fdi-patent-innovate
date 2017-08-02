@@ -180,6 +180,10 @@ function flowmap(context, projection) {
     }
   }
 
+  flowmap.drawLegend = function() {
+    return
+  }
+
   flowmap.weight = function(_) {
     return arguments.length ? (weight = _, flowmap) : weight
   }

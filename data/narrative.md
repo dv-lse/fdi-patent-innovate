@@ -173,6 +173,7 @@ Based on this statistic, local economies are extremely unequal in their innovati
   max-radius: 15
   color: rgba(255,153,0,.6)
   label: Regions rising to patenting top 100
+  thresholds: []
   autorotate: false
 :::
 
@@ -262,7 +263,10 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   flows: World
   label: World flows and regional impact
   symbols: didAll
-  max-size: 10
+  format: ',d'
+  suffix: Patents
+  max-radius: 25
+  thresholds: [1, 3, 6]
   autorotate: false
 :::
 

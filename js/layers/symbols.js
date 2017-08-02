@@ -9,6 +9,9 @@ const FILL = 'lightblue'
 const MAX_RADIUS = 15
 
 const ANNOTATE_OFFSET = 3
+const LEGEND_TICKOFFSET = 1.5
+const LEGEND_PADDING = 5
+const TICK_FONT = '10pt Roboto'
 
 function symbols(context, projection) {
 
@@ -17,6 +20,8 @@ function symbols(context, projection) {
   let detail = format('d')
   let maxRadius = MAX_RADIUS
   let focus = [0,0]
+  let tickFormat = (d) => d + ''
+  let ticks = constant(null)
 
   let path = geoPath()
     .projection(projection)
@@ -105,6 +110,72 @@ function symbols(context, projection) {
 
   symbols.focus = function(_) {
     return arguments.length ? (focus = _, symbols) : focus
+  }
+
+  symbols.tickFormat = function(_) {
+    return arguments.length ? (tickFormat = typeof _ === 'function' ? _ : constant(_), symbols) : tickFormat
+  }
+
+  symbols.ticks = function(_) {
+    return arguments.length ? (ticks = typeof _ === 'function' ? _ : constant(_), symbols) : ticks
+  }
+
+  symbols.drawLegend = function() {
+    context.save()
+
+    context.font = TICK_FONT
+    context.textBaseline = 'middle'
+    context.textAlign = 'left'
+
+    let em_height = context.measureText('M').width
+    let max_r = symbolscale.range()[1]
+
+    let thresholds = ticks() || symbolscale.ticks(5)
+    let coords = thresholds.map( (c) => {
+      let r = Math.abs(symbolscale(c))
+      let coords = [LEGEND_PADDING + max_r, LEGEND_PADDING + em_height + max_r * 2 - r]
+      return { value: c, radius: r, coords: coords }
+    })
+
+    coords.reverse().forEach( (d) => {
+      context.fillStyle = color()
+      context.strokeStyle = STROKE
+      context.beginPath()
+      context.arc(d.coords[0], d.coords[1], d.radius, 0, 2 * Math.PI, true)
+      context.fill()
+      context.stroke()
+    })
+    context.strokeStyle = 'white'
+    context.fillStyle = 'black'
+
+    coords.forEach( (d, i) => {
+      if(d.value === 0) return
+      context.beginPath()
+      context.moveTo(d.coords[0], d.coords[1] - d.radius)
+      context.lineTo(d.coords[0] + max_r * LEGEND_TICKOFFSET, d.coords[1] - d.radius)
+      context.stroke()
+      context.fillText(tickFormat(d.value), d.coords[0] + max_r * LEGEND_TICKOFFSET + 5, d.coords[1] - d.radius)
+    })
+
+    context.restore()
+  }
+
+  symbols.drawLegend.height = function() {
+    let thresholds, em_height
+
+    thresholds = ticks()
+    if(!thresholds || thresholds.length === 0) return 0
+
+    context.save()
+    context.font = TICK_FONT
+    em_height = context.measureText('M').width
+    context.restore()
+
+    return symbolscale.range()[1] * 2 + em_height * 1.5
+  }
+
+  symbols.drawLegend.width = function() {
+    return symbolscale.range()[1] * 3
   }
 
   return symbols
