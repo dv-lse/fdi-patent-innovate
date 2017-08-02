@@ -277,4 +277,6 @@ London School of Economics and Political Science
 
 The research leading to these results has received funding from the European Research Council under the European Unions Horizon 2020 Programme H2020/2014-2020) (Grant Agreement n 639633-MASSIVE-ERC-2014-STG).
 
+Data Visualisation created by LSE, supported by funding for knowledge exchange via Higher Education Innovation Funding (HEIF).
+
 All errors and omissions are our own.
