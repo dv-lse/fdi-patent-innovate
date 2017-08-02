@@ -1,4 +1,6 @@
-const LABEL_FONT = '10pt Roboto'
+import { max } from 'd3'
+
+const LABEL_FONT = '9pt Roboto'
 
 const NOTCH = 5
 const PADDING = 5
@@ -17,7 +19,8 @@ function annotate(context, point, info) {
   context.textAlign = 'left'
   context.textBaseline = 'hanging'
 
-  let width = context.measureText(info[0]).width + PADDING * 2
+  let widest_info = max(info, (d) => context.measureText(d.toString()).width)
+  let width = widest_info + PADDING * 2
 
   let em_height = context.measureText('M').width
   let line_height = em_height * LINE_SPACING

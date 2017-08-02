@@ -93,6 +93,7 @@ function update(canvas, layers, stats, flowinfo, state) {
   let omitted = d3.set()
 
   // gis layers
+  let fmt_region = (r,c) => r ? r + ' (' + c + ')' : c
 
   let commas = d3.format(',d')
   let value_fmt = d3.format(state.format)
@@ -108,8 +109,7 @@ function update(canvas, layers, stats, flowinfo, state) {
 //    .markerDetail((d) => project(d[0], d[1].detail))
   let symbolLayer = symbols(context, projection)
     .values((d) => project(d, state.symbols))
-    .detail((d) => [
-                     d.region ? d.region + ' (' + d.country + ')' : d.country,
+    .detail((d) => [ fmt_region(d.region, d.country),
                      state.suffix ? [ state.suffix, value_fmt(d[state.symbols]) ] : null
                    ])
     .color(state.color)
