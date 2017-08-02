@@ -101,12 +101,9 @@ function update(canvas, layers, stats, flowinfo, state) {
   let flowLayer = flowmap(context, projection)
     .origin((d) => [ d.source_long_def, d.source_lat_def ])
     .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
-    .markers((d) => [ '$' + commas(d.investment_mm) + 'm',
-                      d.source_region_g + ', ' + d.source_country_g,
-                      '→ ' + d.destination_region_g + ', ' + d.destination_country_g ] )
-//    .markers((d) => state.markers ? state.markers.map( (m) => [d,m] ) : [])
-//    .markerText((d) => project(d[0], d[1].label))
-//    .markerDetail((d) => project(d[0], d[1].detail))
+    .detail((d) => [ fmt_region(d.source_region_g, d.source_country_g),
+                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g),
+                     [ 'Investment', '$' + commas(d.investment_mm) + 'm']])
   let symbolLayer = symbols(context, projection)
     .values((d) => project(d, state.symbols))
     .detail((d) => [ fmt_region(d.region, d.country),

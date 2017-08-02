@@ -1,7 +1,7 @@
 import { range, min, max } from 'd3'
 import { geoPath, geoDistance, geoInterpolate } from 'd3-geo'
 
-import { arc_distance } from '../util/nvector'
+import { annotate } from '../detail'
 
 const ARC_COLOR = 'rgba(255,127,80,.2)'
 const FOCUS_ARC_COLOR = 'red'
@@ -19,7 +19,7 @@ function flowmap(context, projection) {
     .context(context)
 
   let weight = constant(1)
-  let markers = (x) => x.toString()
+  let detail = (x) => x.toString()
   let markerText = (x) => x
   let markerDetail = constant(null)
   let markerPos = constant(0.5)
@@ -56,7 +56,10 @@ function flowmap(context, projection) {
     })
 
     focused.forEach((i) => {
-      annotate(data[i])
+      let d = data[i]
+      let interp = geoInterpolate(origin(d), destination(d))
+      let midpoint = interp(0.5)
+      annotate(context, projection(midpoint), detail(d))
     })
 
     function arc(d, width, color) {
@@ -76,49 +79,6 @@ function flowmap(context, projection) {
       context.restore()
     }
 
-    function annotate(d) {
-      let label = markers(d)
-      let interp = geoInterpolate(origin(d), destination(d))
-
-      let tacks = range(.2,1,.2).map(interp)
-      let dists = tacks.map((e) => geoDistance(focus, e))
-      let best = dists.reduce((c,n,i) => n < dists[c] ? i : c, 0)
-
-      let point = projection(tacks[best])
-
-      if(label) {
-        const padding = 3
-
-        context.save()
-        context.font = LABEL_FONT
-        let em_height = context.measureText('M').width * 1.5
-        let widths = label.map( (e) => context.measureText(e).width )
-
-        context.fillStyle = 'rgba(255,255,255,0.8)'
-        context.fillRect(point[0] - padding, point[1] - em_height - padding, max(widths) + padding * 2, label.length * em_height + padding * 2)
-
-        context.fillStyle = 'black'
-
-        label.forEach((d,i) => {
-          context.fillText(d, point[0], point[1] + i * em_height)
-        })
-
-        context.restore()
-      }
-    }
-
-    /*
-      let interp = geoInterpolate(origin(d), destination(d))
-      let dms = markers(d)
-      let focused = closest.data && closest.data.id === d.id
-
-      dms.forEach( (dm, j) => {
-        let progress = j / (dms.length-1)
-        let endpoint = interp(progress)
-        annotate(endpoint, dm, ascending(interp(0.5), endpoint) ? 1 : -1, focused)
-      })
-      */
-
     function endpoint(coordinates) {
       if(!visible(coordinates)) return
       let point = projection(coordinates)
@@ -132,41 +92,6 @@ function flowmap(context, projection) {
       context.stroke()
       context.restore()
     }
-
-/*
-    function annotate(coordinates, d, label_sign=1, focused=false) {
-      if(!visible(coordinates)) return
-
-      let point = projection(coordinates)
-      let dmt = markerText(d)
-      let dmd = markerDetail(d)
-
-      label_sign = label_sign >= 0 ? 1 : -1
-      if(dmt) {
-        context.font = LABEL_FONT
-        let margin = 5
-        let width = context.measureText(dmt).width
-        let height = context.measureText('M').width
-        let x = point[0] + (lineWidth + margin) * label_sign
-        let y = point[1] + height / 2
-        x = label_sign > 0 ? x : x - width
-        context.fillStyle = 'black'
-        context.fillText(dmt, x, y)
-
-        if(focused && dmd) {
-          context.font = SUBLABEL_FONT
-          let detail_width = context.measureText(dmd).width
-          let detail_height = context.measureText('M').width
-          let baseline = [x, y + detail_height + margin]
-          context.fillStyle = 'rgba(255,255,255,.5)'
-          context.fillRect(baseline[0] - margin / 2, baseline[1] - detail_height - margin / 2, detail_width + margin, detail_height + margin)
-          context.fillStyle = 'black'
-          context.fillText(dmd, baseline[0], baseline[1])
-        }
-      }
-      context.restore()
-    }
-    */
 
     function visible(coordinates) {
       let clipAngle = projection.clipAngle()
@@ -188,8 +113,8 @@ function flowmap(context, projection) {
     return arguments.length ? (weight = _, flowmap) : weight
   }
 
-  flowmap.markers = function(_) {
-    return arguments.length ? (markers = _, flowmap) : markers
+  flowmap.detail = function(_) {
+    return arguments.length ? (detail = _, flowmap) : detail
   }
 
   flowmap.markerText = function(_) {
