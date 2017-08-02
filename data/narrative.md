@@ -175,6 +175,7 @@ Based on this statistic, local economies are extremely unequal in their innovati
   color: rgba(255,153,0,.6)
   label: Regions rising to patenting top 100
   thresholds: []
+  detail: []
   autorotate: false
 :::
 
@@ -266,6 +267,7 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   symbols: didAll
   max-radius: 25
   thresholds: [1, 3, 6]
+  detail: false
   autorotate: false
 :::
 
