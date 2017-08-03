@@ -100,16 +100,16 @@ function update(canvas, layers, stats, flowinfo, state) {
     .weight((d) => project(d, state['flow-weight']))
     .origin((d) => [ d.source_long_def, d.source_lat_def ])
     .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
-    .detail((d) => state.detail ? [ fmt_region(d.source_region_g, d.source_country_g),
+    .detail((d) => state['flow-detail'] ? [ fmt_region(d.source_region_g, d.source_country_g),
                                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g) ]
-                                    .concat(props(d, state.detail)) : null)
+                                    .concat(props(d, state['flow-detail'])) : null)
     .focusOverride((d) => {
       return state['highlight-over'] ? project(d, state['flow-weight']) > state['highlight-over'] : null
     })
   let symbolLayer = symbols(context, projection)
     .values((d) => project(d, state.symbols))
-    .detail((d) => state.detail ? [ fmt_region(d.region, d.country) ]
-                                  .concat(props(d, state.detail)) : null)
+    .detail((d) => state['symbol-detail'] ? [ fmt_region(d.region, d.country) ]
+                                            .concat(props(d, state['symbol-detail'])) : null)
     .color(state.color)
     .maxRadius(state['max-radius'] || SYMBOL_RADIUS)
     .tickFormat(d3.format(',d'))

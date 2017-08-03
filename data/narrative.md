@@ -24,7 +24,7 @@ Multinationals mobilise enormous investments around the world. Their foreign act
   autorotate: false
   flows: World
   flow-weight: investment_mm
-  detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
+  flow-detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
   label: Top 100 FDIs in 2014
 :::
 
@@ -44,7 +44,7 @@ You can rotate the globe with your mouse and zoom in or out with the buttons in 
   autorotate: false
   flows: Advanced economies
   flow-weight: investment_mm
-  detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
+  flow-detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
   label: Most important FDIs from industrialised nations
 :::
 
@@ -71,7 +71,7 @@ In some cases multinational corporations are attracted by the size and market po
   scale: 1.5
   flows: Nissan
   flow-weight: investment_mm
-  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   autorotate: false
 :::
 
@@ -87,7 +87,7 @@ In principle a number of other European regions had characteristics similar to S
   scale: 1.45
   flows: Nissan
   flow-weight: investment_mm
-  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   highlight-over: 1
   autorotate: false
 :::
@@ -103,7 +103,7 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   autorotate: false
 :::
 
@@ -116,7 +116,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   autorotate: false
 :::
 
@@ -160,9 +160,9 @@ But do host economies really benefit from foreign investment?
   rotate: [2.3522, -48.8566]
   scale: 2
   symbols: allpat
-  label: Number of patents by region (2005)
-  detail: [ [ 'Patents', 'allpat', ',d' ] ]
+  symbol-detail: [ [ 'Patents', 'allpat', ',d' ] ]
   thresholds: [100, 1000, 4000, 10000, 20000, 40000]
+  label: Number of patents by region (2005)
   autorotate: false
 :::
 
@@ -178,11 +178,11 @@ Based on this statistic, local economies are extremely unequal in their innovati
   rotate: [2.3522, -48.8566]
   scale: 2
   symbols: diff2
+  symbol-detail: []
   max-radius: 15
   color: rgba(255,153,0,.6)
-  label: Regions rising to patenting top 100
   thresholds: []
-  detail: []
+  label: Regions rising to patenting top 100
   autorotate: false
 :::
 
@@ -207,7 +207,7 @@ More technically, the regions that receive a foreign intervention ("treated" reg
   scale: 1
   flows: Texas Instruments
   flow-weight: investment_mm
-  detail: []
+  flow-detail: []
   autorotate: false
 :::
 
@@ -273,11 +273,12 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
 ::: visualisation globe
   flows: World
   flow-weight: investment_mm
-  label: World flows and regional impact
+  flow-detail: false
   symbols: didAll
   max-radius: 15
   thresholds: [ 1, 6, 18 ]
-  detail: []
+  symbol-detail: [ [ 'Est. change in patenting', 'didAll', '.1f' ] ]
+  label: World flows and regional impact
   autorotate: false
 :::
 
