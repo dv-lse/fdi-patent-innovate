@@ -270,7 +270,7 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
 
 
 
-# Conclusion & Credits
+#
 
 ::: visualisation globe
   flows: World
@@ -284,6 +284,23 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   autorotate: false
 :::
 
+You can explore on he globe how regional innovation benefit from foreign investment.
+
+Each blue bubble shows the average impact of a foreign investment on patent increase. The bigger the bubble, the larger the increase in patent production. The flows in orange are the 100 most impactful.
+
+# Credits
+
+::: visualisation globe
+  flows: World
+  flow-weight: investment_mm
+  flow-detail: false
+  symbols: didAll
+  max-radius: 30
+  thresholds: [ 1, 6, 20, 60 ]
+  symbol-detail: [ [ 'Est. increase', 'didAll', '.1f' ] ]
+  label: Increase in patents (over 10 years)
+  autorotate: false
+:::
 
 R. Crescenzi, A. Dyèvre & C. York
 
