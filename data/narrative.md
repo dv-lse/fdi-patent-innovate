@@ -9,6 +9,19 @@ date: August 8, 2017
 ---
 
 
+
+#
+
+::: visualisation globe
+  rotate: [-52, -46]
+  scale: 1.85
+  flows: Nissan
+  flow-weight: investment_mm
+  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  autorotate: false
+:::
+
+
 #
 
 ::: visualisation globe

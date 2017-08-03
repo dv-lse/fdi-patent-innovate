@@ -103,6 +103,7 @@ function update(canvas, layers, stats, flowinfo, state) {
     .detail((d) => state['flow-detail'] ? [ fmt_region(d.source_region_g, d.source_country_g),
                                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g) ]
                                     .concat(props(d, state['flow-detail'])) : null)
+    .detailOffset((d) => 1.0)
     .focusOverride((d) => {
       return state['highlight-over'] ? project(d, state['flow-weight']) > state['highlight-over'] : null
     })

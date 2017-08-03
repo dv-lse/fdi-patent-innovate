@@ -8,8 +8,8 @@ const FOCUS_ARC_COLOR = 'red'
 
 const SMALL_NETWORK = 7
 
-const LABEL_FONT = '12px Roboto'
-const SUBLABEL_FONT = '9px Roboto'
+const LABEL_FONT = '10px Roboto'
+const SUBLABEL_FONT = '7px Roboto'
 
 
 let horizon = scaleLinear()
@@ -76,7 +76,7 @@ function flowmap(context, projection) {
 
     focused.forEach((i) => {
       let d = data[i]
-      let offset = detailOffset(d)
+      let offset = detailOffset(d, i)
       let interp = geoInterpolate(origin(d), destination(d))
       let midpoint = interp(offset)
       annotate(context, projection(midpoint), detail(d))
