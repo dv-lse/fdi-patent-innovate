@@ -1,9 +1,9 @@
-import { range, min, max } from 'd3'
+import { range, min, max, extent, scaleLinear, color } from 'd3'
 import { geoPath, geoDistance, geoInterpolate } from 'd3-geo'
 
 import { annotate } from '../detail'
 
-const ARC_COLOR = 'rgba(255,127,80,.2)'
+const ARC_COLOR = 'coral'
 const FOCUS_ARC_COLOR = 'red'
 
 const SMALL_NETWORK = 7
@@ -12,11 +12,19 @@ const LABEL_FONT = '12px Roboto'
 const SUBLABEL_FONT = '9px Roboto'
 
 
+let horizon = scaleLinear()
+  .domain([Math.PI / 2 * .7, Math.PI / 2 * .85])
+  .range([1,0])
+  .clamp(true)
+
 function flowmap(context, projection) {
 
   let path = geoPath()
     .projection(projection)
     .context(context)
+
+  let opacity = scaleLinear()
+    .range([0.5,1.0])
 
   let weight = constant(1)
   let detail = (x) => x.toString()
@@ -40,6 +48,8 @@ function flowmap(context, projection) {
     let focus_horizon = focus ? min([source_closest, destination_closest]) + fudge : 0
     let focused = []
 
+    opacity.domain(extent(data, weight))
+
     data.forEach( (d,i) => {
       let source_dist = focusDistance([ d.source_long_def, d.source_lat_def ])
       let destination_dist = focusDistance([ d.destination_long_def, d.destination_lat_def ])
@@ -50,13 +60,18 @@ function flowmap(context, projection) {
         arc(d, lineWidth, FOCUS_ARC_COLOR)
         focused.push(i)
       } else {
-        arc(d, lineWidth, ARC_COLOR)
+        let c = color(ARC_COLOR)
+        c.opacity = opacity(weight(d))
+        arc(d, lineWidth, c + '')
       }
     })
 
     data.forEach( (d) => {
-      endpoint(origin(d))
-      endpoint(destination(d))
+      let origin_coords = origin(d)
+      let dest_coords = destination(d)
+
+      endpoint(origin_coords, focusDistance(origin_coords) < focus_horizon)
+      endpoint(dest_coords, focusDistance(dest_coords) < focus_horizon)
     })
 
     focused.forEach((i) => {
@@ -84,17 +99,22 @@ function flowmap(context, projection) {
       context.restore()
     }
 
-    function endpoint(coordinates) {
-      if(!visible(coordinates)) return
+    function endpoint(coordinates, focused) {
       let point = projection(coordinates)
+      let rot = projection.rotate()
+      let distance = geoDistance([-rot[0], -rot[1]], coordinates)
 
       context.save()
-      context.fillStyle = 'white'
-      context.strokeStyle = ARC_COLOR
+
+      context.globalAlpha = horizon(distance)
+
+      context.fillStyle = focused ? FOCUS_ARC_COLOR : 'white'
+      context.strokeStyle = focused ? 'white' : ARC_COLOR
       context.beginPath()
       context.arc(point[0], point[1], lineWidth, 0, 2 * Math.PI, true)
       context.fill()
       context.stroke()
+
       context.restore()
     }
 
@@ -111,11 +131,12 @@ function flowmap(context, projection) {
   }
 
   flowmap.drawLegend = function() {
+    // no legend implemented for flow maps yet...
     return
   }
 
   flowmap.weight = function(_) {
-    return arguments.length ? (weight = _, flowmap) : weight
+    return arguments.length ? (weight = typeof _ === 'function' ? _ : constant(_), flowmap) : weight
   }
 
   flowmap.detail = function(_) {

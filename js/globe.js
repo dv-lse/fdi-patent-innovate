@@ -97,6 +97,7 @@ function update(canvas, layers, stats, flowinfo, state) {
 
   let globe = core(context, projection)
   let flowLayer = flowmap(context, projection)
+    .weight((d) => project(d, state['flow-weight']))
     .origin((d) => [ d.source_long_def, d.source_lat_def ])
     .destination((d) => [ d.destination_long_def, d.destination_lat_def ])
     .detail((d) => state.detail ? [ fmt_region(d.source_region_g, d.source_country_g),

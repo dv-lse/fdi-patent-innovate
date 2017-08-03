@@ -23,6 +23,7 @@ Multinationals mobilise enormous investments around the world. Their foreign act
 ::: visualisation globe
   autorotate: false
   flows: World
+  flow-weight: investment_mm
   detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
   label: Top 100 FDIs in 2014
 :::
@@ -42,6 +43,7 @@ You can rotate the globe with your mouse and zoom in or out with the buttons in 
   scale: 1.3
   autorotate: false
   flows: Advanced economies
+  flow-weight: investment_mm
   detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
   label: Most important FDIs from industrialised nations
 :::
@@ -61,12 +63,14 @@ What are the drivers of foreign investments by multinationals? What characterist
 In some cases multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In other cases multinationals tap into innovative ideas and knowledge of their target regions, seeking **regional strategic assets** [3].
 
 [3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20&
+
 #
 
 ::: visualisation globe
   rotate: [-139.626112, -35.462933]
   scale: 1.5
   flows: Nissan
+  flow-weight: investment_mm
   detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   autorotate: false
 :::
@@ -98,6 +102,8 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   rotate: [96.752984, -32.910409]
   scale: 1.5
   flows: Texas Instruments
+  flow-weight: investment_mm
+  detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   autorotate: false
 :::
 
@@ -111,7 +117,6 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   flows: Texas Instruments
   flow-weight: investment_mm
   detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
-  highlight-over: 1
   autorotate: false
 :::
 
@@ -201,6 +206,8 @@ More technically, the regions that receive a foreign intervention ("treated" reg
   rotate: [-77.614656, -12.934513]
   scale: 1
   flows: Texas Instruments
+  flow-weight: investment_mm
+  detail: []
   autorotate: false
 :::
 
@@ -265,6 +272,7 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
 
 ::: visualisation globe
   flows: World
+  flow-weight: investment_mm
   label: World flows and regional impact
   symbols: didAll
   max-radius: 25
