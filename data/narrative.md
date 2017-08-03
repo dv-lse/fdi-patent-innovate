@@ -239,6 +239,7 @@ The graph on the right shows the difference in patent count between the ‘treat
 
 We aggregate all the years when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, everything to the right is the aftermath of the investment.
 
+#
 
 ::: visualisation trend
   category: All technologies
