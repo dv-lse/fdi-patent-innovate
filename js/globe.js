@@ -129,7 +129,7 @@ function update(canvas, layers, stats, flowinfo, state) {
   })
 
   d3.select('.scale.up')
-    .on('click', () => state.scale = Math.min(state.scale * 1.5, 8))
+    .on('click', () => state.scale = Math.min(state.scale * 1.5, 15))
   d3.select('.scale.down')
     .on('click', () => state.scale = Math.max(state.scale / 1.5, 1))
 

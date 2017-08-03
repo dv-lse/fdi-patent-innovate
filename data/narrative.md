@@ -274,8 +274,8 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   flow-weight: investment_mm
   flow-detail: false
   symbols: didAll
-  max-radius: 15
-  thresholds: [ 1, 6, 18 ]
+  max-radius: 30
+  thresholds: [ 1, 6, 20, 60 ]
   symbol-detail: [ [ 'Est. increase', 'didAll', '.1f' ] ]
   label: Increase in patents (over 10 years)
   autorotate: false

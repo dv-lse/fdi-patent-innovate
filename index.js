@@ -32,7 +32,7 @@ queue()
   .defer(d3.text, 'data/narrative.md')
   .defer(d3.json, 'world/topography.json')
   .defer(d3.csv, 'world/regions.csv', lift(Number,
-    ['id', 'allpat', 'diff2', 'impact',
+    ['id', 'allpat', 'diff2', 'impact', 'didAll',
      'lat', 'lon']))
   .defer(d3.csv, 'world/flows.csv', lift(Number,
     ['source_lat_def', 'source_long_def',

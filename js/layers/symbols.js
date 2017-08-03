@@ -129,17 +129,15 @@ function symbols(context, projection) {
     context.textAlign = 'left'
 
     let em_height = context.measureText('M').width
-    let max_r = symbolscale.range()[1]
 
     let thresholds = ticks() || symbolscale.ticks(5)
+    let max_r = symbolscale(thresholds[thresholds.length-1])
 
-    symbolscale.clamp(false)
     let coords = thresholds.map( (c) => {
       let r = symbolscale(c)
       let coords = [LEGEND_PADDING + max_r, LEGEND_PADDING + em_height + max_r * 2 - r]
       return { value: c, radius: r, coords: coords }
     })
-    symbolscale.clamp(true)
 
     coords.reverse().forEach( (d) => {
       context.fillStyle = color()
