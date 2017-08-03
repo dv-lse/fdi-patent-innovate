@@ -3,7 +3,8 @@ title: Do Foreign Direct Investments Help Cities Innovate?
 author:
         - Riccardo Crescenzi
         - Arnaud Dyevre
-date: January 2, 2017
+        - Christopher York
+date: August 8, 2017
 ---
 
 
@@ -28,9 +29,9 @@ Multinationals mobilise enormous investments around the world. Their foreign act
   label: Top 100 FDIs in 2014
 :::
 
-Global flows of **Foreign Direct Investments** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2].
+Global flows of **Foreign Direct Investments** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2]. The top 100 investments in 2014 are displayed on the globe, mouse over the cities of destination or provenance to get more information about the flows.
 
-You can rotate the globe with your mouse and zoom in or out with the buttons in the corner.
+You can rotate the globe with your mouse, and zoom in or out with the buttons in bottom-right the corner.
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
@@ -93,7 +94,9 @@ In principle a number of other European regions had characteristics similar to S
 
 A number of tangible and intangible factors influenced Nissan’s decision to invest in Sunderland. An important role was played by the abundance of workers with relevant skills and knowledge (made redundant by the declining shipyard industry) as well as the commitment of the UK government to support the industrial recovery of the regions.
 
-These were some of the **regional strategic assets** of Sunderland in the mid-1980's
+These were some of the **regional strategic assets** of Sunderland in the mid-1980's.
+
+(Mouse over the orange flows to get know the income, population and level of education of the regions where NIssan could have invested)
 
 #
 
@@ -119,7 +122,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   autorotate: false
 :::
 
-On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China in 1985. What made the balance tilt in favour of Bangalore (in the state of Karnataka) was its unique concentration of emerging tech talents and its local institutions, conducive to innovative activities.
+On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China, in 1985. What made the balance tilt in favour of Bangalore (in the state of Karnataka) was its unique concentration of emerging tech talents and its local institutions, conducive to innovative activities.
 
 #
 
@@ -173,9 +176,9 @@ But do host economies really benefit from foreign investment?
   autorotate: false
 :::
 
-Economists have long seen innovation and technological among the most powerful drivers of economic development and wealth. Therefore, in order to assess the impact of multinationals on their host economies we looked at innovation in cities across the globe. One crude way to measure the innovative capacity of cities and regions is to count the number of patents granted to their residents/inventors.
+Economists have long seen innovation and technological progress as some of the most powerful drivers of economic development and wealth. Therefore, in order to assess the impact of multinationals on their host economies we looked at innovation in cities across the globe. One crude way to measure the innovative capacity of cities and regions is to count the number of patents granted to their residents/inventors.
 
-Based on this statistic, local economies are extremely unequal in their innovation potential. The colours on the globe represent regional patent counts in 2015. While some regions are innovation hubs, most of the emerged land has no patent at all [7].
+Based on this statistic, local economies are extremely unequal in their innovation potential. The bubbles on the globe represent regional patent counts in 2012. While some regions are innovation hubs, most of the emerged land has no patent at all [7].
 
 [7]: http://www.patentsview.org/download/ "Data from the US Patents and Trademark Office"
 
@@ -189,11 +192,13 @@ Based on this statistic, local economies are extremely unequal in their innovati
   max-radius: 15
   color: rgba(255,153,0,.6)
   thresholds: []
-  label: Regions rising to patenting top 100
+  label: Regions rising to the 100 most innovative
   autorotate: false
 :::
 
-The distribution of patents is not only concentrated in few cities, it is also very stable over time: the most innovative regions in 1975 remained the most innovative in 2005, and very few regions with no patents in 1975 became hubs of innovation over the next four decades.
+The distribution of patents is not only concentrated in few cities, it is also very stable over time: the most innovative regions in 1975 remained the most innovative in 2012, and very few regions with no patents in 1975 became hubs of innovation over the next four decades.
+
+You can see on the map the handful of regions who managed to break into the top 100 of the most innovative localities (between 1975 and 2012).
 
 #
 
@@ -203,7 +208,7 @@ The distribution of patents is not only concentrated in few cities, it is also v
   autorotate: false
 :::
 
-Have foreign investments helped cities to become more innovative? To answer we looked at (almost) all regions of the world. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
+Have foreign investments helped cities to become more innovative? To answer this, we looked at (almost) all regions of the world. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
 
 More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and control regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
 
@@ -218,7 +223,7 @@ More technically, the regions that receive a foreign intervention ("treated" reg
   autorotate: false
 :::
 
-In our example of the FDI project by Texas Instrument in Bangalore, one can compare the patent count in Bangalore following the entry of the foreign company to the average of patent counts in Punjab (Pakistan) and Zehjian (China). Comparing the patenting activity in the region receiving the FDI to that of other very similar regions with no FDI can give us a good idea of the ‘incremental’ effect of FDI on innovation.
+In our example of the FDI project by Texas Instrument in Bangalore, one can compare the patent count in Bangalore following the entry of the foreign company to the average patent counts in Punjab (Pakistan) and Zehjian (China). Comparing the patenting activity in the region receiving the FDI to that of other very similar regions with no FDI can give us a good idea of the ‘incremental’ effect of FDI on innovation.
 
 
 #
@@ -234,17 +239,6 @@ The graph on the right shows the difference in patent count between the ‘treat
 
 We aggregate all the years when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, everything to the right is the aftermath of the investment.
 
-
-#
-
-::: visualisation trend
-  category: All technologies
-  region: Western Europe
-:::
-
-Some factors make regions more receptive to foreign firms’ interventions. For example, foreign investments in ‘computers’ and ‘drugs’ lead to sharp increases in regional innovation.
-
-#
 
 ::: visualisation trend
   category: All technologies
@@ -271,7 +265,7 @@ Global economic integration and investment flows have positive impact on local i
 
 The size of the impact depends largely on the technology and the area of the world where firms operate.
 
-Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the top 5% of multinationals firms with the most patents lead to smaller increase in innovation, in the region where they invest.
+Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the top 1% of multinationals firms with the most patents lead to smaller increase in innovation, in the region where they invest.
 
 
 
