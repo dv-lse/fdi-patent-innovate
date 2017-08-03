@@ -111,7 +111,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 #
 
 ::: visualisation globe
-  rotate: [-77.614656, -12.934513]
+  rotate: [-87.614656, -25.934513]
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
