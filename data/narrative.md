@@ -131,6 +131,14 @@ On paper, the Bangalore region looked very similar to the nearby province of Pun
 We studied thousands of investment decisions (similar to those of Nissan and Texas Instruments in the previous examples) targeting European regions.
 1. European multinationals investing in other European countries are attracted by the local innovation dynamism and favourable  socio-institutional environments of their host economies;
 2. US multinationals care more about market access and technological factors and less about local socio-institutional arrangements when compared to intra-EU investments;
+
+#
+
+::: visualisation globe
+  scale: 1
+  autorotate: false
+:::
+
 3. Multinationals from emerging economies:
 a) Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments [4].
 b) They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
