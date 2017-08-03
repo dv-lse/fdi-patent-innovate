@@ -112,7 +112,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
 
 ::: visualisation globe
   rotate: [-87.614656, -45.934513]
-  scale: 1.5
+  scale: 2
   flows: Texas Instruments
   flow-weight: investment_mm
   flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
