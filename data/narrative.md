@@ -62,7 +62,7 @@ What are the drivers of foreign investments by multinationals? What characterist
 
 In some cases multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In other cases multinationals tap into innovative ideas and knowledge of their target regions, seeking **regional strategic assets** [3].
 
-[3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20&
+[3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20& "Crescenzi et al. (2016)"
 
 #
 
@@ -71,7 +71,7 @@ In some cases multinational corporations are attracted by the size and market po
   scale: 1.5
   flows: Nissan
   flow-weight: investment_mm
-  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  flow-detail: false
   autorotate: false
 :::
 
@@ -88,7 +88,6 @@ In principle a number of other European regions had characteristics similar to S
   flows: Nissan
   flow-weight: investment_mm
   flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
-  highlight-over: 1
   autorotate: false
 :::
 
@@ -103,7 +102,7 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   scale: 1.5
   flows: Texas Instruments
   flow-weight: investment_mm
-  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  flow-detail: false
   autorotate: false
 :::
 
@@ -162,13 +161,13 @@ But do host economies really benefit from foreign investment?
   symbols: allpat
   symbol-detail: [ [ 'Patents', 'allpat', ',d' ] ]
   thresholds: [100, 1000, 4000, 10000, 20000, 40000]
-  label: Number of patents by region (2005)
+  label: Number of patents by region (2012)
   autorotate: false
 :::
 
 Economists have long seen innovation and technological among the most powerful drivers of economic development and wealth. Therefore, in order to assess the impact of multinationals on their host economies we looked at innovation in cities across the globe. One crude way to measure the innovative capacity of cities and regions is to count the number of patents granted to their residents/inventors.
 
-Based on this statistic, local economies are extremely unequal in their innovation potential. The colours on the globe represent regional patent counts in 2015. While some regions are innovation hubs, most of the emerged land has no patent at all [5].
+Based on this statistic, local economies are extremely unequal in their innovation potential. The colours on the globe represent regional patent counts in 2015. While some regions are innovation hubs, most of the emerged land has no patent at all [7].
 
 [7]: http://www.patentsview.org/download/ "Data from the US Patents and Trademark Office"
 
@@ -277,8 +276,8 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   symbols: didAll
   max-radius: 15
   thresholds: [ 1, 6, 18 ]
-  symbol-detail: [ [ 'Est. change in patenting', 'didAll', '.1f' ] ]
-  label: World flows and regional impact
+  symbol-detail: [ [ 'Est. increase', 'didAll', '.1f' ] ]
+  label: Increase in patents (over 10 years)
   autorotate: false
 :::
 
