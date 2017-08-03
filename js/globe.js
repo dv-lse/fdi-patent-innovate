@@ -102,6 +102,9 @@ function update(canvas, layers, stats, flowinfo, state) {
     .detail((d) => state.detail ? [ fmt_region(d.source_region_g, d.source_country_g),
                                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g) ]
                                     .concat(props(d, state.detail)) : null)
+    .focusOverride((d) => {
+      return state['highlight-over'] ? project(d, state['flow-weight']) > state['highlight-over'] : null
+    })
   let symbolLayer = symbols(context, projection)
     .values((d) => project(d, state.symbols))
     .detail((d) => state.detail ? [ fmt_region(d.region, d.country) ]

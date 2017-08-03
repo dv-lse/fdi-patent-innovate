@@ -23,7 +23,7 @@ Multinationals mobilise enormous investments around the world. Their foreign act
 ::: visualisation globe
   autorotate: false
   flows: World
-  detail: [ ['Invested', 'investment_mm', '$,', 'm'] ]
+  detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
   label: Top 100 FDIs in 2014
 :::
 
@@ -42,7 +42,7 @@ You can rotate the globe with your mouse and zoom in or out with the buttons in 
   scale: 1.3
   autorotate: false
   flows: Advanced economies
-  detail: [ ['Invested', 'investment_mm', '$,', 'm'] ]
+  detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
   label: Most important FDIs from industrialised nations
 :::
 
@@ -82,6 +82,7 @@ In principle a number of other European regions had characteristics similar to S
   rotate: [-52, -46]
   scale: 1.45
   flows: Nissan
+  flow-weight: investment_mm
   detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   highlight-over: 1
   autorotate: false
@@ -108,6 +109,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   rotate: [-77.614656, -12.934513]
   scale: 1.5
   flows: Texas Instruments
+  flow-weight: investment_mm
   detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
   highlight-over: 1
   autorotate: false

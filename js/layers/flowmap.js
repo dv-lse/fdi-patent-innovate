@@ -20,29 +20,33 @@ function flowmap(context, projection) {
 
   let weight = constant(1)
   let detail = (x) => x.toString()
-  let markerText = (x) => x
-  let markerDetail = constant(null)
-  let markerPos = constant(0.5)
+  let detailOffset = constant(0.5)
 
-  let focus = [0,0]
+  let focus = null
+  let focusOverride = constant(null)
+
   let cycle = 0
 
   let origin, destination
 
   function flowmap(data) {
+    let focusDistance = (p) => focus ? geoDistance(focus, p) : Infinity
+
     let lineWidth = Math.min(4, projection.scale() * 2)
     let fudge = Math.pow(10, -5)
 
-    let source_closest = min(data, (d) => geoDistance(focus, [ d.source_long_def, d.source_lat_def ]))
-    let destination_closest = min(data, (d) => geoDistance(focus, [ d.destination_long_def, d.destination_lat_def ]))
-    let focus_horizon = min([source_closest, destination_closest]) + fudge
+    let source_closest = min(data, (d) => focusDistance([ d.source_long_def, d.source_lat_def ]))
+    let destination_closest = min(data, (d) => focusDistance([ d.destination_long_def, d.destination_lat_def ]))
+    let focus_horizon = focus ? min([source_closest, destination_closest]) + fudge : 0
     let focused = []
 
     data.forEach( (d,i) => {
-      let source_dist = geoDistance(focus, [ d.source_long_def, d.source_lat_def ])
-      let destination_dist = geoDistance(focus, [ d.destination_long_def, d.destination_lat_def ])
+      let source_dist = focusDistance([ d.source_long_def, d.source_lat_def ])
+      let destination_dist = focusDistance([ d.destination_long_def, d.destination_lat_def ])
+      let override = focusOverride(d)
+      let close = source_dist <= focus_horizon || destination_dist < focus_horizon
 
-      if(source_dist <= focus_horizon || destination_dist < focus_horizon) {
+      if(override || (override === null && close)) {
         arc(d, lineWidth, FOCUS_ARC_COLOR)
         focused.push(i)
       } else {
@@ -57,8 +61,9 @@ function flowmap(context, projection) {
 
     focused.forEach((i) => {
       let d = data[i]
+      let offset = detailOffset(d)
       let interp = geoInterpolate(origin(d), destination(d))
-      let midpoint = interp(0.5)
+      let midpoint = interp(offset)
       annotate(context, projection(midpoint), detail(d))
     })
 
@@ -117,16 +122,8 @@ function flowmap(context, projection) {
     return arguments.length ? (detail = _, flowmap) : detail
   }
 
-  flowmap.markerText = function(_) {
-    return arguments.length ? (markerText = _, flowmap) : markerText
-  }
-
-  flowmap.markerDetail = function(_) {
-    return arguments.length ? (markerDetail = _, flowmap) : markerDetail
-  }
-
-  flowmap.markerPos = function(_) {
-    return arguments.length ? (markerPos = _, flowmap) : markerPos
+  flowmap.detailOffset = function(_) {
+    return arguments.length ? (detailOffset = typeof _ === 'function' ? _ : constant(_), flowmap) : detailOffset
   }
 
   flowmap.cycle = function(_) {
@@ -145,8 +142,12 @@ function flowmap(context, projection) {
     return arguments.length ? (focus = _, flowmap) : focus
   }
 
+  flowmap.focusOverride = function(_) {
+    return arguments.length ? (focusOverride = typeof _ === 'function' ? _ : constant(_), flowmap) : focusOverride
+  }
+
   function constant(x) {
-    return x
+    return () => x
   }
 
   return flowmap
