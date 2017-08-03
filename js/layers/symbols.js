@@ -1,4 +1,4 @@
-import { scaleLinear, scalePow, extent, range, format } from 'd3'
+import { scaleLinear, scalePow, max, range, format } from 'd3'
 import { geoPath, geoDistance } from 'd3-geo'
 
 import { annotate } from '../detail'
@@ -35,11 +35,12 @@ function symbols(context, projection) {
 
   let symbolscale = scalePow()
     .exponent(0.5)
+    .clamp(true)
     .nice()
 
   function symbols(stats) {
-    symbolscale.range([0,maxRadius])
-      .domain(extent(stats, values))
+    symbolscale.range([0, maxRadius])
+      .domain([0, max(stats, values)])
 
     context.save()
 
@@ -68,7 +69,7 @@ function symbols(context, projection) {
 
   function radius(d) {
     let value = values(d)
-    return Math.abs(symbolscale(value))
+    return symbolscale(value)
   }
 
   function draw(d, focused) {
@@ -131,11 +132,14 @@ function symbols(context, projection) {
     let max_r = symbolscale.range()[1]
 
     let thresholds = ticks() || symbolscale.ticks(5)
+
+    symbolscale.clamp(false)
     let coords = thresholds.map( (c) => {
-      let r = Math.abs(symbolscale(c))
+      let r = symbolscale(c)
       let coords = [LEGEND_PADDING + max_r, LEGEND_PADDING + em_height + max_r * 2 - r]
       return { value: c, radius: r, coords: coords }
     })
+    symbolscale.clamp(true)
 
     coords.reverse().forEach( (d) => {
       context.fillStyle = color()
