@@ -182,7 +182,7 @@ Based on this statistic, local economies are extremely unequal in their innovati
 #
 
 ::: visualisation globe
-  rotate: [2.3522, -48.8566]
+  rotate: [-77.614656, -12.934513]
   scale: 2
   symbols: diff2
   symbol-detail: []
