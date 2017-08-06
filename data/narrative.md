@@ -1,6 +1,9 @@
 ---
 title: Do Foreign Direct Investments Help Cities Innovate?
 author:
+  - Riccardo Crescenzi
+  - Arnaud Dyèvre
+  - Christopher W. York
 
 date: August 8, 2017
 ---
