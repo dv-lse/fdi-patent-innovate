@@ -9,19 +9,6 @@ date: August 8, 2017
 ---
 
 
-
-#
-
-::: visualisation globe
-  rotate: [-52, -46]
-  scale: 1.85
-  flows: Nissan
-  flow-weight: investment_mm
-  flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
-  autorotate: false
-:::
-
-
 #
 
 ::: visualisation globe
@@ -99,10 +86,13 @@ In principle a number of other European regions had characteristics similar to S
 
 ::: visualisation globe
   rotate: [-52, -46]
-  scale: 1.45
+  scale: 1.5
   flows: Nissan
   flow-weight: investment_mm
   flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  detail-offset: 1.0
+  detail-orientation: [ 8, 0, 3, 5 ]
+  highlight-over: 0.1
   autorotate: false
 :::
 
@@ -133,6 +123,9 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   flows: Texas Instruments
   flow-weight: investment_mm
   flow-detail: [ ['Population', 'pop'], ['GDP/capita', 'GDP/cap'], ['Years education', 'educ'] ]
+  detail-offset: 1.0
+  detail-orientation: [ 9, 3, 4 ]
+  highlight-over: 0.1
   autorotate: false
 :::
 
@@ -234,6 +227,7 @@ More technically, the regions that receive a foreign intervention ("treated" reg
   flows: Texas Instruments
   flow-weight: investment_mm
   flow-detail: []
+  detail-offset: 1.0
   autorotate: false
 :::
 

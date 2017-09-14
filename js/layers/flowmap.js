@@ -29,6 +29,7 @@ function flowmap(context, projection) {
   let weight = constant(1)
   let detail = (x) => x.toString()
   let detailOffset = constant(0.5)
+  let detailOrientation = constant(0)
 
   let focus = null
   let focusOverride = constant(null)
@@ -79,7 +80,7 @@ function flowmap(context, projection) {
       let offset = detailOffset(d, i)
       let interp = geoInterpolate(origin(d), destination(d))
       let midpoint = interp(offset)
-      annotate(context, projection(midpoint), detail(d))
+      annotate(context, projection(midpoint), detail(d), detailOrientation(d, i))
     })
 
     function arc(d, width, color) {
@@ -145,6 +146,10 @@ function flowmap(context, projection) {
 
   flowmap.detailOffset = function(_) {
     return arguments.length ? (detailOffset = typeof _ === 'function' ? _ : constant(_), flowmap) : detailOffset
+  }
+
+  flowmap.detailOrientation = function(_) {
+    return arguments.length ? (detailOrientation = typeof _ === 'function' ? _ : constant(_), flowmap) : detailOrientation
   }
 
   flowmap.cycle = function(_) {

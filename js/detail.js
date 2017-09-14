@@ -9,7 +9,7 @@ const LINE_SPACING = 1.5
 
 // info: pass in an array of lines and key/value pairs
 
-function bounds(context, point, info, orientation=0) {
+function size(context, info) {
   info = Array.isArray(info) ? info : [ info ]
   info = info.filter((d) => d)
 
@@ -27,9 +27,18 @@ function bounds(context, point, info, orientation=0) {
 
   let height = PADDING + line_height * (info.length-1) + em_height + PADDING
 
-  // text box outline
-  let notch_xp = orientation <  6 ? 1 + (NOTCH * 2) / width : - (NOTCH * 2) / width
-  let notch_yp = orientation >= 6 ? 1 + (NOTCH * 2) / height : - (NOTCH * 2) / height
+  context.restore()
+
+  return [width, height]
+}
+
+function bounds(point, size, orientation) {
+  let [width, height] = size
+  let [x,y] = point
+
+  let notch_xp = orientation <  6 ? 1 + (NOTCH * 2.5) / width : - (NOTCH * 2.5) / width
+  let notch_yp = orientation >= 6 ? 1 + (NOTCH * 2.5) / height : - (NOTCH * 2.5) / height
+
   switch(orientation) {
     case 0:
     case 8: notch_xp = 1/7; break;
@@ -45,12 +54,10 @@ function bounds(context, point, info, orientation=0) {
     case 9: notch_yp = 6/7; break;
   }
 
-  let left = point[0] - width * notch_xp
+  let left = x - width * notch_xp
   let right = left + width
-  let top = point[1] - height * notch_yp
+  let top = y - height * notch_yp
   let bottom = top + height
-
-  context.restore()
 
   return [top, right, bottom, left]
 }
@@ -68,7 +75,7 @@ function annotate(context, point, info, orientation=0) {
   let em_height = context.measureText('M').width
   let line_height = em_height * LINE_SPACING
 
-  let [top,right,bottom,left] = bounds(context, point, info, orientation)
+  let [top,right,bottom,left] = bounds(point, size(context, info), orientation)
 
   context.fillStyle = 'white'
   context.strokeStyle = 'gray'

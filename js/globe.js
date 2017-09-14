@@ -90,8 +90,6 @@ function update(canvas, layers, stats, flowinfo, state) {
   let context = elem.getContext('2d')
   projection.translate([ LEFT_PADDING + (width - LEFT_PADDING) / 2, height / 2])
 
-  let omitted = d3.set()
-
   // gis layers
   let fmt_region = (r,c) => r ? r + ' (' + c + ')' : c
 
@@ -103,7 +101,14 @@ function update(canvas, layers, stats, flowinfo, state) {
     .detail((d) => state['flow-detail'] ? [ fmt_region(d.source_region_g, d.source_country_g),
                                     "\u2192 " + fmt_region(d.destination_region_g, d.destination_country_g) ]
                                     .concat(props(d, state['flow-detail'])) : null)
-    .detailOffset((d) => 1.0)
+    .detailOffset( (d) => {
+      let offset = state['detail-offset']
+      return Array.isArray(offset) ? offset[i] : offset !== undefined ? offset : 0.5
+    })
+    .detailOrientation((d,i) => {
+      let orientation = state['detail-orientation']
+      return Array.isArray(orientation) ? orientation[i] : orientation !== undefined ? orientation : 8
+    })
     .focusOverride((d) => {
       return state['highlight-over'] ? project(d, state['flow-weight']) > state['highlight-over'] : null
     })
@@ -139,9 +144,6 @@ function update(canvas, layers, stats, flowinfo, state) {
   d3.transition()
     .duration(1500)
     .on('end', () => {
-      if(!omitted.empty()) {
-        console.log('Omitted regions due to winding errors: ' + JSON.stringify(omitted.values()))
-      }
       refresh = interaction()
     })
     .tween('spin', () => {
