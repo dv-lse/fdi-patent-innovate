@@ -62,7 +62,7 @@ Almost two thirds of these investments came from industrialised economies in 201
 
 What are the drivers of foreign investments by multinationals? What characteristics make countries, regions and cities attractive to multinationals?
 
-In some cases, multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In others, multinationals seek to tap into innovative ideas and knowledge of their target regions, seeking **regional strategic assets** [3].
+In some cases, multinational corporations are simply attracted by the market size and the availaibility of low-cost inputs. In others, multinationals aim to tap into innovative ideas and the sophisticated local knowledge of their target regions, seeking **regional strategic assets** [3].
 
 [3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20& "Crescenzi et al. (2016)"
 
@@ -77,9 +77,9 @@ In some cases, multinational corporations are attracted by the size and market p
   autorotate: false
 :::
 
-When multinationals look for the best location for their investment they compare various similar alternatives. For example, let’s look at the Japanese car manufacturer Nissan that decided in 1984 to build a new plant in Sunderland, in the North East region of the UK.
+When multinationals look for the best location for their investment they compare various similar alternatives. For example, let’s look at the Japanese car manufacturer NISSAN, that decided in 1984 to build a new plant in Sunderland, in the North East region of the UK.
 
-In principle a number of other European regions had characteristics similar to Sunderland. For example Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. At the time they were roughly as wealthy, populous and rich in human capital as the North East UK.
+In principle a number of other European regions had characteristics similar to Sunderland. For example Lazio and Piedmont in Italy, or Nord-Pas-de-Calais in France. At the time they were roughly as wealthy, populous and rich in human capital as the North East of the UK.
 
 
 #
@@ -96,11 +96,11 @@ In principle a number of other European regions had characteristics similar to S
   autorotate: false
 :::
 
-A number of tangible and intangible factors influenced Nissan’s decision to invest in Sunderland. An important role was played by the abundance of workers with relevant skills and knowledge (made redundant by the declining shipyard industry) as well as the commitment of the UK government to support the industrial recovery of the regions.
+But a number of tangible and intangible factors influenced NISSAN’s decision to invest in Sunderland. In particular, the abundance of workers with relevant skills and knowledge (made redundant by the declining shipyard industry) played an important role in attracting NISSAN's FDI. In addition, the UK government at the time was commited to support the industrial recovery of the region.
 
-These were some of the **regional strategic assets** of Sunderland in the mid-1980's.
+A qualified workforce and the support of the government were some of the **regional strategic assets** of Sunderland in the mid-1980's.
 
-(Mouse over the orange flows to get know the income, population and level of education of the regions where NIssan could have invested)
+(Mouse over the orange flows to get know the income, population and level of education of the regions where NISSAN could have invested)
 
 #
 
@@ -113,7 +113,7 @@ These were some of the **regional strategic assets** of Sunderland in the mid-19
   autorotate: false
 :::
 
-Similarly, the Dallas-based technology company Texas Instrument decided in 1985 to establish a software design facility in Bangalore, India.
+Similarly, the Dallas-based technology company TEXAS INSTRUMENTS decided in 1985 to establish a software design facility in Bangalore, India.
 
 #
 
@@ -129,7 +129,7 @@ Similarly, the Dallas-based technology company Texas Instrument decided in 1985 
   autorotate: false
 :::
 
-On paper, the Bangalore region looked very similar to the nearby province of Punjab in Pakistan, or to the Zheijiang province in coastal China, in 1985. What made the balance tilt in favour of Bangalore (in the state of Karnataka) was its unique concentration of emerging tech talents and its local institutions, conducive to innovative activities.
+On paper, the Bangalore region looked very similar to the nearby province of Punjab, in Pakistan, or to the Zhejiang province in coastal China. What made the balance tilt in favour of Bangalore was its unique concentration of emerging tech talents and its local institutions, conducive to innovative activities.
 
 #
 
@@ -138,9 +138,11 @@ On paper, the Bangalore region looked very similar to the nearby province of Pun
   autorotate: false
 :::
 
-We studied thousands of investment decisions (similar to those of Nissan and Texas Instruments in the previous examples) targeting European regions.
+Investment decisions (similar to those of NISSAN and TEXAS INSTRUMENTS) targeting European regions can teach us a lot about what multinationals look for in regions [3].
 1. European multinationals investing in other European countries are attracted by the local innovation dynamism and favourable  socio-institutional environments of their host economies;
-2. US multinationals care more about market access and technological factors and less about local socio-institutional arrangements when compared to intra-EU investments;
+2. In contrast, US multinationals care more about market access and technological factors and less about local socio-institutional arrangements when compared to intra-EU investments;
+
+[3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20& "Crescenzi et al. (2016)"
 
 #
 
@@ -149,7 +151,7 @@ We studied thousands of investment decisions (similar to those of Nissan and Tex
   autorotate: false
 :::
 
-3. Multinationals from emerging economies:
+3. Finally, multinationals from emerging economies:
 a) Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments [4].
 b) They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
 
@@ -164,9 +166,9 @@ b) They tend to ‘imitate’ the behaviour of other multinationals and invest i
   autorotate: false
 :::
 
-In sum, the location decisions of multinationals reflect the complex and dynamic matching between the characteristics of the investing company (including its origin in the example discussed above) and the specificities of their host countries, regions and cities.
+In sum, the location decisions of multinationals reflect the complex matching between the characteristics of the investing company and the specificities of their host countries, regions and cities.
 
-Understanding the location strategies of multinationals is of paramount importance for policy-makers across the globe that aim to attract new investments to their jurisdictions in order to promote innovation, growth and employment.
+Understanding the location strategies of multinationals is of paramount importance for policy-makers across the globe who aim to attract new investments to their jurisdictions in order to promote innovation, growth and employment.
 
 But do host economies really benefit from foreign investment?
 
@@ -217,7 +219,7 @@ You can see on the map the handful of regions who managed to break into the top 
 
 Have foreign investments helped cities to become more innovative? To answer this, we looked at (almost) all regions of the world. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
 
-More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and control regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
+More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and counterfactual regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
 
 #
 
@@ -231,7 +233,7 @@ More technically, the regions that receive a foreign intervention ("treated" reg
   autorotate: false
 :::
 
-In our example of the FDI project by Texas Instrument in Bangalore, one can compare the patent count in Bangalore following the entry of the foreign company to the average patent counts in Punjab (Pakistan) and Zehjian (China). Comparing the patenting activity in the region receiving the FDI to that of other very similar regions with no FDI can give us a good idea of the ‘incremental’ effect of FDI on innovation.
+In our example of the FDI project by Texas Instrument in Bangalore, one can compare the patent count in Bangalore following the entry of the foreign company to the average patent counts in Punjab (Pakistan) and Zhejian (China). Comparing the patenting activity in the region receiving the FDI to that of other very similar regions with no FDI can give us a good idea of the ‘incremental’ effect of FDI on innovation.
 
 
 #
@@ -245,7 +247,7 @@ The patenting activity (our measure of innovation) in regions that receive forei
 
 The graph on the right shows the difference in patent count between the ‘treated’ and the ‘counterfactual’ regions (in logarithms). If the blue region is above 0, one can say that the patent count in the treated region is significantly higher than the control.
 
-We aggregate all the years when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, everything to the right is the aftermath of the investment.
+We center the first time when a foreign company is patenting abroad at time 0 on the graph. Everything to the left of 0 are the years pre-dating the arrival of the foreign firm in the country, everything to the right is the aftermath of the investment.
 
 #
 
@@ -255,7 +257,7 @@ We aggregate all the years when a foreign company is patenting abroad at time 0 
   explore: true
 :::
 
-Furthermore, two continents stand out: Asia and Europe. These continents are those that benefit the most from foreign investments. Asian and European firms appear to be more likely to absorb the knowledge transmitted through firms investing abroad.
+Furthermore, two continents stand out: Asia and Europe. These continents are benefiting the most from foreign investments. Asian and European firms appear to be more likely to absorb the knowledge transmitted through firms investing abroad.
 
 Conversely, while Latin America attracts a substantial amount of foreign firms, the impacts on local economies are more nuanced in terms of patents.
 
@@ -270,12 +272,9 @@ You can explore the results by technologies and macro regions by clicking on the
   explore: true
 :::
 
-Global economic integration and investment flows have positive impact on local innovation. While national and regional innovation efforts are crucially important foreign firms help cities and regions innovate.
+Overall, global economic integration and investment flows have a positive impact on local innovation. While domestic innovation efforts remain important, foreign knowledge brought by multinationals help cities and regions kickstart their transformations into innovation hubs.
 
-The size of the impact depends largely on the technology and the area of the world where firms operate.
-
-Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the top 1% of multinationals firms with the most patents lead to smaller increase in innovation, in the region where they invest.
-
+Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the 5% of multinationals firms with the most patents lead to smaller increase in regional innovation, in the region where they invest. In part because they are not as integrated in the local economies as smaller, slightly less innovative firms.
 
 
 #
@@ -294,7 +293,7 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
 
 You can explore on he globe how regional innovation benefit from foreign investments.
 
-Each blue bubble shows the average impact of a foreign investment on patent increase. The bigger the bubble, the larger the increase in patent production. The flows in orange are the 100 most impactful.
+Each blue bubble shows the average impact of a foreign investment on patent increase. The bigger the bubble, the larger the increase in patent production. The flows in orange are the 100 most impactful investments.
 
 # Credits
 
