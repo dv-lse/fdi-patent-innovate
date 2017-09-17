@@ -17,7 +17,7 @@ date: August 8, 2017
   autorotate: true
 :::
 
-Multinationals mobilise enormous investments around the world. Their foreign activities are highly diverse in nature and relevance. Examples range from small production plants established by textile companies in places where labour is cheap, to fully-fledged research centres established by high-tech companies in regions where qualified engineers are easier to find.
+Multinationals mobilise enormous investments around the world. Their foreign activities are highly diverse in nature and relevance: they range from small production plants established by textile companies in places where labour is cheap, to fully-fledged research centres established by high-tech companies in regions where qualified engineers are easier to find.
 
 
 #
@@ -30,9 +30,9 @@ Multinationals mobilise enormous investments around the world. Their foreign act
   label: Top 100 FDIs in 2014
 :::
 
-Global flows of **Foreign Direct Investments** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2]. The top 100 investments in 2014 are displayed on the globe, mouse over the cities of destination or provenance to get more information about the flows.
+In 2015, global flows of **Foreign Direct Investments** (FDIs) amounted to 1.8 trillion US dollars [1], the equivalent of Italy’s Gross Domestic Product [2]. 
 
-You can rotate the globe with your mouse, and zoom in or out with the buttons in bottom-right the corner.
+The top 100 investments in 2014 are displayed on the globe. Mouse over the regions of destination or provenance to get more information about the flows. You can rotate the globe, and zoom in or out with the buttons in bottom-right the corner.
 
 [1]: http://unctad.org/en/pages/PublicationWebflyer.aspx?publicationid=1555 "UNCTAD 2016"
 
@@ -50,7 +50,7 @@ You can rotate the globe with your mouse, and zoom in or out with the buttons in
   label: Most important FDIs from industrialised nations
 :::
 
-Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in FDI outflows) and the United States is the single largest investing country ($300 billions) [1].
+Almost two thirds of these investments came from industrialised economies in 2015, with Europe being the largest investing region ($576 billions in FDI outflows) and the United States is the single largest investing country ($300 billions in FDI outflows) [1].
 
 #
 
@@ -62,7 +62,7 @@ Almost two thirds of these investments came from industrialised economies, with 
 
 What are the drivers of foreign investments by multinationals? What characteristics make countries, regions and cities attractive to multinationals?
 
-In some cases multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In other cases multinationals tap into innovative ideas and knowledge of their target regions, seeking **regional strategic assets** [3].
+In some cases, multinational corporations are attracted by the size and market potential of the host economy or look for low-cost inputs (for example low wages). In others, multinationals seek to tap into innovative ideas and knowledge of their target regions, seeking **regional strategic assets** [3].
 
 [3]: http://www.tandfonline.com/doi/abs/10.1080/09654313.2015.1129395?journalCode=ceps20& "Crescenzi et al. (2016)"
 
