@@ -1,5 +1,5 @@
 ---
-title: Do Foreign Direct Investments Help Cities Innovate?
+title: Foreign Direct Investment and the world regions: where? why? And for whom?
 author:
   - Riccardo Crescenzi
   - Arnaud Dyèvre
