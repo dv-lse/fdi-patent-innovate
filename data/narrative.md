@@ -1,5 +1,5 @@
 ---
-title: Do Foreign Direct Investments Help Cities Innovate?
+title: Foreign Direct Investment and the world regions: where? why? And for whom?
 author:
   - Riccardo Crescenzi
   - Arnaud Dyèvre
@@ -27,10 +27,11 @@ Multinationals mobilise enormous investments around the world. Their foreign act
   flows: World
   flow-weight: investment_mm
   flow-detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
-  label: Top 100 FDIs in 2014
+  label: Top 100 FDI in 2014
 :::
 
-Global flows of **Foreign Direct Investments** (FDIs) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2]. The top 100 investments in 2014 are displayed on the globe, mouse over the cities of destination or provenance to get more information about the flows.
+Global flows of **Foreign Direct Investments** (FDI) amounted to 1.8 trillion US dollars [1] in 2015, the equivalent of Italy’s Gross Domestic Product [2]. The top 100 investments in 2014 are displayed on the globe, mouse over the cities of destination or origin to get more information about the flows.
+
 
 You can rotate the globe with your mouse, and zoom in or out with the buttons in bottom-right the corner.
 
@@ -47,7 +48,7 @@ You can rotate the globe with your mouse, and zoom in or out with the buttons in
   flows: Advanced economies
   flow-weight: investment_mm
   flow-detail: [ ['Invested', 'investment_mm', '$,d', 'm'] ]
-  label: Most important FDIs from industrialised nations
+  label: Most important FDI from industrialised nations
 :::
 
 Almost two thirds of these investments came from industrialised economies, with Europe being the largest investing region ($576 billions in FDI outflows) and the United States is the single largest investing country ($300 billions) [1].
@@ -150,11 +151,9 @@ We studied thousands of investment decisions (similar to those of Nissan and Tex
 :::
 
 3. Multinationals from emerging economies:
-a) Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments [4].
+a) Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments.
 b) They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
 
-
-[4]: http://www.jstor.org/stable/2393553?seq=1#page_scan_tab_contents "Cohen and Levinthal (1990)"
 
 
 #
@@ -215,9 +214,12 @@ You can see on the map the handful of regions who managed to break into the top 
   autorotate: false
 :::
 
-Have foreign investments helped cities to become more innovative? To answer this, we looked at (almost) all regions of the world. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
+Have foreign investments helped cities to become more innovative? To answer this, we looked at (almost) all regions of the world [8]. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
 
 More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and control regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
+
+[7]: Crescenzi, Dyevre & Neffke (2017) forthcoming
+
 
 #
 
@@ -274,7 +276,7 @@ Global economic integration and investment flows have positive impact on local i
 
 The size of the impact depends largely on the technology and the area of the world where firms operate.
 
-Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the top 1% of multinationals firms with the most patents lead to smaller increase in innovation, in the region where they invest.
+Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the top 5% of multinationals firms with the most patents lead to smaller increase in innovation, in the region where they invest.
 
 
 
