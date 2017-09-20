@@ -1,5 +1,5 @@
 ---
-title: Foreign Direct Investment and the world regions, Where? Why? And for Whom?
+title: Foreign Direct Investment and the world regions. Where? Why? And for Whom?
 author:
   - Riccardo Crescenzi
   - Arnaud Dyèvre
@@ -186,9 +186,9 @@ But do host economies really benefit from foreign investment?
 
 Economists have long seen innovation and technological progress as some of the most powerful drivers of economic development and wealth. Therefore, in order to assess the impact of multinationals on their host economies we looked at innovation in cities across the globe. One crude way to measure the innovative capacity of cities and regions is to count the number of patents granted to their residents/inventors.
 
-Based on this statistic, local economies are extremely unequal in their innovation potential. The bubbles on the globe represent regional patent counts in 2012. While some regions are innovation hubs, most of the emerged land has no patent at all [7].
+Based on this statistic, local economies are extremely unequal in their innovation potential. The bubbles on the globe represent regional patent counts in 2012. While some regions are innovation hubs, most of the emerged land has no patent at all [4].
 
-[7]: http://www.patentsview.org/download/ "Data from the US Patents and Trademark Office"
+[4]: http://www.patentsview.org/download/ "Data from the US Patents and Trademark Office"
 
 #
 
@@ -220,7 +220,7 @@ Have foreign investments helped cities to become more innovative? To answer this
 
 More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and counterfactual regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
 
-[8]: www. "Crescenzi, Dyèvre & Neffke (2017), Forthcoming"
+[5]: www. "Crescenzi, Dyèvre & Neffke (2017), Forthcoming"
 
 
 #
