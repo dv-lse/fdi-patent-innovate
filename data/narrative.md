@@ -1,5 +1,5 @@
 ---
-title: Foreign Direct Investment and the world regions where? why? And for whom?
+title: Foreign Direct Investment and the world regions, Where? Why? And for Whom?
 author:
   - Riccardo Crescenzi
   - Arnaud Dyèvre
