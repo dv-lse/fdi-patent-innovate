@@ -216,7 +216,7 @@ You can see on the map the handful of regions who managed to break into the top 
   autorotate: false
 :::
 
-Have foreign investments helped cities to become more innovative? To answer this, we looked at (almost) all regions of the world [8]. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
+Have foreign investments helped cities to become more innovative? To answer this, we looked at (almost) all regions of the world [5]. We systematically compared regions that received an initial foreign investment with those that – although similar in many observable characteristics – did not and looked at their performance over time.
 
 More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and counterfactual regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
 
