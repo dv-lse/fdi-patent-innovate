@@ -276,7 +276,7 @@ You can explore the results by technologies and macro regions by clicking on the
 
 Overall, global economic integration and investment flows have a positive impact on local innovation. While domestic innovation efforts remain important, foreign knowledge brought by multinationals helps cities and regions kickstart their transformations into innovation hubs.
 
-Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the 5% of multinationals firms with the most patents lead to smaller increase in regional innovation, in the region where they invest. In part because they are not as integrated in the local economies as smaller, slightly less innovative firms.
+Surprisingly, the most innovative firms are not necessarily the ones that help regions innovate the most. We find that the 1% of multinationals firms with the most patents lead to smaller increase in regional innovation, in the region where they invest. In part because they are not as integrated in the local economies as smaller, slightly less innovative firms.
 
 
 #
