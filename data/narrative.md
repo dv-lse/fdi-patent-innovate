@@ -220,7 +220,7 @@ Have foreign investments helped cities to become more innovative? To answer this
 
 More technically, the regions that receive a foreign intervention ("treated" regions) and those that do not ("counterfactual" regions) are almost identical in every observable aspect except the fact that one has been visited by a foreign firm. Treated and counterfactual regions are ‘matched’ on the basis of their GDP, population and average educational attainment, using a statistical method called  **propensity score matching**.
 
-[8]: Crescenzi, Dyèvre & Neffke (2017), Forthcoming
+[8]: "Crescenzi, Dyèvre & Neffke (2017), Forthcoming"
 
 
 #
