@@ -154,8 +154,8 @@ Investment decisions (similar to those of NISSAN and TEXAS INSTRUMENTS) targetin
 :::
 
 3. Finally, multinationals from emerging economies:
-a) Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments.
-b) They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
+a. Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments.
+b. They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
 
 
 #
@@ -293,7 +293,7 @@ Surprisingly, the most innovative firms are not necessarily the ones that help r
   autorotate: false
 :::
 
-You can explore on he globe how regional innovation benefit from foreign investments.
+You can explore on the globe how regional innovation benefits from foreign investments.
 
 Each blue bubble shows the average impact of a foreign investment on patent increase. The bigger the bubble, the larger the increase in patent production. The flows in orange are the 100 most impactful investments, outside the USA.
 
