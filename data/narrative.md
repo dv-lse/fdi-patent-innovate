@@ -154,7 +154,9 @@ Investment decisions (similar to those of NISSAN and TEXAS INSTRUMENTS) targetin
 :::
 
 3. Finally, multinationals from emerging economies:
+
 a. Are less likely to look for local technological dynamism in the regions where they invest. They often have  less developed absorptive capacities, needed to fully take advantage of innovation-prone regional environments.
+
 b. They tend to ‘imitate’ the behaviour of other multinationals and invest in regions where other companies are pursuing similar activities (e.g. R&D or production).
 
 
