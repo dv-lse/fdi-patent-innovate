@@ -102,7 +102,7 @@ But a number of tangible and intangible factors influenced NISSAN’s decision t
 
 A qualified workforce and the support of the government were some of the **regional strategic assets** of Sunderland in the mid-1980's.
 
-(Mouse over the orange flows to get know the income, population and level of education of the regions where NISSAN could have invested)
+(Income, population, and level of education statistics are reported for the regions where NISSAN could have invested)
 
 #
 
