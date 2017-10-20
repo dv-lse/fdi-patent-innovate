@@ -10,7 +10,7 @@ date: September 20, 2017
 
 
 #
-
+You can read more about the project on our [research blog site](http://blogs.lse.ac.uk/gild/)
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
