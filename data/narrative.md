@@ -10,12 +10,13 @@ date: September 20, 2017
 
 
 #
-You can read more about the project on our [research blog site](http://blogs.lse.ac.uk/gild/)
+
 ::: visualisation globe
   rotate: [2.3522, -48.8566]
   scale: 1
   autorotate: true
 :::
+You can read more about the project on our [research blog site](http://blogs.lse.ac.uk/gild/)
 
 Multinationals mobilise enormous investments around the world. Their foreign activities are highly diverse in nature and relevance: they range from small production plants established by textile companies in places where labour is cheap, to fully-fledged research centres established by high-tech companies in regions where qualified engineers are easier to find.
 
@@ -315,5 +316,7 @@ London School of Economics and Political Science
 *R. Crescenzi, A. Dyèvre & C. York*
 
 The research leading to these results has received funding from the European Research Council under the European Union Horizon 2020 Programme H2020/2014-2020) (Grant Agreement n 639633-MASSIVE-ERC-2014-STG). All errors and omissions are our own.
+
+You can read more about the project on our [research blog site](http://blogs.lse.ac.uk/gild/)
 
 Data Visualisation created by LSE, supported by funding for knowledge exchange via Higher Education Innovation Funding (HEIF).
